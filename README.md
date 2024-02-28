@@ -1,2 +1,2 @@
 # UBB COMPUTER SCIENCE
- all mai work from uni
+ all my work from uni
