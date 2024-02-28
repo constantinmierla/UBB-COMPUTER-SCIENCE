@@ -1,0 +1,444 @@
+bits 32 ;asamblare și compilare pentru arhitectura de 32 biți
+; definim punctul de intrare in programul principal
+global start
+
+; declaram functiile externe necesare programului nostru 
+extern exit ; indicam asamblorului ca exit exista, chiar daca noi nu o vom defini
+import exit msvcrt.dll  ; exit este o functie care incheie procesul, este definita in msvcrt.dll
+        ; msvcrt.dll contine exit, printf si toate celelalte functii C-runtime importante
+
+; segmentul de date in care se vor defini variabilele 
+segment data use32 class=data
+; ... 
+
+; segmentul de cod
+segment code use32 class=code
+start:
+; ... 
+    ; exercitii simple nr 4
+    mov AL, 5
+    sub AL, 6
+
+    
+    ; exercitii simple nr 5
+    mov AX, 10
+    mov BL, 4
+    div BL
+
+    
+    ; exercitii simple nr 6
+    mov AX, 256
+    mov BX, 1
+    mul BX
+
+
+    ; nr. 7: 256/1
+    mov DX, 0
+    mov AX, 256
+    mov BX, 1
+    div BX
+    
+
+    ; exercitii simple nr 8
+    mov AL, 128
+    add AL, 127
+
+    
+    ; adunari, scaderi
+    ; byte
+segment data use32 class=data
+; ... 
+    a DB 7
+    b DB 8
+    cc DB 9
+    d DB 10
+segment code use32 class=code
+start:
+    ; nr 4: (a-b)+(c-b-d)+d 
+    mov AL, [a]
+    sub AL, [b]
+    
+    mov BL, [cc]
+    sub BL, [b]
+    sub BL, [d]
+    
+    mov CL, [d]
+    
+    add AL, BL
+    add AL, CL
+
+    
+    ; nr 8: (a+b-d)+(a-b-d)
+    mov AL, [a]
+    add AL, [b]
+    sub AL, [d]
+    
+    mov BL, [a]
+    sub BL, [b]
+    sub BL, [d]
+    
+    add AL, BL
+
+
+    ; nr 16: a+13-c+d-7+b
+    mov AL, [a]
+    add AL, 13
+    sub AL, [cc]
+    add AL, [d]
+    sub AL, 7
+    add AL, [b]
+
+
+    ; nr. 24: (a-b-b-c)+(a-c-c-d)
+    mov AL, [a]
+    sub AL, [b]
+    sub AL, [b]
+    sub AL, [cc]
+    
+    mov AH, [a]
+    sub AH, [cc]
+    sub AH, [cc]
+    sub AH, [d]
+    
+    add AL, AH
+    ; AL = -39
+
+
+    ; nr. 26: (a+a)-(b+b)-c
+    mov AL, [a]
+    add AL, [a]
+    
+    mov AH, [b]
+    add AH, [b]
+    
+    sub AL, AH
+    sub AL, [cc]
+    ; AL = -11
+
+    
+    ; word
+segment data use32 class=data
+; ... 
+    a DW 7
+    b DW 8
+    cc DW 9
+    d DW 10
+
+; segmentul de cod
+segment code use32 class=code
+start:
+; ... 
+    ; nr 4: (b+b)-c-(a+d)
+    mov AX, [b]
+    add AX, [b]
+    
+    mov BX, [a]
+    add BX, [d]
+    
+    sub AX, [cc]
+    sub AX, BX
+
+
+    ; nr 18: (a-b-c)+(a-c-d-d)
+    mov AX, [a]
+    sub AX, [b]
+    sub AX, [cc]
+    
+    mov BX, [a]
+    sub BX, [cc]
+    sub BX, [d]
+    sub BX, [d]
+    
+    add AX, BX
+
+
+    ; nr. 19: b+a-(4-d+2)+c+(a-b)
+    mov AX, [b]
+    add AX, [a]
+    
+    mov BX, 4
+    sub BX, [d]
+    add BX, 2
+    
+    sub AX, BX
+    add AX, [cc]
+    
+    mov BX, [a]
+    sub BX, [b]
+    
+    add AX, BX
+    ; AX = 27
+
+
+    ; nr 27: a+b-(c+d)+100h
+    mov AX, [a]
+    add AX, [b]
+    
+    mov BX, [cc]
+    add BX, [d]
+    
+    sub AX, BX
+    add AX, 100h
+
+
+    ; nr. 28: (d-c)+(b+b-c-a)+d
+    mov AX, [d]
+    sub AX, [cc]
+    
+    mov BX, [b]
+    add BX, [b]
+    sub BX, [cc]
+    sub BX, [a]
+    
+    add AX, BX
+    add AX, [d]
+    ; AX = 11
+
+
+    ; inmultiri si impartiri
+    ; a, b, c - byte, d - word
+segment data use32 class=data
+; ... 
+    a DB 7
+    b DB 8
+    cc DB 9
+    d DW 10
+
+; segmentul de cod
+segment code use32 class=code
+start:
+; ... 
+    ; nr 4: –a*a + 2*(b-1) – d
+    ; construiesc -a
+    mov AL, 255
+    sub AL, [a]
+    add AL, 1
+    
+    ; -a*a
+    mov AH, [a]
+    imul AH
+    
+    mov BX, AX
+    
+    ; AX = 2*(b-1)
+    mov AL, 2
+    mov AH, [b]
+    sub AH, 1 
+    mul AH
+    
+    add AX, BX
+    
+    sub AX, [d]
+
+
+    ; nr. 8: (100*a+d+5-75*b)/(c-5)
+    mov AL, 100
+    mov AH, [a]
+    mul AH
+    add AX, [d]
+    add AX, 5
+    
+    mov BX, AX
+    mov AL, 75
+    mov AH, [b]
+    mul AH
+    sub BX, AX
+    mov AX, BX
+    
+    mov DL, [cc]
+    sub DL, 5
+    div DL
+    ; AL = rezultat = 28
+
+
+    ; nr. 9: 3*[20*(b-a+2)-10*c]+2*(d-3)
+    mov AL, 100
+    mov AH, [a]
+    mul AH
+    add AX, [d]
+    add AX, 5
+    
+    mov BX, AX
+    mov AL, 75
+    mov AH, [b]
+    mul AH
+    sub BX, AX
+    mov AX, BX
+    
+    mov DL, [cc]
+    sub DL, 5
+    div DL
+    ; AL = rezultat = 28
+
+
+    ; nr. 18: 200-[3*(c+b-d/a)-300]
+    mov AX, [d]
+    mov AL, [a]
+    div AL
+    mov DL, AL
+    ; DL = d/a
+    
+    mov AL, [cc]
+    add AL, [b]
+    sub AL, DL
+    ; AL = (...)
+    
+    ; 3*
+    mov AH, 3
+    mul AH
+    
+    sub AX, 300
+    ; AX = [...]
+    
+    mov BX, 200
+    sub BX, AX
+    mov AX, BX
+    ; AX = rezultat = 452
+
+
+    ; nr. 21: d-[3*(a+b+2)-5*(c+2)]
+    mov AL, [a]
+    add AL, [b]
+    add AL, 2
+    mov AH, 3
+    mul AH
+    mov DX, AX
+    
+    mov AL, [cc]
+    add AL, 2
+    mov AH, 5
+    mul AH
+    
+    sub DX, AX
+    mov AX, [d]
+    sub AX, DX
+    ; AX = rezultat = 14
+
+
+    ; a, b, c, d - BYTE, e, f, g, h - WORD
+segment data use32 class=data
+; ... 
+    a DB 7
+    b DB 8
+    cc DB 9
+    d DB 10
+    
+    e DW 11
+    f DW 12
+    g DW 13
+    h DW 14
+
+; segmentul de cod
+segment code use32 class=code
+start:
+; ... 
+    ; nr 4: (a-c)*3+b*b
+    mov AL, [a]
+    sub AL, [cc]
+    mov AH, 3
+    imul AH
+    
+    mov BX, AX
+    
+    mov AL, [b]
+    mul BYTE[b]
+    
+    add AX, BX
+
+
+    ; nr 12: (a*d+e)/[c+h/(c-b)]
+    mov AL, [a]
+    mov AH, [d]
+    mul AH
+    add AX, [e]
+    mov BX, AX
+    
+    mov AX, [h]
+    mov DH, [cc]
+    sub DH, [b]
+    div DH
+    add AL, [cc]
+    
+    mov DL, AL
+    mov AX, BX
+    
+    div DL
+    ; AL = 3
+
+
+    ; nr. 12: (a*d+e)/[c+h/(c-b)]
+    mov AL, [a]
+    mov AH, [d]
+    mul AH
+    add AX, [e]
+    mov BX, AX
+    ; BX = (a*d+e)
+    
+    mov DL, [cc]
+    sub DL, [b]
+    mov AX, [h]
+    div DL
+    add AL, [cc]
+    ; AL = [...]
+    
+    mov DL, AL
+    mov AX, BX
+    div DL
+    ; rezultatul = AL = 3
+
+    
+    ; nr. 15: f*(e-2)/[3*(d-5)]
+    mov AL, [d]
+    sub AL, 5
+    mov AH, 3
+    mul AH
+    mov BX, AX
+    ; BX = [...]
+    
+    mov CX, [e]
+    sub CX, 2
+    ; CX = (e-2)
+    
+    mov AX, [f]
+    mul CX
+    div BX
+    ; rezultat = AX = 7
+
+
+    ; nr. 19: (e + g) * 2 / (a * c) + (h – f) + b * 3
+    mov AX, [e]
+    add AX, [g]
+    mov BX, 2
+    mul BX
+    mov BX, AX
+    ; BX = (e + g) * 2
+    
+    mov AL, [a]
+    mov AH, [cc]
+    mul AH
+    mov CX, AX
+    ; CX = (a * c)
+    
+    mov AX, BX
+    div CX
+    ; AX = (e + g) * 2 / (a * c)
+    
+    mov BX, [h]
+    sub BX, [f]
+    add AX, BX
+    mov BX, AX
+    ; BX = (e + g) * 2 / (a * c) + (h – f)
+    
+    mov AL, [b]
+    mov AH, 3
+    mul AH
+    ; AX = b * 3
+    
+    add BX, AX
+    mov AX, BX
+    ; rezultat = AX = 26
+
+
+    ; exit(0)
+    push dword 0 ; se pune pe stiva parametrul functiei exit
+    call [exit] ; apelul functiei exit pentru terminarea executiei programului

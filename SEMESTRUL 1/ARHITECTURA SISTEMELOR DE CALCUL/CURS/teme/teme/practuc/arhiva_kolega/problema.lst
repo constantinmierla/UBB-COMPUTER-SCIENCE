@@ -1,0 +1,155 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, scanf, fopen, fclose, fscanf, fprintf               
+     6                                  import exit msvcrt.dll 
+     7                                  import scanf msvcrt.dll
+     8                                  import fopen msvcrt.dll
+     9                                  import fclose msvcrt.dll   
+    10                                  import fscanf msvcrt.dll
+    11                                  import fprintf msvcrt.dll
+    12                                  
+    13                                  ; Să citesc un nume de fisier si un numar de la tastatura. În fisierul respectiv erau cuvinte separate de spatii și linii și trebuia sa scrii în alt fișier doar acele cuvinte care au numărul de consoane egal 
+    14                                  
+    15                                  segment data use32 class=data
+    16 00000000 00<rept>                    nume_fisier_input times 100 db 0
+    17 00000064 6F75747075742E7478-         nume_fisier_output db 'output.txt', 0
+    17 0000006D 7400               
+    18 0000006F 612B00                      mod_acces db 'a+', 0
+    19 00000072 FFFFFFFF                    descriptor_input dd -1
+    20 00000076 FFFFFFFF                    descriptor_output dd -1
+    21                                      
+    22 0000007A 00000000                    numar_citit dd 0
+    23                                      
+    24 0000007E 257300                      format_str db '%s', 0
+    25 00000081 25732000                    format_str_fisier db '%s ', 0
+    26 00000085 256400                      format_int db '%d', 0
+    27                                      
+    28 00000088 00<rept>                    string_fisier times 100 db 0
+    29 000000EC 00000000                    numar_consoane dd 0
+    30                                  
+    31                                  segment code use32 class=code
+    32                                      start:
+    33                                          ; scanf
+    34 00000000 68[00000000]                    push dword nume_fisier_input
+    35 00000005 68[7E000000]                    push dword format_str
+    36 0000000A FF15[00000000]                  call [scanf]
+    37 00000010 83C408                          add esp, 4 * 2
+    38                                          
+    39 00000013 68[7A000000]                    push dword numar_citit
+    40 00000018 68[85000000]                    push dword format_int
+    41 0000001D FF15[00000000]                  call [scanf]
+    42 00000023 83C408                          add esp, 4 * 2
+    43                                          
+    44                                          ; fopen()
+    45 00000026 68[6F000000]                    push dword mod_acces
+    46 0000002B 68[00000000]                    push dword nume_fisier_input
+    47 00000030 FF15[00000000]                  call [fopen]
+    48 00000036 83C408                          add esp, 4 * 2
+    49                                          
+    50 00000039 83F800                          cmp eax, 0
+    51 0000003C 0F84D9000000                    je finish
+    52 00000042 A3[72000000]                    mov [descriptor_input], eax
+    53                                          
+    54 00000047 68[6F000000]                    push dword mod_acces
+    55 0000004C 68[64000000]                    push dword nume_fisier_output
+    56 00000051 FF15[00000000]                  call [fopen]
+    57 00000057 83C408                          add esp, 4 * 2
+    58                                          
+    59 0000005A 83F800                          cmp eax, 0
+    60 0000005D 0F84B8000000                    je finish
+    61 00000063 A3[76000000]                    mov [descriptor_output], eax
+    62                                          
+    63                                          ; citesc din fisierul input
+    64                                          while_citire:
+    65                                              ; fscanf()
+    66 00000068 68[88000000]                        push dword string_fisier
+    67 0000006D 68[7E000000]                        push dword format_str
+    68 00000072 FF35[72000000]                      push dword [descriptor_input]
+    69 00000078 FF15[00000000]                      call [fscanf]
+    70 0000007E 83C40C                              add esp, 4 * 3
+    71                                              
+    72                                              ; verific daca am ajuns la sfarsitul fisierului
+    73 00000081 83F8FF                              cmp eax, -1
+    74 00000084 7476                                je stop_citire
+    75                                              
+    76                                              ; parcurg sirul string
+    77 00000086 BE[88000000]                        mov esi, string_fisier
+    78 0000008B FC                                  cld
+    79                                              while_caractere:
+    80 0000008C AC                                      lodsb     ; al = caracterul string_fisier[i]
+    81                                                  
+    82 0000008D 3C00                                    cmp al, 0
+    83 0000008F 7422                                    je stop_caractere
+    84                                                  
+    85                                                  ; verific daca e consoana
+    86 00000091 3C61                                    cmp al, 'a'
+    87 00000093 741B                                    je vocala
+    88 00000095 3C65                                    cmp al, 'e'
+    89 00000097 7417                                    je vocala
+    90 00000099 3C69                                    cmp al, 'i'
+    91 0000009B 7413                                    je vocala
+    92 0000009D 3C6F                                    cmp al, 'o'
+    93 0000009F 740F                                    je vocala
+    94 000000A1 3C75                                    cmp al, 'u'
+    95 000000A3 740B                                    je vocala
+    96                                                  
+    97                                                  ; daca am ajuns aici, inseamna ca e consoana
+    98                                                  ; actualizez numarul de vocale
+    99 000000A5 A1[EC000000]                            mov eax, [numar_consoane]
+   100 000000AA 40                                      inc eax
+   101 000000AB A3[EC000000]                            mov [numar_consoane], eax
+   102                                                  
+   103                                                  vocala:
+   104 000000B0 90                                          nop
+   105 000000B1 EBD9                                jmp while_caractere
+   106                                                  
+   107                                              stop_caractere:
+   108                                                  ; verific daca numarul de consoane este egal cu nr citit de la tastatura
+   109 000000B3 A1[EC000000]                            mov eax, [numar_consoane]
+   110 000000B8 8B1D[7A000000]                          mov ebx, [numar_citit]
+   111 000000BE 39D8                                    cmp eax, ebx
+   112 000000C0 7402                                    je sunt_egale
+   113                                                  
+   114                                                  ; nu sunt egale, nu trebuie sa afisez, dar actualizez numarul de consoane la 0
+   115 000000C2 EB19                                    jmp actualizare
+   116                                                  
+   117                                                  sunt_egale:
+   118                                                      ; afisez cuvantul in fisier
+   119 000000C4 68[88000000]                                push dword string_fisier
+   120 000000C9 68[81000000]                                push dword format_str_fisier
+   121 000000CE FF35[76000000]                              push dword [descriptor_output]
+   122 000000D4 FF15[00000000]                              call [fprintf]
+   123 000000DA 83C40C                                      add esp, 4 * 3
+   124                                                  
+   125                                                  actualizare:
+   126                                                      ; readuc la 0 nr de consoane
+   127 000000DD B800000000                                  mov eax, 0
+   128 000000E2 A3[EC000000]                                mov [numar_consoane], eax
+   129                                                      
+   130                                                      ; readuc la 0 sirul de stringuri
+   131 000000E7 BF[88000000]                                mov edi, string_fisier
+   132 000000EC FC                                          cld
+   133 000000ED B964000000                                  mov ecx, 100
+   134                                                      act_string:
+   135 000000F2 B000                                            mov al, 0
+   136 000000F4 AA                                              stosb
+   137 000000F5 E2FB                                        loop act_string
+   138 000000F7 E96CFFFFFF                      jmp while_citire
+   139                                              
+   140                                          stop_citire:
+   141 000000FC 90                                  nop
+   142                                          
+   143                                          ; fclose()
+   144 000000FD FF35[72000000]                  push dword [descriptor_input]
+   145 00000103 FF15[00000000]                  call [fclose]
+   146 00000109 83C404                          add esp, 4
+   147                                          
+   148 0000010C FF35[76000000]                  push dword [descriptor_output]
+   149 00000112 FF15[00000000]                  call [fclose]
+   150 00000118 83C404                          add esp, 4
+   151                                      
+   152                                      finish:
+   153 0000011B 6A00                            push dword 0    
+   154 0000011D FF15[00000000]                  call [exit]       

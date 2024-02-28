@@ -1,0 +1,147 @@
+     1                                  bits 32 
+     2                                  global start
+     3                                  
+     4                                  extern exit
+     5                                  import exit msvcrt.dll
+     6                                  
+     7                                  ; 30.
+     8                                  ; Se da un sir de cuvinte. Sa se construiasca doua siruri de octeti, s1 si s2, astfel: pentru fiecare cuvant,
+     9                                  ; daca numarul de biti 1 din octetul high al cuvantului este mai mare decat numarul de biti 1 din octetul low, atunci s1 va contine octetul high, iar ; s2 octetul low al cuvantului
+    10                                  ; daca numarul de biti 1 din cei doi octeti ai cuvantului sunt egali, atunci s1 va contine numarul de biti 1 din octet, iar s2 valoarea 0
+    11                                  ; altfel, s1 va contine octetul low, iar s2 octetul high al cuvantului.
+    12                                  
+    13                                  
+    14                                  ; segmentul de date in care se vor defini variabilele 
+    15                                  segment data use32 class=data
+    16 00000000 A5824443F6F602A1            s dw 82A5h, 4344h, 0F6F6h, 0A102h
+    17                                      len equ ($-s) / 2
+    18 00000008 00<rept>                    s1 times len db 0
+    19 0000000C 00<rept>                    s2 times len db 0
+    20 00000010 0000                        var dw 0
+    21                                      ;s1 : A5h, 02h, 06h, A1h
+    22                                      ;s2 : 82h, 44h, 00h, 02h
+    23                                  segment code use32 class=code
+    24                                      start:
+    25 00000000 B904000000                      mov ecx, len
+    26                                          ; jecxz sfarsit
+    27                                          
+    28 00000005 BE[00000000]                    mov esi, s
+    29                                          
+    30                                          ; edi -> s1
+    31 0000000A BF[08000000]                    mov edi, s1
+    32                                          ; edx -> s2
+    33 0000000F BA[0C000000]                    mov edx, s2
+    34                                          
+    35                                          ; setez DF pe 0
+    36 00000014 FC                              cld
+    37                                          
+    38                                          repeta:
+    39 00000015 66AD                                lodsw ; ax = s[i]
+    40 00000017 66A3[10000000]                      mov [var], ax  ; var = ax
+    41                                              
+    42 0000001D 51                                  push ecx ; pun valoarea lui ecx in stiva pentru a face un nou loop
+    43                                              
+    44                                              ; in BH retin nr de unari din AH
+    45 0000001E B700                                mov bh, 0
+    46 00000020 B908000000                          mov ecx, 8
+    47                                              repeta_2:
+    48 00000025 D0EC                                    shr ah, 1 ; cf = ultimul bit al lui ah (inainte de shiftare)
+    49                                                  
+    50 00000027 7302                                    jnb continue ; daca bitul = cf = 0, merg la eticheta continue
+    51 00000029 FEC7                                    inc bh ; daca bitul = cf = 1, incrementez bh
+    52                                                  
+    53                                                  continue:
+    54 0000002B E2F8                                loop repeta_2
+    55                                              
+    56                                              ; in BL retin nr de unari din AL, acelasi principiu ca cel de mai sus
+    57 0000002D B300                                mov bl, 0
+    58 0000002F B908000000                          mov ecx, 8
+    59                                              repeta_3:
+    60 00000034 D0E8                                    shr al, 1                        
+    61                                                  
+    62 00000036 7302                                    jnb continue_2
+    63 00000038 FEC3                                    inc bl
+    64                                                  
+    65                                                  continue_2:
+    66 0000003A E2F8                                loop repeta_3
+    67                                              
+    68 0000003C 38FB                                cmp bl, bh ; compar bh cu bl
+    69 0000003E 761E                                jbe bl_mai_mic_sau_egal_decat_bh ; jump bl <= bh
+    70                                              
+    71                                              ; aici bl este mai mai mare decat bh   (bl > bh)
+    72                                              ; s1 = al
+    73                                              ; s2 = ah
+    74 00000040 66A1[10000000]                      mov ax, [var]
+    75 00000046 AA                                  stosb ; s1[i] = al
+    76                                              
+    77                                              ; fac swap intre adresele sirurilor ot a accesa s2
+    78 00000047 89F8                                mov eax, edi  ; eax -> s1
+    79 00000049 89D7                                mov edi, edx  ; edi -> s2
+    80 0000004B 89C2                                mov edx, eax  ; edx -> s1
+    81                                              
+    82 0000004D 66A1[10000000]                      mov ax, [var]
+    83 00000053 88E0                                mov al, ah
+    84 00000055 AA                                  stosb ; s2[i] = ah
+    85                                              
+    86                                              ; fac iar swap intre adresele sirurilor pentru a reveni la conventia initiala
+    87 00000056 89F8                                mov eax, edi  ; eax -> s2
+    88 00000058 89D7                                mov edi, edx  ; edi -> s1
+    89 0000005A 89C2                                mov edx, eax  ; edx -> s2
+    90                                              
+    91 0000005C EB34                                jmp continue_next
+    92                                              
+    93                                              bl_mai_mic_sau_egal_decat_bh:
+    94 0000005E 38FB                                    cmp bl, bh        ; testez daca sunt egale
+    95 00000060 741E                                    je bl_egal_cu_bh  ; jump bl = bh
+    96                                                  
+    97                                                  ; aici bl este mai mic decat bh    (bl < bh)
+    98                                                  ; s1 = ah
+    99                                                  ; s2 = al
+   100 00000062 66A1[10000000]                          mov ax, [var] ; ax = var
+   101 00000068 88E0                                    mov al, ah    ; al = ah
+   102 0000006A AA                                      stosb         ; s1[i] = ah
+   103                                                  
+   104                                                  ; swap intre adresele sirurilor pt a accesa s2
+   105 0000006B 89F8                                    mov eax, edi ; eax -> s1
+   106 0000006D 89D7                                    mov edi, edx ; edi -> s2
+   107 0000006F 89C2                                    mov edx, eax ; edx -> s1
+   108                                                  
+   109 00000071 66A1[10000000]                          mov ax, [var] ; ax = [var]
+   110 00000077 AA                                      stosb  ; s2[i] = al
+   111                                  
+   112                                                  ; revin la conventia initiala de adrese a sirurilor
+   113 00000078 89F8                                    mov eax, edi  ; eax -> s2
+   114 0000007A 89D7                                    mov edi, edx  ; edi -> s1
+   115 0000007C 89C2                                    mov edx, eax  ; edx -> s2
+   116                                                  
+   117 0000007E EB12                                    jmp continue_next
+   118                                                  
+   119                                                  bl_egal_cu_bh:
+   120                                                      ; aici bh = bl
+   121                                                      ; s1 = bh sau bl
+   122                                                      ; s2 = 0
+   123 00000080 88D8                                        mov al, bl
+   124 00000082 AA                                          stosb  ; s1[i] = bl
+   125                                                      
+   126                                                      ; swap intre adrese pt a accesa s2
+   127 00000083 89F8                                        mov eax, edi ; eax -> s1
+   128 00000085 89D7                                        mov edi, edx ; edi -> s2
+   129 00000087 89C2                                        mov edx, eax ; edx -> s1
+   130                                                      
+   131 00000089 B000                                        mov al, 0
+   132 0000008B AA                                          stosb    ; s2[i] = 0
+   133                                                      
+   134                                                      ; revin la conventia initiala
+   135 0000008C 89F8                                        mov eax, edi ; eax -> s2
+   136 0000008E 89D7                                        mov edi, edx ; edi -> s1
+   137 00000090 89C2                                        mov edx, eax ; edx -> s2
+   138                                                      
+   139                                              continue_next:
+   140                                          
+   141 00000092 59                                  pop ecx ; iau in ecx valoarea pe care am pus o in stiva pentru a merge
+   142                                                      ; la urmatorul element din s
+   143 00000093 E280                            loop repeta
+   144                                          
+   145                                      sfarsit:
+   146 00000095 6A00                            push dword 0          
+   147 00000097 FF15[00000000]                  call [exit]           

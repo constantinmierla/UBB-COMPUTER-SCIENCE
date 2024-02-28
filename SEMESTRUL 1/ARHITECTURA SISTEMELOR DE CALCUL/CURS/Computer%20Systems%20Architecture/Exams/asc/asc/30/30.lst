@@ -1,0 +1,124 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  extern fopen, scanf, fclose, fprintf
+    11                                  import fopen msvcrt.dll
+    12                                  import scanf msvcrt.dll
+    13                                  import fclose msvcrt.dll
+    14                                  import fprintf msvcrt.dll
+    15                                  ; our data is declared here (the variables needed by our program)
+    16                                  segment data use32 class=data
+    17                                      ; ...
+    18                                      ; Se da un nume de fisier (definit in segmentul de date). Sa se creeze un fisier cu numele dat, apoi sa se citeasca de la tastatura cuvinte pana cand se citeste de la tastatura caracterul '$'. Sa se scrie in fis
+    19                                      
+    20 00000000 33302E74787400              file_name db '30.txt', 0
+    21 00000007 6100                        mode_access db 'a', 0
+    22 00000009 256300                      char_format db '%c', 0
+    23 0000000C FFFFFFFF                    file_descriptor dd -1
+    24                                      
+    25 00000010 00                          ok db 0
+    26                                      
+    27 00000011 25730A00                    print_word_format db '%s', 10, 0
+    28                                      
+    29 00000015 <res 00000064>              a_word resb 100 ; we keep 100 bytes for a single word
+    30 00000079 257300                      read_word_format db '%s', 0
+    31                                  ; our code starts here
+    32                                  segment code use32 class=code
+    33                                      start:
+    34                                          ; ...
+    35                                          
+    36                                          ; open the file
+    37                                          ; fopen(file_name, mode_access) 
+    38 00000000 68[07000000]                    push dword mode_access
+    39 00000005 68[00000000]                    push dword file_name
+    40 0000000A FF15[00000000]                  call [fopen]
+    41 00000010 83C408                          add esp, 4 * 2
+    42                                          
+    43 00000013 A3[0C000000]                    mov [file_descriptor], eax
+    44                                          
+    45 00000018 83F800                          cmp eax, 0
+    46 0000001B 7478                            je final
+    47                                          
+    48                                          read_word_loop:
+    49                                              ; read the word from the console
+    50 0000001D 68[15000000]                        push dword a_word
+    51 00000022 68[79000000]                        push dword read_word_format
+    52 00000027 FF15[00000000]                      call [scanf]
+    53 0000002D 83C408                              add esp, 4 * 2
+    54                                              
+    55                                              ; now we have the word inside a_word, which is a string of bytes of characters
+    56                                              ; we start with the character on the position ecx = 0
+    57 00000030 B900000000                          mov ecx, 0
+    58                                              ; we suppose that our word doesn't contain any digit
+    59 00000035 C605[10000000]00                    mov byte [ok], 0 
+    60                                              
+    61                                              go_through_word:
+    62 0000003C 8A81[15000000]                          mov al, byte [a_word + ecx]
+    63                                                  
+    64                                                  ; we check if we reached the end of the word
+    65 00000042 3C00                                    cmp al, 0
+    66 00000044 741A                                    je end_go_through_word
+    67                                                  
+    68                                                  ; we check if we reached the end of the whole reading of words
+    69 00000046 3C24                                    cmp al, '$'
+    70 00000048 743C                                    je end_read_word_loop
+    71                                                  
+    72                                                  ; otherwise, we have a valid word character
+    73                                                  ; we check if it's a digit inside this word
+    74 0000004A 3C30                                    cmp al, '0'
+    75                                                  
+    76 0000004C 41                                      inc ecx
+    77 0000004D 72ED                                    jb go_through_word ; it means al is not a digit, so we go through the loop again and read another character
+    78 0000004F 49                                      dec ecx 
+    79                                                  
+    80 00000050 3C39                                    cmp al, '9'
+    81                                                  
+    82 00000052 41                                      inc ecx 
+    83 00000053 77E7                                    ja go_through_word ; it means al is not a digit, so we go through the loop again and read another character
+    84 00000055 49                                      dec ecx 
+    85                                                  
+    86                                                  ; if we reached this point, it means we found a digit
+    87 00000056 C605[10000000]01                        mov byte [ok], 1
+    88 0000005D 41                                      inc ecx
+    89 0000005E EBDC                                    jmp go_through_word
+    90                                                  
+    91                                             
+    92                                              end_go_through_word:
+    93                                              ; we finished to check our word
+    94 00000060 803D[10000000]01                    cmp byte [ok], 1
+    95 00000067 751B                                jne not_a_good_word
+    96                                              
+    97                                              ; if we reached this point, a_word is a valid word - we append it to the file
+    98 00000069 60                                  pushad
+    99                                  
+   100                                              ; fprintf(file_descriptor, a_word)
+   101 0000006A 68[15000000]                        push dword a_word
+   102 0000006F 68[11000000]                        push dword print_word_format
+   103 00000074 FF35[0C000000]                      push dword [file_descriptor]
+   104 0000007A FF15[00000000]                      call [fprintf]
+   105 00000080 83C40C                              add esp, 4 * 3
+   106                                              
+   107                                              
+   108 00000083 61                                  popad
+   109                                              
+   110                                              not_a_good_word:
+   111 00000084 EB97                                jmp read_word_loop
+   112                                                  
+   113                                              
+   114                                          end_read_word_loop: 
+   115                                          
+   116                                          ; close the file
+   117 00000086 FF35[0C000000]                  push dword [file_descriptor]
+   118 0000008C FF15[00000000]                  call [fclose]
+   119 00000092 83C404                          add esp, 4
+   120                                          
+   121                                          final:
+   122                                          ; exit(0)
+   123 00000095 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   124 00000097 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

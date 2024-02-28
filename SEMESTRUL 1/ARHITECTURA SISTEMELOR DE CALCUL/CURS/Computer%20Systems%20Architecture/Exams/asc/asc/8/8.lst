@@ -1,0 +1,121 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  extern fopen, fclose, fread, printf
+    11                                  import fopen msvcrt.dll
+    12                                  import fclose msvcrt.dll
+    13                                  import fread msvcrt.dll
+    14                                  import printf msvcrt.dll
+    15                                  ; our data is declared here (the variables needed by our program)
+    16                                  segment data use32 class=data
+    17                                      ; ...
+    18                                      ; A - ascii code 65
+    19                                      ; Z - ascii code 90
+    20 00000000 00                          a_char db 0
+    21 00000001 0000<rept>                  letters_freq times 26 dw 0 ; we keep a word for the frequency of a certain letter
+    22                                      
+    23 00000035 7200                        mode_access db 'r', 0
+    24 00000037 382E74787400                file_name db '8.txt', 0
+    25 0000003D FFFFFFFF                    file_descriptor dd -1
+    26                                      
+    27 00000041 00000000                    maximum dd 0
+    28 00000045 FFFFFFFF                    answer_letter dd -1
+    29                                      
+    30 00000049 256420256300                print_format db '%d %c', 0
+    31                                  ; our code starts here
+    32                                  segment code use32 class=code
+    33                                      start:
+    34                                          ; A text file is given. Read the content of the file, determine the uppercase letter with the highest frequency and display the letter along with its frequency on the screen. The name of text file is defined
+    35                                      
+    36                                          ; open the file
+    37 00000000 68[35000000]                    push dword mode_access
+    38 00000005 68[37000000]                    push dword file_name
+    39 0000000A FF15[00000000]                  call [fopen]
+    40 00000010 83C408                          add esp, 4 * 2
+    41                                          
+    42                                          ; check if the file opened correctly
+    43 00000013 83F800                          cmp eax, 0
+    44 00000016 0F8492000000                    je final
+    45 0000001C A3[3D000000]                    mov [file_descriptor], eax
+    46                                          
+    47                                          ; read from the file character by character
+    48                                          read_chars:
+    49 00000021 FF35[3D000000]                      push dword [file_descriptor]
+    50 00000027 6A01                                push dword 1
+    51 00000029 6A01                                push dword 1
+    52 0000002B 68[00000000]                        push dword a_char
+    53 00000030 FF15[00000000]                      call [fread]
+    54 00000036 83C410                              add esp, 4 * 4
+    55                                              
+    56                                              ; check if something was read
+    57 00000039 83F800                              cmp eax, 0
+    58 0000003C 7447                                je end_read_chars
+    59                                              
+    60                                              ; move the character inside al - to access it faster
+    61 0000003E A0[00000000]                        mov al, byte [a_char]
+    62                                              
+    63                                              ; check if the character is an uppercase letter
+    64 00000043 3C41                                cmp al, 'A'
+    65 00000045 723C                                jb not_uppercase
+    66 00000047 3C5A                                cmp al, 'Z'
+    67 00000049 7738                                ja not_uppercase
+    68                                              
+    69                                              ; if we reach this point, it means that the letter is uppercase
+    70                                              ; we have the ascii code of the letter inside al
+    71 0000004B 2C41                                sub al, 65 ; now we have 0 - A, 1 - B, 2 - C ...
+    72                                              ; we want to make sure everything else in eax (beside al) is 0
+    73 0000004D B400                                mov ah, 0
+    74 0000004F 98                                  cwde
+    75                                              
+    76                                              ; and now to increase the frequency we access word [letters_freq + 2 * eax]
+    77                                              ; we first need to multiply eax with 2
+    78                                              ; we make a copy to use it later
+    79 00000050 89C3                                mov ebx, eax
+    80                                              
+    81 00000052 B902000000                          mov ecx, 2
+    82 00000057 F7E1                                mul ecx ; edx:eax = eax * 2 - we assume the result still fits inside eax
+    83                                              
+    84 00000059 66FF80[01000000]                    inc word [letters_freq + eax]
+    85                                              
+    86                                              ; and we can also compare it with the maximum
+    87 00000060 B900000000                          mov ecx, 0
+    88 00000065 668B88[01000000]                    mov cx, word [letters_freq + eax]
+    89                                              
+    90 0000006C 3B0D[41000000]                      cmp ecx, [maximum]
+    91 00000072 720F                                jb not_better
+    92                                              
+    93                                              ; if we reach this point, it means that the maximum it's better - we update it
+    94 00000074 890D[41000000]                      mov [maximum], ecx 
+    95                                              
+    96                                              ; we add again to ebx 65 to get the real ascii code
+    97 0000007A 83C341                              add ebx, 65
+    98 0000007D 891D[45000000]                      mov [answer_letter], ebx
+    99                                              
+   100                                              not_better:
+   101                                              not_uppercase: 
+   102                                              ; we read another one
+   103 00000083 EB9C                                jmp read_chars
+   104                                          
+   105                                          end_read_chars: 
+   106                                          ; we print the result
+   107 00000085 FF35[45000000]                  push dword [answer_letter]
+   108 0000008B FF35[41000000]                  push dword [maximum]
+   109 00000091 68[49000000]                    push dword print_format
+   110 00000096 FF15[00000000]                  call [printf]
+   111 0000009C 83C40C                          add esp, 4 * 3
+   112                                          
+   113                                          ; close the file
+   114 0000009F FF35[3D000000]                  push dword [file_descriptor]
+   115 000000A5 FF15[00000000]                  call [fclose]
+   116 000000AB 83C404                          add esp, 4
+   117                                          
+   118                                          final: 
+   119                                          ; exit(0)
+   120 000000AE 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   121 000000B0 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

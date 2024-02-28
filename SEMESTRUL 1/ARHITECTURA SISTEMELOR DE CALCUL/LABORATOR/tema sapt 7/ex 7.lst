@@ -1,0 +1,44 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; ... 
+    14                                      ;Se dau doua siruri de octeti S1 si S2 de aceeasi lungime. Sa se obtina sirul D prin intercalarea elementelor celor doua siruri.
+    15                                      ;S: 1, 3, 5, 7
+    16                                      ;t: 2, 6, 9, 4
+    17                                      ;D: 1, 2, 3, 6, 5, 9, 7, 4
+    18 00000000 01030507                    s db 1,3,5,7 ; declar sirul s
+    19                                      ls equ $-s ; stabilesc lungimea sirului l
+    20 00000004 02060904                    t db 2,6,9,4 ; declar sirul t
+    21                                      l equ $-t ; stabilesc lungimea sirului t
+    22 00000008 0000000000000000            d times 1 dq 0 ; rezerv spatiul pentru noul sir d care va contine intercalarea
+    23                                  ; our code starts here
+    24                                  segment code use32 class=code
+    25                                      start:
+    26                                          ; ...
+    27 00000000 B800000000                  mov eax, 0
+    28 00000005 BE00000000                  mov esi, 0 ; incrementare pt sirul s/t
+    29 0000000A BF00000000                  mov edi, 0 ; incrementare pt sirul d
+    30 0000000F B904000000                  mov ecx, ls ; nr de loop uri
+    31 00000014 E31D                        jecxz sfarsit ; instructiune de jump conditional se va termina cand ecx va ajunge 0
+    32                                      repeta: ; intructiune loop
+    33 00000016 8A86[00000000]                     mov al, [s+esi] ; pun in registrul al, fiecare element din sirul s
+    34 0000001C 8887[08000000]                     mov [d+edi], al ; din registru pun in variabila d / 0 2 4
+    35 00000022 47                                 inc edi
+    36 00000023 8A86[04000000]                     mov al, [t+esi] ; pun in registrul al, fiecare element din sirul t
+    37 00000029 8887[08000000]                     mov [d+edi], al ; din registru pun in variabila d / 1 3 5
+    38 0000002F 46                                 inc esi ; incrementez esi ul
+    39 00000030 47                                 inc edi
+    40 00000031 E2E3                        loop repeta
+    41                                      sfarsit: ; aici se termina loop ul
+    42                                          ; exit(0)
+    43 00000033 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    44 00000035 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

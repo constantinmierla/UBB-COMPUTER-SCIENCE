@@ -1,0 +1,89 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll
+     9                                  
+    10                                  extern fopen,fclose,printf,scanf,gets
+    11                                  
+    12                                  import fopen msvcrt.dll
+    13                                  import fclose msvcrt.dll
+    14                                  import printf msvcrt.dll
+    15                                  import scanf msvcrt.dll
+    16                                  import gets msvcrt.dll
+    17                                  
+    18                                  ; our data is declared here (the variables needed by our program)
+    19                                  segment data use32 class=data
+    20                                      ; ...
+    21 00000000 257300                      mod_citire db "%s",0
+    22 00000003 25642000                    mod_afisare db "%d ",0
+    23 00000007 FF<rept>                    sursa times 100 db -1
+    24 0000006B FF<rept>                    destinatie times 100 db -1
+    25 000000CF 00000000                    contor dd 0
+    26                                  ; our code starts here
+    27                                  segment code use32 class=code
+    28                                      start:
+    29                                          ; ...
+    30 00000000 68[07000000]                    push dword sursa
+    31 00000005 FF15[00000000]                  call [gets]
+    32 0000000B 83C404                          add esp, 4
+    33                                          
+    34 0000000E BE[07000000]                    mov esi, sursa
+    35 00000013 BF[6B000000]                    mov edi, destinatie
+    36                                          
+    37                                          repeta:
+    38                                          
+    39 00000018 803E00                              cmp byte[esi], 0
+    40 0000001B 7446                                je final
+    41                                              
+    42 0000001D 803E20                              cmp byte[esi], ' '
+    43 00000020 7405                                je afiseaza
+    44 00000022 7500                                jne stocheaza
+    45                                              
+    46                                              stocheaza:
+    47 00000024 A4                                      movsb 
+    48 00000025 EBF1                                    jmp repeta
+    49                                              
+    50                                              afiseaza:
+    51 00000027 83EF01                                  sub edi, 1
+    52                                                      repeta1:
+    53 0000002A 81FF[6A000000]                                  cmp edi, destinatie-1
+    54 00000030 740C                                            je final1
+    55                                                          
+    56 00000032 8005[CF000000]01                                add byte[contor],1
+    57 00000039 83EF01                                          sub edi, 1
+    58 0000003C EBEC                                            jmp repeta1
+    59                                                          
+    60                                                      final1:
+    61 0000003E FF35[CF000000]                                  push dword [contor]
+    62 00000044 68[03000000]                                    push dword mod_afisare
+    63 00000049 FF15[00000000]                                  call [printf]
+    64 0000004F 83C408                                          add esp, 4*2
+    65                                                          
+    66 00000052 C605[CF000000]00                                mov byte[contor], 0
+    67 00000059 BF[6B000000]                                    mov edi, destinatie
+    68 0000005E 83C601                                          add esi, 1
+    69 00000061 EBB5                                            jmp repeta
+    70                                              
+    71                                              final:
+    72 00000063 83EF01                                      sub edi, 1
+    73                                                      repeta2:
+    74 00000066 81FF[6A000000]                                  cmp edi, destinatie-1
+    75 0000006C 740C                                            je final2
+    76                                                          
+    77 0000006E 8005[CF000000]01                                add byte[contor],1
+    78 00000075 83EF01                                          sub edi, 1
+    79 00000078 EBEC                                            jmp repeta2
+    80                                                          
+    81                                                      final2:
+    82 0000007A FF35[CF000000]                                  push dword [contor]
+    83 00000080 68[03000000]                                    push dword mod_afisare
+    84 00000085 FF15[00000000]                                  call [printf]
+    85 0000008B 83C408                                          add esp, 4*2
+    86                                                          
+    87                                          
+    88 0000008E 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    89 00000090 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

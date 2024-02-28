@@ -1,0 +1,35 @@
+1
+ Harry Potter
+ vrajitori
+ Actiune
+
+10
+ Cainele
+ animale
+ Animale
+
+11
+ Mr. Bean
+ om
+ Comedie
+
+6
+ Casablanca
+ razboi
+ Drama
+
+5
+ Veronica
+ Desen
+ Poveste
+
+8
+ Titanic
+ fain
+ Romantic
+
+4
+ Notebook
+ Aventura
+ Romantic
+

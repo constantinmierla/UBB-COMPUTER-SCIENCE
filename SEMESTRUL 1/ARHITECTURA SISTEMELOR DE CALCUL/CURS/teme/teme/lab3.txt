@@ -1,0 +1,227 @@
+1) ADUNARI SI SCADERI
+a) INTERPRETARE FARA SEMN
+segment data use32 class=data
+; ... 
+    ; a - byte, b - word, c - double word, d - qword - Interpretare fara semn
+    a DB 7 ; 8
+    b DW 8 ; 16
+    cc DD 9 ; 32
+    d DQ 10 ; 64
+segment code use32 class=code
+start:
+    ; nr 27: (a+c)-(d+b)
+    ; a + c
+    mov AL, [a]
+    mov AH, 0 ; ax = a
+    mov DX, 0
+    push DX
+    push AX
+    pop EAX
+    add EAX, [cc]
+    mov EDX, 0
+    adc EDX, 0 ; edx:eax = a + c
+    
+    ; d + b
+    mov BX, [b]
+    mov CX, 0
+    push CX
+    push BX
+    pop EBX
+    
+    add EBX, [d]
+    mov ECX, 0
+    adc ECX, [d + 4] ; ECX:EBX = d + b
+    
+    ; edx:eax = (a + c) - (d + b)
+    sub EAX, EBX
+    sbb EDX, ECX
+ 
+
+    
+    ; nr 23: ((a + a) + (b + b) + (c + c)) - d
+    mov AL, [a]
+    mov AH, 0
+    add AL, [a]
+    adc AH, 0 ; ax = a + a
+    
+    mov BX, [b]
+    add BX, [b] ; bx = b + b
+    
+    add AX, BX ; ax = (a + a) + (b + b)
+    
+    mov DX, 0
+    push DX
+    push AX
+    pop EAX ; eax = (a + a) + (b + b)
+    
+    mov EBX, [cc]
+    add EBX, [cc] ; ebx = c + c
+    add EAX, EBX ; eax = (a + a) + (b + b) + (c + c)
+    mov EDX, 0 ; edx:eax = (a + a) + (b + b) + (c + c)
+    
+    sub EAX, [d]
+    sbb EDX, [d + 4] ; edx:eax = ((a + a) + (b + b) + (c + c)) - d = 38
+    
+
+    ; nr 24: ((a + b) + (a + c) + (b + c)) - d
+    ; (a + b)
+    mov AL, [a]
+    mov AH, 0
+    mov BX, [b]
+    add BX, AX ; bx = a + b = 15
+    
+    ; (a + c)
+    mov AL, [a]
+    mov AH, 0
+    mov DX, 0
+    add AX, [cc]
+    adc DX, 0 ; dx;ax = (a + c) = 16
+    
+    add AX, BX
+    adc DX, 0 ; dx:ax = (a + b) + (a + c) = 31
+    
+    mov BX, [b]
+    mov CX, 0  ; cx:bx = b = 8
+    add BX, [cc]
+    adc CX, [cc + 2] ; cx:bx = b + c = 17
+    
+    add ax, bx
+    adc dx, cx ; dx:ax = (a + b) + (a + c) + (b + c) = 48
+    
+    push dx
+    push ax
+    pop eax ; eax = (a + b) + (a + c) + (b + c)
+    mov edx, 0 ; edx:eax = (a + b) + (a + c) + (b + c)
+    
+    sub EAX, [d]
+    sbb EDX, [d + 4] ; edx:eax = ((a + b) + (a + c) + (b + c)) - d = 38
+    
+
+b) INTERPRETARE CU SEMN
+segment data use32 class=data
+; ... 
+    ; a - byte, b - word, c - double word, d - qword - Interpretare cu semn
+    a DB 7 ; 8
+    b DW 8 ; 16
+    cc DD 9 ; 32
+    d DQ 10 ; 64
+segment code use32 class=code
+start:
+    ; nr 27: (d+d-c)-(c+c-a)+(c+a)
+    mov EBX, [d]
+    mov ECX, [d + 4]
+    add EBX, [d]
+    adc ECX, [d + 4] ; ECX:EBX = d + d
+    
+    mov EAX, [cc]
+    CDQ ; EDX:EAX = c
+    
+    sub EBX, EAX
+    sbb ECX, EDX ; ECX:EBX = d + d - c
+    
+    mov EDX, [cc]
+    add EDX, [cc] ; EDX = c + c
+    mov AL, [a]
+    CBW
+    CWDE ; EAX = a
+    sub EDX, EAX ; EDX = c + c - a
+    mov EAX, EDX
+    CDQ ; EDX:EAX = c + c - a
+    
+    sub EBX, EAX
+    sbb ECX, EDX ; ECX:EBX = (d + d - c) - (c + c - a)
+    
+    mov EDX, [cc] ; EDX = c
+    mov AL, [a]
+    CBW
+    CWDE ; EAX = a
+    add EAX, EDX
+    CDQ ; EDX:EAX = c + a
+    
+    add EBX, EAX
+    adc ECX, EDX ; ECX:EBX = (d+d-c) - (c+c-a) + (c+a) = 11 - 11 + 16 = 16
+
+
+2) INMULTIRI SI IMPARTIRI
+a) INTERPRETARE FARA SEMN
+segment data use32 class=data
+; ... 
+    ; a,c,d-byte; b-doubleword; x-qword
+    a DB 7 ; 8
+    b DW 8 ; 16
+    cc DB 9 ; 8
+    d DB 10 ; 8
+    x DQ 140 ; 64
+segment code use32 class=code
+start:
+    ; nr 13: x-(a+b+c*d)/(9-a)
+    ; interpretare fara semn
+    mov EBX, [x]
+    mov ECX, [x + 4] ; ECX:EBX = x
+    
+    mov AL, [cc]
+    mul BYTE[d] ; AX = c * d
+    add AX, [b] ; AX = b + c * d
+    mov DL, [a]
+    mov DH, 0   ; DX = [a]
+    add AX, DX  ; AX = (a + b + c * d)
+    
+    mov DL, 9
+    sub DL, [a] ; DL = (9 - a)
+    
+    div DL      ; AL = AX / DL = (a+b+c*d) / (9-a)
+    
+    mov AH, 0
+    mov DX, 0
+    push DX
+    push AX
+    pop EAX ; EAX = (a+b+c*d) / (9-a)
+    mov EDX, 0 ; EDX:EAX = EAX = (a+b+c*d) / (9-a)
+    
+    sub EBX, EAX
+    sbb ECX, EDX ; ECX:EBX = x-(a+b+c*d)/(9-a)
+
+
+b) INTERPRETARE CU SEMN
+segment data use32 class=data
+; ... 
+    ; a,c,d-byte; b-doubleword; x-qword
+    a DB 7 ; 8
+    b DW 8 ; 16
+    cc DB 9 ; 8
+    d DB 10 ; 8
+    x DQ 140 ; 64
+segment code use32 class=code
+start:
+    ; nr 13: x-(a+b+c*d)/(9-a)
+    ; interpretare cu semn
+    mov EBX, [x]
+    mov ECX, [x + 4] ; ECX:EBX = x
+    
+    mov AL, [cc]
+    mov AH, [d]
+    imul AH           ; AX = c * d
+    
+    add AX, [b]      ; AX = b + c * d
+    mov DX, AX       ; DX = b + c * d
+    
+    mov AL, [a]
+    CBW              ; AX = a
+    add AX, DX       ; AX = a + b + c * d
+    
+    mov DL, 9
+    sub DL, [a]      ; DL = 9 - a
+    
+    idiv DL          ; AL = (a + b + c * d) / (9 - a)
+    
+    CBW
+    CWDE
+    CDQ              ; EDX:EAX = (a + b + c * d) / (9 - a)
+    
+    sub EBX, EAX
+    sbb ECX, EDX     ; ECX:EBX = x - (a + b + c * d) / (9 - a) = 88
+
+
+    ; exit(0)
+    push dword 0 ; se pune pe stiva parametrul functiei exit
+    call [exit] ; apelul functiei exit pentru terminarea executiei programului

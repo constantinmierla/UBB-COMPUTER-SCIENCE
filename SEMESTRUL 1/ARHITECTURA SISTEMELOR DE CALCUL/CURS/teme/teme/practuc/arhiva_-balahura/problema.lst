@@ -1,0 +1,159 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, scanf, fopen, fread, fclose, printf               
+     6                                  import exit msvcrt.dll    
+     7                                  import scanf msvcrt.dll
+     8                                  import fopen msvcrt.dll
+     9                                  import fread msvcrt.dll
+    10                                  import fclose msvcrt.dll
+    11                                  import printf msvcrt.dll
+    12                                  
+    13                                  ; de la tastatura: nume de fisier si un nr
+    14                                  ; in fisier: cuvinte separate prin '/'
+    15                                  ; sa se afiseze cate cuvinte au nr de vocale egal cu nr citit de la tastatura
+    16                                  
+    17                                  segment data use32 class=data
+    18 00000000 00<rept>                    nume_fisier times 100 db 0
+    19 00000064 612B00                      mod_acces db 'a+', 0
+    20 00000067 FFFFFFFF                    descriptor_fisier dd -1
+    21                                      
+    22 0000006B 257300                      format_string db '%s', 0
+    23 0000006E 256400                      format_int db '%d', 0
+    24 00000071 256300                      format_char db '%c', 0
+    25                                      
+    26 00000074 256420637576696E74-         mesaj_de_afisat db '%d cuvinte au %d vocale', 0
+    26 0000007D 652061752025642076-
+    26 00000086 6F63616C6500       
+    27                                      
+    28 0000008C 00000000                    numar_vocale dd 0
+    29 00000090 00000000                    numar_cuvinte dd 0
+    30 00000094 00000000                    numar_aux dd 0
+    31                                  
+    32 00000098 00                          buffer db 0
+    33                                  
+    34                                  segment code use32 class=code
+    35                                      start:
+    36                                          ; citire nume_fisier si numar_vocale
+    37 00000000 68[00000000]                    push dword nume_fisier
+    38 00000005 68[6B000000]                    push dword format_string
+    39 0000000A FF15[00000000]                  call [scanf]
+    40 00000010 83C408                          add esp, 4 * 2
+    41                                          
+    42 00000013 68[8C000000]                    push dword numar_vocale
+    43 00000018 68[6E000000]                    push dword format_int
+    44 0000001D FF15[00000000]                  call [scanf]
+    45 00000023 83C408                          add esp, 4 * 2
+    46                                          
+    47                                          ; fopen()
+    48 00000026 68[64000000]                    push dword mod_acces
+    49 0000002B 68[00000000]                    push dword nume_fisier
+    50 00000030 FF15[00000000]                  call [fopen]
+    51 00000036 83C408                          add esp, 4 * 2
+    52                                          
+    53 00000039 83F800                          cmp eax, 0
+    54 0000003C 0F84DC000000                    je finish
+    55 00000042 A3[67000000]                    mov [descriptor_fisier], eax
+    56                                          
+    57                                          ; fread(b, count, size, desc)
+    58 00000047 FF35[67000000]                  push dword [descriptor_fisier]
+    59 0000004D 6A01                            push dword 1
+    60 0000004F 6A01                            push dword 1
+    61 00000051 68[98000000]                    push dword buffer
+    62 00000056 FF15[00000000]                  call [fread]
+    63 0000005C 83C410                          add esp, 4 * 4
+    64                                          while_citire_fisier:
+    65 0000005F 83F800                              cmp eax, 0
+    66 00000062 7472                                je stop_citire_fisier
+    67                                              
+    68 00000064 A0[98000000]                        mov al, [buffer]
+    69 00000069 3C2F                                cmp al, '/'
+    70 0000006B 7425                                je cuvant_terminat
+    71                                              
+    72 0000006D 3C61                                cmp al, 'a'
+    73 0000006F 7412                                je vocala
+    74 00000071 3C65                                cmp al, 'e'
+    75 00000073 740E                                je vocala
+    76 00000075 3C69                                cmp al, 'i'
+    77 00000077 740A                                je vocala
+    78 00000079 3C6F                                cmp al, 'o'
+    79 0000007B 7406                                je vocala
+    80 0000007D 3C75                                cmp al, 'u'
+    81 0000007F 7402                                je vocala
+    82                                              
+    83                                              ; consoana
+    84 00000081 EB38                                jmp continuare
+    85                                              
+    86                                              vocala:
+    87                                                  ; incrementez numarul de vocale in cuvantul curent
+    88 00000083 A1[94000000]                            mov eax, [numar_aux]
+    89 00000088 83C001                                  add eax, 1
+    90 0000008B A3[94000000]                            mov [numar_aux], eax
+    91 00000090 EB29                                    jmp continuare
+    92                                              
+    93                                              cuvant_terminat:
+    94 00000092 A1[94000000]                            mov eax, [numar_aux]
+    95 00000097 8B1D[8C000000]                          mov ebx, [numar_vocale]
+    96                                                  
+    97                                                  ; refac numar_aux = 0
+    98 0000009D BA00000000                              mov edx, 0
+    99 000000A2 8915[94000000]                          mov [numar_aux], edx
+   100                                                  
+   101 000000A8 39D8                                    cmp eax, ebx
+   102 000000AA 7402                                    je sunt_egale
+   103                                                  
+   104                                                  ; nu sunt egale
+   105 000000AC EB0D                                    jmp continuare
+   106                                                  
+   107                                                  sunt_egale:
+   108 000000AE A1[90000000]                                mov eax, [numar_cuvinte]
+   109 000000B3 83C001                                      add eax, 1
+   110 000000B6 A3[90000000]                                mov [numar_cuvinte], eax
+   111                                                  
+   112                                              continuare:
+   113 000000BB 90                                      nop
+   114                                              
+   115                                              ; fread
+   116 000000BC FF35[67000000]                      push dword [descriptor_fisier]
+   117 000000C2 6A01                                push dword 1
+   118 000000C4 6A01                                push dword 1
+   119 000000C6 68[98000000]                        push dword buffer
+   120 000000CB FF15[00000000]                      call [fread]
+   121 000000D1 83C410                              add esp, 4 * 4
+   122 000000D4 EB89                            jmp while_citire_fisier
+   123                                              
+   124                                          stop_citire_fisier:
+   125 000000D6 90                                  nop
+   126                                              
+   127                                          ; tratez ultimul cuvant citit din fisier
+   128 000000D7 A1[94000000]                    mov eax, [numar_aux]
+   129 000000DC 8B1D[8C000000]                  mov ebx, [numar_vocale]
+   130                                          
+   131 000000E2 39D8                            cmp eax, ebx
+   132 000000E4 7402                            je egale
+   133                                          
+   134                                          ; nu sunt egale
+   135 000000E6 EB0D                            jmp afisare
+   136                                          
+   137                                          egale:
+   138 000000E8 A1[90000000]                        mov eax, [numar_cuvinte]
+   139 000000ED 83C001                              add eax, 1
+   140 000000F0 A3[90000000]                        mov [numar_cuvinte], eax
+   141                                              
+   142                                          ; afisare informatii
+   143                                          afisare:
+   144 000000F5 FF35[8C000000]                      push dword [numar_vocale]
+   145 000000FB FF35[90000000]                      push dword [numar_cuvinte]
+   146 00000101 68[74000000]                        push dword mesaj_de_afisat
+   147 00000106 FF15[00000000]                      call [printf]
+   148 0000010C 83C40C                              add esp, 4 * 3
+   149                                          
+   150                                          ; fclose()
+   151 0000010F FF35[67000000]                  push dword [descriptor_fisier]
+   152 00000115 FF15[00000000]                  call [fclose]
+   153 0000011B 83C404                          add esp, 4 * 1
+   154                                      
+   155                                      finish:
+   156 0000011E 6A00                            push dword 0    
+   157 00000120 FF15[00000000]                  call [exit]       

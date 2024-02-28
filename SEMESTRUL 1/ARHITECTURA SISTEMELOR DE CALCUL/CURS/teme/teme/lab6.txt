@@ -1,0 +1,267 @@
+; pb 4
+; Se da un sir de octeti s. Sa se construiasca sirul de octeti d, care contine pe 
+    ; fiecare pozitie numarul de biti 1 ai octetului de pe pozitia corespunzatoare din s
+    ; S: 5, 25, 55, 127
+    ; S(binar): 101, 11001,10111,1111111
+    ; D: 2, 3, 5, 7
+
+
+; segmentul de date in care se vor defini variabilele 
+segment data use32 class=data
+    s db 5, 25, 55, 127
+    len equ ($-s) 
+    d times len db 0
+segment code use32 class=code
+    start:
+        mov ecx, len          ; iau lungimea sirului s in ecx
+        jecxz sfarsit
+        
+        mov esi, s            ; in esi pun offsetul sirului sursa
+        mov edi, d            ; in edi pun offsetul sirului destinatie
+        cld
+        
+        repeta:
+            lodsb             ; al = s[i]
+            
+            mov bl, 0         ; bl retin nr de 1 din repr binara a lui al
+            
+            push ecx          ; pun in stiva valoarea lui ecx
+            mov ecx, 8        ; fac un alt while
+            
+            repeta_2:
+                shr al, 1     ; iau in CF bitul cel mai nesemnificativ al lui AL
+                
+                jnb continue  ; daca bitul e 0, merg mai departe la urmatorul bit
+                inc bl        ; daca e 1, incrementez bl
+                
+                continue:
+                    nop
+                
+            loop repeta_2     ; fac acest loop cat timp ecx > 0
+            
+            
+            mov al, bl        ; pun in al valoarea lui bl care repr nr de unari
+            stosb             ; il stochez pe al in d
+            
+            pop ecx           ; iau valoarea veche a lui ecx pentru a parcurge toate elementele lui s
+        loop repeta           ; fac acest loop cat ecx > 0 <=> cat timp mai exista elemente in sirul s
+                
+        
+    sfarsit:
+        ; exit(0)
+        push dword 0          ; se pune pe stiva parametrul functiei exit
+        call [exit]           ; apelul functiei exit pentru terminarea executiei programului
+
+
+
+
+
+
+; pb 30
+; Se da un sir de cuvinte. Sa se construiasca doua siruri de octeti, s1 si s2, astfel: pentru fiecare cuvant,
+; daca numarul de biti 1 din octetul high al cuvantului este mai mare decat numarul de biti 1 din octetul low, atunci s1 va contine octetul high, iar ; s2 octetul low al cuvantului
+; daca numarul de biti 1 din cei doi octeti ai cuvantului sunt egali, atunci s1 va contine numarul de biti 1 din octet, iar s2 valoarea 0
+; altfel, s1 va contine octetul low, iar s2 octetul high al cuvantului.
+
+bits 32 ;asamblare și compilare pentru arhitectura de 32 biți
+; definim punctul de intrare in programul principal
+global start
+
+; declaram functiile externe necesare programului nostru 
+extern exit ; indicam asamblorului ca exit exista, chiar daca noi nu o vom defini
+import exit msvcrt.dll  ; exit este o functie care incheie procesul, este definita in msvcrt.dll
+        ; msvcrt.dll contine exit, printf si toate celelalte functii C-runtime importante
+
+; segmentul de date in care se vor defini variabilele 
+segment data use32 class=data
+    s dw 82A5h, 4344h, 0F6F6h, 0A102h
+    len equ ($-s) / 2
+    s1 times len db 0
+    s2 times len db 0
+    var dw 0
+segment code use32 class=code
+    start:
+        mov ecx, len
+        ; jecxz sfarsit
+        
+        mov esi, s
+        
+        ; edi -> s1
+        mov edi, s1
+        ; edx -> s2
+        mov edx, s2
+        
+        ; setez DF pe 0
+        cld
+        
+        repeta:
+            lodsw                                      ; ax = s[i]
+            mov [var], ax                              ; var = ax
+            
+            push ecx                                   ; pun valoarea lui ecx in stiva pentru a face un nou loop
+            
+            ; in BH retin nr de unari din AH
+            mov bh, 0
+            mov ecx, 8
+            repeta_2:
+                shr ah, 1                              ; cf = ultimul bit al lui ah (inainte de shiftare)
+                
+                jnb continue                           ; daca bitul = cf = 0, merg la eticheta continue
+                inc bh                                 ; daca bitul = cf = 1, incrementez bh
+                
+                continue:
+            loop repeta_2
+            
+            ; in BL retin nr de unari din AL, acelasi principiu ca cel de mai sus
+            mov bl, 0
+            mov ecx, 8
+            repeta_3:
+                shr al, 1                        
+                
+                jnb continue_2
+                inc bl
+                
+                continue_2:
+            loop repeta_3
+            
+            cmp bl, bh                                 ; compar bh cu bl
+            jbe bl_mai_mic_sau_egal_decat_bh           ; jump bl <= bh
+            
+            ; aici bl este mai mai mare decat bh   (bl > bh)
+            ; s1 = al
+            ; s2 = ah
+            mov ax, [var]
+            stosb                                      ; s1[i] = al
+            
+            ; fac swap intre adresele sirurilor ot a accesa s2
+            mov eax, edi                               ; eax -> s1
+            mov edi, edx                               ; edi -> s2
+            mov edx, eax                               ; edx -> s1
+            
+            mov ax, [var]
+            mov al, ah
+            stosb                                      ; s2[i] = ah
+            
+            ; fac iar swap intre adresele sirurilor pentru a reveni la conventia initiala
+            mov eax, edi                               ; eax -> s2
+            mov edi, edx                               ; edi -> s1
+            mov edx, eax                               ; edx -> s2
+            
+            jmp continue_next
+            
+            bl_mai_mic_sau_egal_decat_bh:
+                cmp bl, bh                             ; testez daca sunt egale
+                je bl_egal_cu_bh                       ; jump bl = bh
+                
+                ; aici bl este mai mic decat bh    (bl < bh)
+                ; s1 = ah
+                ; s2 = al
+                mov ax, [var]                          ; ax = var
+                mov al, ah                             ; al = ah
+                stosb                                  ; s1[i] = ah
+                
+                ; swap intre adresele sirurilor pt a accesa s2
+                mov eax, edi                           ; eax -> s1
+                mov edi, edx                           ; edi -> s2
+                mov edx, eax                           ; edx -> s1
+                
+                mov ax, [var]                          ; ax = [var]
+                stosb                                  ; s2[i] = al
+
+                ; revin la conventia initiala de adrese a sirurilor
+                mov eax, edi                           ; eax -> s2
+                mov edi, edx                           ; edi -> s1
+                mov edx, eax                           ; edx -> s2
+                
+                jmp continue_next
+                
+                bl_egal_cu_bh:
+                    ; aici bh = bl
+                    ; s1 = bh sau bl
+                    ; s2 = 0
+                    mov al, bl
+                    stosb                              ; s1[i] = bl
+                    
+                    ; swap intre adrese pt a accesa s2
+                    mov eax, edi                       ; eax -> s1
+                    mov edi, edx                       ; edi -> s2
+                    mov edx, eax                       ; edx -> s1
+                    
+                    mov al, 0
+                    stosb                              ; s2[i] = 0
+                    
+                    ; revin la conventia initiala
+                    mov eax, edi                       ; eax -> s2
+                    mov edi, edx                       ; edi -> s1
+                    mov edx, eax                       ; edx -> s2
+                    
+            continue_next:
+        
+            pop ecx                                    ; iau in ecx valoarea pe care am pus o in stiva pentru a merge
+                                                       ; la urmatorul element din s
+        loop repeta
+        
+    sfarsit:
+        ; exit(0)
+        push dword 0          ; se pune pe stiva parametrul functiei exit
+        call [exit]           ; apelul functiei exit pentru terminarea executiei programului
+
+
+
+
+; pb 18
+; Sa se citeasca de la tastatura un numar in baza 10 si un numar in baza 16. 
+; Sa se afiseze in baza 10 numarul de biti 1 ai sumei celor doua numere citite. Exemplu:
+; a = 32 = 0010 0000b
+; b = 1Ah = 0001 1010b
+; 32 + 1Ah = 0011 1010b
+; Se va afisa pe ecran valoarea 4.
+
+; segmentul de date in care se vor defini variabilele 
+segment data use32 class=data
+    a dd 0
+    b dd 0
+    format_intreg db "%d", 0
+    format_hexa db "%x", 0
+segment code use32 class=code
+    start:
+        ; citesc nr a
+        push dword a
+        push dword format_intreg
+        call [scanf]
+        add esp, 4 * 2
+        mov dword[a], 32
+        
+        ; citesc nr b
+        push dword b
+        push dword format_hexa
+        call [scanf]
+        add esp, 4 * 2
+        
+        ; a + b
+        mov eax, [a]
+        add eax, [b]          ; eax = a + b
+        
+        ; aflu nr de biti a lui a + b
+        mov ebx, 0            ; ebx = nr de 1
+        mov ecx, 32
+        repeta:
+            shr eax, 1        ; CF = bitul 0 a lui eax
+            
+            jnb continue      ; daca bitul e 0, merg la eticheta continua
+            inc ebx
+            
+            continue:
+                nop
+        loop repeta
+        
+        ; afisez nr de biti 1
+        push ebx
+        push format_intreg
+        call [printf]
+        add esp, 4 * 2
+        
+    sfarsit:
+        ; exit(0)
+        push dword 0          ; se pune pe stiva parametrul functiei exit
+        call [exit]           ; apelul functiei exit pentru terminarea executiei programului

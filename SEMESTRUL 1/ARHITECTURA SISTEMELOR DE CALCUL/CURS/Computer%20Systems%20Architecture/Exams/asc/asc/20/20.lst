@@ -1,0 +1,120 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  extern fopen, fclose, fprintf, printf
+    11                                  import fopen msvcrt.dll
+    12                                  import fclose msvcrt.dll
+    13                                  import fprintf msvcrt.dll
+    14                                  import printf msvcrt.dll
+    15                                  ; our data is declared here (the variables needed by our program)
+    16                                  segment data use32 class=data
+    17                                      ; ...
+    18 00000000 0A000000                    ten dd 10
+    19 00000004 00<rept>                    digits_string times 10 db 0
+    20                                      
+    21 0000000E 6100                        mode_access db 'a', 0
+    22 00000010 32302E74787400              file_name db '20.txt', 0
+    23 00000017 FFFFFFFF                    file_descriptor dd -1
+    24                                      
+    25 0000001B 746869732069732061-         string db 'this is a really nice string'
+    25 00000024 207265616C6C79206E-
+    25 0000002D 69636520737472696E-
+    25 00000036 67                 
+    26                                      string_len equ ($ - string)
+    27 00000037 00<rept>                    updated_string times (3 * string_len + 1) db 0 
+    28                                      
+    29 0000008C 257300                      print_format db '%s', 0
+    30                                  ; our code starts here
+    31                                  segment code use32 class=code
+    32                                      start:
+    33                                          ; A file name and a text (defined in the data segment) are given. The text contains lowercase letters and spaces. Replace all the letters on even positions with their position. Create a file with the given n
+    34                                          
+    35                                          ; open the file
+    36 00000000 68[0E000000]                    push dword mode_access
+    37 00000005 68[10000000]                    push dword file_name
+    38 0000000A FF15[00000000]                  call [fopen]
+    39 00000010 83C408                          add esp, 4 * 2
+    40                                          
+    41                                          ; check if the file opened correctly
+    42 00000013 83F800                          cmp eax, 0
+    43 00000016 0F8489000000                    je final
+    44 0000001C A3[17000000]                    mov [file_descriptor], eax
+    45                                          
+    46 00000021 BE[1B000000]                    mov esi, string
+    47 00000026 BF[37000000]                    mov edi, updated_string
+    48 0000002B BB01000000                      mov ebx, 1
+    49                                          
+    50                                          loop_string:
+    51 00000030 83FB1C                              cmp ebx, string_len
+    52 00000033 7745                                ja end_loop_string
+    53                                              
+    54 00000035 AC                                  lodsb
+    55 00000036 3C20                                cmp al, ' '
+    56 00000038 743B                                je not_a_letter
+    57                                              
+    58 0000003A F7C301000000                        test ebx, 1
+    59 00000040 7533                                jnz not_even_pos
+    60                                              
+    61 00000042 89D8                                mov eax, ebx
+    62 00000044 B900000000                          mov ecx, 0
+    63                                              
+    64                                              while_eax:
+    65 00000049 83F800                                  cmp eax, 0
+    66 0000004C 7417                                    je end_while_eax
+    67                                                  
+    68 0000004E BA00000000                              mov edx, 0
+    69 00000053 F735[00000000]                          div dword [ten]
+    70                                                  
+    71 00000059 83C230                                  add edx, 48
+    72 0000005C 8891[04000000]                          mov byte [digits_string + ecx], dl
+    73 00000062 41                                      inc ecx 
+    74                                                  
+    75 00000063 EBE4                                    jmp while_eax
+    76                                              
+    77                                              end_while_eax: 
+    78 00000065 49                                  dec ecx
+    79                                              
+    80                                              while_chars:
+    81 00000066 8A81[04000000]                          mov al, [digits_string + ecx]
+    82 0000006C AA                                      stosb
+    83                                                  
+    84 0000006D 83F900                                  cmp ecx, 0
+    85 00000070 7404                                    je finished_printing
+    86 00000072 49                                      dec ecx
+    87 00000073 EBF1                                    jmp while_chars
+    88                                              
+    89                                              not_even_pos:
+    90                                              not_a_letter:
+    91 00000075 AA                                  stosb
+    92                                              
+    93                                              finished_printing:
+    94 00000076 43                                  inc ebx
+    95 00000077 49                                  dec ecx
+    96 00000078 EBB6                            jmp loop_string
+    97                                          
+    98                                          end_loop_string:
+    99 0000007A B000                            mov al, 0
+   100 0000007C AA                              stosb
+   101                                          
+   102                                          ; print the message
+   103 0000007D 68[37000000]                    push dword updated_string
+   104 00000082 68[8C000000]                    push dword print_format
+   105 00000087 FF35[17000000]                  push dword [file_descriptor]
+   106 0000008D FF15[00000000]                  call [fprintf]
+   107 00000093 83C40C                          add esp, 4 * 3
+   108                                          
+   109                                          ; close the file
+   110 00000096 FF35[17000000]                  push dword [file_descriptor]
+   111 0000009C FF15[00000000]                  call [fclose]
+   112 000000A2 83C404                          add esp, 4
+   113                                          
+   114                                          final:
+   115                                          ; exit(0)
+   116 000000A5 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   117 000000A7 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

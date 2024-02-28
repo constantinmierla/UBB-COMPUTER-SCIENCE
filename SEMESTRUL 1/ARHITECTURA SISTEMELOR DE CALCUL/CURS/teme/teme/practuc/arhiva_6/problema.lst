@@ -1,0 +1,204 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, fopen, fclose, fread, printf               
+     6                                  import exit msvcrt.dll   
+     7                                  import fopen msvcrt.dll 
+     8                                  import fclose msvcrt.dll
+     9                                  import fread msvcrt.dll
+    10                                  import printf msvcrt.dll
+    11                                  
+    12                                  ; Se citesc din fisierul numere.txt mai multe numere (pare si impare). 
+    13                                  ; Sa se creeze 2 siruri rezultat N si P astfel: N - doar numere impare si P - doar numere pare. Afisati cele 2 siruri rezultate pe ecran.
+    14                                  
+    15                                  segment data use32 class=data
+    16 00000000 6E756D6572652E7478-         nume_fisier db 'numere.txt', 0
+    16 00000009 7400               
+    17 0000000B 612B00                      mod_acces db 'a+', 0
+    18 0000000E FFFFFFFF                    descriptor_fisier dd -1
+    19                                      
+    20 00000012 0A000000                    ten dd 10
+    21 00000016 00000000                    buffer dd 0
+    22                                      
+    23 0000001A 0D0A4E756D6572656C-         mesaj_pare db 13, 10, 'Numerele pare: ', 0
+    23 00000023 6520706172653A2000 
+    24 0000002C 00000000<rept>              sir_nr_pare times 100 dd 0
+    25 000001BC FFFFFFFF                    descriptor_pare dd -1
+    26 000001C0 00000000                    nr_pare dd 0
+    27                                      
+    28 000001C4 0D0A4E756D6572656C-         mesaj_impare db 13, 10, 'Numerele impare: ', 0
+    28 000001CD 6520696D706172653A-
+    28 000001D6 2000               
+    29 000001D8 00000000<rept>              sir_nr_impare times 100 dd 0
+    30 00000368 FFFFFFFF                    descriptor_impare dd -1
+    31 0000036C 00000000                    nr_impare dd 0
+    32                                      
+    33 00000370 25642000                    format_int db "%d ", 0
+    34                                      
+    35                                  segment code use32 class=code
+    36                                      start:
+    37                                          ; fopen(nume, mod)
+    38 00000000 68[0B000000]                    push dword mod_acces
+    39 00000005 68[00000000]                    push dword nume_fisier
+    40 0000000A FF15[00000000]                  call [fopen]
+    41 00000010 83C408                          add esp, 4 * 2
+    42                                          
+    43 00000013 83F800                          cmp eax, 0
+    44 00000016 0F8472010000                    je finish
+    45 0000001C A3[0E000000]                    mov [descriptor_fisier], eax
+    46                                          
+    47 00000021 B8[D8010000]                    mov eax, sir_nr_impare
+    48 00000026 A3[68030000]                    mov [descriptor_impare], eax
+    49 0000002B B8[2C000000]                    mov eax, sir_nr_pare
+    50 00000030 A3[BC010000]                    mov [descriptor_pare], eax
+    51                                          
+    52                                          citire_fisier:
+    53                                              ; fread(buffer, size, count, descr)
+    54 00000035 FF35[0E000000]                      push dword [descriptor_fisier]
+    55 0000003B 6A01                                push dword 1
+    56 0000003D 6A01                                push dword 1
+    57 0000003F 68[16000000]                        push dword buffer
+    58 00000044 FF15[00000000]                      call [fread]
+    59 0000004A 83C410                              add esp, 4 * 4
+    60                                              
+    61 0000004D 83F800                              cmp eax, 0
+    62 00000050 0F84B8000000                        je end_citire_fisier
+    63                                              
+    64 00000056 A1[16000000]                        mov eax, [buffer]
+    65                                              
+    66 0000005B 83F820                              cmp eax, ' '
+    67 0000005E 74D5                                je citire_fisier
+    68                                              
+    69 00000060 83F830                              cmp eax, '0'
+    70 00000063 0F82A5000000                        jb end_citire_fisier
+    71 00000069 83F839                              cmp eax, '9' 
+    72 0000006C 0F879C000000                        ja end_citire_fisier
+    73                                              
+    74 00000072 83E830                              sub eax, '0'
+    75                                              
+    76                                              while_digit:
+    77 00000075 60                                      pushad
+    78                                                  ; fread(buffer, size, count, descr)
+    79 00000076 FF35[0E000000]                          push dword [descriptor_fisier]
+    80 0000007C 6A01                                    push dword 1
+    81 0000007E 6A01                                    push dword 1
+    82 00000080 68[16000000]                            push dword buffer
+    83 00000085 FF15[00000000]                          call [fread]
+    84 0000008B 83C410                                  add esp, 4 * 4
+    85                                                  
+    86 0000008E 83F800                                  cmp eax, 0
+    87 00000091 7503                                    jne more_char
+    88                                                  
+    89 00000093 61                                      popad
+    90 00000094 EB1F                                    jmp end_while_digit
+    91                                                  
+    92                                                  more_char:
+    93 00000096 90                                          nop
+    94 00000097 61                                      popad
+    95                                  
+    96                                                  ; verificam daca caracterul citit e o cifra valida
+    97 00000098 8B1D[16000000]                          mov ebx, [buffer]
+    98 0000009E 83FB30                                  cmp ebx, '0'
+    99 000000A1 7212                                    jb end_while_digit
+   100 000000A3 83FB39                                  cmp ebx, '9'
+   101 000000A6 770D                                    ja end_while_digit
+   102                                  
+   103                                                  ; daca caracterul e cifra, convertim din char in int
+   104 000000A8 83EB30                                  sub ebx, 48
+   105                                  
+   106                                                  ; update numar: eax = eax * 10 + ebx 
+   107 000000AB F725[12000000]                          mul dword [ten] ; edx:eax = eax * 10, dar tinem in evidenta doar eax
+   108                                                                  ; intrucat presupunem ca rezulttul incape intr un dword
+   109 000000B1 01D8                                    add eax, ebx
+   110                                  
+   111                                                  ; citim din nou un caracter
+   112 000000B3 EBC0                                    jmp while_digit
+   113                                                  
+   114                                              end_while_digit:
+   115                                                  ; acum avem un numar in eax
+   116                                                  ; eax -> dx:ax
+   117 000000B5 6689C3                                  mov bx, ax
+   118 000000B8 C1E810                                  shr eax, 16
+   119 000000BB 6689C2                                  mov dx, ax
+   120 000000BE 6689D8                                  mov ax, bx
+   121                                                  
+   122 000000C1 66BB0200                                mov bx, 2
+   123 000000C5 66F7F3                                  div bx
+   124                                                  
+   125 000000C8 6683FA01                                cmp dx, 1
+   126 000000CC 7420                                    je impar
+   127                                                  
+   128                                                  ; par
+   129 000000CE 8B3D[BC010000]                          mov edi, [descriptor_pare]
+   130 000000D4 FC                                      cld 
+   131 000000D5 AB                                      stosd
+   132 000000D6 893D[BC010000]                          mov [descriptor_pare], edi
+   133                                                  
+   134 000000DC A1[C0010000]                            mov eax, [nr_pare]
+   135 000000E1 83C001                                  add eax, 1
+   136 000000E4 A3[C0010000]                            mov [nr_pare], eax
+   137 000000E9 E947FFFFFF                              jmp citire_fisier
+   138                                                  
+   139                                                  impar:
+   140 000000EE 8B3D[68030000]                              mov edi, [descriptor_impare]
+   141 000000F4 FC                                          cld 
+   142 000000F5 AB                                          stosd
+   143 000000F6 893D[68030000]                              mov [descriptor_impare], edi
+   144                                                  
+   145 000000FC A1[6C030000]                                mov eax, [nr_impare]
+   146 00000101 83C001                                      add eax, 1
+   147 00000104 A3[6C030000]                                mov [nr_impare], eax
+   148 00000109 E927FFFFFF                      jmp citire_fisier
+   149                                              
+   150                                          end_citire_fisier:
+   151 0000010E 90                                  nop
+   152                                          
+   153                                          ; fclose(descr)
+   154 0000010F FF35[0E000000]                  push dword [descriptor_fisier]
+   155 00000115 FF15[00000000]                  call [fclose]
+   156 0000011B 83C404                          add esp, 4
+   157                                          
+   158                                          ; afisari
+   159 0000011E 68[1A000000]                    push dword mesaj_pare
+   160 00000123 FF15[00000000]                  call [printf]
+   161 00000129 83C404                          add esp, 4 
+   162                                          
+   163 0000012C BE[2C000000]                    mov esi, sir_nr_pare
+   164 00000131 8B0D[C0010000]                  mov ecx, [nr_pare]
+   165 00000137 FC                              cld
+   166                                          afisare_pare:
+   167 00000138 890D[C0010000]                      mov [nr_pare], ecx
+   168                                              
+   169 0000013E AD                                  lodsd
+   170 0000013F 50                                  push eax
+   171 00000140 68[70030000]                        push dword format_int
+   172 00000145 FF15[00000000]                      call [printf]
+   173 0000014B 83C408                              add esp, 4 * 2
+   174                                              
+   175 0000014E 8B0D[C0010000]                      mov ecx, [nr_pare]
+   176 00000154 E2E2                            loop afisare_pare
+   177                                          
+   178                                          ; impare
+   179 00000156 68[C4010000]                    push dword mesaj_impare
+   180 0000015B FF15[00000000]                  call [printf]
+   181 00000161 83C404                          add esp, 4 
+   182                                          
+   183 00000164 BE[D8010000]                    mov esi, sir_nr_impare
+   184 00000169 8B0D[6C030000]                  mov ecx, [nr_impare]
+   185 0000016F FC                              cld
+   186                                          afisare_impare:
+   187 00000170 890D[6C030000]                      mov [nr_impare], ecx
+   188                                              
+   189 00000176 AD                                  lodsd
+   190 00000177 50                                  push eax
+   191 00000178 68[70030000]                        push dword format_int
+   192 0000017D FF15[00000000]                      call [printf]
+   193 00000183 83C408                              add esp, 4 * 2
+   194                                              
+   195 00000186 8B0D[6C030000]                      mov ecx, [nr_impare]
+   196 0000018C E2E2                            loop afisare_impare
+   197                                      
+   198                                      finish:
+   199 0000018E 6A00                            push dword 0    
+   200 00000190 FF15[00000000]                  call [exit]       

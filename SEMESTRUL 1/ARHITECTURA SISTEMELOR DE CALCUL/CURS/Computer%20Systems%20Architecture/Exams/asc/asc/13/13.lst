@@ -1,0 +1,87 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  extern fopen, fclose, fprintf
+    11                                  import fopen msvcrt.dll
+    12                                  import fclose msvcrt.dll
+    13                                  import fprintf msvcrt.dll
+    14                                  ; our data is declared here (the variables needed by our program)
+    15                                  segment data use32 class=data
+    16                                      ; ...
+    17                                      
+    18 00000000 7700                        mode_access db 'w', 0
+    19 00000002 31332E74787400              file_name db '13.txt', 0
+    20 00000009 FFFFFFFF                    file_descriptor dd -1
+    21                                      
+    22 0000000D 546869732069732073-         text db 'This is such a nice text -@! - togheter with some special characters!'
+    22 00000016 7563682061206E6963-
+    22 0000001F 652074657874202D40-
+    22 00000028 21202D20746F676865-
+    22 00000031 746572207769746820-
+    22 0000003A 736F6D652073706563-
+    22 00000043 69616C206368617261-
+    22 0000004C 637465727321       
+    23                                      text_len equ ($ - text)
+    24                                      updated_text times (text_len + 1) resb 0
+    25                                      
+    26 00000052 257300                      print_format db '%s', 0
+    27                                      
+    28                                      
+    29                                  ; our code starts here
+    30                                  segment code use32 class=code
+    31                                      start:
+    32                                          ; A file name and a text (defined in the data segment) are given. The text contains lowercase letters, uppercase letters, digits and special characters. Transform all the lowercase letters from the given tex
+    33                                          
+    34                                          ; open the file
+    35 00000000 68[00000000]                    push dword mode_access
+    36 00000005 68[02000000]                    push dword file_name
+    37 0000000A FF15[00000000]                  call [fopen]
+    38 00000010 83C408                          add esp, 4 * 2
+    39                                          
+    40                                          ; check if the file was opened correctly
+    41 00000013 83F800                          cmp eax, 0
+    42 00000016 744C                            je final
+    43 00000018 A3[09000000]                    mov [file_descriptor], eax
+    44                                          
+    45                                          ; iterate through the text
+    46 0000001D B945000000                      mov ecx, text_len
+    47 00000022 BE[0D000000]                    mov esi, text
+    48 00000027 BF[52000000]                    mov edi, updated_text
+    49                                          loop_text:
+    50 0000002C AC                                  lodsb
+    51                                              
+    52 0000002D 3C61                                cmp al, 'a'
+    53 0000002F 7208                                jb not_lowercase
+    54 00000031 3C7A                                cmp al, 'z'
+    55 00000033 7704                                ja not_lowercase
+    56                                              
+    57 00000035 2C61                                sub al, 97
+    58 00000037 0441                                add al, 65
+    59                                              
+    60                                              not_lowercase:
+    61 00000039 AA                                  stosb
+    62                                              
+    63 0000003A E2F0                                loop loop_text
+    64                                          
+    65                                          ; print the text
+    66 0000003C 68[52000000]                    push dword updated_text
+    67 00000041 68[52000000]                    push dword print_format
+    68 00000046 FF35[09000000]                  push dword [file_descriptor]
+    69 0000004C FF15[00000000]                  call [fprintf]
+    70 00000052 83C40C                          add esp, 4 * 3
+    71                                          
+    72                                          ; close the file
+    73 00000055 FF35[09000000]                  push dword [file_descriptor]
+    74 0000005B FF15[00000000]                  call [fclose]
+    75 00000061 83C404                          add esp, 4
+    76                                          
+    77                                          final:
+    78                                          ; exit(0)
+    79 00000064 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    80 00000066 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

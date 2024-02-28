@@ -1,0 +1,103 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                                            extern fopen, fclose, fread, printf
+    12                                  import fopen msvcrt.dll
+    13                                  import fclose msvcrt.dll
+    14                                  import fread msvcrt.dll
+    15                                  import printf msvcrt.dll
+    16                                  
+    17                                  ; our data is declared here (the variables needed by our program)
+    18                                  segment data use32 class=data
+    19                                      ; ...
+    20 00000000 31362E74787400              file_name db "16.txt", 0
+    21 00000007 7200                        mod_access db "r", 0
+    22                                      
+    23 00000009 FFFFFFFF                    file_descriptor dd -1
+    24 0000000D 00                          char db 0
+    25 0000000E 00000000                    z_freq dd 0
+    26 00000012 00000000                    y_freq dd 0
+    27                                      
+    28 00000016 546865206C65747465-         format db 'The letter z appears %d times, while the letter y appears %d times', 0
+    28 0000001F 72207A206170706561-
+    28 00000028 72732025642074696D-
+    28 00000031 65732C207768696C65-
+    28 0000003A 20746865206C657474-
+    28 00000043 657220792061707065-
+    28 0000004C 617273202564207469-
+    28 00000055 6D657300           
+    29                                  ; our code starts here
+    30                                  segment code use32 class=code
+    31                                      start:
+    32                                          ; ...
+    33                                          
+    34                                          ; open the file
+    35                                          ; eax = fopen(file_name, mod_access)
+    36 00000000 68[07000000]                    push dword mod_access
+    37 00000005 68[00000000]                    push dword file_name
+    38 0000000A FF15[00000000]                  call [fopen]
+    39 00000010 83C408                          add esp, 4 * 2
+    40                                          
+    41                                          ; save the file
+    42 00000013 A3[09000000]                    mov [file_descriptor], eax
+    43                                      
+    44                                          ; check for errors
+    45 00000018 83F800                          cmp eax, 0
+    46 0000001B 746F                            je final
+    47                                          
+    48                                          
+    49                                          ; read the file byte by byte 
+    50                                          read_loop:
+    51                                              ; fread(char, step, len, file)
+    52 0000001D FF35[09000000]                      push dword [file_descriptor]
+    53 00000023 6A01                                push dword 1
+    54 00000025 6A01                                push dword 1
+    55 00000027 68[0D000000]                        push dword char 
+    56 0000002C FF15[00000000]                      call [fread]
+    57 00000032 83C410                              add esp, 4 * 4
+    58                                              
+    59                                              ; if eax = 0, it means no character was read
+    60 00000035 83F800                              cmp eax, 0
+    61 00000038 7429                                je close_file
+    62                                              
+    63 0000003A A0[0D000000]                        mov al, byte [char]
+    64 0000003F 803D[0D000000]7A                    cmp byte [char], 'z'
+    65 00000046 7508                                jne not_z
+    66                                              ; if we enter here, it means the character is z
+    67 00000048 FF05[0E000000]                      inc dword [z_freq]
+    68 0000004E EBCD                                jmp read_loop ; we read again
+    69                                              
+    70                                              not_z:
+    71 00000050 803D[0D000000]79                    cmp byte [char], 'y'
+    72 00000057 7508                                jne not_y
+    73                                              ; if we enter here, it means the character is y
+    74 00000059 FF05[12000000]                      inc dword [y_freq]
+    75 0000005F EBBC                                jmp read_loop ; we read again
+    76                                              
+    77                                              not_y:
+    78 00000061 EBBA                                jmp read_loop
+    79                                              
+    80                                          ; close the file
+    81                                          close_file: 
+    82 00000063 FF35[09000000]                  push dword [file_descriptor]
+    83 00000069 FF15[00000000]                  call [fclose]
+    84 0000006F 83C404                          add esp, 4
+    85                                          
+    86                                          ; print on the console the frequencies
+    87 00000072 FF35[12000000]                  push dword [y_freq]
+    88 00000078 FF35[0E000000]                  push dword [z_freq]
+    89 0000007E 68[16000000]                    push format
+    90 00000083 FF15[00000000]                  call [printf]
+    91 00000089 83C40C                          add esp, 4 * 3
+    92                                          
+    93                                          final: 
+    94                                          ; exit(0)
+    95 0000008C 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    96 0000008E FF15[00000000]                  call    [exit]       ; call exit to terminate the program

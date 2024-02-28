@@ -1,0 +1,190 @@
+1) APELURI DE FUNCTII SISTEM
+
+bits 32 
+
+global start
+
+extern exit, printf
+import exit msvcrt.dll  
+import printf msvcrt.dll
+
+; pb 4
+; Se dau doua numere naturale a si b (a, b: word, definite in segmentul de date). Sa se calculeze produsul lor si sa se afiseze in urmatorul format: 
+; "<a> * <b> = <result>"
+; Exemplu: "2 * 4 = 8"
+; Valorile vor fi afisate in format decimal (baza 10) cu semn.
+
+
+; segmentul de date in care se vor defini variabilele 
+segment data use32 class=data
+    a dw 12
+    b dw 8
+    format db "%d * %d = %d", 0  
+segment code use32 class=code
+    start:
+        ; aflu rezultatul inmultirii a * b si il pun in stiva
+        mov ax, [a]
+        mul word[b]
+        push dx
+        push ax            ; a * b -> stiva
+        
+        ; il pun pe b in stiva
+        mov ax, [b]
+        cwde
+        push eax           ; b -> stiva
+        
+        ; il pun pe a in stiva
+        mov ax, [a]
+        cwde
+        push eax            ; a -> stiva
+        
+        ; pun format in stiva
+        push dword format
+        
+        ; apelez printf si eliberez stiva
+        call [printf]
+        add esp, 4 * 4
+        
+    sfarsit:
+        ; exit(0)
+        push dword 0          ; se pune pe stiva parametrul functiei exit
+        call [exit]           ; apelul functiei exit pentru terminarea executiei programului
+
+
+
+
+; pb 5
+; Se dau doua numere naturale a si b (a, b: word, definite in segmentul de date). 
+; Sa se calculeze a/b si sa se afiseze catul si restul impartirii in urmatorul format: "Cat = <cat>, rest = <rest>"
+; Exemplu: pentru a=23 si b=10 se va afisa: "Cat = 2, rest = 3"
+; Valorile vor fi afisate in format decimal (baza 10) cu semn.
+
+
+; segmentul de date in care se vor defini variabilele 
+segment data use32 class=data
+    a dw 146
+    b dw 12
+    format db "Cat = %d, rest = %d", 0  
+segment code use32 class=code
+    start:
+        ; aflu rezultatul impartirii a / b si pun catul si restul in stiva
+        mov ax, [a]
+        cwd                ; dx:ax = a
+        idiv word[b]       ; ax = a / b, dx = a % b
+        
+        ; pun restul in stiva
+        mov bx, ax
+        mov ax, dx
+        cwde               ; eax = a % b
+        push eax           ; in stiva -> a % b
+        
+        ; pun catul in stiva
+        mov ax, bx
+        cwde               ; eax = a / b
+        push eax           ; in stiva -> a / b
+        
+        ; pun formatul in stiva
+        push dword format
+        
+        ; apelez printf si eliberez stiva
+        call [printf]
+        add esp, 4 * 3
+        
+    sfarsit:
+        ; exit(0)
+        push dword 0          ; se pune pe stiva parametrul functiei exit
+        call [exit]           ; apelul functiei exit pentru terminarea executiei programului
+
+
+
+
+; pb 10
+; Sa se citeasca de la tastatura un numar in baza 10 si sa se afiseze valoarea acelui numar in baza 16.
+; Exemplu: Se citeste: 28; se afiseaza: 1C
+
+
+; segmentul de date in care se vor defini variabilele 
+segment data use32 class=data
+    n dd 0
+    format_citire db "%d", 0 
+    format_afisare db "%x", 0    
+segment code use32 class=code
+    start:
+        ; citesc numarul n in baza 10
+        push dword n
+        push dword format_citire
+        
+        call [scanf]
+        add esp, 4 * 2
+        
+        ; afisez numarul n in baza 16
+        push dword [n]
+        push dword format_afisare
+        
+        call [printf]
+        add esp, 4 * 2
+        
+    sfarsit:
+        ; exit(0)
+        push dword 0          ; se pune pe stiva parametrul functiei exit
+        call [exit]           ; apelul functiei exit pentru terminarea executiei programului
+
+
+
+
+; pb 18
+; Sa se citeasca de la tastatura un numar in baza 10 si un numar in baza 16. 
+; Sa se afiseze in baza 10 numarul de biti 1 ai sumei celor doua numere citite. Exemplu:
+; a = 32 = 0010 0000b
+; b = 1Ah = 0001 1010b
+; 32 + 1Ah = 0011 1010b
+; Se va afisa pe ecran valoarea 4.
+
+; segmentul de date in care se vor defini variabilele 
+segment data use32 class=data
+    a dd 0
+    b dd 0
+    format_intreg db "%d", 0
+    format_hexa db "%x", 0
+segment code use32 class=code
+    start:
+        ; citesc nr a
+        push dword a
+        push dword format_intreg
+        call [scanf]
+        add esp, 4 * 2
+        mov dword[a], 32
+        
+        ; citesc nr b
+        push dword b
+        push dword format_hexa
+        call [scanf]
+        add esp, 4 * 2
+        
+        ; a + b
+        mov eax, [a]
+        add eax, [b]          ; eax = a + b
+        
+        ; aflu nr de biti a lui a + b
+        mov ebx, 0            ; ebx = nr de 1
+        mov ecx, 32
+        repeta:
+            shr eax, 1        ; CF = bitul 0 a lui eax
+            
+            jnb continue      ; daca bitul e 0, merg la eticheta continua
+            inc ebx
+            
+            continue:
+                nop
+        loop repeta
+        
+        ; afisez nr de biti 1
+        push ebx
+        push format_intreg
+        call [printf]
+        add esp, 4 * 2
+        
+    sfarsit:
+        ; exit(0)
+        push dword 0          ; se pune pe stiva parametrul functiei exit
+        call [exit]           ; apelul functiei exit pentru terminarea executiei programului

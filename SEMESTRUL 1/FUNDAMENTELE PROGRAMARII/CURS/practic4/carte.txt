@@ -1,0 +1,10 @@
+1;rs;ds;1829
+3;jdf;dffj;1920
+7;mata;tactu;2004
+5;mataa;tactuu;2000
+2;mams;dsj;1920
+2;mama;tst;2050
+5;ds;ds;239
+8;mammaaaa;tata;1973
+2;mama;ts;1
+2;mata;ts;1

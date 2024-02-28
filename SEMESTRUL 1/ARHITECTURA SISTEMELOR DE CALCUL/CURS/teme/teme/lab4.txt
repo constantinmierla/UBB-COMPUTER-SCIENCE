@@ -1,0 +1,232 @@
+problema 14:
+Se da dublucuvantul A. Sa se obtina numarul intreg n reprezentat de bitii 14-17 ai lui A. Sa se obtina apoi in B dublucuvantul rezultat prin rotirea spre stanga a lui A cu n pozitii. Sa se obtina apoi octet C astfel:
+-> bitii 0-5 ai lui C coincid cu bitii 1-6 ai lui B
+-> bitii 6-7 ai lui C coincid cu bitii 17-18 ai lui B
+
+segment data use32 class=data
+; ... 
+    ; a - dword
+    a DD 10110101101001100001101001011011b ; 14-17: 1000b, cand shiftez la dreapta 
+                                           ; ar trebui sa imi apara 8 pe prima poz in eax
+                                           ; a = B5A61A5Bh
+    b DD 0
+    cc DB 0                                ; bitii 0-5 ai lui C coincid cu bitii 1-6 ai lui B
+                                           ; bitii 6-7 ai lui C coincid cu bitii 17-18 ai lui B
+segment code use32 class=code
+start:
+    ; nr intreg format din bitii 14-17 ai lui aA
+    mov EAX, [a]
+    shr EAX, 14           
+    and EAX, 0000000Fh    ; iau primii 4 biti: AL = n = 8
+    
+    ; b = rotirea la stanga a lui a cu n biti
+    mov CL, AL
+    mov EAX, [a]
+    rol EAX, CL
+    mov [b], EAX          ; b = A61A5BB5h = 10100100000110100101101110110101b 
+    
+    ; bitii 0-5 ai lui C coincid cu bitii 1-6 ai lui B
+    mov BL, 0
+    shr EAX, 1
+    and EAX, 0000003Fh    
+    mov BL, AL            ; bl = 00011010b = 1Ah
+    
+    ; bitii 6-7 ai lui C coincid cu bitii 17-18 ai lui B
+    mov EAX, [b]                  
+    shr EAX, 17           ; eax = 101001000001101b = 0000520Dh
+    and EAX, 00000003h    ; iau primii 2 biti: eax = 00000001h
+    shl AL, 6
+    or BL, AL             ; bl = 01011010b = 5Ah
+    mov [cc], BL          ; c = rezultat
+
+
+
+problema 4
+Se da octetul A. Sa se obtina numarul intreg n reprezentat de bitii 2-4 ai lui A. Sa se obtina apoi in B octetul rezultat prin rotirea spre dreapta a lui A cu n pozitii. Sa se obtina dublucuvantul C:
+-> bitii 8-15 ai lui C sunt 0
+-> bitii 16-23 ai lui C coincid cu bitii lui B
+-> bitii 24-31 ai lui C coincid cu bitii lui A
+-> bitii 0-7 ai lui C sunt 1
+
+segment data use32 class=data
+; ... 
+    ; a - byte, b - byte, c - dword
+    ; n - byte
+    n DB 0
+    a DB 10010101b        ; a = 95h
+    b DB 0
+    cc DD 0
+segment code use32 class=code
+start:
+    ; n reprezentat de bitii 2-4 ai lui a
+    mov AL, [a]           ; al = 10010101b = 95h
+    shr AL, 2             ; mut toti bitii 2 pozitii la dreapta 
+                          ; al = 00100101b = 25h
+    and Al, 00000111b     ; iau primii 3 biti din al = bitii 2-4 ai lui a
+                          ; al = 00000101b = 05h
+    mov [n], al           ; n = 05h = 5d
+    
+    ; b = octetul rezultat prin rotirea spre dreapta a lui a cu n pozitii
+    mov cl, [n]            
+    mov al, [a]           ; al = 10010101b = 95h
+    ror al, cl            ; al = 10101100b = ACh
+    mov [b], al           ; b = ACh
+    
+    ; construiesc c in edx
+    mov EDX, 0            ; edx = 00000000h
+    
+    ; bitii 24-31 ai lui C coincid cu bitii lui A
+    or DL, [a]            ; edx = 00000095h
+    
+    ; bitii 16-23 ai lui C coincid cu bitii lui B
+    shl DX, 8             ; edx = 00009500h
+    or DL, [b]            ; edx = 000095ACh
+    
+    ; bitii 8-15 ai lui C sunt 0
+    shl EDX, 8            ; edx = 0095AC00h
+    or DL, 00h            ; edx = 0095AC00h
+    
+    ; bitii 0-7 ai lui C sunt 1
+    shl EDX, 8            ; edx = 95AC0000h
+    or DL, 11111111b      ; edx = 95AC00FFh
+    
+    ; mut rezultatul in c
+    mov [cc], EDX
+
+
+
+problema 8
+Se dau doua cuvinte A si B. Sa se obtina un octet C care are:
+-> pe bitii 0-5, bitii 5-10 ai cuvantului A
+-> pe bitii 6-7 bitii 1-2 ai cuvantului B.
+Sa se obtina dublucuvantul D care are :
+-> pe bitii 8-15, bitii lui C
+-> pe bitii 0-7, bitii 8-15 din B
+-> pe bitii 24-31, bitii 0-7 din A
+-> pe bitii 16-23, bitii 8-15 din A.
+segment data use32 class=data
+; ... 
+    ; a - word, b - word
+    ; c - octet
+    ; d - dword
+    a DW 1011100101101101b   ; a = B96Dh
+    b DW 0110101110100110b   ; b = 6BA6h
+    cc DB 0
+    d DD 0
+segment code use32 class=code
+start:
+    ; construiesc octetul c in AL
+    mov AL, 0
+    
+    ; pe bitii 6-7 bitii 1-2 ai cuvantului b
+    mov BX, [b]              ; bx = 0110101110100110b = 6BA6h
+    shr BX, 1                ; bx = 0011010111010011b = 35D3h
+    and BX, 0003h            ; bx = 0000000000000011b = 0003h
+    mov AL, BL               ; al = 00000011b = 03h
+        
+    ; pe bitii 0-5, bitii 5-10 ai cuvantului a
+    shl AL, 6                ; al = 11000000b = C0h
+    mov BX, [a]              ; bx = 1011100101101101b = B96Dh
+    shr BX, 5                ; bx = 0000010111001011b = 05CBh
+    and BX, 001Fh            ; bx = 0000000000001011b = 000Bh
+    or AL, BL                ; al = 11001011b = CBh
+    
+    ; mut in c registrul al
+    mov [cc], AL             ; c = CBh
+    
+    ; construiesc d in EAX
+    mov EAX, 0
+    
+    ; pe bitii 24-31, bitii 0-7 din a
+    mov BX, [a]              ; bx = B96Dh
+    mov AL, BL               ; al = 6Dh, eax = 0000006Dh
+    
+    ; pe bitii 16-23, bitii 8-15 din A.
+    shl AX, 8                ; eax = 00006D00h
+    mov AL, BH               ; eax = 00006DB9h
+    
+    ; pe bitii 8-15, bitii lui C
+    shl EAX, 8               ; eax = 006DB900h
+    mov AL, [cc]             ; eax = 006DB9CBh
+    
+    ; pe bitii 0-7, bitii 8-15 din B
+    shl EAX, 8               ; eax = 6DB9CB00h
+    mov BX, [b]              ; bx = 6BA6h
+    mov AL, BH               ; eax = 6DB9CB6Bh
+    
+    ; mut in d registrul eax
+    mov [d], EAX
+
+
+
+problema 29
+Se dau dublucuvintele A si B. Sa se formeze qwordul C in felul urmator:
+-> bitii 0-7 ai lui C sunt bitii 21-28 ai lui A
+-> bitii 8-15 ai lui C sunt bitii 23-30 ai lui B complementati
+-> bitii 16-21 ai lui C sunt 101010
+-> bitii 22-31 ai lui C au valoarea 0
+-> bitii 32-42 ai lui C sunt bitii 21-31 ai lui B
+-> bitii 43-55 ai lui C sunt bitii 1-13 ai lui A
+-> bitii 56-63 ai lui C sunt bitii 24-31 ai rezultatului A XOR 0ABh
+
+segment data use32 class=data
+; ... 
+    ; a = dword, b = dword
+    ; c = qword
+    a DD 10111001011010011011100101101001b  ; a = B969B969h
+    b DD 01101001110100110110100111010011b  ; b = 69D369D3h
+    cc DQ 0
+segment code use32 class=code
+start:
+    ; se construieste c in edx:eax
+    mov edx, 0
+    mov eax, 0
+    
+    ; bitii 56-63 ai lui C sunt bitii 24-31 ai rezultatului A XOR 0ABh
+    mov EBX, [a]               ; ebx = 1011100101101001 1011100101101001b
+    shr EBX, 24                ; ebx = 000000B9h
+    xor BL, 0ABh               ; bl = 12h    
+    mov DL, BL                 ; dl = 12h
+    
+    ; bitii 43-55 ai lui C sunt bitii 1-13 ai lui A
+    mov EBX, [a]             
+    shr EBX, 1
+    and EBX, 00001FFFh
+    shl EDX, 13
+    or EDX, EBX    
+    
+    ; bitii 32-42 ai lui C sunt bitii 21-31 ai lui B
+    mov EBX, [b]
+    shr EBX, 21
+    shl EDX, 11
+    or EDX, EBX                ; e corect construit, l am facut pe hartie
+    
+    ; bitii 22-31 ai lui C au valoarea 0
+    ; sunt deja, eax a fost initializat cu 0
+    
+    ; bitii 16-21 ai lui C sunt 101010
+    shl EAX, 6
+    or AL, 00101010b           ; eax = 0000002Ah
+    
+    ; bitii 8-15 ai lui C sunt bitii 23-30 ai lui B complementati
+    mov EBX, [b]               ; ebx = 69D369D3h
+    shr EBX, 23                ; bl = D3h
+    not EBX                    ; bl = 2Ch
+    shl EAX, 8                 ; eax = 00002A00h
+    mov AL, BL                 ; eax = 00002A2Ch
+    
+    ; bitii 0-7 ai lui C sunt bitii 21-28 ai lui A
+    mov EBX, [a]               ; ebx = B969B969h
+    shr EBX, 21                ; bl = 11001011b = CBh
+    shl EAX, 8                 ; eax = 002A2C00h
+    mov AL, BL                 ; eax = 002A2CCBh
+    
+    ; rezultatul se regaseste in edx:eax, se muta in variabila c
+    push EDX
+    pop dword[cc + 4]
+    push EAX
+    pop dword[cc]
+    
+    ; exit(0)
+    push dword 0          ; se pune pe stiva parametrul functiei exit
+    call [exit]           ; apelul functiei exit pentru terminarea executiei programului

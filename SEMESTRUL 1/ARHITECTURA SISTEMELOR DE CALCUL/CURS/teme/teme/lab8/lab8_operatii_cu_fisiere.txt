@@ -1,0 +1,145 @@
+2) OPERATII CU FISIERE
+
+bits 32
+
+global start
+
+extern exit               
+import exit msvcrt.dll    
+
+extern fopen, fread, fprintf, fclose
+import fopen msvcrt.dll
+import fread msvcrt.dll
+import fprintf msvcrt.dll
+import fclose msvcrt.dll
+
+; pb 27
+; Se da un fisier text. Fisierul contine numere (in baza 10) separate prin spatii. 
+; Sa se citeasca continutul acestui fisier, sa se determine minimul numerelor citite 
+; si sa se scrie rezultatul la sfarsitul fisierului.
+
+segment data use32 class=data
+    nume_fisier db 'fisier.txt', 0
+    mod_acces db 'a+', 0
+    descriptor_fisier dd -1
+
+    ten dd 10
+    minimum dd 1000000
+
+    buffer dd 0
+
+    print_format db ' %d', 0
+
+segment code use32 class=code
+    start:
+        ; fopen(nume_fisier, mod_acces)
+        push dword mod_acces
+        push dword nume_fisier
+        call [fopen]
+        add esp, 4 * 2
+
+        ; verific daca fisierul a fost creat cu succes
+        cmp eax, 0
+        je final
+        mov [descriptor_fisier], eax
+
+        ; citesc caracter cu caracter pana cand caracterul respectiv nu mai e spatiu || cifra
+        while_read_char:
+            ; fread(buffer, size, count, nume_fisier)
+            push dword [descriptor_fisier]
+            push dword 1
+            push dword 1
+            push dword buffer
+            call [fread]
+            add esp, 4 * 4
+
+            ; verificam daca am citit ceva
+            cmp eax, 0
+            je end_while_read_char
+
+            ; stocam caracterul
+            mov eax, [buffer]
+
+            ; verificam daca caracterul este spatiu
+            cmp eax, ' '
+            je while_read_char   ; daca e spatiu, citesc urmatorul fisier
+
+            ; verificam daca caracterul e cifra
+            cmp eax, '0'
+            jb end_while_read_char ; daca nu e spatiu si e mai mic decat caracterul '0', terminam citirea
+            cmp eax, '9'
+            ja end_while_read_char ; daca nu e spatiu si e mai mare decat caracterul '9', terminam citirea
+
+            sub eax, 48 ; convertim caracterul in cifra
+
+            while_digit:
+                ; mai citesc un caracter, dar mai intai dau push tuturor registrilor
+                pushad
+                push dword [descriptor_fisier]
+                push dword 1
+                push dword 1
+                push dword buffer
+                call [fread]
+                add esp, 4 * 4
+
+                ; verific daca am citit ceva
+                cmp eax, 0
+                jne more_char    ; daca eax != 0 (inseamna ca am mai citit un caracter), mergem la eticheta more_char
+
+                ; daca eax == 0 (nu am mai citit nimic), luam registrii de pe stiva si incheiem citirea cifrelor
+                popad
+                jmp end_while_digit
+
+                more_char:
+                    nop
+                    
+                popad
+
+                ; verificam daca caracterul citit e o cifra valida
+                mov ebx, [buffer]
+                cmp ebx, '0'
+                jb end_while_digit
+                cmp ebx, '9'
+                ja end_while_digit
+
+                ; daca caracterul e cifra, convertim din char in int
+                sub ebx, 48
+
+                ; update numar: eax = eax * 10 + ebx 
+                mul dword [ten] ; edx:eax = eax * 10, dar tinem in evidenta doar eax
+                                ; intrucat presupunem ca rezulttul incape intr un dword
+                add eax, ebx
+
+                ; citim din nou un caracter
+                jmp while_digit
+
+            end_while_digit:
+            
+            
+            ; acum avem un numar, il comparam cu minimul
+            cmp eax, [minimum]
+            jge while_read_char ; daca eax >= minimum, citim din nou
+
+            ; daca eax < minimum, update minimum
+            mov [minimum], eax
+            jmp while_read_char ; and of course, we read another character
+
+        end_while_read_char:
+        
+        
+        ; append minimum
+        push dword [minimum]
+        push dword print_format
+        push dword [descriptor_fisier]
+        call [fprintf]
+        add esp, 4 * 3
+
+        ; inchidem fisierul
+        push dword [descriptor_fisier]
+        call [fclose]
+        add esp, 4
+
+    final:
+        ; exit(0)
+        push    dword 0      ; push the parameter for exit onto the stack
+        call    [exit]       ; call exit to terminate the program

@@ -1,0 +1,65 @@
+     1                                  bits 32 
+     2                                  global  start 
+     3                                  
+     4                                  extern  exit
+     5                                  import  exit msvcrt.dll
+     6                                  	; 15.
+     7                                  	; Se da un sir S de dublucuvinte.
+     8                                  	; Sa se obtina sirul D format din octetii dublucuvintelor din sirul D, 
+     9                                  	; sortati in ordine descrescatoare in interpretarea fara semn.
+    10                                  	; 01 11 08 C8 45 FE 00 00 E2 4E AF 6D => FE E2 C8 AF 6D 4E 45 11 08 01 00 00
+    11                                  segment  data use32 class=data
+    12 00000000 011108C845FE0000E2-     	S dd 0C8081101h, 0FE45h, 6DAF4EE2h
+    12 00000009 4EAF6D             
+    13                                  	lenSoct equ $-S
+    14 0000000C 00<rept>                	D times lenSoct db 0
+    15 00000018 <res 00000004>          	st resd 1
+    16                                  segment  code use32 class=code
+    17                                  start: 
+    18                                  	; BubbleSort
+    19 00000000 BF[0C000000]            	mov edi, D ;
+    20 00000005 BE[00000000]            	mov esi, S ;
+    21 0000000A B90C000000              	mov ecx, lenSoct ; setam numarul de pasi pentru ciclare
+    22                                  	copiere:
+    23 0000000F A4                      		movsb ; mutam octetul de la DS:ESI la ES:EDI
+    24 00000010 E2FD                    	loop copiere ; copiem sirul S in D pentru a lucra pe el
+    25                                  
+    26 00000012 B90C000000              	mov ecx, lenSoct
+    27 00000017 49                      	dec ecx 
+    28 00000018 F8                      	clc
+    29                                  
+    30 00000019 E33E                    	jecxz sfSortare
+    31                                  	executaSortare:
+    32 0000001B C605[18000000]01        		mov [st], byte 1 
+    33                                  						 
+    34 00000022 BB00000000              		mov ebx, 0 ; in ebx vom tine numarul de elemente parcurse
+    35 00000027 BE[0C000000]            		mov esi, D 
+    36 0000002C BF[0D000000]            		mov edi, D + 1 
+    37                                  					   
+    38                                  		cicluSortare:
+    39 00000031 A6                      			cmpsb ; comparam elementul curent cu cel urmator
+    40 00000032 7602                    			jbe interschimbare ; interschimbam in caz de nerespectare a ordinii descrescatoare
+    41 00000034 EB15                    			jmp sfInterschimbare ; altfel trecem la urmatorul pas
+    42                                  			interschimbare:
+    43 00000036 4E                      				dec esi ; recuperam pozitiile elementelor de interschimbat modificate anterior automat de CMPSB
+    44 00000037 4F                      				dec edi
+    45 00000038 AC                      				lodsb ; AL = elemCurent
+    46 00000039 4E                      				dec esi ; LODSB incrementeaza automat ESI, ceea ce ar perturba interschimbarea
+    47 0000003A 268A27                  				mov ah, [es:edi] ; AH = elemUrmator
+    48 0000003D AA                      				stosb ; elemUrmator = elemCurent
+    49 0000003E 4F                      				dec edi ; STOSB incrementeaza automat EDI, ceea ce ar perturba interschimbarea
+    50 0000003F 3E8826                  				mov [ds:esi], ah ; elemCurent = elemUrmator
+    51 00000042 C605[18000000]00        				mov [st], byte 0 ; marcam efectuarea a cel putin unei interschimbari
+    52 00000049 46                      				inc esi
+    53 0000004A 47                      				inc edi
+    54                                  			sfInterschimbare:
+    55 0000004B 43                      			inc ebx
+    56 0000004C 39CB                    			cmp ebx, ecx ; parcurgem elementele de la primul pana la pozitia lenS - pas - 1 din D 
+    57                                  						 
+    58 0000004E 72E1                    		jb cicluSortare
+    59 00000050 803D[18000000]01        		cmp byte [st], 1
+    60 00000057 E0C2                    	loopne executaSortare ; executam parcurgeri pana cand sirul e sortat sau avem lenS parcurgeri
+    61                                  	sfSortare:
+    62                                  
+    63 00000059 6A00                    	push   dword 0
+    64 0000005B FF15[00000000]          	call   [exit]

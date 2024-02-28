@@ -1,0 +1,51 @@
+     1                                  bits 32
+     2                                  
+     3                                  global stocare_numere
+     4                                  
+     5                                  extern printf
+     6                                  import printf msvcrt.dll
+     7                                  
+     8                                  segment data use32 class=data
+     9                                  
+    10                                  segment code use32 class=code   
+    11                                      stocare_numere: 
+    12 00000000 8B4C2404                        mov ecx, [esp + 4]
+    13 00000004 8B742408                        mov esi, [esp + 8]
+    14 00000008 8B7C240C                        mov edi, [esp + 12]
+    15                                      
+    16 0000000C FC                              cld
+    17                                          
+    18                                          cat_timp_numere:
+    19 0000000D 51                                  push ecx
+    20                                              
+    21 0000000E B908000000                          mov ecx, 8
+    22 00000013 B300                                mov bl, 0
+    23                                              
+    24                                              parsare_numar:
+    25 00000015 AC                                      lodsb    ; al = 1 bit
+    26 00000016 3C31                                    cmp al, '1'
+    27 00000018 7406                                    je .cifra
+    28                                                  
+    29 0000001A 3C30                                    cmp al, '0'
+    30 0000001C 7402                                    je .cifra
+    31                                                  
+    32 0000001E EB08                                    jmp terminare_parsare
+    33                                                  
+    34                                                  .cifra:
+    35 00000020 2C30                                        sub al, '0'   ; fac registrul al cifra
+    36                                                                    ; ultima cifra = 1: al = 0000 0001b 
+    37                                                                    ; ultima cifra = 0: al = 0000 0000b
+    38                                                                    ; cand shiftez odata la stanga, iau practic valoarea bitului
+    39                                                                    ; reprezentat de caracter
+    40 00000022 D0E3                                        shl bl, 1     ; fac loc in bl
+    41 00000024 08C3                                        or bl, al     ; construiesc numarul in bl
+    42 00000026 E2ED                                loop parsare_numar
+    43                                              
+    44                                              terminare_parsare:
+    45 00000028 88D8                                    mov al, bl
+    46 0000002A AA                                      stosb             ; salvez numarul 
+    47                                                  
+    48 0000002B 59                                  pop ecx
+    49 0000002C E2DF                            loop cat_timp_numere
+    50                                          
+    51 0000002E C3                              ret

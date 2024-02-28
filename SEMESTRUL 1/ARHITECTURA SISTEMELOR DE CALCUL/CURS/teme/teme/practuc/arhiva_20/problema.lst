@@ -1,0 +1,113 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, scanf, printf               
+     6                                  import exit msvcrt.dll  
+     7                                  import scanf msvcrt.dll
+     8                                  import printf msvcrt.dll  
+     9                                  
+    10                                  ; Se citeste de la tastatura un cuvant si un numar. 
+    11                                  ; Daca numarul este par se cere criptarea cuvantului prin adunarea la fiecare caracter a numarului 20. 
+    12                                  ; Daca numarul este impar se cere criptarea cuvantului prin adaugarea dupa fiecare vocala a gruparii "p"+vocala.
+    13                                  ; Se cere afisarea cuvantului criptat.
+    14                                  
+    15                                  segment data use32 class=data
+    16 00000000 00<rept>                    cuvant_citit times 100 db 0
+    17 00000064 00<rept>                    cuvant_criptat times 201 db 0
+    18                                      
+    19 0000012D 257300                      format_string db '%s', 0
+    20 00000130 256400                      format_int db '%d', 0
+    21                                      
+    22 00000133 00000000                    numar_citit dd 0
+    23                                  
+    24                                  segment code use32 class=code
+    25                                      start:
+    26 00000000 68[00000000]                    push dword cuvant_citit
+    27 00000005 68[2D010000]                    push dword format_string
+    28 0000000A FF15[00000000]                  call [scanf]
+    29 00000010 83C408                          add esp, 4 * 2
+    30                                          
+    31 00000013 68[33010000]                    push dword numar_citit
+    32 00000018 68[30010000]                    push dword format_int
+    33 0000001D FF15[00000000]                  call [scanf]
+    34 00000023 83C408                          add esp, 4 * 2
+    35                                          
+    36                                          ; verific paritatea numarului citi
+    37 00000026 A1[33010000]                    mov eax, [numar_citit]
+    38 0000002B 6689C3                          mov bx, ax
+    39 0000002E C1E810                          shr eax, 16
+    40 00000031 6689C2                          mov dx, ax
+    41 00000034 6689D8                          mov ax, bx    ; dx:ax = eax
+    42                                          
+    43 00000037 66BB0200                        mov bx, 2
+    44 0000003B 66F7F3                          div bx
+    45                                          
+    46 0000003E 6683FA01                        cmp dx, 1
+    47 00000042 7416                            je impar
+    48                                          
+    49                                          ; par
+    50 00000044 BE[00000000]                    mov esi, cuvant_citit
+    51 00000049 BF[64000000]                    mov edi, cuvant_criptat
+    52 0000004E FC                              cld
+    53 0000004F AC                              lodsb   ; al = caracter
+    54                                          while_caracter:
+    55 00000050 3C00                                cmp al, 0
+    56 00000052 7439                                je afisare_cuv_criptat
+    57                                              
+    58 00000054 0414                                add al, 20
+    59 00000056 AA                                  stosb
+    60 00000057 AC                                  lodsb
+    61 00000058 EBF6                            jmp while_caracter
+    62                                          
+    63                                          impar:
+    64 0000005A BE[00000000]                        mov esi, cuvant_citit
+    65 0000005F BF[64000000]                        mov edi, cuvant_criptat
+    66 00000064 FC                                  cld
+    67                                          
+    68 00000065 AC                                  lodsb   ; al = caracter
+    69                                              while_caractere_2:
+    70 00000066 3C00                                    cmp al, 0
+    71 00000068 7423                                    je afisare_cuv_criptat
+    72                                                  
+    73 0000006A 3C61                                    cmp al, 'a'
+    74 0000006C 7413                                    je criptare_nebuna
+    75 0000006E 3C65                                    cmp al, 'e'
+    76 00000070 740F                                    je criptare_nebuna
+    77 00000072 3C69                                    cmp al, 'i'
+    78 00000074 740B                                    je criptare_nebuna
+    79 00000076 3C6F                                    cmp al, 'o'
+    80 00000078 7407                                    je criptare_nebuna
+    81 0000007A 3C75                                    cmp al, 'u'
+    82 0000007C 7403                                    je criptare_nebuna
+    83                                                  
+    84                                                  ; consoana, o stochez
+    85 0000007E AA                                      stosb
+    86 0000007F EB09                                    jmp continua
+    87                                                  
+    88                                                  criptare_nebuna:
+    89                                                      ; stochez intai vocala
+    90 00000081 88C3                                        mov bl, al  ; fac copie la vocala
+    91 00000083 AA                                          stosb
+    92                                                      
+    93                                                      ; stochez 'p'
+    94 00000084 B070                                        mov al, 'p'
+    95 00000086 AA                                          stosb
+    96                                                      
+    97                                                      ; stochez iar vocala
+    98 00000087 88D8                                        mov al, bl
+    99 00000089 AA                                          stosb
+   100                                                  
+   101                                                  continua:
+   102 0000008A AC                                          lodsb
+   103 0000008B EBD9                                jmp while_caractere_2
+   104                                              
+   105                                          afisare_cuv_criptat:
+   106 0000008D 68[64000000]                        push dword cuvant_criptat
+   107 00000092 68[2D010000]                        push dword format_string
+   108 00000097 FF15[00000000]                      call [printf]
+   109 0000009D 83C408                              add esp, 4 * 2
+   110                                      
+   111                                      finish:
+   112 000000A0 6A00                            push dword 0    
+   113 000000A2 FF15[00000000]                  call [exit]       
