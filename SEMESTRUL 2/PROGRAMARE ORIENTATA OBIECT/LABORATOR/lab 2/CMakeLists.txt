@@ -3,4 +3,6 @@ project(lab_2 C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(lab_2 main.c)
+add_executable(lab_2 main.c
+        domain.c
+        domain.h)

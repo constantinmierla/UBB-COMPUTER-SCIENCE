@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <assert.h>
 /*
  * 9. Agentie de turism
     Creati o aplicatie care permite gestiunea ofertelor de la o agentie de turism.
@@ -11,7 +11,15 @@
      d) Vizualizare oferete ordonat dupa pret, destinatie (crescator/descrescator)
      e) Vizualizare oferta filtrate dupa un criteriu (destinatie, tip, pret)
  */
+int afisare()
+{
+    int n = 10;
+    return n;
+}
 int main() {
-    printf("Hello, World!\n");
+
+    assert(afisare() == 10);
+
     return 0;
 }
+
