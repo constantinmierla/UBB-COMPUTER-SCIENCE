@@ -18,6 +18,9 @@ oferta creeazaOferta(char *tip, char *destinatie, char *data_plecarii, float pre
 
 int valideazaOferta(oferta o)
 {
+    /*
+     * validator pentru oferta
+     */
     if (o.tip != "munte" || o.tip != "mare" || o.tip != "city break")
         return 0;
     if (strlen(o.destinatie) == 0)
