@@ -16,6 +16,7 @@ oferta creeazaOferta(char *tip, char *destinatie, char *data_plecarii, float pre
     return o;
 }
 
+
 int valideazaOferta(oferta o)
 {
     /*
