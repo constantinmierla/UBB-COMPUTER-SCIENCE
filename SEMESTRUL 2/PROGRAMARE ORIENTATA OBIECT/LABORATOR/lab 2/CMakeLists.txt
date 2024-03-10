@@ -5,4 +5,8 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(lab_2 main.c
         domain.c
-        domain.h)
+        domain.h
+        repository.c
+        repository.h
+        service.c
+        service.h)
