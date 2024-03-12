@@ -22,7 +22,9 @@ int valideazaOferta(oferta o)
     /*
      * validator pentru oferta
      */
-    if (o.tip != "munte" || o.tip != "mare" || o.tip != "city break")
+    char tipp[50];
+    strcpy(tipp, o.tip);
+    if ((strcmp(tipp,"munte") != 0) && (strcmp(tipp , "mare") != 0) && (strcmp(tipp, "city break") != 0))
         return 0;
     if (strlen(o.destinatie) == 0)
         return 0;

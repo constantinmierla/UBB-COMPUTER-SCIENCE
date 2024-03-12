@@ -1,0 +1,171 @@
+        -:    0:Source:D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 2/ui.c
+        -:    0:Graph:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 2\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\ui.c.gcno
+        -:    0:Data:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 2\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\ui.c.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Costi on 12-Mar-24.
+        -:    3://
+        -:    4:#include <stdio.h>
+        -:    5:#include "ui.h"
+function testAll called 1 returned 100% blocks executed 100%
+        1:    6:void testAll()
+        -:    7:{
+        1:    8:    printf("Rulare teste...\n");
+        1:    8-block  0
+call    0 returned 1
+        -:    9:
+        1:   10:    printf("\nRulare reusita!\n");
+call    0 returned 1
+        1:   11:}
+function uiAdd called 1 returned 100% blocks executed 93%
+        1:   12:void uiAdd(List *v)
+        -:   13:{
+        1:   14:    printf("Adauga oferta : tip, destinatie, data plecarii, pret\n");
+        1:   14-block  0
+call    0 returned 1
+        -:   15:    char tip[30], destinatie[30], data_plecarii[30];
+        -:   16:    float pret;
+        1:   17:    printf("Introduceti tip : \n");
+call    0 returned 1
+        1:   18:    scanf("%s", tip);
+call    0 returned 1
+        1:   19:    printf("Introduceti destinatie : \n");
+call    0 returned 1
+        1:   20:    scanf("%s", destinatie);
+call    0 returned 1
+        1:   21:    printf("Introduceti data plecarii : \n");
+call    0 returned 1
+        1:   22:    scanf("%s", data_plecarii);
+call    0 returned 1
+        1:   23:    printf("Introduceti pret : \n");
+call    0 returned 1
+        1:   24:    scanf("%f", &pret);
+call    0 returned 1
+        1:   25:    int ok = adaugaOferta(v,tip,destinatie,data_plecarii,pret);
+call    0 returned 1
+        1:   26:    if (ok)
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:   27:        printf("Oferta adaugata cu succes! \n");
+        1:   27-block  0
+call    0 returned 1
+        -:   28:    else
+    #####:   29:        printf("Oferta nu este valida! \n");
+    %%%%%:   29-block  0
+call    0 never executed
+        1:   30:}
+function uiModify called 0 returned 0% blocks executed 0%
+    #####:   31:void uiModify(List *v)
+        -:   32:{
+    #####:   33:    printf("add");
+    %%%%%:   33-block  0
+call    0 never executed
+    #####:   34:}
+function uiDelete called 0 returned 0% blocks executed 0%
+    #####:   35:void uiDelete(List *v)
+        -:   36:{
+    #####:   37:    printf("add");
+    %%%%%:   37-block  0
+call    0 never executed
+    #####:   38:}
+function uiSort called 0 returned 0% blocks executed 0%
+    #####:   39:void uiSort(List *v)
+        -:   40:{
+    #####:   41:    printf("add");
+    %%%%%:   41-block  0
+call    0 never executed
+    #####:   42:}
+function uiFilter called 0 returned 0% blocks executed 0%
+    #####:   43:void uiFilter(List *v)
+        -:   44:{
+    #####:   45:    printf("add");
+    %%%%%:   45-block  0
+call    0 never executed
+    #####:   46:}
+function menu called 3 returned 100% blocks executed 100%
+        3:   47:void menu()
+        -:   48:{
+        3:   49:    printf("1. Adaugarea de noi oferte.\n");
+        3:   49-block  0
+call    0 returned 3
+        3:   50:    printf("2. Actualizare oferte.\n");
+call    0 returned 3
+        3:   51:    printf("3. Stergere oferta.\n");
+call    0 returned 3
+        3:   52:    printf("4. Vizualizare oferete ordonat dupa pret, destinatie (crescator/descrescator).\n");
+call    0 returned 3
+        3:   53:    printf("5. Vizualizare oferta filtrate dupa un criteriu (destinatie, tip, pret).\n");
+call    0 returned 3
+        3:   54:    printf("6. Iesire aplicatie\n");
+call    0 returned 3
+        -:   55:
+        3:   56:}
+function run called 1 returned 100% blocks executed 65%
+        1:   57:void run()
+        -:   58:{
+        1:   59:    List v = createEmpty();
+        1:   59-block  0
+call    0 returned 1
+        -:   60:    int option, ok;
+        1:   61:    ok = 1;
+        1:   62:    printf("Bine ati venit in aplicatie!\n");
+call    0 returned 1
+        4:   63:    while(ok)
+        4:   63-block  0
+branch  0 taken 3
+branch  1 taken 1 (fallthrough)
+        -:   64:    {
+        3:   65:        menu();
+        3:   65-block  0
+call    0 returned 3
+        3:   66:        printf("Alegeti optiunea: \n");
+call    0 returned 3
+        3:   67:        scanf("%d", &option);
+call    0 returned 3
+        3:   68:        switch(option){
+branch  0 taken 1
+branch  1 taken 0
+branch  2 taken 0
+branch  3 taken 0
+branch  4 taken 0
+branch  5 taken 1
+branch  6 taken 1
+        1:   69:            case 1:
+        1:   70:                uiAdd(&v);
+        1:   70-block  0
+call    0 returned 1
+        1:   71:                break;
+    #####:   72:            case 2:
+    #####:   73:                uiModify(&v);
+    %%%%%:   73-block  0
+call    0 never executed
+    #####:   74:                break;
+    #####:   75:            case 3:
+    #####:   76:                uiDelete(&v);
+    %%%%%:   76-block  0
+call    0 never executed
+    #####:   77:                break;
+    #####:   78:            case 4:
+    #####:   79:                uiSort(&v);
+    %%%%%:   79-block  0
+call    0 never executed
+    #####:   80:                break;
+    #####:   81:            case 5:
+    #####:   82:                uiFilter(&v);
+    %%%%%:   82-block  0
+call    0 never executed
+    #####:   83:                break;
+        1:   84:            case 6:
+        1:   85:                printf("Iesire aplicatie...");
+        1:   85-block  0
+call    0 returned 1
+        1:   86:                ok = 0;
+        1:   87:                break;
+        1:   88:            default:
+        1:   89:                printf("Comanda gresita!\n");
+        1:   89-block  0
+call    0 returned 1
+        1:   90:                break;
+        -:   91:        }
+        -:   92:    }
+        1:   93:}

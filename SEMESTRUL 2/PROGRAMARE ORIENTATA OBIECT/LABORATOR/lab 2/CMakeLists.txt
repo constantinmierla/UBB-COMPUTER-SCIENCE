@@ -9,4 +9,7 @@ add_executable(lab_2 main.c
         repository.c
         repository.h
         service.c
-        service.h)
+        service.h
+        ui.c
+        ui.h
+        ui.h)
