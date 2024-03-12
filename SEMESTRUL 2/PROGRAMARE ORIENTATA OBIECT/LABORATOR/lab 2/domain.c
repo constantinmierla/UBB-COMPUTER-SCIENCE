@@ -5,6 +5,18 @@
 #include "domain.h"
 #include <string.h>
 
+/*
+ * Creeaza o oferta noua.
+ *
+ * Parametri:
+ *   - tip: tipul ofertei (char*)
+ *   - destinatie: destinatia ofertei (char*)
+ *   - data_plecarii: data plecarii (char*)
+ *   - pret: pretul ofertei (float)
+ *
+ * Returneaza:
+ *   oferta - o structura reprezentand o oferta cu specificatiile date
+ */
 oferta creeazaOferta(char *tip, char *destinatie, char *data_plecarii, float pret)
 {
     oferta o;
@@ -16,7 +28,15 @@ oferta creeazaOferta(char *tip, char *destinatie, char *data_plecarii, float pre
     return o;
 }
 
-
+/*
+ * Valideaza o oferta.
+ *
+ * Parametri:
+ *   - o: oferta de validat (oferta)
+ *
+ * Returneaza:
+ *   int - 1 daca oferta este valida, 0 altfel
+ */
 int valideazaOferta(oferta o)
 {
     /*
@@ -32,9 +52,16 @@ int valideazaOferta(oferta o)
         return 0;
     if (o.pret < 0)
         return 0;
+
     return 1;
 }
 
+/*
+ * Distruge o oferta.
+ *
+ * Parametri:
+ *   - o: oferta de distrus (oferta*)
+ */
 void distrugeOferta(oferta *o)
 {
     o -> tip[0] = '\0';

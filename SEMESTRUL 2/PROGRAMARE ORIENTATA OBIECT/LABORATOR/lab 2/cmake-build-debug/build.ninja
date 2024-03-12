@@ -79,6 +79,12 @@ build CMakeFiles/lab_2.dir/ui.c.obj: C_COMPILER__lab_2_unscanned_Debug D$:/FMI$ 
   OBJECT_DIR = CMakeFiles\lab_2.dir
   OBJECT_FILE_DIR = CMakeFiles\lab_2.dir
 
+build CMakeFiles/lab_2.dir/tests.c.obj: C_COMPILER__lab_2_unscanned_Debug D$:/FMI$ UBB$ CLUJ$ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL$ 2/PROGRAMARE$ ORIENTATA$ OBIECT/LABORATOR/lab$ 2/tests.c || cmake_object_order_depends_target_lab_2
+  DEP_FILE = CMakeFiles\lab_2.dir\tests.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\lab_2.dir
+  OBJECT_FILE_DIR = CMakeFiles\lab_2.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target lab_2
@@ -87,7 +93,7 @@ build CMakeFiles/lab_2.dir/ui.c.obj: C_COMPILER__lab_2_unscanned_Debug D$:/FMI$ 
 #############################################
 # Link the executable lab_2.exe
 
-build lab_2.exe: C_EXECUTABLE_LINKER__lab_2_Debug CMakeFiles/lab_2.dir/main.c.obj CMakeFiles/lab_2.dir/domain.c.obj CMakeFiles/lab_2.dir/repository.c.obj CMakeFiles/lab_2.dir/service.c.obj CMakeFiles/lab_2.dir/ui.c.obj
+build lab_2.exe: C_EXECUTABLE_LINKER__lab_2_Debug CMakeFiles/lab_2.dir/main.c.obj CMakeFiles/lab_2.dir/domain.c.obj CMakeFiles/lab_2.dir/repository.c.obj CMakeFiles/lab_2.dir/service.c.obj CMakeFiles/lab_2.dir/ui.c.obj CMakeFiles/lab_2.dir/tests.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\lab_2.dir

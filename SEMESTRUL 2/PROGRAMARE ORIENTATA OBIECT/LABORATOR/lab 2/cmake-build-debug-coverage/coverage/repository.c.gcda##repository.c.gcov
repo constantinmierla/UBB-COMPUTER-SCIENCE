@@ -8,62 +8,62 @@
         -:    4:
         -:    5:#include "repository.h"
         -:    6:
-function createEmpty called 1 returned 100% blocks executed 100%
-        1:    7:List createEmpty()
+function createEmpty called 9 returned 100% blocks executed 100%
+        9:    7:List createEmpty()
         -:    8:{
         -:    9:    List v;
-        1:   10:    v.length = 0;
-        1:   11:    return v;
-        1:   11-block  0
+        9:   10:    v.length = 0;
+        9:   11:    return v;
+        9:   11-block  0
         -:   12:}
         -:   13:
-function destroy called 0 returned 0% blocks executed 0%
-    #####:   14:void destroy(List* v)
+function destroy called 2 returned 100% blocks executed 100%
+        2:   14:void destroy(List* v)
         -:   15:{
-    #####:   16:    v->length = 0;
-    #####:   17:}
+        2:   16:    v->length = 0;
+        2:   17:}
         -:   18:
-function add called 1 returned 100% blocks executed 100%
-        1:   19:void add(List *v, ElemType el)
+function add called 13 returned 100% blocks executed 100%
+       13:   19:void add(List *v, ElemType el)
         -:   20:{
-        1:   21:    v->elements[v->length] = el;
-        1:   22:    v->length++;
-        1:   23:}
+       13:   21:    v->elements[v->length] = el;
+       13:   22:    v->length++;
+       13:   23:}
         -:   24:
-function addOferta called 0 returned 0% blocks executed 0%
-    #####:   25:void addOferta(List *v, ElemType el, int poz)
+function addOferta called 1 returned 100% blocks executed 100%
+        1:   25:void addOferta(List *v, ElemType el, int poz)
         -:   26:{
-    #####:   27:    v->elements[poz] = el;
-    #####:   28:}
+        1:   27:    v->elements[poz] = el;
+        1:   28:}
         -:   29:
-function delete called 0 returned 0% blocks executed 0%
-    #####:   30:ElemType delete(List *v, int poz)
+function sterge called 3 returned 100% blocks executed 100%
+        3:   30:ElemType sterge(List *v, int poz)
         -:   31:{
-    #####:   32:    ElemType el = v->elements[poz];
-    #####:   33:    for (int i = poz; i < v-> length - 1; i++)
-    %%%%%:   33-block  0
-    %%%%%:   33-block  1
-branch  0 never executed
-branch  1 never executed (fallthrough)
+        3:   32:    ElemType el = v->elements[poz];
+        4:   33:    for (int i = poz; i < v-> length - 1; i++)
+        3:   33-block  0
+        4:   33-block  1
+branch  0 taken 1
+branch  1 taken 3 (fallthrough)
         -:   34:    {
-    #####:   35:        v->elements[i] = v->elements[i+1];
-    %%%%%:   35-block  0
+        1:   35:        v->elements[i] = v->elements[i+1];
+        1:   35-block  0
         -:   36:    }
-    #####:   37:    v->length--;
-    #####:   38:    return el;
-    %%%%%:   38-block  0
+        3:   37:    v->length--;
+        3:   38:    return el;
+        3:   38-block  0
         -:   39:}
         -:   40:
-function get called 0 returned 0% blocks executed 0%
-    #####:   41:ElemType get(List *v, int poz)
+function get called 20 returned 100% blocks executed 100%
+       20:   41:ElemType get(List *v, int poz)
         -:   42:{
-    #####:   43:    return v->elements[poz];
-    %%%%%:   43-block  0
+       20:   43:    return v->elements[poz];
+       20:   43-block  0
         -:   44:}
         -:   45:
-function size called 0 returned 0% blocks executed 0%
-    #####:   46:int size(List *v)
+function size called 9 returned 100% blocks executed 100%
+        9:   46:int size(List *v)
         -:   47:{
-    #####:   48:    return v->length;
-    %%%%%:   48-block  0
+        9:   48:    return v->length;
+        9:   48-block  0
         -:   49:}

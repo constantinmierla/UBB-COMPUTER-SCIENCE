@@ -12,4 +12,6 @@ add_executable(lab_2 main.c
         service.h
         ui.c
         ui.h
-        ui.h)
+        ui.h
+        tests.c
+        tests.h)

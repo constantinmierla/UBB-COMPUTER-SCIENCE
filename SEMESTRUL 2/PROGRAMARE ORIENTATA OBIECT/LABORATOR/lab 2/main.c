@@ -12,10 +12,10 @@
      e) Vizualizare oferta filtrate dupa un criteriu (destinatie, tip, pret)
  */
 
-int main() {
+int main()
+{
     testAll();
     run();
-
     return 0;
 }
 

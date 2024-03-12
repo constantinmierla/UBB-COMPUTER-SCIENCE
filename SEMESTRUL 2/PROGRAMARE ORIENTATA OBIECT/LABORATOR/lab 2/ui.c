@@ -3,12 +3,46 @@
 //
 #include <stdio.h>
 #include "ui.h"
+#include "tests.h"
+
+//Ruleaza toate testele definite pentru functionalitatile aplicatiei.
 void testAll()
 {
     printf("Rulare teste...\n");
+    test_creeazaOferta();
+
+    test_destroyOferta();
+
+    test_ValideazaOferta();
+
+    test_createEmpty();
+
+    testAddAndGet();
+
+    test_addCantitate();
+
+    test_delete();
+
+    test_size();
+
+    test_adaugaService();
+
+    test_modificaService();
+
+    test_stergeService();
+
+    test_filtru();
+
+    test_sort();
 
     printf("\nRulare reusita!\n");
 }
+
+/*
+ * Afiseaza meniul pentru adaugarea unei noi oferte si solicita utilizatorului sa introduca datele.
+ * Parametri:
+ *   - v: lista de oferte in care se adauga oferta (List*)
+ */
 void uiAdd(List *v)
 {
     printf("Adauga oferta : tip, destinatie, data plecarii, pret\n");
@@ -28,22 +62,92 @@ void uiAdd(List *v)
     else
         printf("Oferta nu este valida! \n");
 }
-void uiModify(List *v)
+
+/*
+ * Afiseaza meniul pentru modificarea unei oferte si solicita utilizatorului sa introduca noile date.
+ * Parametri:
+ *   - v: lista de oferte in care se modifica oferta (List*)
+ */
+void uiModify(List *v) //de modificat
 {
-    printf("add");
+    printf("Modifica oferta : tip, destinatie, data plecarii si introduceti noul pret\n");
+    char tip[30], destinatie[30], data_plecarii[30];
+    float pret;
+    printf("Introduceti tip : \n");
+    scanf("%s", tip);
+    printf("Introduceti destinatie : \n");
+    scanf("%s", destinatie);
+    printf("Introduceti data plecarii : \n");
+    scanf("%s", data_plecarii);
+    printf("Introduceti noul pret : \n");
+    scanf("%f", &pret);
+    int ok = modificaOferta(v,tip,destinatie,data_plecarii,pret);
+    if (ok)
+        printf("Oferta modificata cu succes! \n");
+    else
+        printf("Oferta nu este valida! \n");
 }
+
+/*
+ * Afiseaza meniul pentru stergerea unei oferte si solicita utilizatorului sa introduca datele ofertei de sters.
+ * Parametri:
+ *   - v: lista de oferte din care se sterge oferta (List*)
+ */
 void uiDelete(List *v)
 {
-    printf("add");
+    printf("Sterge oferta : tip, destinatie, data plecarii\n");
+    char tip[30], destinatie[30], data_plecarii[30];
+    printf("Introduceti tip : \n");
+    scanf("%s", tip);
+    printf("Introduceti destinatie : \n");
+    scanf("%s", destinatie);
+    printf("Introduceti data plecarii : \n");
+    scanf("%s", data_plecarii);
+    int ok = stergeOferta(v,tip,destinatie,data_plecarii);
+    if (ok)
+        printf("Oferta stearsa cu succes! \n");
+    else
+        printf("Oferta nu este valida! \n");
 }
+
+/*
+ * Afiseaza meniul pentru sortarea ofertelor.
+ * Parametri:
+ *   - v: lista de oferte care urmeaza sa fie sortata (List*)
+ */
 void uiSort(List *v)
 {
-    printf("add");
+    printf("Sort");
 }
+
+/*
+ * Afiseaza meniul pentru filtrarea ofertelor si solicita utilizatorului sa introduca criteriile de filtrare.
+ * Parametri:
+ *   - v: lista de oferte care urmeaza sa fie filtrata (List*)
+ */
 void uiFilter(List *v)
 {
-    printf("add");
+    printf("Filter");
 }
+
+/*
+ * Afiseaza toate ofertele din lista.
+ * Parametri:
+ *   - v: lista de oferte care urmeaza sa fie afisata (List*)
+ */
+void getAll(List *v)
+{
+    for (int i = 0; i < size(v); i++)
+    {
+        oferta o = get(v,i);
+        printf("Tip: %s | Destinatie: %s | Data plecarii: %s | Pret: %f\n",o.tip,o.destinatie,o.data_plecarii,o.pret);
+    }
+    printf("\n");
+}
+
+/*
+ * Afiseaza meniul principal al aplicatiei.
+ */
 void menu()
 {
     printf("1. Adaugarea de noi oferte.\n");
@@ -52,14 +156,18 @@ void menu()
     printf("4. Vizualizare oferete ordonat dupa pret, destinatie (crescator/descrescator).\n");
     printf("5. Vizualizare oferta filtrate dupa un criteriu (destinatie, tip, pret).\n");
     printf("6. Iesire aplicatie\n");
-
+    printf("7. Afisare elemente\n");
 }
+
+/*
+ * Porneste executia aplicatiei.
+ */
 void run()
 {
     List v = createEmpty();
     int option, ok;
     ok = 1;
-    printf("Bine ati venit in aplicatie!\n");
+    printf("\nBine ati venit in aplicatie!\n");
     while(ok)
     {
         menu();
@@ -84,6 +192,9 @@ void run()
             case 6:
                 printf("Iesire aplicatie...");
                 ok = 0;
+                break;
+            case 7:
+                getAll(&v);
                 break;
             default:
                 printf("Comanda gresita!\n");

@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "lab_2::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-lab_2-Debug-2d9412812c5ec90bfd80.json",
+					"jsonFile" : "target-lab_2-Debug-393e9f32a19145e626a9.json",
 					"name" : "lab_2",
 					"projectIndex" : 0
 				}
@@ -49,7 +49,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 2/cmake-build-debug",
+		"build" : "D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 2/cmake-build-debug-coverage",
 		"source" : "D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 2"
 	},
 	"version" : 

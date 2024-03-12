@@ -9,32 +9,32 @@
         -:    5:#include "domain.h"
         -:    6:#include <string.h>
         -:    7:
-function creeazaOferta called 1 returned 100% blocks executed 100%
-        1:    8:oferta creeazaOferta(char *tip, char *destinatie, char *data_plecarii, float pret)
+function creeazaOferta called 19 returned 100% blocks executed 100%
+       19:    8:oferta creeazaOferta(char *tip, char *destinatie, char *data_plecarii, float pret)
         -:    9:{
         -:   10:    oferta o;
-        1:   11:    strcpy(o.tip, tip);
-        1:   12:    strcpy(o.destinatie, destinatie);
-        1:   13:    strcpy(o.data_plecarii, data_plecarii);
-        1:   14:    o.pret = pret;
+       19:   11:    strcpy(o.tip, tip);
+       19:   12:    strcpy(o.destinatie, destinatie);
+       19:   13:    strcpy(o.data_plecarii, data_plecarii);
+       19:   14:    o.pret = pret;
         -:   15:
-        1:   16:    return o;
-        1:   16-block  0
+       19:   16:    return o;
+       19:   16-block  0
         -:   17:}
         -:   18:
         -:   19:
-function valideazaOferta called 1 returned 100% blocks executed 62%
-        1:   20:int valideazaOferta(oferta o)
+function valideazaOferta called 7 returned 100% blocks executed 62%
+        7:   20:int valideazaOferta(oferta o)
         -:   21:{
         -:   22:    /*
         -:   23:     * validator pentru oferta
         -:   24:     */
         -:   25:    char tipp[50];
-        1:   26:    strcpy(tipp, o.tip);
-       1*:   27:    if ((strcmp(tipp,"munte") != 0) && (strcmp(tipp , "mare") != 0) && (strcmp(tipp, "city break") != 0))
-        1:   27-block  0
+        7:   26:    strcpy(tipp, o.tip);
+       7*:   27:    if ((strcmp(tipp,"munte") != 0) && (strcmp(tipp , "mare") != 0) && (strcmp(tipp, "city break") != 0))
+        7:   27-block  0
 branch  0 taken 1 (fallthrough)
-branch  1 taken 0
+branch  1 taken 6
         1:   27-block  1
 branch  2 taken 0 (fallthrough)
 branch  3 taken 1
@@ -43,33 +43,34 @@ branch  4 never executed (fallthrough)
 branch  5 never executed
     #####:   28:        return 0;
     %%%%%:   28-block  0
-        1:   29:    if (strlen(o.destinatie) == 0)
-        1:   29-block  0
+        7:   29:    if (strlen(o.destinatie) == 0)
+        7:   29-block  0
 branch  0 taken 0 (fallthrough)
-branch  1 taken 1
+branch  1 taken 7
     #####:   30:        return 0;
     %%%%%:   30-block  0
-        1:   31:    if (strlen(o.data_plecarii) == 0)
-        1:   31-block  0
+        7:   31:    if (strlen(o.data_plecarii) == 0)
+        7:   31-block  0
 branch  0 taken 0 (fallthrough)
-branch  1 taken 1
+branch  1 taken 7
     #####:   32:        return 0;
     %%%%%:   32-block  0
-        1:   33:    if (o.pret < 0)
-        1:   33-block  0
+        7:   33:    if (o.pret < 0)
+        7:   33-block  0
 branch  0 taken 0 (fallthrough)
-branch  1 taken 1
+branch  1 taken 7
     #####:   34:        return 0;
     %%%%%:   34-block  0
-        1:   35:    return 1;
-        1:   35-block  0
-        -:   36:}
-        -:   37:
-function distrugeOferta called 0 returned 0% blocks executed 0%
-    #####:   38:void distrugeOferta(oferta *o)
-        -:   39:{
-    #####:   40:    o -> tip[0] = '\0';
-    #####:   41:    o -> destinatie[0] = '\0';
-    #####:   42:    o -> data_plecarii[0] = '\0';
-    #####:   43:    o -> pret = -1;
-    #####:   44:}
+        -:   35:
+        7:   36:    return 1;
+        7:   36-block  0
+        -:   37:}
+        -:   38:
+function distrugeOferta called 1 returned 100% blocks executed 100%
+        1:   39:void distrugeOferta(oferta *o)
+        -:   40:{
+        1:   41:    o -> tip[0] = '\0';
+        1:   42:    o -> destinatie[0] = '\0';
+        1:   43:    o -> data_plecarii[0] = '\0';
+        1:   44:    o -> pret = -1;
+        1:   45:}

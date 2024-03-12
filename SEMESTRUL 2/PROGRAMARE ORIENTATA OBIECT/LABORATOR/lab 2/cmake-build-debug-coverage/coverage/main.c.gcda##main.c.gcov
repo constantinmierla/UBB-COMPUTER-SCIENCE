@@ -16,14 +16,14 @@
         -:   12:     e) Vizualizare oferta filtrate dupa un criteriu (destinatie, tip, pret)
         -:   13: */
         -:   14:
-function main called 1 returned 100% blocks executed 100%
+function main called 1 returned 0% blocks executed 75%
         1:   15:int main() {
         1:   16:    testAll();
         1:   16-block  0
 call    0 returned 1
         1:   17:    run();
-call    0 returned 1
+call    0 returned 0
         -:   18:
-        1:   19:    return 0;
+    #####:   19:    return 0;
         -:   20:}
         -:   21:

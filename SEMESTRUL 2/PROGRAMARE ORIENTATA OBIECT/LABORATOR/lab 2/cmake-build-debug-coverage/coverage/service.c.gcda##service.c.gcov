@@ -9,150 +9,112 @@
         -:    5:#include "service.h"
         -:    6:#include <string.h>
         -:    7:
-function adaugaOferta called 1 returned 100% blocks executed 88%
-        1:    8:int adaugaOferta(List *v, char *tip, char *destinatie, char *data_plecarii, float pret)
+function adaugaOferta called 4 returned 100% blocks executed 88%
+        4:    8:int adaugaOferta(List *v, char *tip, char *destinatie, char *data_plecarii, float pret)
         -:    9:{
-        1:   10:    oferta o = creeazaOferta(tip, destinatie, data_plecarii, pret);
-        1:   10-block  0
-call    0 returned 1
-        1:   11:    if(valideazaOferta(o) == 0)
-call    0 returned 1
+        4:   10:    oferta o = creeazaOferta(tip, destinatie, data_plecarii, pret);
+        4:   10-block  0
+call    0 returned 4
+        4:   11:    if(valideazaOferta(o) == 0)
+call    0 returned 4
 branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+branch  2 taken 4
     #####:   12:        return 0;
     %%%%%:   12-block  0
         -:   13:
-        1:   14:    add(v, o);
-        1:   14-block  0
-call    0 returned 1
-        1:   15:    return 1;
+        4:   14:    add(v, o);
+        4:   14-block  0
+call    0 returned 4
+        4:   15:    return 1;
         -:   16:}
         -:   17:
-function stergeOferta called 0 returned 0% blocks executed 0%
-    #####:   18:int stergeOferta(List *v, char *tip, char *destinatie, char *data_plecarii)
+function stergeOferta called 2 returned 100% blocks executed 87%
+        2:   18:int stergeOferta(List *v, char *tip, char *destinatie, char *data_plecarii)
         -:   19:{
         -:   20:    int poz;
-    #####:   21:    for (int i = 0; i < size(v); i++)
-    %%%%%:   21-block  0
+       2*:   21:    for (int i = 0; i < size(v); i++)
+        2:   21-block  0
     %%%%%:   21-block  1
-    %%%%%:   21-block  2
-call    0 never executed
-branch  1 never executed
-branch  2 never executed (fallthrough)
+        2:   21-block  2
+call    0 returned 2
+branch  1 taken 2
+branch  2 taken 0 (fallthrough)
         -:   22:    {
-    #####:   23:        if (strcmp(get(v,i).tip, tip) == 0 && strcmp(get(v,i).destinatie, destinatie) == 0
-    %%%%%:   23-block  0
-call    0 never executed
-branch  1 never executed (fallthrough)
-branch  2 never executed
-    %%%%%:   23-block  1
-call    3 never executed
-branch  4 never executed (fallthrough)
-branch  5 never executed
-    #####:   24:        && strcmp(get(v,i).data_plecarii, data_plecarii) == 0)
-    %%%%%:   24-block  0
-call    0 never executed
-branch  1 never executed (fallthrough)
-branch  2 never executed
+        2:   23:        if (strcmp(get(v,i).tip, tip) == 0 && strcmp(get(v,i).destinatie, destinatie) == 0
+        2:   23-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0
+        2:   23-block  1
+call    3 returned 2
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0
+        2:   24:        && strcmp(get(v,i).data_plecarii, data_plecarii) == 0)
+        2:   24-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0
         -:   25:        {
-    #####:   26:            poz = i;
-    #####:   27:            oferta o = delete(v, poz);
-    %%%%%:   27-block  0
-call    0 never executed
-    #####:   28:            destroy(&o);
-call    0 never executed
-    #####:   29:            return 1;
+        2:   26:            poz = i;
+        2:   27:            oferta o = sterge(v, poz);
+        2:   27-block  0
+call    0 returned 2
+        2:   28:            destroy(&o);
+call    0 returned 2
+        2:   29:            return 1;
         -:   30:        }
         -:   31:    }
     #####:   32:    return 0;
     %%%%%:   32-block  0
         -:   33:}
         -:   34:
-function modificaOferta called 0 returned 0% blocks executed 0%
-    #####:   35:int modificaOferta(List *v, char *tip, char *destinatie, char *data_plecarii, float pret_nou)
+function modificaOferta called 1 returned 100% blocks executed 82%
+        1:   35:int modificaOferta(List *v, char *tip, char *destinatie, char *data_plecarii, float pret_nou)
         -:   36:{
-    #####:   37:    oferta o = creeazaOferta(tip, destinatie, data_plecarii, pret_nou);
-    %%%%%:   37-block  0
-call    0 never executed
-    #####:   38:    if (valideazaOferta(o) == 0)
-call    0 never executed
-branch  1 never executed (fallthrough)
-branch  2 never executed
+        1:   37:    oferta o = creeazaOferta(tip, destinatie, data_plecarii, pret_nou);
+        1:   37-block  0
+call    0 returned 1
+        1:   38:    if (valideazaOferta(o) == 0)
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
     #####:   39:        return 0;
     %%%%%:   39-block  0
-    #####:   40:    int sters = stergeOferta(v,tip,destinatie,data_plecarii);
-    %%%%%:   40-block  0
-call    0 never executed
-    #####:   41:    if (sters == 0)
-branch  0 never executed (fallthrough)
-branch  1 never executed
+        1:   40:    int sters = stergeOferta(v,tip,destinatie,data_plecarii);
+        1:   40-block  0
+call    0 returned 1
+        1:   41:    if (sters == 0)
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
     #####:   42:        return 0;
     %%%%%:   42-block  0
         -:   43:    else
-    #####:   44:        adaugaOferta(v,tip,destinatie,data_plecarii,pret_nou);
-    %%%%%:   44-block  0
-call    0 never executed
-    #####:   45:    return 1;
+        1:   44:        adaugaOferta(v,tip,destinatie,data_plecarii,pret_nou);
+        1:   44-block  0
+call    0 returned 1
+        1:   45:    return 1;
         -:   46:}
         -:   47:
-function filtruOferta called 0 returned 0% blocks executed 0%
-    #####:   48:List filtruOferta(List *v, int criteriu, char *nume)// de vazut cum filtrez eu
+        -:   48:/*List filtruOferta(List *v, int criteriu, char *nume)// de vazut cum filtrez eu
         -:   49:{
-    #####:   50:    List listaFiltrata = createEmpty();
-    %%%%%:   50-block  0
-call    0 never executed
-    #####:   51:    for (int i = 0; i < size(v); i++) {
-    %%%%%:   51-block  0
-    %%%%%:   51-block  1
-call    0 never executed
-branch  1 never executed
-branch  2 never executed (fallthrough)
-    #####:   52:        oferta o = get(v, i);
-    %%%%%:   52-block  0
-call    0 never executed
-    #####:   53:        if (criteriu == 1 && o.destinatie == *nume)
-branch  0 never executed (fallthrough)
-branch  1 never executed
-    %%%%%:   53-block  0
-branch  2 never executed (fallthrough)
-branch  3 never executed
-    #####:   54:            add(&listaFiltrata, creeazaOferta(o.tip, o.destinatie, o.data_plecarii, o.pret));
-    %%%%%:   54-block  0
-call    0 never executed
-call    1 never executed
+        -:   50:    List listaFiltrata = createEmpty();
+        -:   51:    for (int i = 0; i < size(v); i++) {
+        -:   52:        oferta o = get(v, i);
+        -:   53:        if (criteriu == 1 && o.destinatie == *nume)
+        -:   54:            add(&listaFiltrata, creeazaOferta(o.tip, o.destinatie, o.data_plecarii, o.pret));
         -:   55:        else {
-    #####:   56:            if (criteriu == 2 && o.tip == *nume)
-    %%%%%:   56-block  0
-branch  0 never executed (fallthrough)
-branch  1 never executed
-    %%%%%:   56-block  1
-branch  2 never executed (fallthrough)
-branch  3 never executed
-    #####:   57:                add(&listaFiltrata, creeazaOferta(o.tip, o.destinatie, o.data_plecarii, o.pret));
-    %%%%%:   57-block  0
-call    0 never executed
-call    1 never executed
+        -:   56:            if (criteriu == 2 && o.tip == *nume)
+        -:   57:                add(&listaFiltrata, creeazaOferta(o.tip, o.destinatie, o.data_plecarii, o.pret));
         -:   58:            else {
-    #####:   59:                if (criteriu == 3 && o.pret == *nume) //aici nu-i ok probabil refac separat
-    %%%%%:   59-block  0
-branch  0 never executed (fallthrough)
-branch  1 never executed
-    %%%%%:   59-block  1
-branch  2 never executed (fallthrough)
-branch  3 never executed
-    #####:   60:                    add(&listaFiltrata, creeazaOferta(o.tip, o.destinatie, o.data_plecarii, o.pret));
-    %%%%%:   60-block  0
-call    0 never executed
-call    1 never executed
+        -:   59:                if (criteriu == 3 && o.pret == *nume) //aici nu-i ok probabil refac separat
+        -:   60:                    add(&listaFiltrata, creeazaOferta(o.tip, o.destinatie, o.data_plecarii, o.pret));
         -:   61:            }
         -:   62:        }
         -:   63:    }
-    #####:   64:    return listaFiltrata;
-    %%%%%:   64-block  0
+        -:   64:    return listaFiltrata;
         -:   65:}
         -:   66:
-function sortOfertaPret called 0 returned 0% blocks executed 0%
-    #####:   67:List sortOfertaPret()
+        -:   67:List sortOfertaPret()
         -:   68:{
         -:   69:
-    #####:   70:}
+        -:   70:}*/
