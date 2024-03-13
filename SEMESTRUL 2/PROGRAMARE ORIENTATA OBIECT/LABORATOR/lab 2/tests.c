@@ -32,6 +32,17 @@ void test_ValideazaOferta() {
     oferta o2 = creeazaOferta("mare", "Busteni", "2024-03-15", 150.0);
     assert(valideazaOferta(o2) == 1);
 
+    oferta o3 = creeazaOferta("mere", "Busteni","2024-03-15", 150.0);
+    assert(valideazaOferta(o3) == 0);
+
+    oferta o4 = creeazaOferta("mare","", "2024-03-21", 100.0);
+    assert(valideazaOferta(o4)== 0);
+
+    oferta o5 = creeazaOferta("mare", "Busteni", "", 150.0);
+    assert(valideazaOferta(o5) == 0);
+
+    oferta o6 = creeazaOferta("mare", "Busteni", "2023-02-21", -2);
+    assert(valideazaOferta(o6) == 0);
 }
 
 
@@ -123,6 +134,9 @@ void test_adaugaService() {
     int result = adaugaOferta(&v, tip, destinatie, data_plecarii, pret);
     assert(result == 1);
     assert(size(&v) == 1);
+    float pretnegativ = -2;
+    result = adaugaOferta(&v,tip,destinatie,data_plecarii,pretnegativ);
+    assert(result == 0);
 }
 
 void test_modificaService() {
@@ -139,6 +153,12 @@ void test_modificaService() {
     float pret_nou = 200.0;
     int result = modificaOferta(&v, tip, destinatie, data_plecarii, pret_nou);
     assert(result == 1);
+    char tipnou[]= "mare";
+    result = modificaOferta(&v,tipnou,destinatie,data_plecarii,pret_nou);
+    assert(result == 0);
+    char tipnou2[] = "mere";
+    result = modificaOferta(&v,tipnou2,destinatie,data_plecarii,pret_nou);
+    assert(result == 0);
 }
 
 void test_stergeService() {
@@ -155,6 +175,11 @@ void test_stergeService() {
     int result = stergeOferta(&v, tip, destinatie, data_plecarii);
     assert(result == 1);
     assert(size(&v) == 0);
+
+    char tipnou[] = "mare";
+
+    result = stergeOferta(&v,tipnou,destinatie,data_plecarii);
+    assert(result == 0);
 }
 
 void test_filtru() {
