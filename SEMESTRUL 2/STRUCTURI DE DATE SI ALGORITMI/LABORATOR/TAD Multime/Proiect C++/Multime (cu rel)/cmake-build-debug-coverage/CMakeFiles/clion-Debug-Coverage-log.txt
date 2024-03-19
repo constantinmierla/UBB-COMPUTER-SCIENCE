@@ -1,0 +1,96 @@
+"C:\Program Files\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2023.2.2/bin/ninja/win/x64/ninja.exe" -DCMAKE_CXX_FLAGS=--coverage -DCMAKE_C_FLAGS=--coverage -G Ninja -S "D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\STRUCTURI DE DATE SI ALGORITMI\LABORATOR\TAD Multime\Proiect C++\Multime (cu rel)" -B "D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\STRUCTURI DE DATE SI ALGORITMI\LABORATOR\TAD Multime\Proiect C++\Multime (cu rel)\cmake-build-debug-coverage"
+-- The C compiler identification is GNU 13.1.0
+-- The CXX compiler identification is GNU 13.1.0
+-- Detecting C compiler ABI info
+CMake Warning in D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/TAD Multime/Proiect C++/Multime (cu rel)/cmake-build-debug-coverage/CMakeFiles/CMakeScratch/TryCompile-5rnyyy/CMakeLists.txt:
+  The object file directory
+
+    D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/TAD Multime/Proiect C++/Multime (cu rel)/cmake-build-debug-coverage/CMakeFiles/CMakeScratch/TryCompile-5rnyyy/CMakeFiles/cmTC_34e91.dir/./
+
+  has 238 characters.  The maximum full path to an object file is 250
+  characters (see CMAKE_OBJECT_PATH_MAX).  Object file
+
+    CMakeCCompilerABI.c.obj
+
+  cannot be safely placed under this directory.  The build may not work
+  correctly.
+
+
+-- Detecting C compiler ABI info - failed
+-- Check for working C compiler: C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/gcc.exe
+CMake Warning in D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/TAD Multime/Proiect C++/Multime (cu rel)/cmake-build-debug-coverage/CMakeFiles/CMakeScratch/TryCompile-47d0xt/CMakeLists.txt:
+  The object file directory
+
+    D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/TAD Multime/Proiect C++/Multime (cu rel)/cmake-build-debug-coverage/CMakeFiles/CMakeScratch/TryCompile-47d0xt/CMakeFiles/cmTC_514c1.dir/./
+
+  has 238 characters.  The maximum full path to an object file is 250
+  characters (see CMAKE_OBJECT_PATH_MAX).  Object file
+
+    testCCompiler.c.obj
+
+  cannot be safely placed under this directory.  The build may not work
+  correctly.
+
+
+-- Check for working C compiler: C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/gcc.exe - works
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+CMake Warning in D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/TAD Multime/Proiect C++/Multime (cu rel)/cmake-build-debug-coverage/CMakeFiles/CMakeScratch/TryCompile-0n21ce/CMakeLists.txt:
+  The object file directory
+
+    D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/TAD Multime/Proiect C++/Multime (cu rel)/cmake-build-debug-coverage/CMakeFiles/CMakeScratch/TryCompile-0n21ce/CMakeFiles/cmTC_10b1f.dir/./
+
+  has 238 characters.  The maximum full path to an object file is 250
+  characters (see CMAKE_OBJECT_PATH_MAX).  Object file
+
+    CMakeCXXCompilerABI.cpp.obj
+
+  cannot be safely placed under this directory.  The build may not work
+  correctly.
+
+
+-- Detecting CXX compiler ABI info - failed
+-- Check for working CXX compiler: C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/g++.exe
+CMake Warning in D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/TAD Multime/Proiect C++/Multime (cu rel)/cmake-build-debug-coverage/CMakeFiles/CMakeScratch/TryCompile-lbw2gj/CMakeLists.txt:
+  The object file directory
+
+    D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/TAD Multime/Proiect C++/Multime (cu rel)/cmake-build-debug-coverage/CMakeFiles/CMakeScratch/TryCompile-lbw2gj/CMakeFiles/cmTC_f164e.dir/./
+
+  has 238 characters.  The maximum full path to an object file is 250
+  characters (see CMAKE_OBJECT_PATH_MAX).  Object file
+
+    testCXXCompiler.cxx.obj
+
+  cannot be safely placed under this directory.  The build may not work
+  correctly.
+
+
+-- Check for working CXX compiler: C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/g++.exe - broken
+CMake Error at C:/Program Files/JetBrains/CLion 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeTestCXXCompiler.cmake:60 (message):
+  The C++ compiler
+
+    "C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/g++.exe"
+
+  is not able to compile a simple test program.
+
+  It fails with the following output:
+
+    Change Dir: D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/TAD Multime/Proiect C++/Multime (cu rel)/cmake-build-debug-coverage/CMakeFiles/CMakeScratch/TryCompile-lbw2gj
+    
+    Run Build Command(s):C:/Program Files/JetBrains/CLion 2023.2.2/bin/ninja/win/x64/ninja.exe -v cmTC_f164e && [1/2] C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE   --coverage  -fdiagnostics-color=always -o CMakeFiles/cmTC_f164e.dir/testCXXCompiler.cxx.obj -c "D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/TAD Multime/Proiect C++/Multime (cu rel)/cmake-build-debug-coverage/CMakeFiles/CMakeScratch/TryCompile-lbw2gj/testCXXCompiler.cxx"
+    FAILED: CMakeFiles/cmTC_f164e.dir/testCXXCompiler.cxx.obj 
+    C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE   --coverage  -fdiagnostics-color=always -o CMakeFiles/cmTC_f164e.dir/testCXXCompiler.cxx.obj -c "D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/TAD Multime/Proiect C++/Multime (cu rel)/cmake-build-debug-coverage/CMakeFiles/CMakeScratch/TryCompile-lbw2gj/testCXXCompiler.cxx"
+    D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/TAD Multime/Proiect C++/Multime (cu rel)/cmake-build-debug-coverage/CMakeFiles/CMakeScratch/TryCompile-lbw2gj/testCXXCompiler.cxx: error: cannot open CMakeFiles/cmTC_f164e.dir/testCXXCompiler.cxx.gcno
+    ninja: build stopped: subcommand failed.
+    
+    
+
+  
+
+  CMake will not be able to correctly generate this project.
+Call Stack (most recent call first):
+  CMakeLists.txt:2 (project)
+
+
+-- Configuring incomplete, errors occurred!

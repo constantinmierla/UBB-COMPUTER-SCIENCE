@@ -1,0 +1,338 @@
+        -:    0:Source:D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 2/ui.c
+        -:    0:Graph:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 2\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\ui.c.gcno
+        -:    0:Data:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 2\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\ui.c.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Costi on 12-Mar-24.
+        -:    3://
+        -:    4:#include <stdio.h>
+        -:    5:#include "ui.h"
+        -:    6:#include "tests.h"
+        -:    7:
+        -:    8://Ruleaza toate testele definite pentru functionalitatile aplicatiei.
+function testAll called 1 returned 100% blocks executed 100%
+        1:    9:void testAll()
+        -:   10:{
+        1:   11:    printf("Rulare teste...\n");
+        1:   11-block  0
+call    0 returned 1
+        1:   12:    test_creeazaOferta();
+call    0 returned 1
+        -:   13:
+        1:   14:    test_destroyOferta();
+call    0 returned 1
+        -:   15:
+        1:   16:    test_ValideazaOferta();
+call    0 returned 1
+        -:   17:
+        1:   18:    test_createEmpty();
+call    0 returned 1
+        -:   19:
+        1:   20:    testAddAndGet();
+call    0 returned 1
+        -:   21:
+        1:   22:    test_addCantitate();
+call    0 returned 1
+        -:   23:
+        1:   24:    test_delete();
+call    0 returned 1
+        -:   25:
+        1:   26:    test_size();
+call    0 returned 1
+        -:   27:
+        1:   28:    test_adaugaService();
+call    0 returned 1
+        -:   29:
+        1:   30:    test_modificaService();
+call    0 returned 1
+        -:   31:
+        1:   32:    test_stergeService();
+call    0 returned 1
+        -:   33:
+        1:   34:    test_filtru();
+call    0 returned 1
+        -:   35:
+        1:   36:    test_sort();
+call    0 returned 1
+        -:   37:
+        1:   38:    printf("\nRulare reusita!\n");
+call    0 returned 1
+        1:   39:}
+        -:   40:
+        -:   41:/*
+        -:   42: * Afiseaza meniul pentru adaugarea unei noi oferte si solicita utilizatorului sa introduca datele.
+        -:   43: * Parametri:
+        -:   44: *   - v: lista de oferte in care se adauga oferta (List*)
+        -:   45: */
+function uiAdd called 0 returned 0% blocks executed 0%
+    #####:   46:void uiAdd(List *v)
+        -:   47:{
+    #####:   48:    printf("Adauga oferta : tip, destinatie, data plecarii, pret\n");
+    %%%%%:   48-block  0
+call    0 never executed
+        -:   49:    char tip[30], destinatie[30], data_plecarii[30];
+        -:   50:    float pret;
+    #####:   51:    printf("Introduceti tip : \n");
+call    0 never executed
+    #####:   52:    scanf("%s", tip);
+call    0 never executed
+    #####:   53:    printf("Introduceti destinatie : \n");
+call    0 never executed
+    #####:   54:    scanf("%s", destinatie);
+call    0 never executed
+    #####:   55:    printf("Introduceti data plecarii : \n");
+call    0 never executed
+    #####:   56:    scanf("%s", data_plecarii);
+call    0 never executed
+    #####:   57:    printf("Introduceti pret : \n");
+call    0 never executed
+    #####:   58:    scanf("%f", &pret);
+call    0 never executed
+    #####:   59:    int ok = adaugaOferta(v,tip,destinatie,data_plecarii,pret);
+call    0 never executed
+    #####:   60:    if (ok)
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:   61:        printf("Oferta adaugata cu succes! \n");
+    %%%%%:   61-block  0
+call    0 never executed
+        -:   62:    else
+    #####:   63:        printf("Oferta nu este valida! \n");
+    %%%%%:   63-block  0
+call    0 never executed
+    #####:   64:}
+        -:   65:
+        -:   66:/*
+        -:   67: * Afiseaza meniul pentru modificarea unei oferte si solicita utilizatorului sa introduca noile date.
+        -:   68: * Parametri:
+        -:   69: *   - v: lista de oferte in care se modifica oferta (List*)
+        -:   70: */
+function uiModify called 0 returned 0% blocks executed 0%
+    #####:   71:void uiModify(List *v) //de modificat
+        -:   72:{
+    #####:   73:    printf("Modifica oferta : tip, destinatie, data plecarii si introduceti noul pret\n");
+    %%%%%:   73-block  0
+call    0 never executed
+        -:   74:    char tip[30], destinatie[30], data_plecarii[30];
+        -:   75:    float pret;
+    #####:   76:    printf("Introduceti tip : \n");
+call    0 never executed
+    #####:   77:    scanf("%s", tip);
+call    0 never executed
+    #####:   78:    printf("Introduceti destinatie : \n");
+call    0 never executed
+    #####:   79:    scanf("%s", destinatie);
+call    0 never executed
+    #####:   80:    printf("Introduceti data plecarii : \n");
+call    0 never executed
+    #####:   81:    scanf("%s", data_plecarii);
+call    0 never executed
+    #####:   82:    printf("Introduceti noul pret : \n");
+call    0 never executed
+    #####:   83:    scanf("%f", &pret);
+call    0 never executed
+    #####:   84:    int ok = modificaOferta(v,tip,destinatie,data_plecarii,pret);
+call    0 never executed
+    #####:   85:    if (ok)
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:   86:        printf("Oferta modificata cu succes! \n");
+    %%%%%:   86-block  0
+call    0 never executed
+        -:   87:    else
+    #####:   88:        printf("Oferta nu este valida! \n");
+    %%%%%:   88-block  0
+call    0 never executed
+    #####:   89:}
+        -:   90:
+        -:   91:/*
+        -:   92: * Afiseaza meniul pentru stergerea unei oferte si solicita utilizatorului sa introduca datele ofertei de sters.
+        -:   93: * Parametri:
+        -:   94: *   - v: lista de oferte din care se sterge oferta (List*)
+        -:   95: */
+function uiDelete called 0 returned 0% blocks executed 0%
+    #####:   96:void uiDelete(List *v)
+        -:   97:{
+    #####:   98:    printf("Sterge oferta : tip, destinatie, data plecarii\n");
+    %%%%%:   98-block  0
+call    0 never executed
+        -:   99:    char tip[30], destinatie[30], data_plecarii[30];
+    #####:  100:    printf("Introduceti tip : \n");
+call    0 never executed
+    #####:  101:    scanf("%s", tip);
+call    0 never executed
+    #####:  102:    printf("Introduceti destinatie : \n");
+call    0 never executed
+    #####:  103:    scanf("%s", destinatie);
+call    0 never executed
+    #####:  104:    printf("Introduceti data plecarii : \n");
+call    0 never executed
+    #####:  105:    scanf("%s", data_plecarii);
+call    0 never executed
+    #####:  106:    int ok = stergeOferta(v,tip,destinatie,data_plecarii);
+call    0 never executed
+    #####:  107:    if (ok)
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  108:        printf("Oferta stearsa cu succes! \n");
+    %%%%%:  108-block  0
+call    0 never executed
+        -:  109:    else
+    #####:  110:        printf("Oferta nu este valida! \n");
+    %%%%%:  110-block  0
+call    0 never executed
+    #####:  111:}
+        -:  112:
+        -:  113:/*
+        -:  114: * Afiseaza meniul pentru sortarea ofertelor.
+        -:  115: * Parametri:
+        -:  116: *   - v: lista de oferte care urmeaza sa fie sortata (List*)
+        -:  117: */
+function uiSort called 0 returned 0% blocks executed 0%
+    #####:  118:void uiSort(List *v)
+        -:  119:{
+    #####:  120:    printf("Sort");
+    %%%%%:  120-block  0
+call    0 never executed
+    #####:  121:}
+        -:  122:
+        -:  123:/*
+        -:  124: * Afiseaza meniul pentru filtrarea ofertelor si solicita utilizatorului sa introduca criteriile de filtrare.
+        -:  125: * Parametri:
+        -:  126: *   - v: lista de oferte care urmeaza sa fie filtrata (List*)
+        -:  127: */
+function uiFilter called 0 returned 0% blocks executed 0%
+    #####:  128:void uiFilter(List *v)
+        -:  129:{
+    #####:  130:    printf("Filter");
+    %%%%%:  130-block  0
+call    0 never executed
+    #####:  131:}
+        -:  132:
+        -:  133:/*
+        -:  134: * Afiseaza toate ofertele din lista.
+        -:  135: * Parametri:
+        -:  136: *   - v: lista de oferte care urmeaza sa fie afisata (List*)
+        -:  137: */
+function getAll called 0 returned 0% blocks executed 0%
+    #####:  138:void getAll(List *v)
+        -:  139:{
+    #####:  140:    for (int i = 0; i < size(v); i++)
+    %%%%%:  140-block  0
+    %%%%%:  140-block  1
+call    0 never executed
+branch  1 never executed
+branch  2 never executed (fallthrough)
+        -:  141:    {
+    #####:  142:        oferta o = get(v,i);
+    %%%%%:  142-block  0
+call    0 never executed
+    #####:  143:        printf("Tip: %s | Destinatie: %s | Data plecarii: %s | Pret: %f\n",o.tip,o.destinatie,o.data_plecarii,o.pret);
+call    0 never executed
+        -:  144:    }
+    #####:  145:    printf("\n");
+    %%%%%:  145-block  0
+call    0 never executed
+    #####:  146:}
+        -:  147:
+        -:  148:/*
+        -:  149: * Afiseaza meniul principal al aplicatiei.
+        -:  150: */
+function menu called 0 returned 0% blocks executed 0%
+    #####:  151:void menu()
+        -:  152:{
+    #####:  153:    printf("1. Adaugarea de noi oferte.\n");
+    %%%%%:  153-block  0
+call    0 never executed
+    #####:  154:    printf("2. Actualizare oferte.\n");
+call    0 never executed
+    #####:  155:    printf("3. Stergere oferta.\n");
+call    0 never executed
+    #####:  156:    printf("4. Vizualizare oferete ordonat dupa pret, destinatie (crescator/descrescator).\n");
+call    0 never executed
+    #####:  157:    printf("5. Vizualizare oferta filtrate dupa un criteriu (destinatie, tip, pret).\n");
+call    0 never executed
+    #####:  158:    printf("6. Iesire aplicatie\n");
+call    0 never executed
+    #####:  159:    printf("7. Afisare elemente\n");
+call    0 never executed
+    #####:  160:}
+        -:  161:
+        -:  162:/*
+        -:  163: * Porneste executia aplicatiei.
+        -:  164: */
+function run called 0 returned 0% blocks executed 0%
+    #####:  165:void run()
+        -:  166:{
+    #####:  167:    List v = createEmpty();
+    %%%%%:  167-block  0
+call    0 never executed
+        -:  168:    int option, ok;
+    #####:  169:    ok = 1;
+    #####:  170:    printf("\nBine ati venit in aplicatie!\n");
+call    0 never executed
+    #####:  171:    while(ok)
+    %%%%%:  171-block  0
+branch  0 never executed
+branch  1 never executed (fallthrough)
+        -:  172:    {
+    #####:  173:        menu();
+    %%%%%:  173-block  0
+call    0 never executed
+    #####:  174:        printf("Alegeti optiunea: \n");
+call    0 never executed
+    #####:  175:        scanf("%d", &option);
+call    0 never executed
+    #####:  176:        switch(option){
+branch  0 never executed
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+branch  4 never executed
+branch  5 never executed
+branch  6 never executed
+branch  7 never executed
+    #####:  177:            case 1:
+    #####:  178:                uiAdd(&v);
+    %%%%%:  178-block  0
+call    0 never executed
+    #####:  179:                break;
+    #####:  180:            case 2:
+    #####:  181:                uiModify(&v);
+    %%%%%:  181-block  0
+call    0 never executed
+    #####:  182:                break;
+    #####:  183:            case 3:
+    #####:  184:                uiDelete(&v);
+    %%%%%:  184-block  0
+call    0 never executed
+    #####:  185:                break;
+    #####:  186:            case 4:
+    #####:  187:                uiSort(&v);
+    %%%%%:  187-block  0
+call    0 never executed
+    #####:  188:                break;
+    #####:  189:            case 5:
+    #####:  190:                uiFilter(&v);
+    %%%%%:  190-block  0
+call    0 never executed
+    #####:  191:                break;
+    #####:  192:            case 6:
+    #####:  193:                printf("Iesire aplicatie...");
+    %%%%%:  193-block  0
+call    0 never executed
+    #####:  194:                ok = 0;
+    #####:  195:                break;
+    #####:  196:            case 7:
+    #####:  197:                getAll(&v);
+    %%%%%:  197-block  0
+call    0 never executed
+    #####:  198:                break;
+    #####:  199:            default:
+    #####:  200:                printf("Comanda gresita!\n");
+    %%%%%:  200-block  0
+call    0 never executed
+    #####:  201:                break;
+        -:  202:        }
+        -:  203:    }
+    #####:  204:}

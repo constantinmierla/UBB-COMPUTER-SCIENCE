@@ -1,0 +1,125 @@
+        -:    0:Source:D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 2/repository.c
+        -:    0:Graph:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 2\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\repository.c.gcno
+        -:    0:Data:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 2\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\repository.c.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Costi on 11-Mar-24.
+        -:    3://
+        -:    4:
+        -:    5:#include "repository.h"
+        -:    6:
+        -:    7:/*
+        -:    8: * Creeaza o lista vida.
+        -:    9: *
+        -:   10: * Returneaza:
+        -:   11: *   List - o lista vida
+        -:   12: */
+function createEmpty called 8 returned 100% blocks executed 100%
+        8:   13:List createEmpty()
+        -:   14:{
+        -:   15:    List v;
+        8:   16:    v.length = 0;
+        8:   17:    return v;
+        8:   17-block  0
+        -:   18:}
+        -:   19:
+        -:   20:/*
+        -:   21: * Distruge o lista.
+        -:   22: *
+        -:   23: * Parametri:
+        -:   24: *   - v: adresa listei de distrus (List*)
+        -:   25: */
+function destroy called 2 returned 100% blocks executed 100%
+        2:   26:void destroy(List* v)
+        -:   27:{
+        2:   28:    v->length = 0;
+        2:   29:}
+        -:   30:
+        -:   31:/*
+        -:   32: * Adauga un element la sfarsitul listei.
+        -:   33: *
+        -:   34: * Parametri:
+        -:   35: *   - v: lista in care se adauga elementul (List*)
+        -:   36: *   - el: elementul de adaugat (ElemType)
+        -:   37: */
+function add called 13 returned 100% blocks executed 100%
+       13:   38:void add(List *v, ElemType el)
+        -:   39:{
+       13:   40:    v->elements[v->length] = el;
+       13:   41:    v->length++;
+       13:   42:}
+        -:   43:
+        -:   44:/*
+        -:   45: * Adauga un element la o pozitie specificata in lista.
+        -:   46: *
+        -:   47: * Parametri:
+        -:   48: *   - v: lista in care se adauga elementul (List*)
+        -:   49: *   - el: elementul de adaugat (ElemType)
+        -:   50: *   - poz: pozitia la care se adauga elementul (int)
+        -:   51: */
+function addOferta called 1 returned 100% blocks executed 100%
+        1:   52:void addOferta(List *v, ElemType el, int poz)
+        -:   53:{
+        1:   54:    v->elements[poz] = el;
+        1:   55:}
+        -:   56:
+        -:   57:/*
+        -:   58: * Sterge un element din lista de pe o pozitie specificata.
+        -:   59: *
+        -:   60: * Parametri:
+        -:   61: *   - v: lista din care se sterge elementul (List*)
+        -:   62: *   - poz: pozitia de unde se sterge elementul (int)
+        -:   63: *
+        -:   64: * Returneaza:
+        -:   65: *   ElemType - elementul sters
+        -:   66: */
+function sterge called 3 returned 100% blocks executed 100%
+        3:   67:ElemType sterge(List *v, int poz)
+        -:   68:{
+        3:   69:    ElemType el = v->elements[poz];
+        4:   70:    for (int i = poz; i < v-> length - 1; i++)
+        3:   70-block  0
+        4:   70-block  1
+branch  0 taken 1
+branch  1 taken 3 (fallthrough)
+        -:   71:    {
+        1:   72:        v->elements[i] = v->elements[i+1];
+        1:   72-block  0
+        -:   73:    }
+        3:   74:    v->length--;
+        3:   75:    return el;
+        3:   75-block  0
+        -:   76:}
+        -:   77:
+        -:   78:/*
+        -:   79: * Returneaza elementul de pe o anumita pozitie din lista.
+        -:   80: *
+        -:   81: * Parametri:
+        -:   82: *   - v: lista din care se extrage elementul (List*)
+        -:   83: *   - poz: pozitia de unde se extrage elementul (int)
+        -:   84: *
+        -:   85: * Returneaza:
+        -:   86: *   ElemType - elementul de pe pozitia data
+        -:   87: */
+function get called 21 returned 100% blocks executed 100%
+       21:   88:ElemType get(List *v, int poz)
+        -:   89:{
+       21:   90:    return v->elements[poz];
+       21:   90-block  0
+        -:   91:}
+        -:   92:
+        -:   93:/*
+        -:   94: * Returneaza numarul de elemente din lista.
+        -:   95: *
+        -:   96: * Parametri:
+        -:   97: *   - v: lista pentru care se calculeaza dimensiunea (List*)
+        -:   98: *
+        -:   99: * Returneaza:
+        -:  100: *   int - numarul de elemente din lista
+        -:  101: */
+function size called 12 returned 100% blocks executed 100%
+       12:  102:int size(List *v)
+        -:  103:{
+       12:  104:    return v->length;
+       12:  104-block  0
+        -:  105:}

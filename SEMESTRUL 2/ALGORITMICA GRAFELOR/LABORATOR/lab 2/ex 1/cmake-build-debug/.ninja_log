@@ -1,0 +1,11 @@
+# ninja log v5
+0	463	7321225186224284	CMakeFiles/ex_1.dir/main.cpp.obj	a1bfecf1dd0d1b9b
+466	597	7321225187503291	ex_1.exe	fbeed1ee069d8a2
+3	541	7321225915273122	CMakeFiles/ex_1.dir/main.cpp.obj	a1bfecf1dd0d1b9b
+542	673	7321225916544405	ex_1.exe	fbeed1ee069d8a2
+4	433	7321226277988920	CMakeFiles/ex_1.dir/main.cpp.obj	a1bfecf1dd0d1b9b
+434	533	7321226278942270	ex_1.exe	fbeed1ee069d8a2
+4	458	7321226578496007	CMakeFiles/ex_1.dir/main.cpp.obj	a1bfecf1dd0d1b9b
+458	561	7321226579489074	ex_1.exe	fbeed1ee069d8a2
+4	546	7321254605367795	CMakeFiles/ex_1.dir/main.cpp.obj	a1bfecf1dd0d1b9b
+547	684	7321254606698970	ex_1.exe	fbeed1ee069d8a2

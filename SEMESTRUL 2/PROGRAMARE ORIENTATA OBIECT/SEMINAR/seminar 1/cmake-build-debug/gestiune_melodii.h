@@ -1,0 +1,8 @@
+//
+// Created by Costi on 06-Mar-24.
+//
+
+#ifndef SEMINAR_1_GESTIUNE_MELODII_H
+#define SEMINAR_1_GESTIUNE_MELODII_H
+
+#endif //SEMINAR_1_GESTIUNE_MELODII_H
