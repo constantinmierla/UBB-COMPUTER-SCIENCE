@@ -6,3 +6,10 @@
 8	132	7319829847076349	CMakeFiles/lab_2.dir/repository.c.obj	772bfe51a25de8a1
 7	193	7319832256145687	CMakeFiles/lab_2.dir/ui.c.obj	9334dbbe38064767
 4	120	7319832721083681	CMakeFiles/lab_2.dir/tests.c.obj	f0174fbd083fde58
+7	232	7325430972625760	CMakeFiles/lab_2.dir/domain.c.obj	1a4685ac2cf8d5f
+17	244	7325430973617703	CMakeFiles/lab_2.dir/repository.c.obj	a3905622094faff8
+12	247	7325430973637717	CMakeFiles/lab_2.dir/ui.c.obj	be1f9468fa89a908
+24	248	7325430973637717	CMakeFiles/lab_2.dir/service.c.obj	8bcb2c4a2760e692
+28	277	7325430973977714	CMakeFiles/lab_2.dir/tests.c.obj	5a137738092fd3
+2	285	7325430974057706	CMakeFiles/lab_2.dir/main.c.obj	661fc41b21e8ee21
+286	409	7325430975263037	lab_2.exe	a102183e4c8d7b04

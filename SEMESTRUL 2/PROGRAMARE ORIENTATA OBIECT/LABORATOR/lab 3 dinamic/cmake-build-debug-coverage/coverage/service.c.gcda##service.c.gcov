@@ -133,26 +133,117 @@ call    0 returned 1
         1:   83:    return 1;
         -:   84:}
         -:   85:
-        -:   86:/*List filtruOferta(List *v, int criteriu, char *nume)// de vazut cum filtrez eu
+function filtruOfertaDestinatie called 0 returned 0% blocks executed 0%
+    #####:   86:List filtruOfertaDestinatie(List *v, char *criteriu)
         -:   87:{
-        -:   88:    List listaFiltrata = createEmpty();
-        -:   89:    for (int i = 0; i < size(v); i++) {
-        -:   90:        oferta o = get(v, i);
-        -:   91:        if (criteriu == 1 && o.destinatie == *nume)
-        -:   92:            add(&listaFiltrata, creeazaOferta(o.tip, o.destinatie, o.data_plecarii, o.pret));
-        -:   93:        else {
-        -:   94:            if (criteriu == 2 && o.tip == *nume)
-        -:   95:                add(&listaFiltrata, creeazaOferta(o.tip, o.destinatie, o.data_plecarii, o.pret));
-        -:   96:            else {
-        -:   97:                if (criteriu == 3 && o.pret == *nume) //aici nu-i ok probabil refac separat
-        -:   98:                    add(&listaFiltrata, creeazaOferta(o.tip, o.destinatie, o.data_plecarii, o.pret));
-        -:   99:            }
-        -:  100:        }
-        -:  101:    }
-        -:  102:    return listaFiltrata;
-        -:  103:}
-        -:  104:
-        -:  105:List sortOfertaPret()
-        -:  106:{
-        -:  107:
-        -:  108:}*/
+    #####:   88:    List listaFiltrata = createEmpty();
+    %%%%%:   88-block  0
+call    0 never executed
+    #####:   89:    for(int i = 0; i < size(v); i++)
+    %%%%%:   89-block  0
+    %%%%%:   89-block  1
+call    0 never executed
+branch  1 never executed
+branch  2 never executed (fallthrough)
+        -:   90:    {
+    #####:   91:        oferta o = get(v,i);
+    %%%%%:   91-block  0
+call    0 never executed
+    #####:   92:        if (strcmp(o.destinatie, criteriu) == 0)
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:   93:            add(&listaFiltrata, creeazaOferta(o.tip,o.destinatie,o.data_plecarii,o.pret));
+    %%%%%:   93-block  0
+call    0 never executed
+call    1 never executed
+        -:   94:
+        -:   95:    }
+    #####:   96:    return listaFiltrata;
+    %%%%%:   96-block  0
+        -:   97:}
+function filtruOfertaTip called 0 returned 0% blocks executed 0%
+    #####:   98:List filtruOfertaTip(List *v, char *criteriu)
+        -:   99:{
+    #####:  100:    List listaFiltrata = createEmpty();
+    %%%%%:  100-block  0
+call    0 never executed
+    #####:  101:    for (int i = 0; i < size(v); i++)
+    %%%%%:  101-block  0
+    %%%%%:  101-block  1
+call    0 never executed
+branch  1 never executed
+branch  2 never executed (fallthrough)
+        -:  102:    {
+    #####:  103:        oferta o = get(v,i);
+    %%%%%:  103-block  0
+call    0 never executed
+    #####:  104:        if(strcmp(o.tip, criteriu) == 0)
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  105:            add(&listaFiltrata, creeazaOferta(o.tip,o.destinatie,o.data_plecarii,o.pret));
+    %%%%%:  105-block  0
+call    0 never executed
+call    1 never executed
+        -:  106:    }
+    #####:  107:}
+        -:  108:
+function filtruOfertaPret called 0 returned 0% blocks executed 0%
+    #####:  109:List filtruOfertaPret(List *v, float criteriu)
+        -:  110:{
+    #####:  111:    List listaFiltrata = createEmpty();
+    %%%%%:  111-block  0
+call    0 never executed
+    #####:  112:    for (int i = 0; i < size(v); i++)
+    %%%%%:  112-block  0
+    %%%%%:  112-block  1
+call    0 never executed
+branch  1 never executed
+branch  2 never executed (fallthrough)
+        -:  113:    {
+    #####:  114:        oferta o = get(v,i);
+    %%%%%:  114-block  0
+call    0 never executed
+    #####:  115:        if(o.pret < criteriu)
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  116:            add(&listaFiltrata, creeazaOferta(o.tip,o.destinatie,o.data_plecarii,o.pret));
+    %%%%%:  116-block  0
+call    0 never executed
+call    1 never executed
+        -:  117:    }
+    #####:  118:}
+        -:  119:
+        -:  120:/*
+        -:  121: *         for i in range(1, len(lista)):
+        -:  122:            element = lista[i]
+        -:  123:            ind = i
+        -:  124:
+        -:  125:            while ind > 0 and element < lista[ind - 1]:
+        -:  126:                lista[ind] = lista[ind - 1]
+        -:  127:                ind = ind - 1
+        -:  128:
+        -:  129:            lista[ind] = element
+        -:  130: */
+function sortOfertaPretCrescator called 0 returned 0% blocks executed 0%
+    #####:  131:List sortOfertaPretCrescator(List *v)
+        -:  132:{
+    #####:  133:    List listaSortata = createEmpty();
+    %%%%%:  133-block  0
+call    0 never executed
+    #####:  134:    List listaN = createEmpty();
+call    0 never executed
+    #####:  135:    for(int i = 0; i < size(v); i++)
+    %%%%%:  135-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed (fallthrough)
+        -:  136:    {
+    #####:  137:        oferta o = get(v,i);
+    %%%%%:  137-block  0
+call    0 never executed
+        -:  138:        /*for(int j = 0; j < size(v); i++)
+        -:  139:        {
+        -:  140:
+        -:  141:        }*/
+        -:  142:    }
+    #####:  143:}
