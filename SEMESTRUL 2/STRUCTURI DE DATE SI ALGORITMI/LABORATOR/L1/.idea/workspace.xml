@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader"><![CDATA[{
+  "useNewFormat": true
+}]]></component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="L1" targetName="L1" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7f525669-a928-4004-81f2-d8c3d0151ee3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 2/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 2/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 2/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 2/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 3/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 3/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 3/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 3/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 3/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 3/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 1/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 1/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 1/cmake-build-debug/graf.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 1/cmake-build-debug/graf.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 1/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 1/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 2/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 2/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 2/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 2/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 2/cmake-build-debug/CMakeFiles/ex_2.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 2/cmake-build-debug/CMakeFiles/ex_2.dir/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 2/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 2/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 2/cmake-build-debug/ex_2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 2/cmake-build-debug/ex_2.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 2/cmake-build-debug/graf.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 2/cmake-build-debug/graf.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 2/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 2/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 4/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 4/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 5/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 5/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 5/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 5/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 5/cmake-build-debug/CMakeFiles/ex_5.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 5/cmake-build-debug/CMakeFiles/ex_5.dir/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 5/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 5/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 5/cmake-build-debug/ex_5.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ALGORITMICA GRAFELOR/LABORATOR/lab 2/ex 5/cmake-build-debug/ex_5.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 1/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 1/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 2/cmake-build-debug-coverage/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 2/cmake-build-debug-coverage/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Arbore binar/Teste/TestExtins.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Arbore binar/Teste/TestExtins.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Arbore binar/Teste/TestScurt.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Arbore binar/Teste/TestScurt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Arbore binar/interfata.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Coada cu Prioritati/Proiect C++/App.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Coada cu Prioritati/Proiect C++/CP.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Coada cu Prioritati/Proiect C++/CP.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Coada cu Prioritati/Teste/TestExtins.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Coada cu Prioritati/Teste/TestExtins.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Coada cu Prioritati/Teste/TestScurt.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Coada cu Prioritati/Teste/TestScurt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Coada cu Prioritati/interfata.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Coada/Proiect C++/App.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Coada/Proiect C++/Coada.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Coada/Proiect C++/Coada.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Coada/Teste/TestExtins.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Coada/Teste/TestExtins.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Coada/Teste/TestScurt.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Coada/Teste/TestScurt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Coada/interfata.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/Proiect C++/Colectie (cu rel)/App.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/Proiect C++/Colectie (cu rel)/Colectie.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/Proiect C++/Colectie (cu rel)/Colectie.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/Proiect C++/Colectie (cu rel)/IteratorColectie.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/Proiect C++/Colectie (cu rel)/IteratorColectie.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/Proiect C++/Colectie/App.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/Proiect C++/Colectie/Colectie.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/Proiect C++/Colectie/Colectie.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/Proiect C++/Colectie/IteratorColectie.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/Proiect C++/Colectie/IteratorColectie.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/Teste (cu relatie)/TestExtins.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/Teste (cu relatie)/TestExtins.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/Teste (cu relatie)/TestScurt.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/Teste (cu relatie)/TestScurt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/Teste/TestExtins.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/Teste/TestExtins.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/Teste/TestScurt.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/Teste/TestScurt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/interfata cu relatie.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Colectie/interfata.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar Ordonat/Proiect C++/App.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar Ordonat/Proiect C++/DO.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar Ordonat/Proiect C++/DO.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar Ordonat/Proiect C++/Iterator.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar Ordonat/Proiect C++/Iterator.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar Ordonat/Teste/TestExtins.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar Ordonat/Teste/TestExtins.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar Ordonat/Teste/TestScurt.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar Ordonat/Teste/TestScurt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar Ordonat/interfata.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar/Proiect C++/App.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar/Proiect C++/Dictionar.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar/Proiect C++/Dictionar.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar/Proiect C++/IteratorDictionar.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar/Proiect C++/IteratorDictionar.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar/Teste/TestExtins.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar/Teste/TestExtins.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar/Teste/TestScurt.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar/Teste/TestScurt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Dictionar/interfata.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Iterator/Proiect C++ (Container si Iterator)/App.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Iterator/Proiect C++ (Container si Iterator)/Container.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Iterator/Proiect C++ (Container si Iterator)/Container.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Iterator/Proiect C++ (Container si Iterator)/IteratorContainer.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Iterator/Proiect C++ (Container si Iterator)/IteratorContainer.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Iterator/interfata.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie indice (indexata)/Proiect C++/App.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie indice (indexata)/Proiect C++/Iterator.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie indice (indexata)/Proiect C++/Iterator.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie indice (indexata)/Proiect C++/LO.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie indice (indexata)/Proiect C++/LO.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie indice (indexata)/Teste/TestExtins.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie indice (indexata)/Teste/TestExtins.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie indice (indexata)/Teste/TestScurt.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie indice (indexata)/Teste/TestScurt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie indice (indexata)/interfata.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie iterator/Proiect C++/App.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie iterator/Proiect C++/Iterator.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie iterator/Proiect C++/Iterator.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie iterator/Proiect C++/LO.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie iterator/Proiect C++/LO.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie iterator/Teste/TestExtins.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie iterator/Teste/TestExtins.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie iterator/Teste/TestScurt.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie iterator/Teste/TestScurt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista Ordonata/Lista Ordonata - cu pozitie iterator/interfata.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie indice (indexata)/Proiect C++/App.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie indice (indexata)/Proiect C++/IteratorLI.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie indice (indexata)/Proiect C++/IteratorLI.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie indice (indexata)/Proiect C++/LI.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie indice (indexata)/Proiect C++/LI.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie indice (indexata)/Teste/TestExtins.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie indice (indexata)/Teste/TestExtins.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie indice (indexata)/Teste/TestScurt.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie indice (indexata)/Teste/TestScurt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie indice (indexata)/interfata.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie iterator/Proiect C++/App.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie iterator/Proiect C++/IteratorLP.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie iterator/Proiect C++/IteratorLP.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie iterator/Proiect C++/Lista.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie iterator/Proiect C++/Lista.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie iterator/Teste/TestExtins.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie iterator/Teste/TestExtins.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie iterator/Teste/TestScurt.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie iterator/Teste/TestScurt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Lista/TAD Lista cu pozitie iterator/interfata.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Matrice/Proiect C++/App.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Matrice/Proiect C++/Matrice.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Matrice/Proiect C++/Matrice.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Matrice/Teste/TestExtins.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Matrice/Teste/TestExtins.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Matrice/Teste/TestScurt.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Matrice/Teste/TestScurt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Matrice/interfata.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar Ordonat/Proiect C++/App.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar Ordonat/Proiect C++/IteratorMDO.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar Ordonat/Proiect C++/IteratorMDO.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar Ordonat/Proiect C++/MDO.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar Ordonat/Proiect C++/MDO.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar Ordonat/Teste/TestExtins.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar Ordonat/Teste/TestExtins.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar Ordonat/Teste/TestScurt.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar Ordonat/Teste/TestScurt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar Ordonat/interfata.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar/Proiect C++/App.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar/Proiect C++/IteratorMD.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar/Proiect C++/IteratorMD.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar/Proiect C++/MD.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar/Proiect C++/MD.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar/Teste/TestExtins.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar/Teste/TestExtins.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar/Teste/TestScurt.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar/Teste/TestScurt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD MultiDictionar/interfata.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/.idea/TAD Multime.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/Proiect C++/Multime/App.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/Proiect C++/Multime/IteratorMultime.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/Proiect C++/Multime/IteratorMultime.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/Proiect C++/Multime/Multime.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/Proiect C++/Multime/Multime.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/Teste/TestExtins.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/Teste/TestExtins.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/Teste/TestScurt.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/Teste/TestScurt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/.cmake/api/v1/query/cache-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/.cmake/api/v1/query/cmakeFiles-v1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/.cmake/api/v1/query/codemodel-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/.cmake/api/v1/query/toolchains-v1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/.cmake/api/v1/reply/cache-v2-f1eccf735d6e0d5d9b23.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-da41f4550c6817066346.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-867460f3ab6a711e365c.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/.cmake/api/v1/reply/directory-.-Debug-d0094a50bb2071803777.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/.cmake/api/v1/reply/index-2024-02-28T11-41-54-0517.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/.cmake/api/v1/reply/target-TAD_Multime-Debug-e24ba760d43a5137baaa.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-3cb7ac949bd4d029da2a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/.ninja_deps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/.ninja_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeCache.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/3.26.4/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/3.26.4/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/3.26.4/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/3.26.4/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/3.26.4/CMakeRCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/3.26.4/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/3.26.4/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/3.26.4/CompilerIdC/a.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/3.26.4/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/3.26.4/CompilerIdCXX/a.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/TAD_Multime.dir/Proiect_C++/Multime/App.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/TAD_Multime.dir/Proiect_C++/Multime/IteratorMultime.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/TAD_Multime.dir/Proiect_C++/Multime/Multime.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/TAD_Multime.dir/Teste/TestExtins.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/TAD_Multime.dir/Teste/TestScurt.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/cmake.check_cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/TAD_Multime.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/build.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/cmake-build-debug/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/interfata (cu relatie).txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Multime/interfata.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Stiva/Proiect C++/App.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Stiva/Proiect C++/Stiva.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Stiva/Proiect C++/Stiva.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Stiva/interfata.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Vector Dinamic/Proiect C++/App.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Vector Dinamic/Proiect C++/IteratorVectorDinamic.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Vector Dinamic/Proiect C++/IteratorVectorDinamic.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Vector Dinamic/Proiect C++/VectorDinamic.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Vector Dinamic/Proiect C++/VectorDinamic.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Vector Dinamic/Teste/TestExtins.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Vector Dinamic/Teste/TestExtins.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Vector Dinamic/Teste/TestScurt.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Vector Dinamic/Teste/TestScurt.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfete TAD (proiecte C++) si teste/TAD Vector Dinamic/interfata.txt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2023" />
+    <option name="minorVersion" value="2.3" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2dp3uFXxiLfBwsHsQnxoAsYjeU0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="L1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="L1" TARGET_NAME="L1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="L1" RUN_TARGET_NAME="L1">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7f525669-a928-4004-81f2-d8c3d0151ee3" name="Changes" comment="" />
+      <created>1710691412712</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1710691412712</updated>
+      <workItem from="1710691414625" duration="459000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

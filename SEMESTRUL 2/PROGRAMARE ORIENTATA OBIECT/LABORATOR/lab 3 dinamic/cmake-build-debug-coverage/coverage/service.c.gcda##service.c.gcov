@@ -1,0 +1,158 @@
+        -:    0:Source:D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 3 dinamic/service.c
+        -:    0:Graph:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 3 dinamic\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\service.c.gcno
+        -:    0:Data:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 3 dinamic\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\service.c.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Costi on 11-Mar-24.
+        -:    3://
+        -:    4:
+        -:    5:#include "service.h"
+        -:    6:#include <string.h>
+        -:    7:
+        -:    8:/*
+        -:    9: * Adauga o noua oferta in lista de oferte.
+        -:   10: *
+        -:   11: * Parametri:
+        -:   12: *   - v: lista de oferte in care se adauga oferta (List*)
+        -:   13: *   - tip: tipul ofertei (char*)
+        -:   14: *   - destinatie: destinatia ofertei (char*)
+        -:   15: *   - data_plecarii: data plecarii (char*)
+        -:   16: *   - pret: pretul ofertei (float)
+        -:   17: *
+        -:   18: * Returneaza:
+        -:   19: *   int - 1 daca oferta a fost adaugata cu succes, altfel 0
+        -:   20: */
+function adaugaOferta called 5 returned 100% blocks executed 100%
+        5:   21:int adaugaOferta(List *v, char *tip, char *destinatie, char *data_plecarii, float pret)
+        -:   22:{
+        5:   23:    oferta o = creeazaOferta(tip, destinatie, data_plecarii, pret);
+        5:   23-block  0
+call    0 returned 5
+        5:   24:    if(valideazaOferta(o) == 0)
+call    0 returned 5
+branch  1 taken 1 (fallthrough)
+branch  2 taken 4
+        1:   25:        return 0;
+        1:   25-block  0
+        -:   26:
+        4:   27:    add(v, o);
+        4:   27-block  0
+call    0 returned 4
+        4:   28:    return 1;
+        -:   29:}
+        -:   30:
+        -:   31:/*
+        -:   32: * Sterge o oferta din lista de oferte.
+        -:   33: *
+        -:   34: * Parametri:
+        -:   35: *   - v: lista de oferte din care se sterge oferta (List*)
+        -:   36: *   - tip: tipul ofertei de sters (char*)
+        -:   37: *   - destinatie: destinatia ofertei de sters (char*)
+        -:   38: *   - data_plecarii: data plecarii a ofertei de sters (char*)
+        -:   39: *
+        -:   40: * Returneaza:
+        -:   41: *   int - 1 daca oferta a fost stearsa cu succes, altfel 0
+        -:   42: */
+function stergeOferta called 4 returned 100% blocks executed 100%
+        4:   43:int stergeOferta(List *v, char *tip, char *destinatie, char *data_plecarii)
+        -:   44:{
+        -:   45:    int poz;
+        5:   46:    for (int i = 0; i < size(v); i++)
+        4:   46-block  0
+        1:   46-block  1
+        5:   46-block  2
+call    0 returned 5
+branch  1 taken 3
+branch  2 taken 2 (fallthrough)
+        -:   47:    {
+        3:   48:        if (strcmp(get(v,i).tip, tip) == 0 && strcmp(get(v,i).destinatie, destinatie) == 0
+        3:   48-block  0
+call    0 returned 3
+branch  1 taken 2 (fallthrough)
+branch  2 taken 1
+        2:   48-block  1
+call    3 returned 2
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0
+        2:   49:        && strcmp(get(v,i).data_plecarii, data_plecarii) == 0)
+        2:   49-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0
+        -:   50:        {
+        2:   51:            poz = i;
+        2:   52:            oferta o = sterge(v, poz);
+        2:   52-block  0
+call    0 returned 2
+        2:   53:            destroy(&o);
+call    0 returned 2
+        2:   54:            return 1;
+        -:   55:        }
+        -:   56:    }
+        2:   57:    return 0;
+        2:   57-block  0
+        -:   58:}
+        -:   59:
+        -:   60:/*
+        -:   61: * Modifica pretul unei oferte din lista de oferte.
+        -:   62: *
+        -:   63: * Parametri:
+        -:   64: *   - v: lista de oferte in care se modifica pretul (List*)
+        -:   65: *   - tip: tipul ofertei de modificat (char*)
+        -:   66: *   - destinatie: destinatia ofertei de modificat (char*)
+        -:   67: *   - data_plecarii: data plecarii a ofertei de modificat (char*)
+        -:   68: *   - pret_nou: noul pret pentru oferta (float)
+        -:   69: *
+        -:   70: * Returneaza:
+        -:   71: *   int - 1 daca oferta a fost modificata cu succes, altfel 0
+        -:   72: */
+function modificaOferta called 3 returned 100% blocks executed 100%
+        3:   73:int modificaOferta(List *v, char *tip, char *destinatie, char *data_plecarii, float pret_nou)
+        -:   74:{
+        3:   75:    oferta o = creeazaOferta(tip, destinatie, data_plecarii, pret_nou);
+        3:   75-block  0
+call    0 returned 3
+        3:   76:    if (valideazaOferta(o) == 0)
+call    0 returned 3
+branch  1 taken 1 (fallthrough)
+branch  2 taken 2
+        1:   77:        return 0;
+        1:   77-block  0
+        2:   78:    int sters = stergeOferta(v,tip,destinatie,data_plecarii);
+        2:   78-block  0
+call    0 returned 2
+        2:   79:    if (sters == 0)
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:   80:        return 0;
+        1:   80-block  0
+        -:   81:    else
+        1:   82:        adaugaOferta(v,tip,destinatie,data_plecarii,pret_nou);
+        1:   82-block  0
+call    0 returned 1
+        1:   83:    return 1;
+        -:   84:}
+        -:   85:
+        -:   86:/*List filtruOferta(List *v, int criteriu, char *nume)// de vazut cum filtrez eu
+        -:   87:{
+        -:   88:    List listaFiltrata = createEmpty();
+        -:   89:    for (int i = 0; i < size(v); i++) {
+        -:   90:        oferta o = get(v, i);
+        -:   91:        if (criteriu == 1 && o.destinatie == *nume)
+        -:   92:            add(&listaFiltrata, creeazaOferta(o.tip, o.destinatie, o.data_plecarii, o.pret));
+        -:   93:        else {
+        -:   94:            if (criteriu == 2 && o.tip == *nume)
+        -:   95:                add(&listaFiltrata, creeazaOferta(o.tip, o.destinatie, o.data_plecarii, o.pret));
+        -:   96:            else {
+        -:   97:                if (criteriu == 3 && o.pret == *nume) //aici nu-i ok probabil refac separat
+        -:   98:                    add(&listaFiltrata, creeazaOferta(o.tip, o.destinatie, o.data_plecarii, o.pret));
+        -:   99:            }
+        -:  100:        }
+        -:  101:    }
+        -:  102:    return listaFiltrata;
+        -:  103:}
+        -:  104:
+        -:  105:List sortOfertaPret()
+        -:  106:{
+        -:  107:
+        -:  108:}*/
