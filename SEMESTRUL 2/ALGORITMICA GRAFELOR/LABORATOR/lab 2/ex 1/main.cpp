@@ -1,3 +1,12 @@
+/*
+ * 1. Implementați algoritmul lui Moore pentru un graf orientat neponderat
+ * (algoritm bazat pe Breath-first search, vezi cursul 2).
+ * Datele sunt citete din fisierul graf.txt.
+ * Primul rând din graf.txt conține numărul vârfurilor,
+ * iar următoarele rânduri conțin muchiile grafului.
+ * Programul trebuie să afiseze lanțul cel mai scurt dintr-un vârf
+ * (vârful sursa poate fi citit de la tastatura).
+ */
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -29,8 +38,10 @@ int main()
     {
         mat[x][y] = 1;
     }
-    cout<<"Introduceti varful sursa:  ";
+    in.close();
+    cout<<"Introduceti varful sursa:\n";
     cin >> vf;
+    cout << '\n';
     dfs(vf,0,n,mini);
 
     cout << vf << " ";
