@@ -1,6 +1,0 @@
-# ninja log v5
-12	78	7319553123538227	CMakeFiles/lab_2.dir/repository.c.obj	cf05c673bc1bd8f9
-8	118	7319553124007000	CMakeFiles/lab_2.dir/domain.c.obj	e4b180ea94444bdb
-4	119	7319553124007000	CMakeFiles/lab_2.dir/main.c.obj	6e28b8a2782eb91e
-17	125	7319553124007000	CMakeFiles/lab_2.dir/service.c.obj	3c5a75a09731610f
-125	664	7319553128850747	lab_2.exe	4ddec59fc0962530

@@ -1,3 +1,5 @@
 # ninja log v5
 0	678	7321247048768489	CMakeFiles/ex_5.dir/main.cpp.obj	865ff89b6ff4be8c
 680	809	7321247050036839	ex_5.exe	7a93ab67fbd18dd
+3	444	7321256962523535	CMakeFiles/ex_5.dir/main.cpp.obj	865ff89b6ff4be8c
+444	554	7321256963585009	ex_5.exe	7a93ab67fbd18dd
