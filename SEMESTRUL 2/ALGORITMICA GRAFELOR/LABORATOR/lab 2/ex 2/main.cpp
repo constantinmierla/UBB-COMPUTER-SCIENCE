@@ -8,43 +8,76 @@
  */
 #include <iostream>
 #include <fstream>
+
 using namespace std;
+
 ifstream in("graf.txt");
+
+int mat[50][50], n, m, i, j, z, x, y;
+
+void inchide() {
+    for(z = 1; z <= n; z++)
+    {
+        for(i = 1; i<=n; i++)
+        {
+            for(j = 1; j<=n; j++)
+            {
+                if(mat[i][j] == 0)
+                {
+                    if (mat[i][z] != 0)
+                    {
+                        if (mat[z][j] != 0)
+                        {
+                            mat[i][j] = 1;
+                        }
+                        else
+                        {
+                            mat[i][j] = 0;
+                        }
+                    }
+                    else
+                    {
+                        mat[i][j] = 0;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+void afis()
+{
+    for(i = 1; i <= n; i++) {
+        for(j = 1; j <= n; j++) {
+            cout << mat[i][j] << " ";
+        }
+        cout << '\n';
+    }
+}
 
 int main()
 {
-    int n,m,mat[102][102] = {0}, x, y,i,j, c[1002] = {0},first,last, d[102][102] = {0};
+    //e graful din inchidere_tranzitiva.png doar ca numar de la 1 la 6
+    in >> n >> m;
 
-    in>> n;
-    while (in >> x >> y)
+    //am adaugat si arcele corespunzatoare din matricea de adiacenta (1,1) (2,2)... (6,6)
+    for(i = 1; i <= n; i++)
+        mat[i][i] = 1;
+
+    //acum pun arcele
+    for(i = 1; i <= m; i++) {
+        in >> x >> y;
         mat[x][y] = 1;
+    }
     in.close();
-    for(i = 1; i <= n; i++)
-    {
-        first = 0;
-        c[0] = i;
-        last = 1;
 
-        while(last > first)
-        {
-            for(j = 1; j <= n; j++)
-            {
-                if(mat[c[first]][j]!=0)
-                {
-                    c[last] = j;
-                    last++;
-                }
-            }
-            first++;
-            if(first != last)
-                d[i][c[last]] = 1;
-        }
-    }
-    for(i = 1; i <= n; i++)
-    {
-        for(j = 1; j <= n; j++)
-            cout << d[i][j]<< " ";
-        cout << '\n';
-    }
+    cout<<"Matricea de adiacenta mat grafului orientat:\n";
+    afis();
+
+    cout<<"\nMatricea inchiderii tranzitive:\n";
+    inchide();
+    afis();
+
     return 0;
 }
