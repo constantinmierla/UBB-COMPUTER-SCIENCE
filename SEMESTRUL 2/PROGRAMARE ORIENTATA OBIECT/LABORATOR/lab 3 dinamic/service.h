@@ -5,7 +5,10 @@
 #define LAB_2_SERVICE_H
 #include "domain.h"
 #include "repository.h"
-#endif //LAB_2_SERVICE_H
+#include <stdlib.h>
+
+
+
 
 /*
  * Adauga o noua oferta in lista de oferte.
@@ -20,8 +23,9 @@
  * Returneaza:
  *   int - 1 daca oferta a fost adaugata cu succes, altfel 0
  */
-int adaugaOferta(List *v, char *tip, char *destinatie, char *data_plecarii, float pret);
+int adaugaOferta(List* v, char *tip, char *destinatie, char *data_plecarii, float pret);
 
+//int findOferta(OfertaStore* store, int id);
 /*
  * Sterge o oferta din lista de oferte.
  *
@@ -58,3 +62,15 @@ List filtruOfertaTip(List *v, char *criteriu);
 List filtruOfertaPret(List *v, float criteriu);
 
 List sortOfertaPretCrescator(List *v);
+
+List sortOfertaPretDescrescator(List *v);
+
+List sortOfertaDestinatieCrescator(List *v);
+
+List sortOfertaDestinatieDescrescator(List *v);
+
+int cmpPret(oferta* o1, oferta* o2);
+
+int cmpDest(oferta* o1, oferta* o2);
+
+#endif //LAB_2_SERVICE_H

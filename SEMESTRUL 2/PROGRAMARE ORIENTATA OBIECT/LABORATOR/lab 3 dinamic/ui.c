@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "ui.h"
 #include "tests.h"
+#include <stdlib.h>
 
 //Ruleaza toate testele definite pentru functionalitatile aplicatiei.
 void testAll()
@@ -117,7 +118,37 @@ void uiDelete(List *v)
  */
 void uiSort(List *v)
 {
-    printf("Sort");
+    printf("alegeti sortarea : destinatie, pret: ");
+    char crit[20],t[20];
+    scanf("%s", t);
+    if (strcmp(t, "pret")==0)
+    {
+        printf("crescator sau descrescator : ");
+        scanf("%s",crit);
+        if(strcmp(crit,"crescator") == 0) {
+            List filt = sortOfertaPretCrescator(v);
+            getAll(&filt);
+        }
+        else
+        {
+            List filt = sortOfertaPretDescrescator(v);
+            getAll(&filt);
+        }
+    }
+    else if (strcmp(t, "destinatie") == 0)
+    {
+        printf("crescator sau descrescator : ");
+        scanf("%s",crit);
+        if(strcmp(crit,"crescator") == 0) {
+            List filt = sortOfertaDestinatieCrescator(v);
+            getAll(&filt);
+        }
+        else
+        {
+            List filt = sortOfertaDestinatieDescrescator(v);
+            getAll(&filt);
+        }
+    }
 }
 
 /*
@@ -127,7 +158,33 @@ void uiSort(List *v)
  */
 void uiFilter(List *v)
 {
-    printf("Filter");
+    printf("alegeti filtrarea : destinatie, tip, pret: ");
+    char t[13], crit[20];
+    float pret;
+    scanf("%s", t);
+    if (strcmp(t, "destinatie")==0)
+    {
+        printf("introduceti destinatia : ");
+        scanf("%s",crit);
+        List filt = filtruOfertaDestinatie(v,crit);
+        getAll(&filt);
+    }
+    else if (strcmp(t, "tip") == 0)
+    {
+        printf("introduceti tipul : ");
+        scanf("%s",crit);
+        List filt = filtruOfertaTip(v,crit);
+        getAll(&filt);
+    }
+    else if (strcmp(t, "pret") == 0)
+    {
+        printf("introduceti pretul : ");
+        scanf("%f",&pret);
+        List filt = filtruOfertaPret(v,pret);
+        getAll(&filt);
+    }
+    else
+        printf("Nu exista aceasta filtrare!");
 }
 
 /*
@@ -191,6 +248,7 @@ void run()
                 break;
             case 6:
                 printf("Iesire aplicatie...");
+                destroy(&v);
                 ok = 0;
                 break;
             case 7:

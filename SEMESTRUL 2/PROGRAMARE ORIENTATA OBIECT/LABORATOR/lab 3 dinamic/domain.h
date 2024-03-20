@@ -4,12 +4,14 @@
 
 #ifndef LAB_2_DOMAIN_H
 #define LAB_2_DOMAIN_H
+#include <stdlib.h>
 
 typedef struct{
-    char tip[20];
-    char destinatie[50];
-    char data_plecarii[20];
+    char *tip;
+    char *destinatie;
+    char *data_plecarii;
     float pret;
+    int destroyed;
 } oferta;
 
 /*
@@ -24,7 +26,7 @@ typedef struct{
  * Returneaza:
  *   oferta - o structura reprezentand o oferta cu specificatiile date
  */
-oferta creeazaOferta(char *tip, char *destinatie, char *data_plecarii, float pret);
+oferta creeazaOferta(char* tip, char* destinatie, char* data_plecarii, float pret);
 
 /*
  * Valideaza o oferta.
@@ -43,6 +45,7 @@ int valideazaOferta(oferta o);
  * Parametri:
  *   - o: oferta de distrus (oferta*)
  */
-void distrugeOferta(oferta *o);
+void distrugeOferta(oferta* o);
 
+oferta copyOferta(oferta* o);
 #endif //LAB_2_DOMAIN_H

@@ -4,6 +4,8 @@
 
 #include "service.h"
 #include <string.h>
+#include "sort.h"
+#include <stdlib.h>
 
 /*
  * Adauga o noua oferta in lista de oferte.
@@ -21,9 +23,13 @@
 int adaugaOferta(List *v, char *tip, char *destinatie, char *data_plecarii, float pret)
 {
     oferta o = creeazaOferta(tip, destinatie, data_plecarii, pret);
-    if(valideazaOferta(o) == 0)
-        return 0;
+    if(valideazaOferta(o) == 0) {
+        free(o.tip);
+        free(o.destinatie);
+        free(o.data_plecarii);
 
+        return 0;
+    }
     add(v, o);
     return 1;
 }
@@ -42,15 +48,14 @@ int adaugaOferta(List *v, char *tip, char *destinatie, char *data_plecarii, floa
  */
 int stergeOferta(List *v, char *tip, char *destinatie, char *data_plecarii)
 {
-    int poz;
     for (int i = 0; i < size(v); i++)
     {
         if (strcmp(get(v,i).tip, tip) == 0 && strcmp(get(v,i).destinatie, destinatie) == 0
         && strcmp(get(v,i).data_plecarii, data_plecarii) == 0)
         {
-            poz = i;
-            oferta o = sterge(v, poz);
-            destroy(&o);
+            //oferta o = sterge(v, i);
+            sterge(v,i);
+            //destroy(&o); //de vazut
             return 1;
         }
     }
@@ -75,12 +80,20 @@ int modificaOferta(List *v, char *tip, char *destinatie, char *data_plecarii, fl
     oferta o = creeazaOferta(tip, destinatie, data_plecarii, pret_nou);
     if (valideazaOferta(o) == 0)
         return 0;
-    int sters = stergeOferta(v,tip,destinatie,data_plecarii);
+    /*int sters = stergeOferta(v,tip,destinatie,data_plecarii);
     if (sters == 0)
         return 0;
     else
         adaugaOferta(v,tip,destinatie,data_plecarii,pret_nou);
-    return 1;
+    return 1;*/
+    for (int i = 0; i < size(v); i++) {
+        if (strcmp(get(v, i).tip, tip) == 0 && strcmp(get(v, i).destinatie, destinatie) == 0
+            && strcmp(get(v, i).data_plecarii, data_plecarii) == 0) {
+            setElem(v, i, o);
+            return 1;
+        }
+    }
+    return 0;
 }
 
 List filtruOfertaDestinatie(List *v, char *criteriu)
@@ -104,6 +117,7 @@ List filtruOfertaTip(List *v, char *criteriu)
         if(strcmp(o.tip, criteriu) == 0)
             add(&listaFiltrata, creeazaOferta(o.tip,o.destinatie,o.data_plecarii,o.pret));
     }
+    return listaFiltrata;
 }
 
 List filtruOfertaPret(List *v, float criteriu)
@@ -112,9 +126,10 @@ List filtruOfertaPret(List *v, float criteriu)
     for (int i = 0; i < size(v); i++)
     {
         oferta o = get(v,i);
-        if(o.pret < criteriu)
+        if(o.pret <= criteriu)
             add(&listaFiltrata, creeazaOferta(o.tip,o.destinatie,o.data_plecarii,o.pret));
     }
+    return listaFiltrata;
 }
 
 /*
@@ -128,16 +143,62 @@ List filtruOfertaPret(List *v, float criteriu)
 
             lista[ind] = element
  */
+
+
+int cmpPret(oferta* o1, oferta* o2) {
+    return o1->pret > o2->pret;
+}
+int cmpDest(oferta* o1, oferta* o2) {
+    return strcmp(o1->destinatie, o2->destinatie);
+}
+
 List sortOfertaPretCrescator(List *v)
 {
-    List listaSortata = createEmpty();
-    List listaN = createEmpty();
+    List l = createEmpty(); // Alocăm o listă nouă pentru a sorta ofertele
+    // Copiem lista originală în lista nouă
     for(int i = 0; i < size(v); i++)
     {
-        oferta o = get(v,i);
-        /*for(int j = 0; j < size(v); i++)
-        {
-
-        }*/
+        ElemType el = get(v, i); // Accesăm elementul din lista originală
+        add(&l, el); // Adăugăm elementul în lista nouă
     }
+    funcSortC(&l,cmpPret);
+    return l;
+}
+
+List sortOfertaPretDescrescator(List *v)
+{
+    List l = createEmpty(); // Alocăm o listă nouă pentru a sorta ofertele
+    // Copiem lista originală în lista nouă
+    for(int i = 0; i < size(v); i++)
+    {
+        ElemType el = get(v, i); // Accesăm elementul din lista originală
+        add(&l, el); // Adăugăm elementul în lista nouă
+    }
+    funcSortD(&l,cmpPret);
+    return l;
+}
+
+List sortOfertaDestinatieCrescator(List *v){
+    List l = createEmpty(); // Alocăm o listă nouă pentru a sorta ofertele
+    // Copiem lista originală în lista nouă
+    for(int i = 0; i < size(v); i++)
+    {
+        ElemType el = get(v, i); // Accesăm elementul din lista originală
+        add(&l, el); // Adăugăm elementul în lista nouă
+    }
+    funcSortC(&l,cmpDest);
+    return l;
+}
+
+List sortOfertaDestinatieDescrescator(List *v)
+{
+    List l = createEmpty(); // Alocăm o listă nouă pentru a sorta ofertele
+    // Copiem lista originală în lista nouă
+    for(int i = 0; i < size(v); i++)
+    {
+        ElemType el = get(v, i); // Accesăm elementul din lista originală
+        add(&l, el); // Adăugăm elementul în lista nouă
+    }
+    funcSortD(&l,cmpDest);
+    return l;
 }

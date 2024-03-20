@@ -14,4 +14,7 @@ add_executable(lab_2 main.c
         ui.h
         ui.h
         tests.c
-        tests.h)
+        tests.h
+        sort.c
+        sort.h
+        sort.h)

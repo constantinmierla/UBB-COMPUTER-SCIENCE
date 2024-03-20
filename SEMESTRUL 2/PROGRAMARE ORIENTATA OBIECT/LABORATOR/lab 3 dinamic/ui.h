@@ -7,6 +7,7 @@
 #endif //LAB_2_UI_H
 
 #include "service.h"
+#include <stdlib.h>
 
 //Ruleaza toate testele definite pentru functionalitatile aplicatiei.
 void testAll();

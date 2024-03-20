@@ -4,7 +4,7 @@
 
 #include "domain.h"
 #include <string.h>
-
+#include <stdlib.h>
 /*
  * Creeaza o oferta noua.
  *
@@ -19,14 +19,75 @@
  */
 oferta creeazaOferta(char *tip, char *destinatie, char *data_plecarii, float pret)
 {
+    // Allocate memory for oferta struct
     oferta o;
+
+    // Allocate memory for tip string and copy value
+    o.tip = malloc(strlen(tip) + 1);
+    if (o.tip == NULL) {
+        // Handle memory allocation failure
+        exit(EXIT_FAILURE);
+    }
     strcpy(o.tip, tip);
+
+    // Allocate memory for destinatie string and copy value
+    o.destinatie = malloc(strlen(destinatie) + 1);
+    if (o.destinatie == NULL) {
+        // Handle memory allocation failure
+        exit(EXIT_FAILURE);
+    }
     strcpy(o.destinatie, destinatie);
+
+    // Allocate memory for data_plecarii string and copy value
+    o.data_plecarii = malloc(strlen(data_plecarii) + 1);
+    if (o.data_plecarii == NULL) {
+        // Handle memory allocation failure
+        exit(EXIT_FAILURE);
+    }
     strcpy(o.data_plecarii, data_plecarii);
+
     o.pret = pret;
 
     return o;
 }
+
+/*oferta creeazaOferta(char *tip, char *destinatie, char *data_plecarii, float pret)
+{
+    oferta o;
+
+    // Allocate memory for the tip field
+    o.tip = (char*)malloc(strlen(tip) + 1);
+    if (o.tip == NULL) {
+        // Handle memory allocation failure
+        return o;  // Return an offer with uninitialized fields
+    }
+    strcpy(o.tip, tip);
+
+    // Allocate memory for the destinatie field
+    o.destinatie = (char*)malloc(strlen(destinatie) + 1);
+    if (o.destinatie == NULL) {
+        // Handle memory allocation failure
+        free(o.tip);  // Free previously allocated memory
+        o.tip = NULL;
+        return o;  // Return an offer with uninitialized fields
+    }
+    strcpy(o.destinatie, destinatie);
+
+    // Allocate memory for the data_plecarii field
+    o.data_plecarii = (char*)malloc(strlen(data_plecarii) + 1);
+    if (o.data_plecarii == NULL) {
+        // Handle memory allocation failure
+        free(o.tip);          // Free previously allocated memory
+        free(o.destinatie);   // Free previously allocated memory
+        o.tip = NULL;
+        o.destinatie = NULL;
+        return o;  // Return an offer with uninitialized fields
+    }
+    strcpy(o.data_plecarii, data_plecarii);
+
+    o.pret = pret;
+    return o;
+}*/
 
 /*
  * Valideaza o oferta.
@@ -42,9 +103,7 @@ int valideazaOferta(oferta o)
     /*
      * validator pentru oferta
      */
-    char tipp[50];
-    strcpy(tipp, o.tip);
-    if ((strcmp(tipp,"munte") != 0) && (strcmp(tipp , "mare") != 0) && (strcmp(tipp, "city break") != 0))
+    if ((strcmp(o.tip,"munte") != 0) && (strcmp(o.tip , "mare") != 0) && (strcmp(o.tip, "city break") != 0))
         return 0;
     if (strlen(o.destinatie) == 0)
         return 0;
@@ -64,8 +123,21 @@ int valideazaOferta(oferta o)
  */
 void distrugeOferta(oferta *o)
 {
-    o -> tip[0] = '\0';
-    o -> destinatie[0] = '\0';
-    o -> data_plecarii[0] = '\0';
-    o -> pret = -1;
+    if (o!= NULL)
+    {
+        if(!o->destroyed)
+        {
+            free(o->tip);
+            free(o->destinatie);
+            free(o->data_plecarii);
+            o->destroyed = 1;
+            free(o);
+        }
+    }
+
+}
+
+oferta copyOferta(oferta* o)
+{
+    return creeazaOferta(o->tip, o->destinatie, o->data_plecarii, o->pret);
 }

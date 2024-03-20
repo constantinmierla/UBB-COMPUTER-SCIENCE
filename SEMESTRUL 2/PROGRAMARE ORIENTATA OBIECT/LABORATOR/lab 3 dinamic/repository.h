@@ -4,12 +4,14 @@
 #ifndef LAB_2_REPOSITORY_H
 #define LAB_2_REPOSITORY_H
 #include "domain.h"
+#include <stdlib.h>
 
 typedef oferta ElemType;
 
 typedef struct {
-    ElemType elements[100];
+    oferta* elements;
     int length;
+    int capacity;
 }List;
 
 /*
@@ -35,6 +37,7 @@ void destroy(List* v);
  *   - v: lista in care se adauga elementul (List*)
  *   - el: elementul de adaugat (ElemType)
  */
+void ensureCapacity(List* v);//de comentat
 void add(List *v, ElemType);
 
 /*
@@ -82,4 +85,7 @@ ElemType get(List *v, int poz);
  */
 int size(List *v);
 
+ElemType setElem(List* v, int poz, oferta o);
+
+List copyList(List* v);
 #endif //LAB_2_REPOSITORY_H
