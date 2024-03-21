@@ -1,91 +1,46 @@
-//
-// Created by Costi on 11-Mar-24.
-//
+//#pragma once
 #ifndef LAB_2_REPOSITORY_H
 #define LAB_2_REPOSITORY_H
 #include "domain.h"
-#include <stdlib.h>
+/*Creeaza o entitate*/
+typedef void* Entitate;
 
-typedef oferta ElemType;
 
 typedef struct {
-    oferta* elements;
-    int length;
-    int capacity;
-}List;
+    Entitate* oferte;
+    int dimensiune;
+    int capacitate;
 
-/*
- * Creeaza o lista vida.
- *
- * Returneaza:
- *   List - o lista vida
- */
-List createEmpty();
+}Offerte;
 
-/*
- * Distruge o lista.
- *
- * Parametri:
- *   - v: adresa listei de distrus (List*)
- */
-void destroy(List* v);
+/*Adauga o oferta noua.*/
+void addEntitate(Offerte*, Entitate);
 
-/*
- * Adauga un element la sfarsitul listei.
- *
- * Parametri:
- *   - v: lista in care se adauga elementul (List*)
- *   - el: elementul de adaugat (ElemType)
- */
-void ensureCapacity(List* v);//de comentat
-void add(List *v, ElemType);
+/* Sterge o entitate cu id-ul dat */
+int deleteEntitate(Offerte*, int);
 
-/*
- * Adauga un element la o pozitie specificata in lista.
- *
- * Parametri:
- *   - v: lista in care se adauga elementul (List*)
- *   - el: elementul de adaugat (ElemType)
- *   - poz: pozitia la care se adauga elementul (int)
- */
-void addOferta(List *v, ElemType el, int poz);
+/*Dubleaza capacitatea vectorului*/
+void asiguraCapacitate(Offerte*);
 
-/*
- * Sterge un element din lista de pe o pozitie specificata.
- *
- * Parametri:
- *   - v: lista din care se sterge elementul (List*)
- *   - poz: pozitia de unde se sterge elementul (int)
- *
- * Returneaza:
- *   ElemType - elementul sters
- */
-ElemType sterge(List *v, int poz);
+/* Creeaza o Oferta noua */
+Offerte* creeazaOfferte();
 
-/*
- * Returneaza elementul de pe o anumita pozitie din lista.
- *
- * Parametri:
- *   - v: lista din care se extrage elementul (List*)
- *   - poz: pozitia de unde se extrage elementul (int)
- *
- * Returneaza:
- *   ElemType - elementul de pe pozitia data
- */
-ElemType get(List *v, int poz);
+/* Sterge Oferta */
+void destroyOfferte(Offerte*);
 
-/*
- * Returneaza numarul de elemente din lista.
- *
- * Parametri:
- *   - v: lista pentru care se calculeaza dimensiunea (List*)
- *
- * Returneaza:
- *   int - numarul de elemente din lista
- */
-int size(List *v);
+/* Modifica oferta */
+int updateOferta(Offerte*, Oferta*);
 
-ElemType setElem(List* v, int poz, oferta o);
+/* Returneaza entitatea de pe o pozitie data */
+Entitate get(Offerte*, int);
 
-List copyList(List* v);
-#endif //LAB_2_REPOSITORY_H
+/* Pune pe o pozitie data Entitatea data.*/
+Entitate set(Offerte*, int, Entitate);
+
+/*Cauta o oferta cu un id dat*/
+int cauta(Offerte*, int);
+
+/*Creeaza o copie la oferta data*/
+Offerte* copy(Offerte*);
+
+#endif

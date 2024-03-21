@@ -1,0 +1,225 @@
+        -:    0:Source:D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 3 dinamic/repository.c
+        -:    0:Graph:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 3 dinamic\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\repository.c.gcno
+        -:    0:Data:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 3 dinamic\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\repository.c.gcda
+        -:    0:Runs:1
+        -:    1:#include "repository.h"
+        -:    2:#include <stdlib.h>
+        -:    3:#include <stdio.h>
+        -:    4:
+        -:    5:/*Adauga o oferta noua.*/
+function addEntitate called 54 returned 100% blocks executed 100%
+       54:    6:void addEntitate(Offerte* f, Entitate e)
+        -:    7:{
+       54:    8:    if (f->dimensiune < f->capacitate)
+       54:    8-block  0
+branch  0 taken 42 (fallthrough)
+branch  1 taken 12
+        -:    9:    {
+       42:   10:        f->oferte[f->dimensiune] = e;
+       42:   11:        f->dimensiune += 1;
+       42:   11-block  0
+        -:   12:    }
+        -:   13:    else
+        -:   14:    {
+       12:   15:        asiguraCapacitate(f);
+       12:   15-block  0
+call    0 returned 12
+       12:   16:        addEntitate(f, e);
+call    0 returned 12
+        -:   17:    }
+        -:   18:
+       54:   19:}
+        -:   20:
+        -:   21:/*Functie care mareste capacitatea.*/
+function asiguraCapacitate called 12 returned 100% blocks executed 100%
+       12:   22:void asiguraCapacitate(Offerte* f)
+        -:   23:{
+        -:   24:
+       12:   25:    Entitate* capacitateNoua = malloc(sizeof(Entitate)*(f->capacitate * 2));
+        -:   26:    //copiaza elementele
+       40:   27:    for (int i = 0; i < f->dimensiune; i++)
+       12:   27-block  0
+       40:   27-block  1
+branch  0 taken 28
+branch  1 taken 12 (fallthrough)
+       28:   28:        capacitateNoua[i] = f->oferte[i];
+       28:   28-block  0
+        -:   29:
+        -:   30:    //dealoca memoria
+       12:   31:    free(f->oferte);
+       12:   32:    f->oferte = capacitateNoua;
+       12:   33:    f->capacitate *= 2;
+        -:   34:
+       12:   35:}
+        -:   36:
+        -:   37:/*Sterge o oferta*/
+function deleteEntitate called 5 returned 100% blocks executed 100%
+        5:   38:int deleteEntitate(Offerte* f, int id)
+        -:   39:{
+        5:   40:    int i = 0;
+        5:   41:    int ok = 1;
+       22:   42:    while(i<f->dimensiune)
+        5:   42-block  0
+       22:   42-block  1
+branch  0 taken 17
+branch  1 taken 5 (fallthrough)
+        -:   43:    {
+       17:   44:        Oferta* p = get(f, i);
+       17:   44-block  0
+call    0 returned 17
+       17:   45:        if (p->id == id)
+branch  0 taken 5 (fallthrough)
+branch  1 taken 12
+        -:   46:        {
+        5:   47:            destroyOferta(p);
+        5:   47-block  0
+call    0 returned 5
+       17:   48:            for (int j = i; j < f->dimensiune - 1; j++)
+       17:   48-block  0
+branch  0 taken 12
+branch  1 taken 5 (fallthrough)
+       12:   49:                f->oferte[j] = f->oferte[j + 1];
+       12:   49-block  0
+        5:   50:            f->dimensiune -= 1;
+        5:   51:            ok = 0;
+        5:   51-block  0
+        -:   52:        }
+        -:   53:
+       17:   54:        i++;
+       17:   54-block  0
+        -:   55:    }
+        -:   56:
+        5:   57:    return ok;
+        5:   57-block  0
+        -:   58:}
+        -:   59:
+        -:   60:
+        -:   61:/*Functie care creeaza o entitate noua si returneaza pointerul la entitatea respectiva.*/
+function creeazaOfferte called 13 returned 100% blocks executed 100%
+       13:   62:Offerte* creeazaOfferte()
+        -:   63:{
+        -:   64:
+       13:   65:    Offerte* f = malloc(sizeof(Offerte));
+       13:   66:    f->dimensiune = 0;
+       13:   67:    f->capacitate = 2;
+       13:   68:    f->oferte = malloc(sizeof(Entitate) * f->capacitate);
+        -:   69:
+       13:   70:    return f;
+       13:   70-block  0
+        -:   71:}
+        -:   72:
+        -:   73:/*Primeste un pointer la entitate si dealoca memoria ocupata de entitate.*/
+function destroyOfferte called 14 returned 100% blocks executed 100%
+       14:   74:void destroyOfferte(Offerte* f)
+        -:   75:{
+       61:   76:    for (int i = 0; i < f->dimensiune; i++)
+       14:   76-block  0
+       61:   76-block  1
+branch  0 taken 47
+branch  1 taken 14 (fallthrough)
+       47:   77:        destroyOferta(f->oferte[i]);
+       47:   77-block  0
+call    0 returned 47
+        -:   78:
+       14:   79:    free(f->oferte);
+       14:   80:    free(f);
+        -:   81:
+       14:   82:}
+        -:   83:/*Functie care face update
+        -:   84: Primeste un pointer cu caracteristicile actualizate, distruge
+        -:   85: vechi si il pune pe cel actualizat.
+        -:   86:*/
+function updateOferta called 1 returned 100% blocks executed 100%
+        1:   87:int updateOferta(Offerte* f, Oferta* m)
+        -:   88:{
+        1:   89:    int ok = -1;
+        2:   90:    for (int i=0; i < f->dimensiune; i++)
+        1:   90-block  0
+        1:   90-block  1
+        2:   90-block  2
+branch  0 taken 1
+branch  1 taken 1 (fallthrough)
+        -:   91:    {
+        1:   92:        Oferta* p = get(f, i);
+        1:   92-block  0
+call    0 returned 1
+        1:   93:        if (p->id == m->id)
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        -:   94:        {
+        1:   95:            destroyOferta(set(f,i,m));
+        1:   95-block  0
+call    0 returned 1
+call    1 returned 1
+        1:   96:            ok = 0;
+        -:   97:        }
+        -:   98:    }
+        1:   99:    return ok;
+        1:   99-block  0
+        -:  100:}
+        -:  101:/*Functie care primeste un int -id- si returneaza pozitia pe care se afla elementul sau -1 in caz contrar*/
+function cauta called 4 returned 100% blocks executed 100%
+        4:  102:int cauta(Offerte* f, int id)
+        -:  103:{
+        -:  104:
+        9:  105:    for (int i = 0; i < f->dimensiune; i++)
+        4:  105-block  0
+        5:  105-block  1
+        9:  105-block  2
+branch  0 taken 7
+branch  1 taken 2 (fallthrough)
+        -:  106:    {
+        7:  107:        Oferta* p = get(f, i);
+        7:  107-block  0
+call    0 returned 7
+        7:  108:        if (p->id == id)
+branch  0 taken 2 (fallthrough)
+branch  1 taken 5
+        2:  109:            return i;
+        2:  109-block  0
+        -:  110:
+        -:  111:    }
+        2:  112:    return -1;
+        2:  112-block  0
+        -:  113:}
+        -:  114:
+        -:  115:
+        -:  116:/*Functie care returneaza elementul de pe o pozitie data*/
+function get called 38 returned 100% blocks executed 100%
+       38:  117:Entitate get(Offerte* f, int i)
+        -:  118:{
+       38:  119:    return f->oferte[i];
+       38:  119-block  0
+        -:  120:}
+        -:  121:
+        -:  122:/*Functie care pune pe o pozitie data o entitate data si returneaza fostul element de pe pozitia data.*/
+function set called 1 returned 100% blocks executed 100%
+        1:  123:Entitate set(Offerte* f, int poz, Entitate e)
+        -:  124:{
+        -:  125:
+        1:  126:    Entitate rez = f->oferte[poz];
+        1:  127:    f->oferte[poz] = e;
+        1:  128:    return rez;
+        1:  128-block  0
+        -:  129:}
+        -:  130:
+        -:  131://Functie copy
+function copy called 2 returned 100% blocks executed 100%
+        2:  132:Offerte* copy(Offerte* p)
+        -:  133:{
+        2:  134:    Offerte* f = malloc(sizeof(Offerte));
+        2:  135:    f->dimensiune = p->dimensiune;
+        2:  136:    f->capacitate = p->capacitate;
+        2:  137:    f->oferte = malloc(sizeof (Oferta)*p->dimensiune);
+       12:  138:    for(int i=0; i< p->dimensiune;i++)
+        2:  138-block  0
+       12:  138-block  1
+branch  0 taken 10
+branch  1 taken 2 (fallthrough)
+       10:  139:        f->oferte[i] = copyOferta(p->oferte[i]);
+       10:  139-block  0
+call    0 returned 10
+        -:  140:
+        2:  141:    return f;
+        2:  141-block  0
+        -:  142:}

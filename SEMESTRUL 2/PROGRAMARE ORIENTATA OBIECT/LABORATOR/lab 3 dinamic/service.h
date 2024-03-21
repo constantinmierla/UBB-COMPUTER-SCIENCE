@@ -1,76 +1,62 @@
-//
-// Created by Costi on 11-Mar-24.
-//
-#ifndef LAB_2_SERVICE_H
-#define LAB_2_SERVICE_H
+
+#ifndef OOP_LAB2_4_SERVICE_H
+#define OOP_LAB2_4_SERVICE_H
+//#pragma once
 #include "domain.h"
 #include "repository.h"
-#include <stdlib.h>
 
 
 
 
-/*
- * Adauga o noua oferta in lista de oferte.
- *
- * Parametri:
- *   - v: lista de oferte in care se adauga oferta (List*)
- *   - tip: tipul ofertei (char*)
- *   - destinatie: destinatia ofertei (char*)
- *   - data_plecarii: data plecarii (char*)
- *   - pret: pretul ofertei (float)
- *
- * Returneaza:
- *   int - 1 daca oferta a fost adaugata cu succes, altfel 0
- */
-int adaugaOferta(List* v, char *tip, char *destinatie, char *data_plecarii, float pret);
-
-//int findOferta(OfertaStore* store, int id);
-/*
- * Sterge o oferta din lista de oferte.
- *
- * Parametri:
- *   - v: lista de oferte din care se sterge oferta (List*)
- *   - tip: tipul ofertei de sters (char*)
- *   - destinatie: destinatia ofertei de sters (char*)
- *   - data_plecarii: data plecarii a ofertei de sters (char*)
- *
- * Returneaza:
- *   int - 1 daca oferta a fost stearsa cu succes, altfel 0
- */
-int stergeOferta(List *v, char *tip, char *destinatie, char *data_plecarii);
+typedef struct{
+    Offerte* lista;
+} BigList;
 
 /*
- * Modifica pretul unei oferte din lista de oferte.
- *
- * Parametri:
- *   - v: lista de oferte in care se modifica pretul (List*)
- *   - tip: tipul ofertei de modificat (char*)
- *   - destinatie: destinatia ofertei de modificat (char*)
- *   - data_plecarii: data plecarii a ofertei de modificat (char*)
- *   - pret_nou: noul pret pentru oferta (float)
- *
- * Returneaza:
- *   int - 1 daca oferta a fost modificata cu succes, altfel 0
- */
-int modificaOferta(List *v, char *tip, char *destinatie, char *data_plecarii, float pret_nou);
+	Functie care creaza o lista ce contine o lista de oferte
+*/
+BigList createBigList();
 
-List filtruOfertaDestinatie(List *v, char *criteriu);
+/*Functie care dealoca lista ce contine lista de oferte*/
+void destroyBigList(BigList* );
 
-List filtruOfertaTip(List *v, char *criteriu);
+/*Functie care adauga o entitate*/
+int addEnt(BigList* list, char*, char*, char*, int, int);
 
-List filtruOfertaPret(List *v, float criteriu);
+/*Functie care sterge o entitate*/
+int deleteEnt(BigList* list,int );
 
-List sortOfertaPretCrescator(List *v);
+/*Functie care face update la o oferta*/
+int updateEnt(BigList* , char*, char*, char*, int, int);
 
-List sortOfertaPretDescrescator(List *v);
+/*Cauta un id in lista*/
+int checkId(BigList* list,int);
 
-List sortOfertaDestinatieCrescator(List *v);
 
-List sortOfertaDestinatieDescrescator(List *v);
+/*Distruge tot*/
+void destroyAll(BigList* list);
 
-int cmpPret(oferta* o1, oferta* o2);
+int cmpPret(Oferta* m1, Oferta* m2);
 
-int cmpDest(oferta* o1, oferta* o2);
+int cmpPretD(Oferta* m1, Oferta* m2);
 
-#endif //LAB_2_SERVICE_H
+int cmpDestinatie(Oferta* m1, Oferta* m2);
+
+int cmpDestinatieD(Oferta* m1, Oferta* m2);
+/*Sorteaza ofertele dupa pret.*/
+BigList* sortPret(BigList* l);
+
+BigList* sortPretD(BigList* l);
+
+/*Sorteaza ofertele alfabetic*/
+BigList* sortDestinatie(BigList* l);
+
+BigList* sortDestinatieD(BigList* l);
+
+/*Filtreaza ofertele care au pretul mai mic decat o valoare data*/
+Offerte* filterPret(BigList* list, int);
+
+/*Filtreaza ofertele dupa tip*/
+Offerte* filterTip(BigList* list, char);
+
+#endif //OOP_LAB2_4_SERVICE_H

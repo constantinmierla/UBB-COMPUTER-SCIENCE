@@ -1,122 +1,82 @@
-//
-// Created by Costi on 12-Mar-24.
-//
 #include <stdio.h>
+//#include "domain.h"
+//#include "repository.h"
+#include "service.h"
 #include "ui.h"
-#include "tests.h"
-#include <stdlib.h>
-
-//Ruleaza toate testele definite pentru functionalitatile aplicatiei.
-void testAll()
+#include "string.h"
+//#include "tests.h"
+void updateOfe(BigList* list)
 {
-    printf("Rulare teste...\n");
-    test_creeazaOferta();
-
-    test_destroyOferta();
-
-    test_ValideazaOferta();
-
-    test_createEmpty();
-
-    testAddAndGet();
-
-    test_addCantitate();
-
-    test_delete();
-
-    test_size();
-
-    test_adaugaService();
-
-    test_modificaService();
-
-    test_stergeService();
-
-    test_filtru();
-
-    test_sort();
-
-    printf("\nRulare reusita!\n");
-}
-
-/*
- * Afiseaza meniul pentru adaugarea unei noi oferte si solicita utilizatorului sa introduca datele.
- * Parametri:
- *   - v: lista de oferte in care se adauga oferta (List*)
- */
-void uiAdd(List *v)
-{
-    printf("Adauga oferta : tip, destinatie, data plecarii, pret\n");
     char tip[30], destinatie[30], data_plecarii[30];
-    float pret;
-    printf("Introduceti tip : \n");
+    printf("Introduceti Id-ul:\n");
+    int id;
+    scanf("%d",&id);
+    printf("Introduceti tip(mare sau MUNTE) : \n");
     scanf("%s", tip);
     printf("Introduceti destinatie : \n");
     scanf("%s", destinatie);
     printf("Introduceti data plecarii : \n");
     scanf("%s", data_plecarii);
-    printf("Introduceti pret : \n");
-    scanf("%f", &pret);
-    int ok = adaugaOferta(v,tip,destinatie,data_plecarii,pret);
-    if (ok)
-        printf("Oferta adaugata cu succes! \n");
+    printf("Introduceti noul pret:\n");
+    int pret;
+    scanf("%d",&pret);
+    if (!updateEnt(list,tip,destinatie,data_plecarii,pret,id))
+        printf("Modificarea a avut loc cu succes!\n");
     else
-        printf("Oferta nu este valida! \n");
-}
+        printf("Oferta cu id-ul dat nu exista!\n");
 
-/*
- * Afiseaza meniul pentru modificarea unei oferte si solicita utilizatorului sa introduca noile date.
- * Parametri:
- *   - v: lista de oferte in care se modifica oferta (List*)
- */
-void uiModify(List *v) //de modificat
+}
+void readOfe(BigList* list)
 {
-    printf("Modifica oferta : tip, destinatie, data plecarii si introduceti noul pret\n");
+    printf("Adauga oferta : tip, destinatie, data plecarii, pret, id\n");
     char tip[30], destinatie[30], data_plecarii[30];
-    float pret;
-    printf("Introduceti tip : \n");
-    scanf("%s", tip);
-    printf("Introduceti destinatie : \n");
-    scanf("%s", destinatie);
-    printf("Introduceti data plecarii : \n");
-    scanf("%s", data_plecarii);
-    printf("Introduceti noul pret : \n");
-    scanf("%f", &pret);
-    int ok = modificaOferta(v,tip,destinatie,data_plecarii,pret);
-    if (ok)
-        printf("Oferta modificata cu succes! \n");
-    else
-        printf("Oferta nu este valida! \n");
+    int pret;
+    printf("Introduceti id:\n");
+    int id=-1;
+    scanf("%d",&id);
+    if (checkId(list, id) == 0)
+    {
+        printf("Introduceti tip(mare sau MUNTE) : \n");
+        scanf("%s", tip);
+        printf("Introduceti destinatie : \n");
+        scanf("%s", destinatie);
+        printf("Introduceti data plecarii : \n");
+        scanf("%s", data_plecarii);
+        printf("Introduceti pret : \n");
+        scanf("%d", &pret);
+        if(addEnt(list, tip,destinatie,data_plecarii,pret,id))
+            printf("Oferta a fost adaugata cu succes!\n");
+        else
+            printf("Oferta invalida!\n");
+    }
+
 }
 
-/*
- * Afiseaza meniul pentru stergerea unei oferte si solicita utilizatorului sa introduca datele ofertei de sters.
- * Parametri:
- *   - v: lista de oferte din care se sterge oferta (List*)
- */
-void uiDelete(List *v)
+void printOfferte(BigList* list)
 {
-    printf("Sterge oferta : tip, destinatie, data plecarii\n");
-    char tip[30], destinatie[30], data_plecarii[30];
-    printf("Introduceti tip : \n");
-    scanf("%s", tip);
-    printf("Introduceti destinatie : \n");
-    scanf("%s", destinatie);
-    printf("Introduceti data plecarii : \n");
-    scanf("%s", data_plecarii);
-    int ok = stergeOferta(v,tip,destinatie,data_plecarii);
-    if (ok)
-        printf("Oferta stearsa cu succes! \n");
-    else
-        printf("Oferta nu este valida! \n");
+    for(int i = 0; i< list->lista->dimensiune;i++)
+    {
+        Oferta* m = get(list->lista,i);
+        printf("Id: %d; Tip: %s; Destinatie: %s; Data_plecarii: %s; Pret: %d\n",m->id,m->tip,m->destinatie,m->data_plecarii,m->pret);
+    }
 }
 
-/*
- * Afiseaza meniul pentru sortarea ofertelor.
- * Parametri:
- *   - v: lista de oferte care urmeaza sa fie sortata (List*)
- */
-void uiSort(List *v)
+void deleteOfe(BigList* list)
+{
+    printf("Id-ul ofertei pe care doriti sa il stergeti:\n");
+    int id;
+    scanf("%d",&id);
+    if(!deleteEnt(list,id))
+        printf("Aceasta oferta nu exista!\n");
+    else
+        printf("Oferta stearsa cu succes!\n");
+}
+void destroy(BigList *list)
+{
+    destroyAll(list);
+}
+
+void sortare(BigList *list)
 {
     printf("alegeti sortarea : destinatie, pret: ");
     char crit[20],t[20];
@@ -126,13 +86,13 @@ void uiSort(List *v)
         printf("crescator sau descrescator : ");
         scanf("%s",crit);
         if(strcmp(crit,"crescator") == 0) {
-            List filt = sortOfertaPretCrescator(v);
-            getAll(&filt);
+            BigList* filt = sortPret(list);
+            printOfferte(filt);
         }
         else
         {
-            List filt = sortOfertaPretDescrescator(v);
-            getAll(&filt);
+            BigList* filt = sortPretD(list);
+            printOfferte(filt);
         }
     }
     else if (strcmp(t, "destinatie") == 0)
@@ -140,123 +100,77 @@ void uiSort(List *v)
         printf("crescator sau descrescator : ");
         scanf("%s",crit);
         if(strcmp(crit,"crescator") == 0) {
-            List filt = sortOfertaDestinatieCrescator(v);
-            getAll(&filt);
+            BigList* filt = sortDestinatie(list);
+            printOfferte(filt);
         }
         else
         {
-            List filt = sortOfertaDestinatieDescrescator(v);
-            getAll(&filt);
+            BigList* filt = sortDestinatieD(list);
+            printOfferte(filt);
         }
     }
 }
 
-/*
- * Afiseaza meniul pentru filtrarea ofertelor si solicita utilizatorului sa introduca criteriile de filtrare.
- * Parametri:
- *   - v: lista de oferte care urmeaza sa fie filtrata (List*)
- */
-void uiFilter(List *v)
+void filtrarePret(BigList* list)
 {
-    printf("alegeti filtrarea : destinatie, tip, pret: ");
-    char t[13], crit[20];
-    float pret;
-    scanf("%s", t);
-    if (strcmp(t, "destinatie")==0)
+    printf("Dati o valoare intrega, pozitiva, nenula:\n");
+    int val;
+    scanf("%d",&val);
+    Offerte* f = filterPret(list,val);
+    for(int i=0;i<f->dimensiune;i++)
     {
-        printf("introduceti destinatia : ");
-        scanf("%s",crit);
-        List filt = filtruOfertaDestinatie(v,crit);
-        getAll(&filt);
+        Oferta* m = get(f,i);
+        printf("Id: %d; Tip: %s; Destinatie: %s; Data_plecarii: %s; Pret: %d\n",m->id,m->tip,m->destinatie,m->data_plecarii,m->pret);
     }
-    else if (strcmp(t, "tip") == 0)
-    {
-        printf("introduceti tipul : ");
-        scanf("%s",crit);
-        List filt = filtruOfertaTip(v,crit);
-        getAll(&filt);
-    }
-    else if (strcmp(t, "pret") == 0)
-    {
-        printf("introduceti pretul : ");
-        scanf("%f",&pret);
-        List filt = filtruOfertaPret(v,pret);
-        getAll(&filt);
-    }
-    else
-        printf("Nu exista aceasta filtrare!");
+
+    destroyOfferte(f);
+
 }
 
-/*
- * Afiseaza toate ofertele din lista.
- * Parametri:
- *   - v: lista de oferte care urmeaza sa fie afisata (List*)
- */
-void getAll(List *v)
+void filtrareTip(BigList* list)
 {
-    for (int i = 0; i < size(v); i++)
+    printf("Dati o litera(M pentru MUNTE, m pentru mare:");
+    char litera[2];
+    scanf("%s",litera);
+    Offerte* f = filterTip(list,litera[0]);
+    for(int i=0;i<f->dimensiune;i++)
     {
-        oferta o = get(v,i);
-        printf("Tip: %s | Destinatie: %s | Data plecarii: %s | Pret: %f\n",o.tip,o.destinatie,o.data_plecarii,o.pret);
+        Oferta* m = get(f,i);
+        printf("Id: %d; Tip: %s; Destinatie: %s; Data_plecarii: %s; Pret: %d\n",m->id,m->tip,m->destinatie,m->data_plecarii,m->pret);
     }
-    printf("\n");
+
+    destroyOfferte(f);
 }
 
-/*
- * Afiseaza meniul principal al aplicatiei.
- */
-void menu()
-{
-    printf("1. Adaugarea de noi oferte.\n");
-    printf("2. Actualizare oferte.\n");
-    printf("3. Stergere oferta.\n");
-    printf("4. Vizualizare oferete ordonat dupa pret, destinatie (crescator/descrescator).\n");
-    printf("5. Vizualizare oferta filtrate dupa un criteriu (destinatie, tip, pret).\n");
-    printf("6. Iesire aplicatie\n");
-    printf("7. Afisare elemente\n");
-}
-
-/*
- * Porneste executia aplicatiei.
- */
 void run()
 {
-    List v = createEmpty();
-    int option, ok;
-    ok = 1;
-    printf("\nBine ati venit in aplicatie!\n");
-    while(ok)
+    BigList list = createBigList();
+
+    while(1)
     {
-        menu();
-        printf("Alegeti optiunea: \n");
-        scanf("%d", &option);
-        switch(option){
-            case 1:
-                uiAdd(&v);
-                break;
-            case 2:
-                uiModify(&v);
-                break;
-            case 3:
-                uiDelete(&v);
-                break;
-            case 4:
-                uiSort(&v);
-                break;
-            case 5:
-                uiFilter(&v);
-                break;
-            case 6:
-                printf("Iesire aplicatie...");
-                destroy(&v);
-                ok = 0;
-                break;
-            case 7:
-                getAll(&v);
-                break;
-            default:
-                printf("Comanda gresita!\n");
-                break;
+        int cmd;
+        printf("0. Exit; 1. Adaugare; 2. Modificare; 3.Stergere; 4.Afisare Oferte;\n"
+               "5. Sortare; 6. Filtrare Pret; 7. Filtrare tip\n");
+        scanf("%d",&cmd);
+        if(cmd == 1)
+            readOfe(&list);
+        else if(cmd == 2)
+            updateOfe(&list);
+        else if(cmd == 3)
+            deleteOfe(&list);
+        else if(cmd == 4)
+            printOfferte(&list);
+        else if(cmd == 5)
+            sortare(&list);
+        else if(cmd == 6)
+            filtrarePret(&list);
+        else if(cmd == 7)
+            filtrareTip(&list);
+        else if(cmd==0)
+        {
+            destroy(&list);
+            break;
         }
     }
+
 }

@@ -1,0 +1,161 @@
+        -:    0:Source:D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 3 dinamic/domain.c
+        -:    0:Graph:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 3 dinamic\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\domain.c.gcno
+        -:    0:Data:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 3 dinamic\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\domain.c.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Costi on 06-Mar-24.
+        -:    3://
+        -:    4:
+        -:    5:#include "domain.h"
+        -:    6:
+        -:    7:#include <stdlib.h>
+        -:    8:#include <string.h>
+        -:    9:
+        -:   10:/*
+        -:   11: * Creeaza o oferta noua.
+        -:   12: *
+        -:   13: * Parametri:
+        -:   14: *   - tip: tipul ofertei (char*)
+        -:   15: *   - destinatie: destinatia ofertei (char*)
+        -:   16: *   - data_plecarii: data plecarii (char*)
+        -:   17: *   - pret: pretul ofertei (float)
+        -:   18: *
+        -:   19: * Returneaza:
+        -:   20: *   oferta - o structura reprezentand o oferta cu specificatiile date
+        -:   21: */
+function creeazaOferta called 50 returned 100% blocks executed 100%
+       50:   22:Oferta* creeazaOferta(char* tip, char* destinatie, char* data_plecarii, int pret, int id)
+        -:   23:{
+       50:   24:    Oferta* p =(Oferta*) malloc(sizeof(Oferta));
+        -:   25:
+        -:   26:
+       50:   27:    p->id = id;
+        -:   28:
+       50:   29:    int nr = (int)strlen(tip) + 1;
+       50:   30:    p->tip = (char*)malloc(sizeof(char)*nr);
+       50:   31:    strcpy(p->tip, tip);
+        -:   32:
+       50:   33:    nr = (int)strlen(destinatie) + 1;
+       50:   34:    p->destinatie = (char*)malloc(sizeof(char)*nr);
+       50:   35:    strcpy(p->destinatie, destinatie);
+       50:   36:    nr = (int)strlen(data_plecarii) + 1;
+       50:   37:    p->data_plecarii = (char*)malloc(sizeof(char)*nr);
+       50:   38:    strcpy(p->data_plecarii, data_plecarii);
+       50:   39:    p->pret = pret;
+       50:   40:    p->id = id;
+        -:   41:
+       50:   42:    return p;
+       50:   42-block  0
+        -:   43:}
+        -:   44://Copiaza oferta
+function copyOferta called 10 returned 100% blocks executed 100%
+       10:   45:Oferta* copyOferta(Oferta* o)
+        -:   46:{
+       10:   47:    Oferta* p =(Oferta*) malloc(sizeof(Oferta));
+        -:   48:
+       10:   49:    p->id = o->id;
+        -:   50:
+       10:   51:    p->tip = (char*)malloc(sizeof(char)*(strlen(o->tip)+1));
+       10:   52:    strcpy(p->tip,o->tip);
+        -:   53:
+       10:   54:    p->destinatie = (char*)malloc(sizeof(char)*(strlen(o->destinatie)+1));
+       10:   55:    strcpy(p->destinatie,o->destinatie);
+        -:   56:
+       10:   57:    p->data_plecarii = (char*)malloc(sizeof(char)*(strlen(o->data_plecarii)+1));
+       10:   58:    strcpy(p->data_plecarii,o->data_plecarii);
+        -:   59:
+       10:   60:    p->pret = o->pret;
+        -:   61:
+       10:   62:    return p;
+       10:   62-block  0
+        -:   63:}
+        -:   64:
+        -:   65:/*
+        -:   66: * Distruge o oferta.
+        -:   67: *
+        -:   68: * Parametri:
+        -:   69: *   - o: oferta de distrus (oferta*)
+        -:   70: */
+function destroyOferta called 60 returned 100% blocks executed 100%
+       60:   71:void destroyOferta(Oferta* o)
+        -:   72:{
+       60:   73:    free(o->data_plecarii);
+       60:   74:    free(o->tip);
+       60:   75:    free(o->destinatie);
+       60:   76:    free(o);
+       60:   77:}
+        -:   78:
+        -:   79://Primeste ID
+function getId called 2 returned 100% blocks executed 100%
+        2:   80:int getId(Oferta* o)
+        -:   81:{
+        2:   82:    return o->id;
+        2:   82-block  0
+        -:   83:}
+        -:   84:
+        -:   85://Primeste pret
+function getPret called 14 returned 100% blocks executed 100%
+       14:   86:int getPret(Oferta* p)
+        -:   87:{
+       14:   88:    return p->pret;
+       14:   88-block  0
+        -:   89:}
+        -:   90:
+        -:   91:
+        -:   92://Seteaza pret
+function setPret called 1 returned 100% blocks executed 100%
+        1:   93:void setPret(Oferta* o,int pret_nou) //pt modificare
+        -:   94:{
+        1:   95:    o->pret = pret_nou;
+        1:   96:}
+        -:   97:
+        -:   98:
+        -:   99:/*
+        -:  100: * Valideaza o oferta.
+        -:  101: *
+        -:  102: * Parametri:
+        -:  103: *   - o: oferta de validat (oferta)
+        -:  104: *
+        -:  105: * Returneaza:
+        -:  106: *   int - 1 daca oferta este valida, 0 altfel
+        -:  107: */
+function valideazaOferta called 20 returned 100% blocks executed 100%
+       20:  108:int valideazaOferta(Oferta* o)
+        -:  109:{
+       20:  110:    if(o->id<=0)
+       20:  110-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 19
+        1:  111:        return -1;
+        1:  111-block  0
+       19:  112:    if(o->pret<=0)
+       19:  112-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 18
+        1:  113:        return -1;
+        1:  113-block  0
+       18:  114:    if((strcmp(o->tip,"mare") != 0) && (strcmp(o->tip,"MUNTE") != 0))
+       18:  114-block  0
+branch  0 taken 4 (fallthrough)
+branch  1 taken 14
+        4:  114-block  1
+branch  2 taken 2 (fallthrough)
+branch  3 taken 2
+        2:  115:        return -1;
+        2:  115-block  0
+       16:  116:    if(strlen(o->destinatie)<1)
+       16:  116-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 15
+        1:  117:        return -1;
+        1:  117-block  0
+       15:  118:    if(strlen(o->data_plecarii)<1)
+       15:  118-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 14
+        1:  119:        return -1;
+        1:  119-block  0
+        -:  120:
+       14:  121:    return 1;
+       14:  121-block  0
+        -:  122:}

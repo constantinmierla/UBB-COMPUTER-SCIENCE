@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "ui.h"
 #include <stdlib.h>
-
+#include "tests.h"
 /*
  * 9. Agentie de turism
     Creati o aplicatie care permite gestiunea ofertelor de la o agentie de turism.
@@ -16,8 +16,9 @@
 
 int main()
 {
-    //testAll();
+    runAllTests();
     run();
     return 0;
 }
+
 

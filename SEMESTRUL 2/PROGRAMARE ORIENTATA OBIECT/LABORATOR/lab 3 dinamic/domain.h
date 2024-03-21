@@ -10,9 +10,9 @@ typedef struct{
     char *tip;
     char *destinatie;
     char *data_plecarii;
-    float pret;
-    int destroyed;
-} oferta;
+    int pret;
+    int id;
+} Oferta;
 
 /*
  * Creeaza o oferta noua.
@@ -26,26 +26,25 @@ typedef struct{
  * Returneaza:
  *   oferta - o structura reprezentand o oferta cu specificatiile date
  */
-oferta creeazaOferta(char* tip, char* destinatie, char* data_plecarii, float pret);
+Oferta* creeazaOferta(char* tip,char* destinatie, char* data_plecarii, int pret,int id);
 
-/*
- * Valideaza o oferta.
- *
- * Parametri:
- *   - o: oferta de validat (oferta)
- *
- * Returneaza:
- *   int - 1 daca oferta este valida, 0 altfel
- */
-int valideazaOferta(oferta o);
+void destroyOferta(Oferta*);
 
-/*
- * Distruge o oferta.
- *
- * Parametri:
- *   - o: oferta de distrus (oferta*)
- */
-void distrugeOferta(oferta* o);
+/*Primeste o entitate Oferta si ii returneaza numele.*/
 
-oferta copyOferta(oferta* o);
+/*Primeste o entitate Oferta si ii returneaza id-ul.*/
+int getId(Oferta*);
+
+/*Primeste o entitate Oferta si ii returneaza stocul.*/
+int getPret(Oferta*);
+
+/*Incrementeaza stocul unui oferte.*/
+void setPret(Oferta*,int);
+
+/*Valideaza o oferta dat*/
+int valideazaOferta(Oferta*);
+
+//Copiaza oferta
+Oferta* copyOferta(Oferta*);
+
 #endif //LAB_2_DOMAIN_H

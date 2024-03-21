@@ -1,204 +1,168 @@
-//
-// Created by Costi on 11-Mar-24.
-//
-
+#include<stdlib.h>
+#include<string.h>
+#include <stdio.h>
 #include "service.h"
-#include <string.h>
+#include "domain.h"
+#include "repository.h"
 #include "sort.h"
-#include <stdlib.h>
-
-/*
- * Adauga o noua oferta in lista de oferte.
- *
- * Parametri:
- *   - v: lista de oferte in care se adauga oferta (List*)
- *   - tip: tipul ofertei (char*)
- *   - destinatie: destinatia ofertei (char*)
- *   - data_plecarii: data plecarii (char*)
- *   - pret: pretul ofertei (float)
- *
- * Returneaza:
- *   int - 1 daca oferta a fost adaugata cu succes, altfel 0
- */
-int adaugaOferta(List *v, char *tip, char *destinatie, char *data_plecarii, float pret)
+BigList createBigList()
 {
-    oferta o = creeazaOferta(tip, destinatie, data_plecarii, pret);
-    if(valideazaOferta(o) == 0) {
-        free(o.tip);
-        free(o.destinatie);
-        free(o.data_plecarii);
-
-        return 0;
-    }
-    add(v, o);
-    return 1;
+    BigList listaMeds;
+    listaMeds.lista = creeazaOfferte();
+    return listaMeds;
 }
 
-/*
- * Sterge o oferta din lista de oferte.
- *
- * Parametri:
- *   - v: lista de oferte din care se sterge oferta (List*)
- *   - tip: tipul ofertei de sters (char*)
- *   - destinatie: destinatia ofertei de sters (char*)
- *   - data_plecarii: data plecarii a ofertei de sters (char*)
- *
- * Returneaza:
- *   int - 1 daca oferta a fost stearsa cu succes, altfel 0
- */
-int stergeOferta(List *v, char *tip, char *destinatie, char *data_plecarii)
+void destroyBigList(BigList* list)
 {
-    for (int i = 0; i < size(v); i++)
+    destroyOfferte(list->lista);
+}
+
+/*Adauga  o oferta in lista.
+ * Pre: list- de tip BigList*
+ * Post: 0 daca entitatea exista deja in lista, 1 altfel
+ */
+int addEnt(BigList* list, char* tip,char* destinatie, char* data_plecarii, int pret,int id)
+{
+    Oferta* e = creeazaOferta(tip,destinatie,data_plecarii,pret,id);
+    if(valideazaOferta(e) == 1)
     {
-        if (strcmp(get(v,i).tip, tip) == 0 && strcmp(get(v,i).destinatie, destinatie) == 0
-        && strcmp(get(v,i).data_plecarii, data_plecarii) == 0)
-        {
-            //oferta o = sterge(v, i);
-            sterge(v,i);
-            //destroy(&o); //de vazut
-            return 1;
-        }
+        addEntitate(list->lista,e);
+        return 1;
     }
-    return 0;
-}
-
-/*
- * Modifica pretul unei oferte din lista de oferte.
- *
- * Parametri:
- *   - v: lista de oferte in care se modifica pretul (List*)
- *   - tip: tipul ofertei de modificat (char*)
- *   - destinatie: destinatia ofertei de modificat (char*)
- *   - data_plecarii: data plecarii a ofertei de modificat (char*)
- *   - pret_nou: noul pret pentru oferta (float)
- *
- * Returneaza:
- *   int - 1 daca oferta a fost modificata cu succes, altfel 0
- */
-int modificaOferta(List *v, char *tip, char *destinatie, char *data_plecarii, float pret_nou)
-{
-    oferta o = creeazaOferta(tip, destinatie, data_plecarii, pret_nou);
-    if (valideazaOferta(o) == 0)
-        return 0;
-    /*int sters = stergeOferta(v,tip,destinatie,data_plecarii);
-    if (sters == 0)
-        return 0;
     else
-        adaugaOferta(v,tip,destinatie,data_plecarii,pret_nou);
-    return 1;*/
-    for (int i = 0; i < size(v); i++) {
-        if (strcmp(get(v, i).tip, tip) == 0 && strcmp(get(v, i).destinatie, destinatie) == 0
-            && strcmp(get(v, i).data_plecarii, data_plecarii) == 0) {
-            setElem(v, i, o);
-            return 1;
-        }
+    {
+        destroyOferta(e);
+        return 0;
+    }
+}
+/*Functie care sterge o entitate
+ *Pre:list de tip BigList*, id de tip int
+ * Post: 1 daca id-ul este in lista si a fost sters, 0 altfel
+ */
+int deleteEnt(BigList* list,int id)
+{
+    if(checkId(list,id))
+    {
+        deleteEntitate(list->lista,id);
+        return 1;
     }
     return 0;
 }
 
-List filtruOfertaDestinatie(List *v, char *criteriu)
-{
-    List listaFiltrata = createEmpty();
-    for(int i = 0; i < size(v); i++)
-    {
-        oferta o = get(v,i);
-        if (strcmp(o.destinatie, criteriu) == 0)
-            add(&listaFiltrata, creeazaOferta(o.tip,o.destinatie,o.data_plecarii,o.pret));
-
-    }
-    return listaFiltrata;
-}
-List filtruOfertaTip(List *v, char *criteriu)
-{
-    List listaFiltrata = createEmpty();
-    for (int i = 0; i < size(v); i++)
-    {
-        oferta o = get(v,i);
-        if(strcmp(o.tip, criteriu) == 0)
-            add(&listaFiltrata, creeazaOferta(o.tip,o.destinatie,o.data_plecarii,o.pret));
-    }
-    return listaFiltrata;
-}
-
-List filtruOfertaPret(List *v, float criteriu)
-{
-    List listaFiltrata = createEmpty();
-    for (int i = 0; i < size(v); i++)
-    {
-        oferta o = get(v,i);
-        if(o.pret <= criteriu)
-            add(&listaFiltrata, creeazaOferta(o.tip,o.destinatie,o.data_plecarii,o.pret));
-    }
-    return listaFiltrata;
-}
-
-/*
- *         for i in range(1, len(lista)):
-            element = lista[i]
-            ind = i
-
-            while ind > 0 and element < lista[ind - 1]:
-                lista[ind] = lista[ind - 1]
-                ind = ind - 1
-
-            lista[ind] = element
+/*Face update .
+ * Pre: list- de tip BigList*
+ * Post: 0 daca entitatea exista deja in lista si s-a facut modificarea, 1 altfel
  */
-
-
-int cmpPret(oferta* o1, oferta* o2) {
-    return o1->pret > o2->pret;
-}
-int cmpDest(oferta* o1, oferta* o2) {
-    return strcmp(o1->destinatie, o2->destinatie);
-}
-
-List sortOfertaPretCrescator(List *v)
+int updateEnt(BigList* list,char* tip,char* destinatie, char* data_plecarii, int pret,int id)
 {
-    List l = createEmpty(); // Alocăm o listă nouă pentru a sorta ofertele
-    // Copiem lista originală în lista nouă
-    for(int i = 0; i < size(v); i++)
+    for(int i=0;i<list->lista->dimensiune;i++)
     {
-        ElemType el = get(v, i); // Accesăm elementul din lista originală
-        add(&l, el); // Adăugăm elementul în lista nouă
+        if(getId(get(list->lista,i))==id)
+        {
+            Entitate e = creeazaOferta(tip,destinatie,data_plecarii,pret,id);
+            updateOferta(list->lista,e);
+            return 0;
+        }
+
     }
-    funcSortC(&l,cmpPret);
-    return l;
+    return -1;
 }
 
-List sortOfertaPretDescrescator(List *v)
+/*Cauta daca un id este in lista*/
+int checkId(BigList* list,int id)
 {
-    List l = createEmpty(); // Alocăm o listă nouă pentru a sorta ofertele
-    // Copiem lista originală în lista nouă
-    for(int i = 0; i < size(v); i++)
-    {
-        ElemType el = get(v, i); // Accesăm elementul din lista originală
-        add(&l, el); // Adăugăm elementul în lista nouă
-    }
-    funcSortD(&l,cmpPret);
-    return l;
+    if(cauta(list->lista,id) != -1)
+        return 1;
+    return 0;
 }
 
-List sortOfertaDestinatieCrescator(List *v){
-    List l = createEmpty(); // Alocăm o listă nouă pentru a sorta ofertele
-    // Copiem lista originală în lista nouă
-    for(int i = 0; i < size(v); i++)
-    {
-        ElemType el = get(v, i); // Accesăm elementul din lista originală
-        add(&l, el); // Adăugăm elementul în lista nouă
-    }
-    funcSortC(&l,cmpDest);
-    return l;
-}
 
-List sortOfertaDestinatieDescrescator(List *v)
+/*Dealoca tot*/
+void destroyAll(BigList* list)
 {
-    List l = createEmpty(); // Alocăm o listă nouă pentru a sorta ofertele
-    // Copiem lista originală în lista nouă
-    for(int i = 0; i < size(v); i++)
-    {
-        ElemType el = get(v, i); // Accesăm elementul din lista originală
-        add(&l, el); // Adăugăm elementul în lista nouă
-    }
-    funcSortD(&l,cmpDest);
+    destroyBigList(list);
+}
+
+int cmpPret(Oferta* m1, Oferta* m2) {
+    if (m1->pret == m2->pret)
+        return 0;
+    if (m1->pret > m2->pret)
+        return 1;
+    else
+        return -1;
+}
+
+int cmpPretD(Oferta* m1, Oferta* m2) {
+    if (m1->pret == m2->pret)
+        return 0;
+    if (m1->pret < m2->pret)
+        return 1;
+    else
+        return -1;
+}
+
+int cmpDestinatie(Oferta* m1, Oferta* m2) {
+    if (strcmp(m1->destinatie, m2->destinatie) > 0)
+        return 1;
+    if (strcmp(m1->destinatie, m2->destinatie) < 0)
+        return -1;
+    else
+        return 0;
+}
+
+int cmpDestinatieD(Oferta* m1, Oferta* m2) {
+    if (strcmp(m1->destinatie, m2->destinatie) > 0)
+        return -1;
+    if (strcmp(m1->destinatie, m2->destinatie) < 0)
+        return 1;
+    else
+        return 0;
+}
+
+BigList* sortPret(BigList* l) {
+    sort(l->lista, cmpPret);
     return l;
+}
+
+BigList* sortPretD(BigList* l) {
+    sort(l->lista, cmpPretD);
+    return l;
+}
+
+BigList* sortDestinatie(BigList* l) {
+    sort(l->lista, cmpDestinatie);
+    return l;
+}
+BigList* sortDestinatieD(BigList* l) {
+    sort(l->lista, cmpDestinatieD);
+    return l;
+}
+
+/*Filtreaza ofertele care au pretul mai mic decat o valoare data*/
+Offerte* filterPret(BigList* list, int val)
+{
+    Offerte* f = copy(list->lista);
+
+    for(int i=0; i<f->dimensiune;i++)
+    {
+        Oferta* m = get(f,i);
+        if(m->pret > val)
+            deleteEntitate(f,m->id), i--;
+    }
+    return f;
+}
+
+/*Filtreaza ofertele dupa tip*/
+Offerte* filterTip(BigList* list, char litera)
+{
+    Offerte* f = copy(list->lista);
+
+    for(int i=0; i<f->dimensiune;i++)
+    {
+        Oferta* m = get(f,i);
+        if(m->tip[0] != litera)
+            deleteEntitate(f,m->id), i--;
+    }
+
+    return f;
 }
