@@ -124,34 +124,6 @@ void testAsiguraCapacitate()
 
 }
 
-
-/*void testSortareStoc()
-{
-    BigList list = createBigList();
-
-    addEnt(&list,19,"nurofen",3,10);
-    addEnt(&list,21,"ceva",8,100);
-    addEnt(&list,22,"ceva",8,1);
-    addEnt(&list,26,"ceva",8,3);
-    addEnt(&list,23,"ceva",8,9);
-
-    Farmacie* f1 = sortareStoc(&list);
-
-    assert(f1->dimensiune==5);
-
-    for(int i=0; i<f1->dimensiune-1;i++)
-    {
-        Medicament* m1 = get(f1,i);
-        Medicament* m2 = get(f1,i+1);
-        assert(m1->stoc <= m2->stoc);
-
-    }
-
-    destroyFarmacie(f1);
-    destroyAll(&list);
-}*/
-
-
 void testFilterPret()
 {
     BigList list = createBigList();
