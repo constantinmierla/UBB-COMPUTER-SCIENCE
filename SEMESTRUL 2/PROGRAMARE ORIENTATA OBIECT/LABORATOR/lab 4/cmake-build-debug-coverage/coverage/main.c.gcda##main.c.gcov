@@ -1,0 +1,41 @@
+        -:    0:Source:D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 4/main.c
+        -:    0:Graph:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 4\cmake-build-debug-coverage\CMakeFiles\Lab2.dir\main.c.gcno
+        -:    0:Data:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 4\cmake-build-debug-coverage\CMakeFiles\Lab2.dir\main.c.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by david on 3/6/24.
+        -:    3://
+        -:    4:
+        -:    5:#include <stdlib.h>
+        -:    6:#include "./Domain/product.h"
+        -:    7:#include "./Repository/repository.h"
+        -:    8:#include "./UI/ui.h"
+        -:    9:#include "./Tests/test.h"
+        -:   10:
+        -:   11:
+function main called 1 returned 0% blocks executed 83%
+        1:   12:int main() {
+        1:   13:    testAll();
+        1:   13-block  0
+call    0 returned 1
+        -:   14:
+        -:   15:
+        -:   16:
+        -:   17:    Repository repo;
+        -:   18:    Validator vali;
+        -:   19:    Service service;
+        -:   20:    Console console;
+        1:   21:    service.repository = &repo;
+        1:   22:    service.validator = &vali;
+        1:   23:    console.service = &service;
+        -:   24:
+        1:   25:    initRepository(&repo, 11);
+call    0 returned 1
+        1:   26:    setUp(&service);
+call    0 returned 1
+        -:   27:
+        1:   28:    run(console);
+call    0 returned 0
+        -:   29:
+    #####:   30:    free(repo.products);
+        -:   31:}

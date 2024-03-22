@@ -1,0 +1,19 @@
+        -:    0:Source:D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 4/Domain/validator.c
+        -:    0:Graph:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 4\cmake-build-debug-coverage\CMakeFiles\Lab2.dir\Domain\validator.c.gcno
+        -:    0:Data:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 4\cmake-build-debug-coverage\CMakeFiles\Lab2.dir\Domain\validator.c.gcda
+        -:    0:Runs:1
+        -:    1:#include "./validator.h"
+        -:    2:
+function validateProduct called 109 returned 100% blocks executed 100%
+      109:    3:int validateProduct(Product product) {
+      109:    4:    if (product.id < 10)
+      109:    4-block  0
+branch  0 taken 18 (fallthrough)
+branch  1 taken 91
+       18:    5:        return 1;
+       18:    5-block  0
+        -:    6:    else {
+       91:    7:        return 0;
+       91:    7-block  0
+        -:    8:    }
+        -:    9:}

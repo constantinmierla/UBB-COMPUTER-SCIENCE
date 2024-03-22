@@ -1,0 +1,55 @@
+        -:    0:Source:D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 4/Domain/product.c
+        -:    0:Graph:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 4\cmake-build-debug-coverage\CMakeFiles\Lab2.dir\Domain\product.c.gcno
+        -:    0:Data:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 4\cmake-build-debug-coverage\CMakeFiles\Lab2.dir\Domain\product.c.gcda
+        -:    0:Runs:1
+        -:    1:#include "product.h"
+        -:    2:#include <string.h>
+        -:    3:
+function getId called 1 returned 100% blocks executed 100%
+        1:    4:int getId(Product *product) {
+        1:    5:    return product->id;
+        1:    5-block  0
+        -:    6:}
+        -:    7:
+function getType called 1 returned 100% blocks executed 100%
+        1:    8:char* getType(Product *product) {
+        1:    9:    return product->type;
+        1:    9-block  0
+        -:   10:}
+        -:   11:
+function getProducer called 1 returned 100% blocks executed 100%
+        1:   12:char* getProducer(Product *product) {
+        1:   13:    return product->producer;
+        1:   13-block  0
+        -:   14:}
+        -:   15:
+function getModel called 1 returned 100% blocks executed 100%
+        1:   16:char* getModel(Product *product) {
+        1:   17:    return product->model;
+        1:   17-block  0
+        -:   18:}
+        -:   19:
+function getPrice called 1 returned 100% blocks executed 100%
+        1:   20:int getPrice(Product *product) {
+        1:   21:    return product->price;
+        1:   21-block  0
+        -:   22:}
+        -:   23:
+function getQuantity called 1 returned 100% blocks executed 100%
+        1:   24:int getQuantity(Product *product) {
+        1:   25:    return  product->quantity;
+        1:   25-block  0
+        -:   26:}
+        -:   27:
+function createProduct called 3 returned 100% blocks executed 100%
+        3:   28:Product createProduct(int id, const char *type, const char *producer, const char *model, int price, int quantity) {
+        -:   29:    Product product;
+        3:   30:    product.id = id;
+        3:   31:    strcpy(product.type, type);
+        3:   32:    strcpy(product.producer, producer);
+        3:   33:    strcpy(product.model, model);
+        3:   34:    product.price = price;
+        3:   35:    product.quantity = quantity;
+        3:   36:    return product;
+        3:   36-block  0
+        -:   37:}

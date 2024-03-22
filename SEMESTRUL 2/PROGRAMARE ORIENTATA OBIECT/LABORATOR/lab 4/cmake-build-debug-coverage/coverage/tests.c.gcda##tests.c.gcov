@@ -1,0 +1,690 @@
+        -:    0:Source:D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 4/Tests/tests.c
+        -:    0:Graph:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 4\cmake-build-debug-coverage\CMakeFiles\Lab2.dir\Tests\tests.c.gcno
+        -:    0:Data:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 4\cmake-build-debug-coverage\CMakeFiles\Lab2.dir\Tests\tests.c.gcda
+        -:    0:Runs:1
+        -:    1:#include "../Repository/repository.h"
+        -:    2:#include "./test.h"
+        -:    3:#include <string.h>
+        -:    4:#include <assert.h>
+        -:    5:#include <stdlib.h>
+        -:    6:
+        -:    7:
+function testGetModel called 1 returned 100% blocks executed 80%
+        1:    8:void testGetModel() {
+        1:    9:    Product *a = malloc(sizeof(Product));
+        1:   10:    strcpy(a->model, "Inspiron");
+        -:   11:
+       1*:   12:    assert(strcmp(getModel(a), "Inspiron") == 0 && "Model should be Inspiron");
+        1:   12-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   12-block  1
+call    3 never executed
+        1:   12-block  2
+        -:   13:
+        1:   14:    free(a);
+        1:   15:}
+        -:   16:
+function testGetId called 1 returned 100% blocks executed 80%
+        1:   17:void testGetId() {
+        1:   18:    Product *a = malloc(sizeof(Product));
+        1:   19:    a->id = 1;
+        -:   20:
+       1*:   21:    assert(getId(a) == 1 && "ID should be 1");
+        1:   21-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   21-block  1
+call    3 never executed
+        1:   21-block  2
+        -:   22:
+        1:   23:    free(a);
+        1:   24:}
+        -:   25:
+function testGetPrice called 1 returned 100% blocks executed 80%
+        1:   26:void testGetPrice() {
+        1:   27:    Product *a = malloc(sizeof(Product));
+        1:   28:    a->price = 999;
+        -:   29:
+       1*:   30:    assert(getPrice(a) == 999 && "Price should be 999.99");
+        1:   30-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   30-block  1
+call    3 never executed
+        1:   30-block  2
+        -:   31:
+        1:   32:    free(a);
+        1:   33:}
+        -:   34:
+function testGetQuantity called 1 returned 100% blocks executed 80%
+        1:   35:void testGetQuantity() {
+        1:   36:    Product *a = malloc(sizeof(Product));
+        1:   37:    a->quantity = 10;
+        -:   38:
+       1*:   39:    assert(getQuantity(a) == 10 && "Quantity should be 10");
+        1:   39-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   39-block  1
+call    3 never executed
+        1:   39-block  2
+        -:   40:
+        1:   41:    free(a);
+        1:   42:}
+        -:   43:
+function testGetType called 1 returned 100% blocks executed 80%
+        1:   44:void testGetType() {
+        1:   45:    Product *a = malloc(sizeof(Product));
+        1:   46:    strcpy(a->type, "Laptop");
+        -:   47:
+       1*:   48:    assert(strcmp(getType(a), "Laptop") == 0 && "Type should be Laptop");
+        1:   48-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   48-block  1
+call    3 never executed
+        1:   48-block  2
+        -:   49:
+        1:   50:    free(a);
+        1:   51:}
+        -:   52:
+function testGetProducer called 1 returned 100% blocks executed 80%
+        1:   53:void testGetProducer() {
+        1:   54:    Product *a = malloc(sizeof(Product));
+        1:   55:    strcpy(a->producer, "Dell");
+        -:   56:
+       1*:   57:    assert(strcmp(getProducer(a), "Dell") == 0 && "Producer should be Dell");
+        1:   57-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   57-block  1
+call    3 never executed
+        1:   57-block  2
+        -:   58:
+        1:   59:    free(a);
+        1:   60:}
+        -:   61:
+function testCreate called 1 returned 100% blocks executed 100%
+        1:   62:void testCreate() {
+        1:   63:    Product *a = malloc(sizeof(Product));
+        1:   64:    Repository *repository = malloc(sizeof (Repository));
+        1:   65:    initRepository(repository, 10);
+        1:   65-block  0
+call    0 returned 1
+        1:   66:    a->id = 1;
+        1:   67:    strcpy(a->type, "Televizor");
+        1:   68:    strcpy(a->producer, "samsuuuung");
+        1:   69:    strcpy(a->model, "model1");
+        1:   70:    a->price = 2;
+        1:   71:    a->quantity = 50;
+        -:   72:
+        1:   73:    add(repository, *a);
+call    0 returned 1
+        -:   74:
+        1:   75:    free(repository->products);
+        1:   76:    free(repository);
+        1:   77:    free(a);
+        1:   78:}
+        -:   79:
+function testFind called 1 returned 100% blocks executed 67%
+        1:   80:void testFind() {
+        1:   81:    Product *a = malloc(sizeof(Product));
+        1:   82:    Repository *repository = malloc(sizeof(Repository));
+        1:   83:    initRepository(repository, 10);
+        1:   83-block  0
+call    0 returned 1
+        1:   84:    a->id = 2;
+        1:   85:    a->quantity = 0;
+        -:   86:
+        1:   87:    add(repository, *a);
+call    0 returned 1
+        -:   88:
+        1:   89:    Product b = find(*repository, 2);
+call    0 returned 1
+        1:   90:    if (b.id != 2) {
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+        -:   91:        assert(EXIT_FAILURE);
+        -:   92:    } else {
+    #####:   93:        assert(b.id == 2 && "b->id trebuia sa fie 2; testFind()");
+    %%%%%:   93-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    %%%%%:   93-block  1
+call    2 never executed
+    %%%%%:   93-block  2
+        -:   94:    }
+        1:   95:    free(a);
+        -:   96:
+        1:   97:    int invalidID = 20;
+       1*:   98:    assert(find(*repository, invalidID).id == -2);
+        1:   98-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   98-block  1
+call    3 never executed
+        1:   98-block  2
+        1:   99:    free(repository->products);
+        1:  100:    free(repository);
+        1:  101:}
+        -:  102:
+function testUpdateQuantity called 1 returned 100% blocks executed 88%
+        1:  103:void testUpdateQuantity() {
+        -:  104:    Product a;
+        -:  105:    Repository repository;
+        1:  106:    initRepository(&repository, 10);
+        1:  106-block  0
+call    0 returned 1
+        1:  107:    a.id = 0;
+        1:  108:    strcpy(a.type, "Masina de spalat");
+        1:  109:    strcpy(a.producer, "samsuuuung");
+        1:  110:    strcpy(a.model, "model2");
+        1:  111:    a.price = 2;
+        1:  112:    a.quantity = 49;
+        -:  113:
+        1:  114:    add(&repository, a);
+call    0 returned 1
+        -:  115:
+        1:  116:    add(&repository, a);
+call    0 returned 1
+        -:  117:
+        1:  118:    Product b = find(repository, 0);
+call    0 returned 1
+       1*:  119:    assert(b.quantity == 50 && "b.quantity trebuia sa fie 50");
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  119-block  0
+call    2 never executed
+        1:  119-block  1
+        1:  120:    free(repository.products);
+        1:  121:}
+        -:  122:
+function testUpdatePriceOrQuantity called 1 returned 100% blocks executed 85%
+        1:  123:void testUpdatePriceOrQuantity() {
+        -:  124:    Product a;
+        -:  125:    Repository repository;
+        1:  126:    initRepository(&repository, 10);
+        1:  126-block  0
+call    0 returned 1
+        -:  127:
+        1:  128:    a.id = 0;
+        1:  129:    strcpy(a.type, "Masina de spalat");
+        1:  130:    strcpy(a.producer, "samsuuuung");
+        1:  131:    strcpy(a.model, "model2");
+        1:  132:    a.price = 2;
+        1:  133:    a.quantity = 49;
+        -:  134:
+        1:  135:    add(&repository, a);
+call    0 returned 1
+        -:  136:
+        1:  137:    int i = 0;
+        1:  138:    updatePrice(&repository, i, 100);
+call    0 returned 1
+       1*:  139:    assert(find(repository, 0).price == 100 && "Pretul trebuia sa fie 100");
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  139-block  0
+call    3 never executed
+        1:  139-block  1
+        -:  140:
+        1:  141:    updateQuantity(&repository, i, 500);
+        1:  141-block  0
+call    0 returned 1
+       1*:  142:    assert(find(repository, 0).quantity == 500 && "Cantitatea trebuia sa fie 500");
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  142-block  0
+call    3 never executed
+        1:  142-block  1
+        1:  143:    free(repository.products);
+        -:  144:
+        1:  145:}
+        -:  146:
+function testDelete called 1 returned 100% blocks executed 83%
+        1:  147:void testDelete() {
+        -:  148:    Product a;
+        -:  149:    Repository repository;
+        1:  150:    initRepository(&repository, 10);
+        1:  150-block  0
+call    0 returned 1
+        1:  151:    a.id = 0;
+        1:  152:    strcpy(a.type, "Televizor");
+        1:  153:    strcpy(a.producer, "samsuuuung");
+        1:  154:    strcpy(a.model, "model1");
+        1:  155:    a.price = 2;
+        1:  156:    a.quantity = 50;
+        -:  157:
+        -:  158:    Product b;
+        1:  159:    b.id = 1;
+        1:  160:    strcpy(a.type, "Televizor");
+        1:  161:    strcpy(a.producer, "samsuuuung");
+        1:  162:    strcpy(a.model, "model1");
+        1:  163:    b.price = 5;
+        1:  164:    b.quantity = 10;
+        -:  165:
+        1:  166:    add(&repository, a);
+call    0 returned 1
+        1:  167:    add(&repository, b);
+call    0 returned 1
+        1:  168:    delete(&repository, 0);
+call    0 returned 1
+        -:  169:
+       1*:  170:    assert(repository.products[0].id == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  170-block  0
+call    2 never executed
+        1:  170-block  1
+        -:  171:
+       1*:  172:    assert(delete(&repository, 100) == -1);
+        1:  172-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  172-block  1
+call    3 never executed
+        1:  172-block  2
+        1:  173:    free(repository.products);
+        1:  174:}
+        -:  175:
+function testGetAll called 1 returned 100% blocks executed 90%
+        1:  176:void testGetAll() {
+        -:  177:    Repository repo;
+        1:  178:    initRepository(&repo, 10);
+        1:  178-block  0
+call    0 returned 1
+        -:  179:    Product a;
+        1:  180:    a.id = 1;
+        1:  181:    add(&repo, a);
+call    0 returned 1
+        -:  182:    Product* products;
+        1:  183:    products = getAll(&repo);
+call    0 returned 1
+        2:  184:    for (int i = 1; i <= 1; i++) {
+        1:  184-block  0
+        2:  184-block  1
+branch  0 taken 1
+branch  1 taken 1 (fallthrough)
+       1*:  185:        assert(products[i].id == i);
+        1:  185-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  185-block  1
+call    2 never executed
+        1:  185-block  2
+        -:  186:    }
+        1:  187:    free(repo.products);
+        1:  188:}
+        -:  189:
+function testAddProduct called 1 returned 100% blocks executed 88%
+        1:  190:void testAddProduct() {
+        -:  191:    Repository r;
+        -:  192:    Validator v;
+        -:  193:    Service service;
+        1:  194:    service.repository = &r;
+        1:  195:    service.validator = &v;
+        1:  196:    initRepository(&r, 10);
+        1:  196-block  0
+call    0 returned 1
+        1:  197:    setUp(&service);
+call    0 returned 1
+        -:  198:
+        -:  199:    Product a;
+        1:  200:    a.id = 1;
+        -:  201:
+        -:  202:
+        1:  203:    addProduct(&service, a);
+call    0 returned 1
+        -:  204:
+        1:  205:    Product b = getProduct(service, 0);
+call    0 returned 1
+       1*:  206:    assert(b.id == 0 && "testAddProduct didnt pass");
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  206-block  0
+call    2 never executed
+        1:  206-block  1
+        1:  207:    free(r.products);
+        1:  208:}
+        -:  209:
+function testUpdatePriceForProduct called 1 returned 100% blocks executed 89%
+        1:  210:void testUpdatePriceForProduct() {
+        -:  211:    Repository r;
+        -:  212:    Validator v;
+        -:  213:    Service service;
+        1:  214:    service.repository = &r;
+        1:  215:    service.validator = &v;
+        1:  216:    initRepository(&r, 10);
+        1:  216-block  0
+call    0 returned 1
+        1:  217:    setUp(&service);
+call    0 returned 1
+        -:  218:    Product a;
+        1:  219:    a.id = 0;
+        1:  220:    addProduct(&service, a);
+call    0 returned 1
+        1:  221:    updatePriceForProduct(&service, 0, 50);
+call    0 returned 1
+        -:  222:
+        1:  223:    Product b = getProduct(service, 0);
+call    0 returned 1
+       1*:  224:    assert(b.price == 50 && "testUpdatePriceForProduct didnt pass");
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  224-block  0
+call    2 never executed
+        1:  224-block  1
+        -:  225:
+        1:  226:    free(r.products);
+        1:  227:}
+        -:  228:
+function testAdd100ELements called 1 returned 100% blocks executed 100%
+        1:  229:void testAdd100ELements() {
+        -:  230:    Repository r;
+        -:  231:    Validator v;
+        -:  232:    Service service;
+        1:  233:    service.repository = &r;
+        1:  234:    service.validator = &v;
+        1:  235:    initRepository(&r, 101);
+        1:  235-block  0
+call    0 returned 1
+        1:  236:    setUp(&service);
+call    0 returned 1
+        -:  237:
+      102:  238:    for (int i = 0; i < 101; i++) {
+      102:  238-block  0
+branch  0 taken 101
+branch  1 taken 1 (fallthrough)
+        -:  239:        Product a;
+      101:  240:        a.id = 0;
+      101:  241:        addProduct(&service, a);
+      101:  241-block  0
+call    0 returned 101
+        -:  242:    }
+        1:  243:    free(r.products);
+        1:  244:}
+        -:  245:
+function testUpdateQuantityForProduct called 1 returned 100% blocks executed 90%
+        1:  246:void testUpdateQuantityForProduct() {
+        -:  247:    Repository r;
+        -:  248:    Validator v;
+        -:  249:    Service service;
+        1:  250:    service.repository = &r;
+        1:  251:    service.validator = &v;
+        1:  252:    initRepository(&r, 10);
+        1:  252-block  0
+call    0 returned 1
+        1:  253:    setUp(&service);
+call    0 returned 1
+        -:  254:
+        -:  255:    Product a;
+        1:  256:    a.id = 0;
+        1:  257:    addProduct(&service, a);
+call    0 returned 1
+        1:  258:    updatePriceForProduct(&service, 0, 50);
+call    0 returned 1
+        1:  259:    updateQuantityForProduct(&service, 0, 100);
+call    0 returned 1
+        -:  260:
+        1:  261:    Product b = getProduct(service, 0);
+call    0 returned 1
+       1*:  262:    assert(b.quantity == 100 && "testUpdateQuantityForProduct didnt pass");
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  262-block  0
+call    2 never executed
+        1:  262-block  1
+        -:  263:
+        1:  264:    free(r.products);
+        1:  265:}
+        -:  266:
+function testDeleteProduct called 1 returned 100% blocks executed 90%
+        1:  267:void testDeleteProduct() {
+        -:  268:    Repository re;
+        -:  269:    Validator v;
+        -:  270:    Service service;
+        1:  271:    service.repository = &re;
+        1:  272:    service.validator = &v;
+        1:  273:    initRepository(&re, 10);
+        1:  273-block  0
+call    0 returned 1
+        1:  274:    setUp(&service);
+call    0 returned 1
+        -:  275:
+        -:  276:    Product a;
+        1:  277:    a.id = 1;
+        1:  278:    addProduct(&service, a);
+call    0 returned 1
+        1:  279:    updatePriceForProduct(&service, 0, 50);
+call    0 returned 1
+        1:  280:    updateQuantityForProduct(&service, 0, 100);
+call    0 returned 1
+        -:  281:
+        1:  282:    deleteProduct(&service, 0);
+call    0 returned 1
+       1*:  283:    assert(service.repository->count == 0 && "testDeleteProduct didnt pass");
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  283-block  0
+call    2 never executed
+        1:  283-block  1
+        1:  284:    free(re.products);
+        -:  285:
+        1:  286:}
+        -:  287:
+function testGetAllService called 1 returned 100% blocks executed 88%
+        1:  288:void testGetAllService() {
+        -:  289:    Repository re;
+        -:  290:    Validator v;
+        -:  291:    Service service;
+        1:  292:    service.repository = &re;
+        1:  293:    service.validator = &v;
+        1:  294:    initRepository(&re, 10);
+        1:  294-block  0
+call    0 returned 1
+        1:  295:    setUp(&service);
+call    0 returned 1
+        -:  296:
+        -:  297:
+        -:  298:    Product a;
+        1:  299:    a.id = 0;
+        1:  300:    addProduct(&service, a);
+call    0 returned 1
+        -:  301:    Product* products;
+        1:  302:    products = getAllService(&service);
+call    0 returned 1
+       1*:  303:    assert(products[0].id == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  303-block  0
+call    2 never executed
+        1:  303-block  1
+        1:  304:    free(re.products);
+        1:  305:}
+        -:  306:
+function testSortProducts called 1 returned 100% blocks executed 84%
+        1:  307:void testSortProducts() {
+        -:  308:    // Create a service with some products
+        -:  309:    Repository repository;
+        -:  310:    Validator validator;
+        -:  311:    Service service;
+        1:  312:    service.repository = &repository;
+        1:  313:    service.validator = &validator;
+        1:  314:    initRepository(&repository, 10);
+        1:  314-block  0
+call    0 returned 1
+        1:  315:    setUp(&service);
+call    0 returned 1
+        -:  316:
+        -:  317:    // Add some products to the service
+        1:  318:    Product product1 = createProduct(1, "Laptop", "Dell", "Model1", 1000, 20);
+call    0 returned 1
+        1:  319:    addProduct(&service, product1);
+call    0 returned 1
+        1:  320:    Product product2 = createProduct(2, "Phone", "Samsung", "Model2", 1000, 10);
+call    0 returned 1
+        1:  321:    addProduct(&service, product2);
+call    0 returned 1
+        1:  322:    Product product3 = createProduct(3, "Tablet", "Apple", "Model3", 1200, 15);
+call    0 returned 1
+        1:  323:    addProduct(&service, product3);
+call    0 returned 1
+        -:  324:
+        -:  325:    // Sort the products
+        1:  326:    Product *sortedProducts = sortProducts(service, 1);
+call    0 returned 1
+        -:  327:
+        -:  328:    // Verify that the sorted products are in the correct order (by price and quantity)
+       1*:  329:    assert(sortedProducts[0].id == 1 && "First product should be the second one (Phone)");
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  329-block  0
+call    2 never executed
+        1:  329-block  1
+       1*:  330:    assert(sortedProducts[1].id == 0 && "Second product should be the first one (Laptop)");
+        1:  330-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  330-block  1
+call    2 never executed
+        1:  330-block  2
+       1*:  331:    assert(sortedProducts[2].id == 2 && "Third product should be the third one (Tablet)");
+        1:  331-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  331-block  1
+call    2 never executed
+        1:  331-block  2
+        -:  332:
+        -:  333:    // Free memory allocated for sorted products
+        1:  334:    free(sortedProducts);
+        1:  335:    free(repository.products);
+        1:  336:}
+        -:  337:
+function testFilterProducts called 1 returned 100% blocks executed 73%
+        1:  338:void testFilterProducts() {
+        -:  339:    // Mock service and repository data
+        -:  340:    Repository repository;
+        1:  341:    Product products[3] = {
+        -:  342:            {0, "Laptop", "Dell", "Model1", 1000, 10},
+        -:  343:            {1, "Phone", "Samsung", "Model2", 800, 20},
+        -:  344:            {2, "Tablet", "Apple", "Model3", 1200, 15}
+        -:  345:    };
+        1:  346:    repository.products = products;
+        1:  347:    repository.count = 3;
+        -:  348:
+        1:  349:    Service service = {&repository};
+        -:  350:
+        -:  351:    // Test case 1: Price criteria
+        -:  352:    int filteredSize;
+        1:  353:    Product* filteredProducts = filterProducts(service, "price", 800, &filteredSize, NULL);
+        1:  353-block  0
+call    0 returned 1
+       1*:  354:    assert(filteredSize == 1 && "Filtered size should be 1 for price criteria");
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  354-block  0
+call    2 never executed
+        1:  354-block  1
+       1*:  355:    assert(filteredProducts[0].id == 1 && "Filtered product ID should be 1 for price criteria");
+        1:  355-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  355-block  1
+call    2 never executed
+        1:  355-block  2
+        1:  356:    free(filteredProducts);
+        -:  357:
+        -:  358:    // Test case 2: Quantity criteria
+        1:  359:    filteredProducts = filterProducts(service, "quantity", 20, &filteredSize, NULL);
+        1:  359-block  0
+call    0 returned 1
+       1*:  360:    assert(filteredSize == 1 && "Filtered size should be 1 for quantity criteria");
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  360-block  0
+call    2 never executed
+        1:  360-block  1
+       1*:  361:    assert(filteredProducts[0].id == 1 && "Filtered product ID should be 1 for quantity criteria");
+        1:  361-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  361-block  1
+call    2 never executed
+        1:  361-block  2
+        1:  362:    free(filteredProducts);
+        -:  363:
+        -:  364:    // Test case 3: Producer criteria
+        1:  365:    filteredProducts = filterProducts(service, "producer", 800, &filteredSize, "Samsung");
+        1:  365-block  0
+call    0 returned 1
+       1*:  366:    assert(filteredSize == 1 && "Filtered size should be 1 for producer criteria");
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  366-block  0
+call    2 never executed
+        1:  366-block  1
+       1*:  367:    assert(filteredProducts[0].id == 1 && "Filtered product ID should be 2 for producer criteria");
+        1:  367-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  367-block  1
+call    2 never executed
+        1:  367-block  2
+        1:  368:    free(filteredProducts);
+        1:  369:}
+        -:  370:
+function testAll called 1 returned 100% blocks executed 100%
+        1:  371:void testAll() {
+        1:  372:    testGetId();
+        1:  372-block  0
+call    0 returned 1
+        1:  373:    testGetModel();
+call    0 returned 1
+        1:  374:    testGetPrice();
+call    0 returned 1
+        1:  375:    testGetQuantity();
+call    0 returned 1
+        1:  376:    testGetProducer();
+call    0 returned 1
+        1:  377:    testGetType();
+call    0 returned 1
+        1:  378:    testCreate();
+call    0 returned 1
+        1:  379:    testFind();
+call    0 returned 1
+        1:  380:    testUpdateQuantity();
+call    0 returned 1
+        1:  381:    testUpdatePriceOrQuantity();
+call    0 returned 1
+        1:  382:    testDelete();
+call    0 returned 1
+        1:  383:    testAddProduct();
+call    0 returned 1
+        1:  384:    testUpdatePriceForProduct();
+call    0 returned 1
+        1:  385:    testUpdateQuantityForProduct();
+call    0 returned 1
+        1:  386:    testDeleteProduct();
+call    0 returned 1
+        1:  387:    testAdd100ELements();
+call    0 returned 1
+        1:  388:    testGetAll();
+call    0 returned 1
+        1:  389:    testGetAllService();
+call    0 returned 1
+        1:  390:    testSortProducts();
+call    0 returned 1
+        1:  391:    testFilterProducts();
+call    0 returned 1
+        1:  392:}

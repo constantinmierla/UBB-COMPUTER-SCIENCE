@@ -1,0 +1,398 @@
+        -:    0:Source:D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 4/UI/ui.c
+        -:    0:Graph:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 4\cmake-build-debug-coverage\CMakeFiles\Lab2.dir\UI\ui.c.gcno
+        -:    0:Data:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 4\cmake-build-debug-coverage\CMakeFiles\Lab2.dir\UI\ui.c.gcda
+        -:    0:Runs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include "./ui.h"
+        -:    4:
+        -:    5:#define BUFFER_SIZE 100
+        -:    6:
+function showMenu called 1 returned 100% blocks executed 100%
+        1:    7:void showMenu() {
+        1:    8:    printf("1. Adauga Produs\n");
+        1:    8-block  0
+call    0 returned 1
+        1:    9:    printf("2. Actualizeaza Produs\n");
+call    0 returned 1
+        1:   10:    printf("3. Sterge Produs\n");
+call    0 returned 1
+        1:   11:    printf("4. Lista Produse\n");
+call    0 returned 1
+        1:   12:    printf("5. Filtrare produse dupa criteriu (producator, pret, cantitate)\n");
+call    0 returned 1
+        1:   13:    printf("6. Exit\n");
+call    0 returned 1
+        1:   14:}
+        -:   15:
+function uiAdaugaProdus called 0 returned 0% blocks executed 0%
+    #####:   16:void uiAdaugaProdus(Service *service) {
+        -:   17:    Product product;
+        -:   18:
+    #####:   19:    product.id = 0;
+        -:   20:
+    #####:   21:    printf("Enter the type of the product: ");
+    %%%%%:   21-block  0
+call    0 never executed
+    #####:   22:    if (scanf("%49s", product.type) != 1) {
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed
+    #####:   23:        fprintf(stderr, "Error: Failed to read type\n");
+    %%%%%:   23-block  0
+call    0 never executed
+call    1 never executed
+    #####:   24:        return;
+    %%%%%:   24-block  0
+        -:   25:    }
+        -:   26:
+    #####:   27:    printf("Enter the producer of the product: ");
+    %%%%%:   27-block  0
+call    0 never executed
+    #####:   28:    if (scanf("%49s", product.producer) != 1) {
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed
+    #####:   29:        fprintf(stderr, "Error: Failed to read producer\n");
+    %%%%%:   29-block  0
+call    0 never executed
+call    1 never executed
+    #####:   30:        return;
+        -:   31:    }
+        -:   32:
+    #####:   33:    printf("Enter the model of the product: ");
+    %%%%%:   33-block  0
+call    0 never executed
+    #####:   34:    if (scanf("%49s", product.model) != 1) {
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed
+    #####:   35:        fprintf(stderr, "Error: Failed to read model\n");
+    %%%%%:   35-block  0
+call    0 never executed
+call    1 never executed
+    #####:   36:        return;
+        -:   37:    }
+        -:   38:
+    #####:   39:    printf("Enter the price of the product: ");
+    %%%%%:   39-block  0
+call    0 never executed
+    #####:   40:    if (scanf("%d", &product.price) != 1) {
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed
+    #####:   41:        fprintf(stderr, "Error: Invalid price\n");
+    %%%%%:   41-block  0
+call    0 never executed
+call    1 never executed
+    #####:   42:        return;
+        -:   43:    }
+        -:   44:
+    #####:   45:    printf("Enter the quantity of the product: ");
+    %%%%%:   45-block  0
+call    0 never executed
+    #####:   46:    if (scanf("%d", &product.quantity) != 1) {
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed
+    #####:   47:        fprintf(stderr, "Error: Invalid quantity\n");
+    %%%%%:   47-block  0
+call    0 never executed
+call    1 never executed
+    #####:   48:        return;
+        -:   49:    }
+        -:   50:
+        -:   51:    // Call the addProduct function to add the product to the service
+    #####:   52:    addProduct(service, product);
+    %%%%%:   52-block  0
+call    0 never executed
+        -:   53:}
+        -:   54:
+function uiActualizareProdus called 0 returned 0% blocks executed 0%
+    #####:   55:void uiActualizareProdus(Service *service) {
+        -:   56:    char* option;
+    #####:   57:    option = malloc(100 * sizeof (char));
+        -:   58:
+    #####:   59:    printf("Alegeti id ul produsului pe care vreti sa il actualizati: ");
+    %%%%%:   59-block  0
+call    0 never executed
+    #####:   60:    scanf("%s", option);
+call    0 never executed
+    #####:   61:    int num = atoi(option);
+call    0 never executed
+    #####:   62:    int id = num;
+    #####:   63:    Product finded =  find(*service->repository, num);
+call    0 never executed
+    #####:   64:    if (finded.id == -1) {
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:   65:        printf("Produsul nu a fost gasit\n");
+    %%%%%:   65-block  0
+call    0 never executed
+        -:   66:    } else {
+    #####:   67:        printf("Alegeti dupa ce actualizati produsul\n1. Doar dupa pret\n2. Doar dupa cantitate\n3. Dupa pret si cantitate\nOptiune: ");
+    %%%%%:   67-block  0
+call    0 never executed
+    #####:   68:        scanf("%s", option);
+call    0 never executed
+    #####:   69:        printf("\n");
+call    0 never executed
+        -:   70:
+    #####:   71:        num = atoi(option);
+call    0 never executed
+        -:   72:
+    #####:   73:        if (num == 1) {
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:   74:            int newPrice = 0;
+    #####:   75:            printf("Introduceti pretul cu care modificati: ");
+    %%%%%:   75-block  0
+call    0 never executed
+    #####:   76:            scanf("%d", &newPrice);
+call    0 never executed
+    #####:   77:            updatePriceForProduct(service, id, newPrice);
+call    0 never executed
+    #####:   78:        } else if (num == 2) {
+    %%%%%:   78-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:   79:            int newQuantity = 0;
+    #####:   80:            printf("Introduceti cantitatea cu care modificati: ");
+    %%%%%:   80-block  0
+call    0 never executed
+    #####:   81:            scanf("%d", &newQuantity);
+call    0 never executed
+    #####:   82:            updateQuantityForProduct(service, id, newQuantity);
+call    0 never executed
+    #####:   83:        } else if (num == 3) {
+    %%%%%:   83-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:   84:            int newPrice = 0;
+    #####:   85:            printf("Introduceti pretul cu care modificati: ");
+    %%%%%:   85-block  0
+call    0 never executed
+    #####:   86:            scanf("%d", &newPrice);
+call    0 never executed
+    #####:   87:            printf("\n");
+call    0 never executed
+    #####:   88:            int newQuantity = 0;
+    #####:   89:            printf("Introduceti cantitatea cu care modificati: ");
+call    0 never executed
+    #####:   90:            scanf("%d", &newQuantity);
+call    0 never executed
+        -:   91:
+    #####:   92:            updatePriceForProduct(service, id, newPrice);
+call    0 never executed
+    #####:   93:            updateQuantityForProduct(service, id, newQuantity);
+call    0 never executed
+        -:   94:        } else {
+    #####:   95:            printf("Optiune invalida");
+    %%%%%:   95-block  0
+call    0 never executed
+        -:   96:        }
+        -:   97:    }
+        -:   98:
+    #####:   99:}
+        -:  100:
+function uiStergereProdus called 0 returned 0% blocks executed 0%
+    #####:  101:void uiStergereProdus(Service *service) {
+        -:  102:    int id;
+        -:  103:
+    #####:  104:    char* option = malloc(100 * sizeof (char *));
+        -:  105:
+    #####:  106:    printf("Introduceti id-ul produsului pe car vreti sa l stergeti: ");
+    %%%%%:  106-block  0
+call    0 never executed
+    #####:  107:    scanf("%s", option);
+call    0 never executed
+        -:  108:
+    #####:  109:    id = atoi(option);
+call    0 never executed
+    #####:  110:    Product finded = find(*service->repository, id);
+call    0 never executed
+        -:  111:
+    #####:  112:    if (finded.id == -1) {
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  113:        printf("Produsul nu a fost gasit");
+    %%%%%:  113-block  0
+call    0 never executed
+        -:  114:    } else {
+    #####:  115:        deleteProduct(service, id);
+    %%%%%:  115-block  0
+call    0 never executed
+        -:  116:    }
+        -:  117:
+    #####:  118:    free(option);
+        -:  119:
+    #####:  120:}
+        -:  121:
+function uiVizualizareProduse called 0 returned 0% blocks executed 0%
+    #####:  122:void uiVizualizareProduse(Service *service) {
+        -:  123:    int option;
+        -:  124:
+    #####:  125:    printf("Alegeti tipul de sortare (1 : crescator/2 : descrescator): ");
+    %%%%%:  125-block  0
+call    0 never executed
+    #####:  126:    scanf("%d", &option);
+call    0 never executed
+        -:  127:
+    #####:  128:    Product *sortedProducts = sortProducts(*service, option);
+call    0 never executed
+    #####:  129:    if (sortedProducts == NULL) {
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  130:        printf("There are no products in the service.\n");
+    %%%%%:  130-block  0
+call    0 never executed
+    #####:  131:        return;
+        -:  132:    }
+        -:  133:
+    #####:  134:    printf("List of products:\n");
+    %%%%%:  134-block  0
+call    0 never executed
+        -:  135:
+    #####:  136:    for (int i = 0; i < service->repository->count; i++) {
+    %%%%%:  136-block  0
+branch  0 never executed
+branch  1 never executed (fallthrough)
+    #####:  137:        printf("ID: %d, Type: %s, Producer: %s, Model: %s, Price: %d, Quantity: %d\n",
+    #####:  138:        sortedProducts[i].id, sortedProducts[i].type, sortedProducts[i].producer, sortedProducts[i].model,
+    #####:  139:        sortedProducts[i].price, sortedProducts[i].quantity);
+    %%%%%:  139-block  0
+call    0 never executed
+        -:  140:    }
+        -:  141:
+    #####:  142:    free(sortedProducts);
+    %%%%%:  142-block  0
+        -:  143:
+        -:  144:}
+        -:  145:
+function uiListaProduseFiltrate called 0 returned 0% blocks executed 0%
+    #####:  146:void uiListaProduseFiltrate(Service *service){
+        -:  147:    Product *filteredProducts;
+        -:  148:
+    #####:  149:    printf("Alegeti criteriul dupa care se filtreaza:\n1. Pret\n2. Cantitate\n3. Producator\nOptiune: ");
+    %%%%%:  149-block  0
+call    0 never executed
+        -:  150:    int num;
+    #####:  151:    scanf("%d", &num);
+call    0 never executed
+        -:  152:
+    #####:  153:    int filteredSize = 0;
+    #####:  154:    if (num == 1) {
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  155:        printf("Introduceti pretul dupa care filtrati: ");
+    %%%%%:  155-block  0
+call    0 never executed
+    #####:  156:        int price = 0;
+    #####:  157:        scanf("%d", &price);
+call    0 never executed
+    #####:  158:        filteredProducts = filterProducts(*service, "price", price, &filteredSize, "");
+call    0 never executed
+    #####:  159:    } else if (num == 2) {
+    %%%%%:  159-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  160:        printf("Introduceti cantitatea dupa care filtrati: ");
+    %%%%%:  160-block  0
+call    0 never executed
+    #####:  161:        int quantity = 0;
+    #####:  162:        scanf("%d", &quantity);
+call    0 never executed
+    #####:  163:        filteredProducts = filterProducts(*service, "quantity", quantity, &filteredSize, "");
+call    0 never executed
+        -:  164:    } else {
+    #####:  165:        printf("Introduceti producatorul dupa care filtrati: ");
+    %%%%%:  165-block  0
+call    0 never executed
+    #####:  166:        char *producer = NULL;
+    #####:  167:        producer = malloc(BUFFER_SIZE * sizeof (char));
+    #####:  168:        scanf("%s", producer);
+call    0 never executed
+    #####:  169:        filteredProducts = filterProducts(*service, "producer", 0, &filteredSize, producer);
+call    0 never executed
+    #####:  170:        free(producer);
+        -:  171:    }
+        -:  172:
+    #####:  173:    for (int i = 0; i < filteredSize; i++) {
+    %%%%%:  173-block  0
+    %%%%%:  173-block  1
+branch  0 never executed
+branch  1 never executed (fallthrough)
+    #####:  174:        printf("ID: %d, Type: %s, Producer: %s, Model: %s, Price: %d, Quantity: %d\n",
+    #####:  175:               filteredProducts[i].id, filteredProducts[i].type, filteredProducts[i].producer, filteredProducts[i].model,
+    #####:  176:               filteredProducts[i].price, filteredProducts[i].quantity);
+    %%%%%:  176-block  0
+call    0 never executed
+        -:  177:    }
+    #####:  178:}
+        -:  179:
+function run called 1 returned 0% blocks executed 20%
+        1:  180:void run(Console ui) {
+        -:  181:
+        -:  182:    char choice[50];
+        -:  183:    int num;
+        -:  184:    do {
+        1:  185:        showMenu();
+        1:  185-block  0
+call    0 returned 1
+        1:  186:        printf("Alege o optiune: ");
+call    0 returned 1
+        1:  187:        scanf("%s", &choice);
+call    0 returned 0
+    #####:  188:        char *endptr = NULL;
+    #####:  189:        num = strtol(&choice, &endptr, 10);
+call    0 never executed
+        -:  190:
+    #####:  191:        switch (num) {
+branch  0 never executed
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+branch  4 never executed
+branch  5 never executed
+branch  6 never executed
+branch  7 never executed
+    #####:  192:            case 1:
+    #####:  193:                uiAdaugaProdus(ui.service);
+    %%%%%:  193-block  0
+call    0 never executed
+    #####:  194:                break;
+    #####:  195:            case 2:
+    #####:  196:                uiActualizareProdus(ui.service);
+    %%%%%:  196-block  0
+call    0 never executed
+    #####:  197:                break;
+    #####:  198:            case 3:
+    #####:  199:                uiStergereProdus(ui.service);
+    %%%%%:  199-block  0
+call    0 never executed
+    #####:  200:                break;
+    #####:  201:            case 4:
+    #####:  202:                uiVizualizareProduse(ui.service);
+    %%%%%:  202-block  0
+call    0 never executed
+    #####:  203:                break;
+    #####:  204:            case 5:
+    #####:  205:                uiListaProduseFiltrate(ui.service);
+    %%%%%:  205-block  0
+call    0 never executed
+    #####:  206:                break;
+    #####:  207:            case 6:
+    #####:  208:                break;
+    %%%%%:  208-block  0
+    #####:  209:            case 7:
+    #####:  210:                printf("Optiune invalida\n");
+    %%%%%:  210-block  0
+call    0 never executed
+    #####:  211:                break;
+        -:  212:        }
+    #####:  213:    } while (num != 6);
+    %%%%%:  213-block  0
+branch  0 never executed
+branch  1 never executed (fallthrough)
+    #####:  214:}
+        -:  215:
