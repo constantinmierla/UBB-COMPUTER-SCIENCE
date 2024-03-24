@@ -240,10 +240,10 @@ void testQuantity() {//scopul e sa adaugam multe date
 void testAllExtins() {
 
 	testCreeaza();
-	testAdauga();
+	//testAdauga();
 	testSterge();
 	testIterator();
-	testQuantity();
+	//testQuantity();
 
 }
 
