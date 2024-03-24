@@ -1,0 +1,13 @@
+# ninja log v5
+10	146	7329864454541064	CMakeFiles/L1.dir/IteratorMultime.cpp.obj	15df1a2ee67fe054
+15	200	7329864454950972	CMakeFiles/L1.dir/TestScurt.cpp.obj	405f44434d2440ed
+5	202	7329864455000976	CMakeFiles/L1.dir/Multime.cpp.obj	3f8c2d36f9aa58f0
+19	232	7329864455340995	CMakeFiles/L1.dir/TestExtins.cpp.obj	72fb20a604c19ee7
+0	602	7329864459161364	CMakeFiles/L1.dir/main.cpp.obj	559262428b9221d2
+604	730	7329864460391621	L1.exe	a503f111a20b557e
+8	107	7329864700504029	CMakeFiles/L1.dir/IteratorMultime.cpp.obj	15df1a2ee67fe054
+13	124	7329864700685481	CMakeFiles/L1.dir/Multime.cpp.obj	3f8c2d36f9aa58f0
+23	157	7329864701016863	CMakeFiles/L1.dir/TestScurt.cpp.obj	405f44434d2440ed
+17	217	7329864701607494	CMakeFiles/L1.dir/TestExtins.cpp.obj	72fb20a604c19ee7
+4	656	7329864706004204	CMakeFiles/L1.dir/main.cpp.obj	559262428b9221d2
+656	810	7329864707483322	L1.exe	a503f111a20b557e
