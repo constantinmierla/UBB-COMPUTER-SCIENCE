@@ -11,6 +11,7 @@ void showMenu() {
     printf("4. Lista Produse\n");
     printf("5. Filtrare produse dupa criteriu (producator, pret, cantitate)\n");
     printf("6. Exit\n");
+    printf("7. Undo\n");
 }
 
 void uiAdaugaProdus(Service *service) {
@@ -177,6 +178,15 @@ void uiListaProduseFiltrate(Service *service){
     }
 }
 
+void undoUI(Service *service) {
+    int result = undo(service);
+    if (result == -1) {
+        printf("Nu se poate face undo\n");
+    } else {
+        printf("Undo efectuat cu succes\n");
+    }
+}
+
 void run(Console ui) {
 
     char choice[50];
@@ -207,6 +217,9 @@ void run(Console ui) {
             case 6:
                 break;
             case 7:
+                undoUI(ui.service);
+                break;
+            case 8:
                 printf("Optiune invalida\n");
                 break;
         }

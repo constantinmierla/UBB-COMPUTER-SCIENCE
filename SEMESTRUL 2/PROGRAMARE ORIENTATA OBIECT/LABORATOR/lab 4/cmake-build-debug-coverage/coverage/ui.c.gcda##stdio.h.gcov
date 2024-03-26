@@ -379,17 +379,17 @@ call    0 never executed
         -:  368:
         -:  369:__mingw_ovr
         -:  370:__attribute__((__format__ (gnu_printf, 1, 2))) __MINGW_ATTRIB_NONNULL(1)
-function printf called 7 returned 100% blocks executed 100%
-        7:  371:int printf (const char *__format, ...)
+function printf called 8 returned 100% blocks executed 100%
+        8:  371:int printf (const char *__format, ...)
         -:  372:{
         -:  373:  int __retval;
-        7:  374:  __builtin_va_list __local_argv; __builtin_va_start( __local_argv, __format );
-        7:  375:  __retval = __mingw_vfprintf( stdout, __format, __local_argv );
-        7:  375-block  0
-call    0 returned 7
-call    1 returned 7
-        7:  376:  __builtin_va_end( __local_argv );
-        7:  377:  return __retval;
+        8:  374:  __builtin_va_list __local_argv; __builtin_va_start( __local_argv, __format );
+        8:  375:  __retval = __mingw_vfprintf( stdout, __format, __local_argv );
+        8:  375-block  0
+call    0 returned 8
+call    1 returned 8
+        8:  376:  __builtin_va_end( __local_argv );
+        8:  377:  return __retval;
         -:  378:}
         -:  379:
         -:  380:#if __MINGW_FORTIFY_VA_ARG

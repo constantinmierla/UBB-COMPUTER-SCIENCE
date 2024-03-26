@@ -48,22 +48,22 @@ branch  5 taken 0
         -:   24:    }
        26:   25:}
         -:   26:
-function find called 8 returned 100% blocks executed 100%
-        8:   27:Product find(Repository repo, int id) {
-        8:   28:    if (repo.products[id].id != -1 && id < repo.count) {
-        8:   28-block  0
-branch  0 taken 8 (fallthrough)
-branch  1 taken 0
-        8:   28-block  1
-branch  2 taken 6 (fallthrough)
+function find called 129 returned 100% blocks executed 100%
+      129:   27:Product find(Repository repo, int id) {
+      129:   28:    if (repo.products[id].id != -1 && id < repo.count) {
+      129:   28-block  0
+branch  0 taken 120 (fallthrough)
+branch  1 taken 9
+      120:   28-block  1
+branch  2 taken 118 (fallthrough)
 branch  3 taken 2
-        6:   29:        return repo.products[id];
-        6:   29-block  0
+      118:   29:        return repo.products[id];
+      118:   29-block  0
         -:   30:    } else {
         -:   31:        Product a;
-        2:   32:        a.id = -2;
-        2:   33:        return a;
-        2:   33-block  0
+       11:   32:        a.id = -2;
+       11:   33:        return a;
+       11:   33-block  0
         -:   34:    }
         -:   35:}
         -:   36:
@@ -121,3 +121,4 @@ branch  1 taken 2 (fallthrough)
         3:   63:    return found;
         3:   63-block  0
         -:   64:}
+        -:   65:

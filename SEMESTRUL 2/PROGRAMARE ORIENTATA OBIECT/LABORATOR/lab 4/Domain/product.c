@@ -35,3 +35,4 @@ Product createProduct(int id, const char *type, const char *producer, const char
     product.quantity = quantity;
     return product;
 }
+

@@ -8,6 +8,12 @@ typedef struct {
     int count;
 } Repository;
 
+typedef struct {
+    Product *actions;
+    int count;
+    int capacity;
+} UndoList;
+
 Product* getAll(Repository *repo);
 void add(Repository *repo, Product product);
 Product find(Repository repo, int id);

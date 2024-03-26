@@ -1,0 +1,1 @@
+/usr/bin/cc --coverage -g CMakeFiles/Lab2.dir/main.c.o CMakeFiles/Lab2.dir/Domain/product.c.o CMakeFiles/Lab2.dir/Repository/repository.c.o CMakeFiles/Lab2.dir/Tests/tests.c.o CMakeFiles/Lab2.dir/Domain/validator.c.o CMakeFiles/Lab2.dir/Service/service.c.o CMakeFiles/Lab2.dir/UI/ui.c.o -o Lab2 

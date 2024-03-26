@@ -4,38 +4,52 @@
         -:    0:Runs:1
         -:    1://
         -:    2:// Created by david on 3/6/24.
-        -:    3://
-        -:    4:
-        -:    5:#include <stdlib.h>
-        -:    6:#include "./Domain/product.h"
-        -:    7:#include "./Repository/repository.h"
-        -:    8:#include "./UI/ui.h"
-        -:    9:#include "./Tests/test.h"
-        -:   10:
-        -:   11:
-function main called 1 returned 0% blocks executed 83%
-        1:   12:int main() {
-        1:   13:    testAll();
-        1:   13-block  0
-call    0 returned 1
-        -:   14:
-        -:   15:
-        -:   16:
-        -:   17:    Repository repo;
-        -:   18:    Validator vali;
-        -:   19:    Service service;
-        -:   20:    Console console;
-        1:   21:    service.repository = &repo;
-        1:   22:    service.validator = &vali;
-        1:   23:    console.service = &service;
+        -:    3:// modified by costi on 3/24/24
+        -:    4://
+        -:    5:
+        -:    6:/*
+        -:    7: * 8. Magazin electronice
+        -:    8:
+        -:    9:        Creati o aplicatie care permite gestiunea stocului de produse intr-un magazin de electronice.
+        -:   10:    Fiecare produs are un identificator unic, tip (laptop, frigider, televizor,etc), producator, model,
+        -:   11:    pret, cantitate.
+        -:   12:    Aplicatia permite:
+        -:   13:     a) Adaugarea de noi produse. Daca produsul este deja in stoc trebuie actualizat cantitatea
+        -:   14:     b) Actualizare produse (modificare pret sau cantitate)
+        -:   15:     c) Stergere produs
+        -:   16:     d) Vizualizare produse din stoc, ordonat dupa pret, cantitate (crescator/descrescator)
+        -:   17:     e) Vizualizare lista de produse filtrate dupa un criteriu (producator, pret, cantitate)
+        -:   18: */
+        -:   19:#include <stdlib.h>
+        -:   20:#include "./Domain/product.h"
+        -:   21:#include "./Repository/repository.h"
+        -:   22:#include "./UI/ui.h"
+        -:   23:#include "./Tests/test.h"
         -:   24:
-        1:   25:    initRepository(&repo, 11);
+        -:   25:
+function main called 1 returned 0% blocks executed 83%
+        1:   26:int main() {
+        1:   27:    testAll();
+        1:   27-block  0
 call    0 returned 1
-        1:   26:    setUp(&service);
-call    0 returned 1
-        -:   27:
-        1:   28:    run(console);
-call    0 returned 0
+        -:   28:
         -:   29:
-    #####:   30:    free(repo.products);
-        -:   31:}
+        -:   30:
+        -:   31:    Repository repo;
+        -:   32:    Validator vali;
+        -:   33:    Service service;
+        -:   34:    Console console;
+        1:   35:    service.repository = &repo;
+        1:   36:    service.validator = &vali;
+        1:   37:    console.service = &service;
+        -:   38:
+        1:   39:    initRepository(&repo, 11);
+call    0 returned 1
+        1:   40:    setUp(&service);
+call    0 returned 1
+        -:   41:
+        1:   42:    run(console);
+call    0 returned 0
+        -:   43:
+    #####:   44:    free(repo.products);
+        -:   45:}

@@ -14,5 +14,5 @@ void uiActualizareProdus(Service *service);
 void uiStergereProdus(Service *service);
 void uiVizualizareProduse(Service *service);
 void uiListaProduseFiltrate(Service *service);
-
+void undoUI(Service *service);
 #endif //LAB2_UI_H
