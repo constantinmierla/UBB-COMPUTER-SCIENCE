@@ -1,0 +1,280 @@
+        -:    0:Source:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L1/Multime.cpp
+        -:    0:Graph:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L1/cmake-build-debug-coverage/CMakeFiles/L1.dir/Multime.cpp.gcno
+        -:    0:Data:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L1/cmake-build-debug-coverage/CMakeFiles/L1.dir/Multime.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "Multime.h"
+        -:    2:#include "IteratorMultime.h"
+        -:    3:
+        -:    4:// Relatia de ordine între elementele mulțimii.
+        -:    5:// Funcția rel returneaza true dacă e1 este mai mic sau egal cu e2, altfel returneaza false.
+        -:    6:// Complexitate timp: Θ(1) - Operație simpla de comparare.
+        -:    7:// Complexitate spațiu: Θ(1) - Funcție de timp constant și nu consumă memorie suplimentară.
+function _Z3relii called 16437 returned 100% blocks executed 100%
+    16437:    8:bool rel(TElem e1, TElem e2)
+        -:    9:{
+    16437:   10:    return e1 <= e2;
+    16437:   10-block  0
+        -:   11:}
+        -:   12:
+        -:   13:// Constructorul clasei Multime.
+        -:   14:// Inițializeaza dimensiunea si capacitatea mulțimii, alocand memorie pentru vectorul de elemente.
+        -:   15:// Complexitate timp: Θ(1) - Inițializare si alocare constanta de memorie.
+        -:   16:// Complexitate spațiu: Θ(1) - Alocare constanta de memorie pentru vectorul de elemente.
+function _ZN7MultimeC2Ev called 7 returned 100% blocks executed 80%
+        7:   17:Multime::Multime() {
+        7:   18:    dimensiune = 0;
+        7:   19:    capacitatea = 1;
+       7*:   20:    vector = new TElem[capacitatea];
+        7:   20-block  0
+branch  0 taken 7 (fallthrough)
+branch  1 taken 0
+        7:   20-block  1
+    %%%%%:   20-block  2
+call    2 never executed
+        7:   20-block  3
+call    3 returned 7
+        7:   21:}
+        -:   22:
+        -:   23:// Destructorul clasei Multime.
+        -:   24:// Eliberează memoria alocată pentru vectorul de elemente.
+        -:   25:// Complexitate timp: Θ(1) - Eliberare constantă de memorie.
+        -:   26:// Complexitate spațiu: Θ(1) - Nu consuma memorie suplimentara.
+function _ZN7MultimeD2Ev called 7 returned 100% blocks executed 100%
+        7:   27:Multime::~Multime() { delete[] vector; }
+        7:   27-block  0
+branch  0 taken 7 (fallthrough)
+branch  1 taken 0
+        7:   27-block  1
+call    2 returned 7
+        -:   28:
+        -:   29:// Redimensioneaza capacitatea mulțimii dublând dimensiunea.
+        -:   30:// Complexitate timp: Θ(n) - Parcurgere lineara a vectorului de elemente.
+        -:   31:// Complexitate spatiu: Θ(n) - Alocare si copiere a unui nou vector cu dimensiunea dubla.
+function _ZN7Multime13resize_appendEv called 39 returned 100% blocks executed 90%
+       39:   32:void Multime::resize_append() {
+       39:   33:    capacitatea *= 2;
+      39*:   34:    TElem *new_items = new TElem[capacitatea];
+       39:   34-block  0
+branch  0 taken 39 (fallthrough)
+branch  1 taken 0
+       39:   34-block  1
+    %%%%%:   34-block  2
+call    2 never executed
+       39:   34-block  3
+call    3 returned 39
+        -:   35:
+      874:   36:    for (int i = 0; i < dimensiune; ++i) {
+      874:   36-block  0
+branch  0 taken 835
+branch  1 taken 39 (fallthrough)
+      835:   37:        new_items[i] = vector[i];
+      835:   37-block  0
+        -:   38:    }
+        -:   39:
+       39:   40:    delete[] vector;
+       39:   40-block  0
+branch  0 taken 39 (fallthrough)
+branch  1 taken 0
+       39:   40-block  1
+call    2 returned 39
+       39:   41:    vector = new_items;
+       39:   42:}
+        -:   43:
+        -:   44:// Redimensioneaza capacitatea multimii jumatatind dimensiunea.
+        -:   45:// Complexitate timp: Θ(n) - Parcurgere lineara a vectorului de elemente.
+        -:   46:// Complexitate spațiu: Θ(n) - Alocare și copiere a unui nou vector cu dimensiunea jumatatita.
+function _ZN7Multime13resize_deleteEv called 19 returned 100% blocks executed 90%
+       19:   47:void Multime::resize_delete() {
+       19:   48:    capacitatea /= 2;
+      19*:   49:    TElem *new_items = new TElem[capacitatea];
+       19:   49-block  0
+branch  0 taken 19 (fallthrough)
+branch  1 taken 0
+       19:   49-block  1
+    %%%%%:   49-block  2
+call    2 never executed
+       19:   49-block  3
+call    3 returned 19
+        -:   50:
+      272:   51:    for (int i = 0; i < dimensiune; ++i) {
+      272:   51-block  0
+branch  0 taken 253
+branch  1 taken 19 (fallthrough)
+      253:   52:        new_items[i] = vector[i];
+      253:   52-block  0
+        -:   53:    }
+        -:   54:
+       19:   55:    delete[] vector;
+       19:   55-block  0
+branch  0 taken 19 (fallthrough)
+branch  1 taken 0
+       19:   55-block  1
+call    2 returned 19
+       19:   56:    vector = new_items;
+       19:   57:}
+        -:   58:
+        -:   59:// Adauga un element nou in mulțime.
+        -:   60:// Complexitate timp: Θ(n) - Parcurgere a cel mult n elemente.
+        -:   61:// Complexitate spațiu: Θ(1) - Operatii de adaugare sau eliminare a unui singur element.
+function _ZN7Multime6adaugaEi called 1961 returned 100% blocks executed 100%
+     1961:   62:bool Multime::adauga(TElem elem) {
+     1961:   63:    if (cauta(elem)) return false;
+     1961:   63-block  0
+call    0 returned 1961
+branch  1 taken 1301 (fallthrough)
+branch  2 taken 660
+     1301:   63-block  1
+        -:   64:
+      660:   65:    if (dimensiune == capacitatea) {
+      660:   65-block  0
+branch  0 taken 39 (fallthrough)
+branch  1 taken 621
+       39:   66:        resize_append();
+       39:   66-block  0
+call    0 returned 39
+        -:   67:    }
+        -:   68:
+      660:   69:    int poz = dimensiune - 1;
+      667:   70:    while (!rel(vector[poz], elem) && poz >= 0) {
+      660:   70-block  0
+      667:   70-block  1
+call    0 returned 667
+branch  1 taken 12 (fallthrough)
+branch  2 taken 655
+       12:   70-block  2
+branch  3 taken 7 (fallthrough)
+branch  4 taken 5
+        7:   70-block  3
+      660:   70-block  4
+      667:   70-block  5
+branch  5 taken 7
+branch  6 taken 660 (fallthrough)
+        7:   71:        vector[poz + 1] = vector[poz];
+        7:   72:        poz--;
+        7:   72-block  0
+        -:   73:    }
+        -:   74:
+      660:   75:    vector[poz + 1] = elem;
+      660:   76:    dimensiune++;
+        -:   77:
+      660:   78:    return true;
+      660:   78-block  0
+        -:   79:}
+        -:   80:
+        -:   81:// Sterge un element din mulțime.
+        -:   82:// Complexitate timp: Θ(n) - Parcurgere a cel mult n elemente.
+        -:   83:// Complexitate spațiu: Θ(1) - Operații de adăugare sau eliminare a unui singur element.
+function _ZN7Multime6stergeEi called 1223 returned 100% blocks executed 100%
+     1223:   84:bool Multime::sterge(TElem elem) {
+     1223:   85:    if (!cauta(elem)) return false;
+     1223:   85-block  0
+call    0 returned 1223
+branch  1 taken 821 (fallthrough)
+branch  2 taken 402
+      821:   85-block  1
+        -:   86:
+      402:   87:    if (dimensiune == capacitatea / 4) {
+      402:   87-block  0
+branch  0 taken 19 (fallthrough)
+branch  1 taken 383
+       19:   88:        resize_delete();
+       19:   88-block  0
+call    0 returned 19
+        -:   89:    }
+        -:   90:
+     5453:   91:    for (int i = 0; i < dimensiune; ++i) {
+      402:   91-block  0
+     5051:   91-block  1
+     5453:   91-block  2
+branch  0 taken 5453
+branch  1 taken 0 (fallthrough)
+     5453:   92:        if (vector[i] == elem) {
+     5453:   92-block  0
+branch  0 taken 402 (fallthrough)
+branch  1 taken 5051
+    25657:   93:            for (int j = i; j < dimensiune; ++j) {
+      402:   93-block  0
+    25657:   93-block  1
+branch  0 taken 25255
+branch  1 taken 402 (fallthrough)
+    25255:   94:                vector[j] = vector[j + 1];
+    25255:   94-block  0
+        -:   95:            }
+      402:   96:            break;
+      402:   96-block  0
+        -:   97:        }
+        -:   98:    }
+        -:   99:
+      402:  100:    dimensiune--;
+      402:  101:    return true;
+      402:  101-block  0
+        -:  102:}
+        -:  103:
+        -:  104:// Caută un element in mulțime.
+        -:  105:// Funcția cauta utilizeaza o cautare binara intr-un vector sortat pentru a determina dacă elementul dat este prezent în mulțime.
+        -:  106:// Complexitate timp: Θ(log n) - Cautare binara intr-un vector sortat de dimensiune n.
+        -:  107:// Complexitate spațiu: Θ(1) - Nu consuma memorie suplimentara in afara variabilelor locale.
+function _ZNK7Multime5cautaEi called 3206 returned 100% blocks executed 100%
+     3206:  108:bool Multime::cauta(TElem elem) const {
+     3206:  109:    int left = 0;
+     3206:  110:    int right = dimensiune - 1;
+        -:  111:
+    18971:  112:    while (left <= right) {
+     3206:  112-block  0
+    18971:  112-block  1
+branch  0 taken 17469
+branch  1 taken 1502 (fallthrough)
+    17469:  113:        int mid = (left + right) / 2;
+        -:  114:
+    17469:  115:        if (vector[mid] == elem) {
+    17469:  115-block  0
+branch  0 taken 1704 (fallthrough)
+branch  1 taken 15765
+     1704:  116:            return true;
+     1704:  116-block  0
+    15765:  117:        } else if (!rel(vector[mid], elem)) {
+    15765:  117-block  0
+call    0 returned 15765
+branch  1 taken 3687 (fallthrough)
+branch  2 taken 12078
+     3687:  118:            right = mid - 1;
+     3687:  118-block  0
+        -:  119:        } else {
+    12078:  120:            left = mid + 1;
+    12078:  120-block  0
+        -:  121:        }
+        -:  122:    }
+     1502:  123:    return false;
+     1502:  123-block  0
+        -:  124:}
+        -:  125:
+        -:  126:// Returneaza dimensiunea multimii.
+        -:  127:// Funcția dim intoarce numarul de elemente din mulțime.
+        -:  128:// Complexitate timp: Θ(1) - Operatie constanta de returnare a dimensiunii.
+        -:  129:// Complexitate spațiu: Θ(1) - Nu consuma memorie suplimentara in afara valorii returnate.
+function _ZNK7Multime3dimEv called 78 returned 100% blocks executed 100%
+       78:  130:int Multime::dim() const {
+       78:  131:    return dimensiune;
+       78:  131-block  0
+        -:  132:}
+        -:  133:
+        -:  134:// Verifica daca mulțimea este vida.
+        -:  135:// Funcția vida returneaza true daca mulțimea este vida, altfel returneaza false.
+        -:  136:// Complexitate timp: Θ(1) - Operatie constanta de verificare a dimensiunii.
+        -:  137:// Complexitate spațiu: Θ(1) - Nu consuma memorie suplimentara in afara valorii returnate.
+function _ZNK7Multime4vidaEv called 2 returned 100% blocks executed 100%
+        2:  138:bool Multime::vida() const {
+        2:  139:    return dimensiune == 0;
+        2:  139-block  0
+        -:  140:}
+        -:  141:
+        -:  142:// Returneaza un iterator pentru multime.
+        -:  143:// Funcția iterator intoarce un iterator inițializat cu mulțimea curenta.
+        -:  144:// Complexitate timp: Θ(1) - Initializare a unui iterator.
+        -:  145:// Complexitate spatiu: Θ(1) - Nu consuma memorie suplimentara in afara iteratorului returnat.
+function _ZNK7Multime8iteratorEv called 7 returned 100% blocks executed 100%
+        7:  146:IteratorMultime Multime::iterator() const {
+        7:  147:    return IteratorMultime(*this);
+        7:  147-block  0
+call    0 returned 7
+        -:  148:}

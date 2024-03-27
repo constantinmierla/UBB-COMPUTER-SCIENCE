@@ -1,0 +1,65 @@
+        -:    0:Source:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L1/IteratorMultime.cpp
+        -:    0:Graph:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L1/cmake-build-debug-coverage/CMakeFiles/L1.dir/IteratorMultime.cpp.gcno
+        -:    0:Data:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L1/cmake-build-debug-coverage/CMakeFiles/L1.dir/IteratorMultime.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Costi on 24-Mar-24.
+        -:    3://
+        -:    4:
+        -:    5:#include "IteratorMultime.h"
+        -:    6:#include "Multime.h"
+        -:    7:
+        -:    8:// Constructorul clasei IteratorMultime.
+        -:    9:// Inițializeaza iteratorul pentru multimea data și seteaza indexul la prima poziție.
+        -:   10:// Complexitate timp: Θ(1) - Initializare a unui iterator.
+        -:   11:// Complexitate spatiu: Θ(1) - Nu consuma memorie suplimentara in afara variabilelor locale.
+        -:   12:
+function _ZN15IteratorMultimeC2ERK7Multime called 7 returned 100% blocks executed 100%
+        7:   13:IteratorMultime::IteratorMultime(const Multime &m) : mult(m) {
+        7:   14:    prim();
+        7:   14-block  0
+call    0 returned 7
+        7:   15:}
+        -:   16:
+        -:   17:// Returneaza elementul curent din iterație.
+        -:   18:// Functia element returneaza elementul curent la care indica iteratorul.
+        -:   19:// Complexitate timp: Θ(1) - Acces constant la elementul curent.
+        -:   20:// Complexitate spatiu: Θ(1) - Nu consuma memorie suplimentara in afara valorii returnate.
+        -:   21:
+function _ZNK15IteratorMultime7elementEv called 63 returned 100% blocks executed 100%
+       63:   22:TElem IteratorMultime::element() const {
+       63:   23:    return mult.vector[index];
+       63:   23-block  0
+        -:   24:}
+        -:   25:
+        -:   26:// Verifică dacă iteratorul este valid.
+        -:   27:// Funcția valid returnează true dacă iteratorul este valid (în limitele mulțimii), altfel returneaza false.
+        -:   28:// Complexitate timp: Θ(1) - Verificare constantă a validității iteratorului.
+        -:   29:// Complexitate spațiu: Θ(1) - Nu consumă memorie suplimentară în afara valorii returnate.
+        -:   30:
+function _ZNK15IteratorMultime5validEv called 67 returned 100% blocks executed 100%
+       67:   31:bool IteratorMultime::valid() const {
+       67:   32:    return index < mult.dim();
+       67:   32-block  0
+call    0 returned 67
+        -:   33:}
+        -:   34:
+        -:   35:// Avansează iteratorul la următorul element din mulțime.
+        -:   36:// Funcția urmator avansează iteratorul la următorul element din mulțime.
+        -:   37:// Complexitate timp: Θ(1) - Avansare constantă la următorul element.
+        -:   38:// Complexitate spațiu: Θ(1) - Nu consumă memorie suplimentară în afara variabilelor locale.
+        -:   39:
+function _ZN15IteratorMultime7urmatorEv called 258 returned 100% blocks executed 100%
+      258:   40:void IteratorMultime::urmator() {
+      258:   41:    index += 1;
+      258:   42:}
+        -:   43:
+        -:   44:// Repune iteratorul la începutul mulțimii.
+        -:   45:// Funcția prim resetează indexul iteratorului la prima poziție din mulțime.
+        -:   46:// Complexitate timp: Θ(1) - Resetare constantă a indexului iteratorului.
+        -:   47:// Complexitate spațiu: Θ(1) - Nu consumă memorie suplimentară în afara variabilelor locale.
+        -:   48:
+function _ZN15IteratorMultime4primEv called 11 returned 100% blocks executed 100%
+       11:   49:void IteratorMultime::prim() {
+       11:   50:    index = 0;
+       11:   51:}

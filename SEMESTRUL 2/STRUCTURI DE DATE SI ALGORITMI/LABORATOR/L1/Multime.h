@@ -52,6 +52,9 @@ public:
     // returneaza un iterator pe multime
     IteratorMultime iterator() const;
 
+    // adauga toate elementele din multimea b in multimea curenta
+    void reuniune(const Multime &b);
+
     // destructorul multimii
     ~Multime();
 };

@@ -1,0 +1,363 @@
+        -:    0:Source:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L1/TestScurt.cpp
+        -:    0:Graph:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L1/cmake-build-debug-coverage/CMakeFiles/L1.dir/TestScurt.cpp.gcno
+        -:    0:Data:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L1/cmake-build-debug-coverage/CMakeFiles/L1.dir/TestScurt.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Costi on 24-Mar-24.
+        -:    3://
+        -:    4:
+        -:    5:#include "TestScurt.h"
+        -:    6:#include "Multime.h"
+        -:    7:#include "IteratorMultime.h"
+        -:    8:#include <assert.h>
+        -:    9:
+function _Z7testAllv called 1 returned 100% blocks executed 74%
+        1:   10:void testAll() { //apelam fiecare functie sa vedem daca exista
+        -:   11:    int vverif[5];
+        -:   12:    int iverif;
+        -:   13:    TElem e;
+        -:   14:
+        1:   15:    Multime m1;
+        1:   15-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   16:    assert(m1.adauga(5)==true);
+        1:   16-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   16-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   16-block  2
+call    5 never executed
+       1*:   17:    assert(m1.adauga(1)==true);
+        1:   17-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   17-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   17-block  2
+call    5 never executed
+       1*:   18:    assert(m1.adauga(10)==true);
+        1:   18-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   18-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   18-block  2
+call    5 never executed
+        1:   19:    IteratorMultime im1 =  m1.iterator();
+        1:   19-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   20:    im1.prim();
+        1:   20-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   21:    iverif=0;
+        1:   22:    e=im1.element();
+        1:   22-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   23:    vverif[iverif++] = e;
+        1:   24:    im1.urmator();
+        1:   24-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        3:   25:    while (im1.valid()) {
+        1:   25-block  0
+        3:   25-block  1
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        3:   25-block  2
+branch  3 taken 2
+branch  4 taken 1 (fallthrough)
+       2*:   26:        assert(rel(e,im1.element()));
+        2:   26-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   26-block  1
+call    3 returned 2
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0 (throw)
+        2:   26-block  2
+branch  6 taken 0 (fallthrough)
+branch  7 taken 2
+    %%%%%:   26-block  3
+call    8 never executed
+        2:   27:        e = im1.element();
+        2:   27-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   28:        vverif[iverif++] = e;
+        2:   29:        im1.urmator();
+        2:   29-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   30:    }
+       1*:   31:    assert((vverif[0]==1) &&(vverif[1]==5)&&(vverif[2]==10));
+        1:   31-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:   31-block  1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   31-block  2
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0
+    %%%%%:   31-block  3
+call    6 never executed
+        -:   32:
+        -:   33:
+        1:   34:    Multime m;
+        1:   34-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   35:    //return;
+       1*:   36:    assert(m.vida() == true);
+        1:   36-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   36-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   36-block  2
+call    5 never executed
+       1*:   37:    assert(m.dim() == 0); //adaug niste elemente
+        1:   37-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   37-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   37-block  2
+call    5 never executed
+       1*:   38:    assert(m.adauga(5)==true);
+        1:   38-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   38-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   38-block  2
+call    5 never executed
+       1*:   39:    assert(m.adauga(1)==true);
+        1:   39-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   39-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   39-block  2
+call    5 never executed
+       1*:   40:    assert(m.adauga(10)==true);
+        1:   40-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   40-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   40-block  2
+call    5 never executed
+       1*:   41:    assert(m.adauga(7)==true);
+        1:   41-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   41-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   41-block  2
+call    5 never executed
+       1*:   42:    assert(m.adauga(1)==false);
+        1:   42-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   42-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   42-block  2
+call    5 never executed
+       1*:   43:    assert(m.adauga(10)==false);
+        1:   43-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   43-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   43-block  2
+call    5 never executed
+       1*:   44:    assert(m.adauga(-3)==true);
+        1:   44-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   44-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   44-block  2
+call    5 never executed
+       1*:   45:    assert(m.dim() == 5);
+        1:   45-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   45-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   45-block  2
+call    5 never executed
+       1*:   46:    assert(m.cauta(10) == true);
+        1:   46-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   46-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   46-block  2
+call    5 never executed
+       1*:   47:    assert(m.cauta(16) == false);
+        1:   47-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   47-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   47-block  2
+call    5 never executed
+       1*:   48:    assert(m.sterge(1) == true);
+        1:   48-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   48-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   48-block  2
+call    5 never executed
+       1*:   49:    assert(m.sterge(6) == false);
+        1:   49-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   49-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   49-block  2
+call    5 never executed
+       1*:   50:    assert(m.dim() == 4);
+        1:   50-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   50-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   50-block  2
+call    5 never executed
+        -:   51:
+        1:   52:    IteratorMultime im = m.iterator();
+        1:   52-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   53:    iverif=0;
+        1:   54:    im.prim();
+        1:   54-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   55:    e = im.element();
+        1:   55-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   56:    vverif[iverif++] = e;
+        1:   57:    im.urmator();
+        1:   57-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        4:   58:    while (im.valid()) {
+        1:   58-block  0
+        4:   58-block  1
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        4:   58-block  2
+branch  3 taken 3
+branch  4 taken 1 (fallthrough)
+       3*:   59:        assert(rel(e,im.element()));
+        3:   59-block  0
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        3:   59-block  1
+call    3 returned 3
+branch  4 taken 3 (fallthrough)
+branch  5 taken 0 (throw)
+        3:   59-block  2
+branch  6 taken 0 (fallthrough)
+branch  7 taken 3
+    %%%%%:   59-block  3
+call    8 never executed
+        3:   60:        e = im.element();
+        3:   60-block  0
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        3:   61:        vverif[iverif++] = e;
+        3:   62:        im.urmator();
+        3:   62-block  0
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   63:    }
+       1*:   64:    assert((vverif[3]==10) &&(vverif[2]==7)&&(vverif[1]==5)&&(vverif[0]==-3));
+        1:   64-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:   64-block  1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   64-block  2
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0
+        1:   64-block  3
+branch  6 taken 1 (fallthrough)
+branch  7 taken 0
+    %%%%%:   64-block  4
+call    8 never executed
+        -:   65:
+        1:   66:}
+        1:   66-block  0
+call    0 returned 1
+call    1 returned 1
+    $$$$$:   66-block  1
+call    2 never executed
+    $$$$$:   66-block  2
+call    3 never executed
