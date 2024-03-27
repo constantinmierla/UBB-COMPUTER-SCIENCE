@@ -1,6 +1,6 @@
-        -:    0:Source:D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 3 dinamic/tests.c
-        -:    0:Graph:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 3 dinamic\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\tests.c.gcno
-        -:    0:Data:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 3 dinamic\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\tests.c.gcda
+        -:    0:Source:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/tests.c
+        -:    0:Graph:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/cmake-build-debug-coverage/CMakeFiles/lab_2.dir/tests.c.gcno
+        -:    0:Data:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/cmake-build-debug-coverage/CMakeFiles/lab_2.dir/tests.c.gcda
         -:    0:Runs:1
         -:    1://
         -:    2:// Created by Costi on 12-Mar-24.
@@ -14,832 +14,782 @@
         -:   10:#include <stdlib.h>
         -:   11:#include <stdio.h>
         -:   12:#include "sort.h"
-function testValideazaOferta called 1 returned 100% blocks executed 84%
-        1:   13:void testValideazaOferta()
+function testValideazaOferta called 0 returned 0% blocks executed 0%
+    #####:   13:void testValideazaOferta()
         -:   14:{
-        1:   15:    int idRau = -1;
-        1:   16:    char* tip = "mere";
-        1:   17:    int pretRau = -1;
-        1:   18:    char* destinatie = "";
-        1:   19:    char* data_plecarii = "";
+    #####:   15:    int idRau = -1;
+    #####:   16:    char* tip = "mere";
+    #####:   17:    int pretRau = -1;
+    #####:   18:    char* destinatie = "";
+    #####:   19:    char* data_plecarii = "";
         -:   20:
-        1:   21:    Oferta* o = creeazaOferta(tip,"paris","28.05.2004",15,10);
-        1:   21-block  0
-call    0 returned 1
-       1*:   22:    assert(valideazaOferta(o)==-1);
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:   21:    Oferta* o = creeazaOferta(tip,"paris","28.05.2004",15,10);
+    %%%%%:   21-block  0
+call    0 never executed
+    #####:   22:    assert(valideazaOferta(o)==-1);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:   22-block  0
 call    3 never executed
-        1:   22-block  1
         -:   23:
-        1:   24:    Oferta* o1 = creeazaOferta("mare",destinatie,"28.05.2004",15,1);
-        1:   24-block  0
-call    0 returned 1
-       1*:   25:    assert(valideazaOferta(o1)==-1);
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:   24:    Oferta* o1 = creeazaOferta("mare",destinatie,"28.05.2004",15,1);
+    %%%%%:   24-block  0
+call    0 never executed
+    #####:   25:    assert(valideazaOferta(o1)==-1);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:   25-block  0
 call    3 never executed
-        1:   25-block  1
         -:   26:
-        1:   27:    Oferta* o2 = creeazaOferta("mare","paris",data_plecarii,15,2);
-        1:   27-block  0
-call    0 returned 1
-       1*:   28:    assert(valideazaOferta(o2)==-1);
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:   27:    Oferta* o2 = creeazaOferta("mare","paris",data_plecarii,15,2);
+    %%%%%:   27-block  0
+call    0 never executed
+    #####:   28:    assert(valideazaOferta(o2)==-1);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:   28-block  0
 call    3 never executed
-        1:   28-block  1
         -:   29:
         -:   30:
-        1:   31:    Oferta* o3 = creeazaOferta("mare","paris","28.05.2004",pretRau,3);
-        1:   31-block  0
-call    0 returned 1
-       1*:   32:    assert(valideazaOferta(o3)==-1);
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:   31:    Oferta* o3 = creeazaOferta("mare","paris","28.05.2004",pretRau,3);
+    %%%%%:   31-block  0
+call    0 never executed
+    #####:   32:    assert(valideazaOferta(o3)==-1);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:   32-block  0
 call    3 never executed
-        1:   32-block  1
         -:   33:
-        1:   34:    Oferta* o4 = creeazaOferta("mare","paris","28.05.2004",15,idRau);
-        1:   34-block  0
-call    0 returned 1
-       1*:   35:    assert(valideazaOferta(o4)==-1);
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:   34:    Oferta* o4 = creeazaOferta("mare","paris","28.05.2004",15,idRau);
+    %%%%%:   34-block  0
+call    0 never executed
+    #####:   35:    assert(valideazaOferta(o4)==-1);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:   35-block  0
 call    3 never executed
-        1:   35-block  1
         -:   36:
-        1:   37:    Oferta* o5 = creeazaOferta("mare","paris","28.05.2004",15,5);
-        1:   37-block  0
-call    0 returned 1
-       1*:   38:    assert(valideazaOferta(o5)==1);
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:   37:    Oferta* o5 = creeazaOferta("mare","paris","28.05.2004",15,5);
+    %%%%%:   37-block  0
+call    0 never executed
+    #####:   38:    assert(valideazaOferta(o5)==1);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:   38-block  0
 call    3 never executed
-        1:   38-block  1
         -:   39:
-        1:   40:    destroyOferta(o);
-        1:   40-block  0
-call    0 returned 1
-        1:   41:    destroyOferta(o1);
-call    0 returned 1
-        1:   42:    destroyOferta(o2);
-call    0 returned 1
-        1:   43:    destroyOferta(o3);
-call    0 returned 1
-        1:   44:    destroyOferta(o4);
-call    0 returned 1
-        1:   45:    destroyOferta(o5);
-call    0 returned 1
-        1:   46:}
+    #####:   40:    destroyOferta(o);
+    %%%%%:   40-block  0
+call    0 never executed
+    #####:   41:    destroyOferta(o1);
+call    0 never executed
+    #####:   42:    destroyOferta(o2);
+call    0 never executed
+    #####:   43:    destroyOferta(o3);
+call    0 never executed
+    #####:   44:    destroyOferta(o4);
+call    0 never executed
+    #####:   45:    destroyOferta(o5);
+call    0 never executed
+    #####:   46:}
         -:   47:
-function testUpdate called 1 returned 100% blocks executed 86%
-        1:   48:void testUpdate()
+function testUpdate called 0 returned 0% blocks executed 0%
+    #####:   48:void testUpdate()
         -:   49:{
-        1:   50:    BigList list = createBigList();
-        1:   50-block  0
-call    0 returned 1
-        1:   51:    Offerte* f = list.lista;
-        1:   52:    Oferta* m = creeazaOferta("mare","paris","28.05.2004",15,5);
-call    0 returned 1
-        1:   53:    setPret(m,12);
-call    0 returned 1
-        1:   54:    addEntitate(f,m);
-call    0 returned 1
+    #####:   50:    BigList list = createBigList();
+    %%%%%:   50-block  0
+call    0 never executed
+    #####:   51:    Offerte* f = list.lista;
+    #####:   52:    Oferta* m = creeazaOferta("mare","paris","28.05.2004",15,5);
+call    0 never executed
+    #####:   53:    setPret(m,12);
+call    0 never executed
+    #####:   54:    addEntitate(f,m);
+call    0 never executed
         -:   55:
-       1*:   56:    assert(updateEnt(&list,"mare","paris","28.05.2004",15,6)==-1);
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:   56:    assert(updateEnt(&list,"mare","paris","28.05.2004",15,6)==-1);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:   56-block  0
 call    3 never executed
-        1:   56-block  1
-       1*:   57:    assert(updateEnt(&list,"mare","paris","28.05.2004",12,5)==0);
-        1:   57-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:   57:    assert(updateEnt(&list,"mare","paris","28.05.2004",12,5)==0);
+    %%%%%:   57-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:   57-block  1
 call    3 never executed
-        1:   57-block  2
         -:   58:
-        1:   59:    destroyAll(&list);
-        1:   59-block  0
-call    0 returned 1
+    #####:   59:    destroyAll(&list);
+    %%%%%:   59-block  0
+call    0 never executed
         -:   60:
-        1:   61:}
-function testCauta called 1 returned 100% blocks executed 85%
-        1:   62:void testCauta()
+    #####:   61:}
+function testCauta called 0 returned 0% blocks executed 0%
+    #####:   62:void testCauta()
         -:   63:{
-        1:   64:    BigList list = createBigList();
-        1:   64-block  0
-call    0 returned 1
-        1:   65:    Offerte* f = list.lista;
-        1:   66:    Oferta * m = creeazaOferta("mare","paris","28.05.2004",15,5);
-call    0 returned 1
-        1:   67:    addEntitate(f,m);
-call    0 returned 1
-       1*:   68:    assert(checkId(&list,5)==1);
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:   64:    BigList list = createBigList();
+    %%%%%:   64-block  0
+call    0 never executed
+    #####:   65:    Offerte* f = list.lista;
+    #####:   66:    Oferta * m = creeazaOferta("mare","paris","28.05.2004",15,5);
+call    0 never executed
+    #####:   67:    addEntitate(f,m);
+call    0 never executed
+    #####:   68:    assert(checkId(&list,5)==1);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:   68-block  0
 call    3 never executed
-        1:   68-block  1
-       1*:   69:    assert(checkId(&list,6)==0);
-        1:   69-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:   69:    assert(checkId(&list,6)==0);
+    %%%%%:   69-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:   69-block  1
 call    3 never executed
-        1:   69-block  2
         -:   70:
-        1:   71:    destroyAll(&list);
-        1:   71-block  0
-call    0 returned 1
-        1:   72:}
+    #####:   71:    destroyAll(&list);
+    %%%%%:   71-block  0
+call    0 never executed
+    #####:   72:}
         -:   73:
-function testAddEntitate called 1 returned 100% blocks executed 80%
-        1:   74:void testAddEntitate()
+function testAddEntitate called 0 returned 0% blocks executed 0%
+    #####:   74:void testAddEntitate()
         -:   75:{
-        1:   76:    BigList list = createBigList();
-        1:   76-block  0
-call    0 returned 1
+    #####:   76:    BigList list = createBigList();
+    %%%%%:   76-block  0
+call    0 never executed
         -:   77:
-        1:   78:    addEnt(&list,"mare","paris1","28.05.2004",15,5);
-call    0 returned 1
-        1:   79:    addEnt(&list,"mare","paris2","28.05.2004",15,6);
-call    0 returned 1
-        1:   80:    addEnt(&list,"mare","paris3","28.05.2004",15,7);
-call    0 returned 1
-       1*:   81:    assert(list.lista->dimensiune==3);
-branch  0 taken 0 (fallthrough)
-branch  1 taken 1
+    #####:   78:    addEnt(&list,"mare","paris1","28.05.2004",15,5);
+call    0 never executed
+    #####:   79:    addEnt(&list,"mare","paris2","28.05.2004",15,6);
+call    0 never executed
+    #####:   80:    addEnt(&list,"mare","paris3","28.05.2004",15,7);
+call    0 never executed
+    #####:   81:    assert(list.lista->dimensiune==3);
+branch  0 never executed
+branch  1 never executed
     %%%%%:   81-block  0
 call    2 never executed
-        1:   81-block  1
-        1:   82:    Oferta* p = get(list.lista,0);
-        1:   82-block  0
-call    0 returned 1
+    #####:   82:    Oferta* p = get(list.lista,0);
+    %%%%%:   82-block  0
+call    0 never executed
         -:   83:
-       1*:   84:    assert(5 == p->id);
-branch  0 taken 0 (fallthrough)
-branch  1 taken 1
+    #####:   84:    assert(5 == p->id);
+branch  0 never executed
+branch  1 never executed
     %%%%%:   84-block  0
 call    2 never executed
-        1:   84-block  1
-       1*:   85:    assert(15 == p->pret);
-        1:   85-block  0
-branch  0 taken 0 (fallthrough)
-branch  1 taken 1
+    #####:   85:    assert(15 == p->pret);
+    %%%%%:   85-block  0
+branch  0 never executed
+branch  1 never executed
     %%%%%:   85-block  1
 call    2 never executed
-        1:   85-block  2
         -:   86:
-       1*:   87:    assert(addEnt(&list,"lac","paris1","28.05.2004",15,5)==0);
-        1:   87-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:   87:    assert(addEnt(&list,"lac","paris1","28.05.2004",15,5)==0);
+    %%%%%:   87-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:   87-block  1
 call    3 never executed
-        1:   87-block  2
         -:   88:
-        1:   89:    destroyAll(&list);
-        1:   89-block  0
-call    0 returned 1
+    #####:   89:    destroyAll(&list);
+    %%%%%:   89-block  0
+call    0 never executed
         -:   90:
-        1:   91:}
+    #####:   91:}
         -:   92:
-function testDeleteEntitate called 1 returned 100% blocks executed 89%
-        1:   93:void testDeleteEntitate()
+function testDeleteEntitate called 0 returned 0% blocks executed 0%
+    #####:   93:void testDeleteEntitate()
         -:   94:{
-        1:   95:    BigList list = createBigList();
-        1:   95-block  0
-call    0 returned 1
-        1:   96:    Offerte* f = list.lista;
-        1:   97:    Oferta* m = creeazaOferta("mare","paris","28.05.2004",15,5);
-call    0 returned 1
-        1:   98:    Oferta* m1 = creeazaOferta("mare","paris","28.05.2004",14,6);
-call    0 returned 1
-        1:   99:    Oferta* m2 = creeazaOferta("mare","paris","28.05.2004",13,7);
-call    0 returned 1
-        1:  100:    Oferta* m3 = creeazaOferta("mare","paris","28.05.2004",12,8);
-call    0 returned 1
+    #####:   95:    BigList list = createBigList();
+    %%%%%:   95-block  0
+call    0 never executed
+    #####:   96:    Offerte* f = list.lista;
+    #####:   97:    Oferta* m = creeazaOferta("mare","paris","28.05.2004",15,5);
+call    0 never executed
+    #####:   98:    Oferta* m1 = creeazaOferta("mare","paris","28.05.2004",14,6);
+call    0 never executed
+    #####:   99:    Oferta* m2 = creeazaOferta("mare","paris","28.05.2004",13,7);
+call    0 never executed
+    #####:  100:    Oferta* m3 = creeazaOferta("mare","paris","28.05.2004",12,8);
+call    0 never executed
         -:  101:
-        1:  102:    addEntitate(f,m);
-call    0 returned 1
-        1:  103:    addEntitate(f,m1);
-call    0 returned 1
-        1:  104:    addEntitate(f,m2);
-call    0 returned 1
-        1:  105:    addEntitate(f,m3);
-call    0 returned 1
-       1*:  106:    assert(deleteEnt(&list,4)==0);
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  102:    addEntitate(f,m);
+call    0 never executed
+    #####:  103:    addEntitate(f,m1);
+call    0 never executed
+    #####:  104:    addEntitate(f,m2);
+call    0 never executed
+    #####:  105:    addEntitate(f,m3);
+call    0 never executed
+    #####:  106:    assert(deleteEnt(&list,4)==0);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  106-block  0
 call    3 never executed
-        1:  106-block  1
-       1*:  107:    assert(deleteEnt(&list,5)==1);
-        1:  107-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  107:    assert(deleteEnt(&list,5)==1);
+    %%%%%:  107-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  107-block  1
 call    3 never executed
-        1:  107-block  2
-        1:  108:    destroyAll(&list);
-        1:  108-block  0
-call    0 returned 1
-        1:  109:}
+    #####:  108:    destroyAll(&list);
+    %%%%%:  108-block  0
+call    0 never executed
+    #####:  109:}
         -:  110:
-function testAsiguraCapacitate called 1 returned 100% blocks executed 83%
-        1:  111:void testAsiguraCapacitate()
+function testAsiguraCapacitate called 0 returned 0% blocks executed 0%
+    #####:  111:void testAsiguraCapacitate()
         -:  112:{
-        1:  113:    Offerte * f = creeazaOfferte();
-        1:  113-block  0
-call    0 returned 1
-        1:  114:    Oferta* m = creeazaOferta("mare","paris","28.05.2004",15,5);
-call    0 returned 1
-        1:  115:    Oferta* m1 = creeazaOferta("mare","paris","28.05.2004",14,6);
-call    0 returned 1
-        1:  116:    Oferta* m2 = creeazaOferta("mare","paris","28.05.2004",13,7);
-call    0 returned 1
-        1:  117:    addEntitate(f,m);
-call    0 returned 1
-        1:  118:    addEntitate(f,m1);
-call    0 returned 1
-       1*:  119:    assert(f->capacitate==2);
-branch  0 taken 0 (fallthrough)
-branch  1 taken 1
+    #####:  113:    Offerte * f = creeazaOfferte();
+    %%%%%:  113-block  0
+call    0 never executed
+    #####:  114:    Oferta* m = creeazaOferta("mare","paris","28.05.2004",15,5);
+call    0 never executed
+    #####:  115:    Oferta* m1 = creeazaOferta("mare","paris","28.05.2004",14,6);
+call    0 never executed
+    #####:  116:    Oferta* m2 = creeazaOferta("mare","paris","28.05.2004",13,7);
+call    0 never executed
+    #####:  117:    addEntitate(f,m);
+call    0 never executed
+    #####:  118:    addEntitate(f,m1);
+call    0 never executed
+    #####:  119:    assert(f->capacitate==2);
+branch  0 never executed
+branch  1 never executed
     %%%%%:  119-block  0
 call    2 never executed
-        1:  119-block  1
-        1:  120:    addEntitate(f,m2);
-        1:  120-block  0
-call    0 returned 1
-       1*:  121:    assert(f->capacitate==4);
-branch  0 taken 0 (fallthrough)
-branch  1 taken 1
+    #####:  120:    addEntitate(f,m2);
+    %%%%%:  120-block  0
+call    0 never executed
+    #####:  121:    assert(f->capacitate==4);
+branch  0 never executed
+branch  1 never executed
     %%%%%:  121-block  0
 call    2 never executed
-        1:  121-block  1
-       1*:  122:    assert(f->dimensiune==3);
-        1:  122-block  0
-branch  0 taken 0 (fallthrough)
-branch  1 taken 1
+    #####:  122:    assert(f->dimensiune==3);
+    %%%%%:  122-block  0
+branch  0 never executed
+branch  1 never executed
     %%%%%:  122-block  1
 call    2 never executed
-        1:  122-block  2
-        1:  123:    destroyOfferte(f);
-        1:  123-block  0
-call    0 returned 1
+    #####:  123:    destroyOfferte(f);
+    %%%%%:  123-block  0
+call    0 never executed
         -:  124:
-        1:  125:}
+    #####:  125:}
         -:  126:
-function testFilterPret called 1 returned 100% blocks executed 84%
-        1:  127:void testFilterPret()
+function testFilterPret called 0 returned 0% blocks executed 0%
+    #####:  127:void testFilterPret()
         -:  128:{
-        1:  129:    BigList list = createBigList();
-        1:  129-block  0
-call    0 returned 1
+    #####:  129:    BigList list = createBigList();
+    %%%%%:  129-block  0
+call    0 never executed
         -:  130:
-        1:  131:    addEnt(&list,"mare","paris","28.05.2004",15,5);
-call    0 returned 1
-        1:  132:    addEnt(&list,"mare","paris","28.05.2004",160,6);
-call    0 returned 1
-        1:  133:    addEnt(&list,"mare","paris","28.05.2004",20,7);
-call    0 returned 1
-        1:  134:    addEnt(&list,"mare","paris","28.05.2004",140,8);
-call    0 returned 1
-        1:  135:    addEnt(&list,"mare","paris","28.05.2004",30,9);
-call    0 returned 1
+    #####:  131:    addEnt(&list,"mare","paris","28.05.2004",15,5);
+call    0 never executed
+    #####:  132:    addEnt(&list,"mare","paris","28.05.2004",160,6);
+call    0 never executed
+    #####:  133:    addEnt(&list,"mare","paris","28.05.2004",20,7);
+call    0 never executed
+    #####:  134:    addEnt(&list,"mare","paris","28.05.2004",140,8);
+call    0 never executed
+    #####:  135:    addEnt(&list,"mare","paris","28.05.2004",30,9);
+call    0 never executed
         -:  136:
-        1:  137:    Offerte * f1 = filterPret(&list,100);
-call    0 returned 1
+    #####:  137:    Offerte * f1 = filterPret(&list,100);
+call    0 never executed
         -:  138:
-       1*:  139:    assert(f1->dimensiune == 3);
-branch  0 taken 0 (fallthrough)
-branch  1 taken 1
+    #####:  139:    assert(f1->dimensiune == 3);
+branch  0 never executed
+branch  1 never executed
     %%%%%:  139-block  0
 call    2 never executed
-        1:  139-block  1
-       1*:  140:    assert(getPret(f1->oferte[0]) == 15);
-        1:  140-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  140:    assert(getPret(f1->oferte[0]) == 15);
+    %%%%%:  140-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  140-block  1
 call    3 never executed
-        1:  140-block  2
-       1*:  141:    assert(getPret(f1->oferte[1]) == 20);
-        1:  141-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  141:    assert(getPret(f1->oferte[1]) == 20);
+    %%%%%:  141-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  141-block  1
 call    3 never executed
-        1:  141-block  2
-       1*:  142:    assert(getPret(f1->oferte[2]) == 30);
-        1:  142-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  142:    assert(getPret(f1->oferte[2]) == 30);
+    %%%%%:  142-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  142-block  1
 call    3 never executed
-        1:  142-block  2
         -:  143:
-        1:  144:    destroyOfferte(f1);
-        1:  144-block  0
-call    0 returned 1
-        1:  145:    destroyAll(&list);
-call    0 returned 1
-        1:  146:}
+    #####:  144:    destroyOfferte(f1);
+    %%%%%:  144-block  0
+call    0 never executed
+    #####:  145:    destroyAll(&list);
+call    0 never executed
+    #####:  146:}
         -:  147:
-function testFilterTip called 1 returned 100% blocks executed 84%
-        1:  148:void testFilterTip()
+function testFilterTip called 0 returned 0% blocks executed 0%
+    #####:  148:void testFilterTip()
         -:  149:{
-        1:  150:    BigList list = createBigList();
-        1:  150-block  0
-call    0 returned 1
+    #####:  150:    BigList list = createBigList();
+    %%%%%:  150-block  0
+call    0 never executed
         -:  151:
-        1:  152:    addEnt(&list,"mare","paris","28.05.2004",15,5);
-call    0 returned 1
-        1:  153:    addEnt(&list,"MUNTE","paris","28.05.2004",160,6);
-call    0 returned 1
-        1:  154:    addEnt(&list,"MUNTE","paris","28.05.2004",20,7);
-call    0 returned 1
-        1:  155:    addEnt(&list,"mare","paris","28.05.2004",140,8);
-call    0 returned 1
-        1:  156:    addEnt(&list,"mare","paris","28.05.2004",30,9);
-call    0 returned 1
+    #####:  152:    addEnt(&list,"mare","paris","28.05.2004",15,5);
+call    0 never executed
+    #####:  153:    addEnt(&list,"MUNTE","paris","28.05.2004",160,6);
+call    0 never executed
+    #####:  154:    addEnt(&list,"MUNTE","paris","28.05.2004",20,7);
+call    0 never executed
+    #####:  155:    addEnt(&list,"mare","paris","28.05.2004",140,8);
+call    0 never executed
+    #####:  156:    addEnt(&list,"mare","paris","28.05.2004",30,9);
+call    0 never executed
         -:  157:
-        1:  158:    Offerte * f1 = filterTip(&list,'m');
-call    0 returned 1
+    #####:  158:    Offerte * f1 = filterTip(&list,'m');
+call    0 never executed
         -:  159:
-       1*:  160:    assert(f1->dimensiune == 3);
-branch  0 taken 0 (fallthrough)
-branch  1 taken 1
+    #####:  160:    assert(f1->dimensiune == 3);
+branch  0 never executed
+branch  1 never executed
     %%%%%:  160-block  0
 call    2 never executed
-        1:  160-block  1
-       1*:  161:    assert(getPret(f1->oferte[0]) == 15);
-        1:  161-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  161:    assert(getPret(f1->oferte[0]) == 15);
+    %%%%%:  161-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  161-block  1
 call    3 never executed
-        1:  161-block  2
-       1*:  162:    assert(getPret(f1->oferte[1]) == 140);
-        1:  162-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  162:    assert(getPret(f1->oferte[1]) == 140);
+    %%%%%:  162-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  162-block  1
 call    3 never executed
-        1:  162-block  2
-       1*:  163:    assert(getPret(f1->oferte[2]) == 30);
-        1:  163-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  163:    assert(getPret(f1->oferte[2]) == 30);
+    %%%%%:  163-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  163-block  1
 call    3 never executed
-        1:  163-block  2
         -:  164:
-        1:  165:    destroyOfferte(f1);
-        1:  165-block  0
-call    0 returned 1
-        1:  166:    destroyAll(&list);
-call    0 returned 1
-        1:  167:}
-function testdinsort called 1 returned 100% blocks executed 86%
-        1:  168:void testdinsort() {
-        1:  169:    BigList list = createBigList();
-        1:  169-block  0
-call    0 returned 1
-        1:  170:    Offerte* f = list.lista;
-        1:  171:    Oferta* m = creeazaOferta("mare","paris","28.05.2004",15,5);
-call    0 returned 1
-        1:  172:    Oferta* m1 = creeazaOferta("mare","paris","28.05.2004",14,6);
-call    0 returned 1
-        1:  173:    Oferta* m2 = creeazaOferta("mare","paris","28.05.2004",13,7);
-call    0 returned 1
-        1:  174:    Oferta* m3 = creeazaOferta("mare","paris","28.05.2004",12,8);
-call    0 returned 1
+    #####:  165:    destroyOfferte(f1);
+    %%%%%:  165-block  0
+call    0 never executed
+    #####:  166:    destroyAll(&list);
+call    0 never executed
+    #####:  167:}
+function testdinsort called 0 returned 0% blocks executed 0%
+    #####:  168:void testdinsort() {
+    #####:  169:    BigList list = createBigList();
+    %%%%%:  169-block  0
+call    0 never executed
+    #####:  170:    Offerte* f = list.lista;
+    #####:  171:    Oferta* m = creeazaOferta("mare","paris","28.05.2004",15,5);
+call    0 never executed
+    #####:  172:    Oferta* m1 = creeazaOferta("mare","paris","28.05.2004",14,6);
+call    0 never executed
+    #####:  173:    Oferta* m2 = creeazaOferta("mare","paris","28.05.2004",13,7);
+call    0 never executed
+    #####:  174:    Oferta* m3 = creeazaOferta("mare","paris","28.05.2004",12,8);
+call    0 never executed
         -:  175:
-        1:  176:    addEntitate(f,m);
-call    0 returned 1
-        1:  177:    addEntitate(f,m1);
-call    0 returned 1
-        1:  178:    addEntitate(f,m2);
-call    0 returned 1
-        1:  179:    addEntitate(f,m3);
-call    0 returned 1
-        1:  180:    sort(f, cmpPret);
-call    0 returned 1
+    #####:  176:    addEntitate(f,m);
+call    0 never executed
+    #####:  177:    addEntitate(f,m1);
+call    0 never executed
+    #####:  178:    addEntitate(f,m2);
+call    0 never executed
+    #####:  179:    addEntitate(f,m3);
+call    0 never executed
+    #####:  180:    sort(f, cmpPret);
+call    0 never executed
         -:  181:
         -:  182:    // Assert that the resulting list is sorted
-       1*:  183:    assert(getPret(f->oferte[0]) == 12); // First element should have price 12
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  183:    assert(getPret(f->oferte[0]) == 12); // First element should have price 12
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  183-block  0
 call    3 never executed
-        1:  183-block  1
-       1*:  184:    assert(getPret(f->oferte[1]) == 13); // Second element should have price 13
-        1:  184-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  184:    assert(getPret(f->oferte[1]) == 13); // Second element should have price 13
+    %%%%%:  184-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  184-block  1
 call    3 never executed
-        1:  184-block  2
-       1*:  185:    assert(getPret(f->oferte[2]) == 14); // Third element should have price 14
-        1:  185-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  185:    assert(getPret(f->oferte[2]) == 14); // Third element should have price 14
+    %%%%%:  185-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  185-block  1
 call    3 never executed
-        1:  185-block  2
-       1*:  186:    assert(getPret(f->oferte[3]) == 15); // Fourth element should have price 15
-        1:  186-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  186:    assert(getPret(f->oferte[3]) == 15); // Fourth element should have price 15
+    %%%%%:  186-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  186-block  1
 call    3 never executed
-        1:  186-block  2
-        1:  187:    destroyAll(&list);
-        1:  187-block  0
-call    0 returned 1
-        1:  188:}
-function testSortingFunctions called 1 returned 100% blocks executed 76%
-        1:  189:void testSortingFunctions() {
+    #####:  187:    destroyAll(&list);
+    %%%%%:  187-block  0
+call    0 never executed
+    #####:  188:}
+function testSortingFunctions called 0 returned 0% blocks executed 0%
+    #####:  189:void testSortingFunctions() {
         -:  190:    // Test cmpPret function
-        1:  191:    Oferta oferta1 = {"paris", "dest1", "2024-01-01", 20, 1};
-        1:  192:    Oferta oferta2 = {"roma", "dest2", "2024-01-01", 15, 2};
-       1*:  193:    assert(cmpPret(&oferta1, &oferta2) > 0);
-        1:  193-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  191:    Oferta oferta1 = {"paris", "dest1", "2024-01-01", 20, 1};
+    #####:  192:    Oferta oferta2 = {"roma", "dest2", "2024-01-01", 15, 2};
+    #####:  193:    assert(cmpPret(&oferta1, &oferta2) > 0);
+    %%%%%:  193-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  193-block  1
 call    3 never executed
-        1:  193-block  2
-       1*:  194:    assert(cmpPret(&oferta2, &oferta1) < 0);
-        1:  194-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  194:    assert(cmpPret(&oferta2, &oferta1) < 0);
+    %%%%%:  194-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  194-block  1
 call    3 never executed
-        1:  194-block  2
-       1*:  195:    assert(cmpPret(&oferta1, &oferta1) == 0);
-        1:  195-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  195:    assert(cmpPret(&oferta1, &oferta1) == 0);
+    %%%%%:  195-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  195-block  1
 call    3 never executed
-        1:  195-block  2
         -:  196:
         -:  197:    // Test cmpPretD function
-       1*:  198:    assert(cmpPretD(&oferta1, &oferta2) < 0);
-        1:  198-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  198:    assert(cmpPretD(&oferta1, &oferta2) < 0);
+    %%%%%:  198-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  198-block  1
 call    3 never executed
-        1:  198-block  2
-       1*:  199:    assert(cmpPretD(&oferta2, &oferta1) > 0);
-        1:  199-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  199:    assert(cmpPretD(&oferta2, &oferta1) > 0);
+    %%%%%:  199-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  199-block  1
 call    3 never executed
-        1:  199-block  2
-       1*:  200:    assert(cmpPretD(&oferta1, &oferta1) == 0);
-        1:  200-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  200:    assert(cmpPretD(&oferta1, &oferta1) == 0);
+    %%%%%:  200-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  200-block  1
 call    3 never executed
-        1:  200-block  2
         -:  201:
         -:  202:    // Test cmpDestinatie function
-       1*:  203:    assert(cmpDestinatie(&oferta1, &oferta2) < 0);
-        1:  203-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  203:    assert(cmpDestinatie(&oferta1, &oferta2) < 0);
+    %%%%%:  203-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  203-block  1
 call    3 never executed
-        1:  203-block  2
-       1*:  204:    assert(cmpDestinatie(&oferta2, &oferta1) > 0);
-        1:  204-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  204:    assert(cmpDestinatie(&oferta2, &oferta1) > 0);
+    %%%%%:  204-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  204-block  1
 call    3 never executed
-        1:  204-block  2
-       1*:  205:    assert(cmpDestinatie(&oferta1, &oferta1) == 0);
-        1:  205-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  205:    assert(cmpDestinatie(&oferta1, &oferta1) == 0);
+    %%%%%:  205-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  205-block  1
 call    3 never executed
-        1:  205-block  2
         -:  206:
         -:  207:
         -:  208:    // Test cmpDestinatieD function
-       1*:  209:    assert(cmpDestinatieD(&oferta1, &oferta2) > 0);
-        1:  209-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  209:    assert(cmpDestinatieD(&oferta1, &oferta2) > 0);
+    %%%%%:  209-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  209-block  1
 call    3 never executed
-        1:  209-block  2
-       1*:  210:    assert(cmpDestinatieD(&oferta2, &oferta1) < 0);
-        1:  210-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  210:    assert(cmpDestinatieD(&oferta2, &oferta1) < 0);
+    %%%%%:  210-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  210-block  1
 call    3 never executed
-        1:  210-block  2
-       1*:  211:    assert(cmpDestinatieD(&oferta1, &oferta1) == 0);
-        1:  211-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  211:    assert(cmpDestinatieD(&oferta1, &oferta1) == 0);
+    %%%%%:  211-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  211-block  1
 call    3 never executed
-        1:  211-block  2
         -:  212:
-        1:  213:}
-function testesortpret called 1 returned 100% blocks executed 94%
-        1:  214:void testesortpret()
+    #####:  213:}
+function testesortpret called 0 returned 0% blocks executed 0%
+    #####:  214:void testesortpret()
         -:  215:{
-        1:  216:    BigList list = createBigList();
-        1:  216-block  0
-call    0 returned 1
+    #####:  216:    BigList list = createBigList();
+    %%%%%:  216-block  0
+call    0 never executed
         -:  217:
-        1:  218:    Offerte* f = list.lista;
-        1:  219:    Oferta* m = creeazaOferta("mare","paris","28.05.2004",15,5);
-call    0 returned 1
-        1:  220:    Oferta* m1 = creeazaOferta("mare","paris","28.05.2004",14,6);
-call    0 returned 1
-        1:  221:    Oferta* m2 = creeazaOferta("mare","paris","28.05.2004",13,7);
-call    0 returned 1
-        1:  222:    Oferta* m3 = creeazaOferta("mare","paris","28.05.2004",12,8);
-call    0 returned 1
+    #####:  218:    Offerte* f = list.lista;
+    #####:  219:    Oferta* m = creeazaOferta("mare","paris","28.05.2004",15,5);
+call    0 never executed
+    #####:  220:    Oferta* m1 = creeazaOferta("mare","paris","28.05.2004",14,6);
+call    0 never executed
+    #####:  221:    Oferta* m2 = creeazaOferta("mare","paris","28.05.2004",13,7);
+call    0 never executed
+    #####:  222:    Oferta* m3 = creeazaOferta("mare","paris","28.05.2004",12,8);
+call    0 never executed
         -:  223:
-        1:  224:    addEntitate(f,m);
-call    0 returned 1
-        1:  225:    addEntitate(f,m1);
-call    0 returned 1
-        1:  226:    addEntitate(f,m2);
-call    0 returned 1
-        1:  227:    addEntitate(f,m3);
-call    0 returned 1
-        1:  228:    BigList* sortedList = sortPret(&list);
-call    0 returned 1
-       1*:  229:    assert(getPret(sortedList->lista->oferte[0]) == 12);
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  224:    addEntitate(f,m);
+call    0 never executed
+    #####:  225:    addEntitate(f,m1);
+call    0 never executed
+    #####:  226:    addEntitate(f,m2);
+call    0 never executed
+    #####:  227:    addEntitate(f,m3);
+call    0 never executed
+    #####:  228:    BigList* sortedList = sortPret(&list);
+call    0 never executed
+    #####:  229:    assert(getPret(sortedList->lista->oferte[0]) == 12);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  229-block  0
 call    3 never executed
-        1:  229-block  1
-        1:  230:    destroyAll(&list);
-        1:  230-block  0
-call    0 returned 1
-        1:  231:}
-function testesortpretd called 1 returned 100% blocks executed 94%
-        1:  232:void testesortpretd()
+    #####:  230:    destroyAll(&list);
+    %%%%%:  230-block  0
+call    0 never executed
+    #####:  231:}
+function testesortpretd called 0 returned 0% blocks executed 0%
+    #####:  232:void testesortpretd()
         -:  233:{
-        1:  234:    BigList list = createBigList();
-        1:  234-block  0
-call    0 returned 1
+    #####:  234:    BigList list = createBigList();
+    %%%%%:  234-block  0
+call    0 never executed
         -:  235:
-        1:  236:    Offerte* f = list.lista;
-        1:  237:    Oferta* m = creeazaOferta("mare","paris","28.05.2004",15,5);
-call    0 returned 1
-        1:  238:    Oferta* m1 = creeazaOferta("mare","paris","28.05.2004",14,6);
-call    0 returned 1
-        1:  239:    Oferta* m2 = creeazaOferta("mare","paris","28.05.2004",13,7);
-call    0 returned 1
-        1:  240:    Oferta* m3 = creeazaOferta("mare","paris","28.05.2004",12,8);
-call    0 returned 1
+    #####:  236:    Offerte* f = list.lista;
+    #####:  237:    Oferta* m = creeazaOferta("mare","paris","28.05.2004",15,5);
+call    0 never executed
+    #####:  238:    Oferta* m1 = creeazaOferta("mare","paris","28.05.2004",14,6);
+call    0 never executed
+    #####:  239:    Oferta* m2 = creeazaOferta("mare","paris","28.05.2004",13,7);
+call    0 never executed
+    #####:  240:    Oferta* m3 = creeazaOferta("mare","paris","28.05.2004",12,8);
+call    0 never executed
         -:  241:
-        1:  242:    addEntitate(f,m);
-call    0 returned 1
-        1:  243:    addEntitate(f,m1);
-call    0 returned 1
-        1:  244:    addEntitate(f,m2);
-call    0 returned 1
-        1:  245:    addEntitate(f,m3);
-call    0 returned 1
-        1:  246:    BigList* sortedList = sortPretD(&list);
-call    0 returned 1
-       1*:  247:    assert(getPret(sortedList->lista->oferte[0]) == 15);
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  242:    addEntitate(f,m);
+call    0 never executed
+    #####:  243:    addEntitate(f,m1);
+call    0 never executed
+    #####:  244:    addEntitate(f,m2);
+call    0 never executed
+    #####:  245:    addEntitate(f,m3);
+call    0 never executed
+    #####:  246:    BigList* sortedList = sortPretD(&list);
+call    0 never executed
+    #####:  247:    assert(getPret(sortedList->lista->oferte[0]) == 15);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  247-block  0
 call    3 never executed
-        1:  247-block  1
-        1:  248:    destroyAll(&list);
-        1:  248-block  0
-call    0 returned 1
-        1:  249:}
-function testesortdest called 1 returned 100% blocks executed 94%
-        1:  250:void testesortdest()
+    #####:  248:    destroyAll(&list);
+    %%%%%:  248-block  0
+call    0 never executed
+    #####:  249:}
+function testesortdest called 0 returned 0% blocks executed 0%
+    #####:  250:void testesortdest()
         -:  251:{
-        1:  252:    BigList list = createBigList();
-        1:  252-block  0
-call    0 returned 1
+    #####:  252:    BigList list = createBigList();
+    %%%%%:  252-block  0
+call    0 never executed
         -:  253:
-        1:  254:    Offerte* f = list.lista;
-        1:  255:    Oferta* m = creeazaOferta("mare","paris2","28.05.2004",15,5);
-call    0 returned 1
-        1:  256:    Oferta* m1 = creeazaOferta("mare","paris1","28.05.2004",14,6);
-call    0 returned 1
-        1:  257:    Oferta* m2 = creeazaOferta("mare","paris3","28.05.2004",13,7);
-call    0 returned 1
-        1:  258:    Oferta* m3 = creeazaOferta("mare","paris4","28.05.2004",12,8);
-call    0 returned 1
+    #####:  254:    Offerte* f = list.lista;
+    #####:  255:    Oferta* m = creeazaOferta("mare","paris2","28.05.2004",15,5);
+call    0 never executed
+    #####:  256:    Oferta* m1 = creeazaOferta("mare","paris1","28.05.2004",14,6);
+call    0 never executed
+    #####:  257:    Oferta* m2 = creeazaOferta("mare","paris3","28.05.2004",13,7);
+call    0 never executed
+    #####:  258:    Oferta* m3 = creeazaOferta("mare","paris4","28.05.2004",12,8);
+call    0 never executed
         -:  259:
-        1:  260:    addEntitate(f,m);
-call    0 returned 1
-        1:  261:    addEntitate(f,m1);
-call    0 returned 1
-        1:  262:    addEntitate(f,m2);
-call    0 returned 1
-        1:  263:    addEntitate(f,m3);
-call    0 returned 1
-        1:  264:    BigList* sortedList = sortDestinatie(&list);
-call    0 returned 1
-       1*:  265:    assert(getPret(sortedList->lista->oferte[0]) == 14);
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  260:    addEntitate(f,m);
+call    0 never executed
+    #####:  261:    addEntitate(f,m1);
+call    0 never executed
+    #####:  262:    addEntitate(f,m2);
+call    0 never executed
+    #####:  263:    addEntitate(f,m3);
+call    0 never executed
+    #####:  264:    BigList* sortedList = sortDestinatie(&list);
+call    0 never executed
+    #####:  265:    assert(getPret(sortedList->lista->oferte[0]) == 14);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  265-block  0
 call    3 never executed
-        1:  265-block  1
-        1:  266:    destroyAll(&list);
-        1:  266-block  0
-call    0 returned 1
-        1:  267:}
-function testesortdestd called 1 returned 100% blocks executed 94%
-        1:  268:void testesortdestd()
+    #####:  266:    destroyAll(&list);
+    %%%%%:  266-block  0
+call    0 never executed
+    #####:  267:}
+function testesortdestd called 0 returned 0% blocks executed 0%
+    #####:  268:void testesortdestd()
         -:  269:{
-        1:  270:    BigList list = createBigList();
-        1:  270-block  0
-call    0 returned 1
+    #####:  270:    BigList list = createBigList();
+    %%%%%:  270-block  0
+call    0 never executed
         -:  271:
-        1:  272:    Offerte* f = list.lista;
-        1:  273:    Oferta* m = creeazaOferta("mare","paris2","28.05.2004",15,5);
-call    0 returned 1
-        1:  274:    Oferta* m1 = creeazaOferta("mare","paris1","28.05.2004",14,6);
-call    0 returned 1
-        1:  275:    Oferta* m2 = creeazaOferta("mare","paris3","28.05.2004",13,7);
-call    0 returned 1
-        1:  276:    Oferta* m3 = creeazaOferta("mare","paris4","28.05.2004",12,8);
-call    0 returned 1
+    #####:  272:    Offerte* f = list.lista;
+    #####:  273:    Oferta* m = creeazaOferta("mare","paris2","28.05.2004",15,5);
+call    0 never executed
+    #####:  274:    Oferta* m1 = creeazaOferta("mare","paris1","28.05.2004",14,6);
+call    0 never executed
+    #####:  275:    Oferta* m2 = creeazaOferta("mare","paris3","28.05.2004",13,7);
+call    0 never executed
+    #####:  276:    Oferta* m3 = creeazaOferta("mare","paris4","28.05.2004",12,8);
+call    0 never executed
         -:  277:
-        1:  278:    addEntitate(f,m);
-call    0 returned 1
-        1:  279:    addEntitate(f,m1);
-call    0 returned 1
-        1:  280:    addEntitate(f,m2);
-call    0 returned 1
-        1:  281:    addEntitate(f,m3);
-call    0 returned 1
-        1:  282:    BigList* sortedList = sortDestinatieD(&list);
-call    0 returned 1
-       1*:  283:    assert(getPret(sortedList->lista->oferte[0]) == 12);
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  278:    addEntitate(f,m);
+call    0 never executed
+    #####:  279:    addEntitate(f,m1);
+call    0 never executed
+    #####:  280:    addEntitate(f,m2);
+call    0 never executed
+    #####:  281:    addEntitate(f,m3);
+call    0 never executed
+    #####:  282:    BigList* sortedList = sortDestinatieD(&list);
+call    0 never executed
+    #####:  283:    assert(getPret(sortedList->lista->oferte[0]) == 12);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  283-block  0
 call    3 never executed
-        1:  283-block  1
-        1:  284:    destroyAll(&list);
-        1:  284-block  0
-call    0 returned 1
-        1:  285:}
-function repotestadd called 1 returned 100% blocks executed 89%
-        1:  286:void repotestadd()
+    #####:  284:    destroyAll(&list);
+    %%%%%:  284-block  0
+call    0 never executed
+    #####:  285:}
+function repotestadd called 0 returned 0% blocks executed 0%
+    #####:  286:void repotestadd()
         -:  287:{
-        1:  288:    BigList list = createBigList();
-        1:  288-block  0
-call    0 returned 1
-        1:  289:    Offerte* f = list.lista;
-        1:  290:    Oferta * m = creeazaOferta("mare","paris","28.05.2004",15,5);
-call    0 returned 1
-        1:  291:    addEntitate(f,m);
-call    0 returned 1
-       1*:  292:    assert(getPret(f->oferte[0]) == 15);
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  288:    BigList list = createBigList();
+    %%%%%:  288-block  0
+call    0 never executed
+    #####:  289:    Offerte* f = list.lista;
+    #####:  290:    Oferta * m = creeazaOferta("mare","paris","28.05.2004",15,5);
+call    0 never executed
+    #####:  291:    addEntitate(f,m);
+call    0 never executed
+    #####:  292:    assert(getPret(f->oferte[0]) == 15);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  292-block  0
 call    3 never executed
-        1:  292-block  1
         -:  293:
-        1:  294:    destroyAll(&list);
-        1:  294-block  0
-call    0 returned 1
-        1:  295:}
-function repotestdelete called 1 returned 100% blocks executed 85%
-        1:  296:void repotestdelete()
+    #####:  294:    destroyAll(&list);
+    %%%%%:  294-block  0
+call    0 never executed
+    #####:  295:}
+function repotestdelete called 0 returned 0% blocks executed 0%
+    #####:  296:void repotestdelete()
         -:  297:{
-        1:  298:    BigList list = createBigList();
-        1:  298-block  0
-call    0 returned 1
-        1:  299:    Offerte* f = list.lista;
-        1:  300:    Oferta * m = creeazaOferta("mare","paris","28.05.2004",15,5);
-call    0 returned 1
-        1:  301:    addEntitate(f,m);
-call    0 returned 1
-       1*:  302:    assert(getPret(f->oferte[0]) == 15);
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  298:    BigList list = createBigList();
+    %%%%%:  298-block  0
+call    0 never executed
+    #####:  299:    Offerte* f = list.lista;
+    #####:  300:    Oferta * m = creeazaOferta("mare","paris","28.05.2004",15,5);
+call    0 never executed
+    #####:  301:    addEntitate(f,m);
+call    0 never executed
+    #####:  302:    assert(getPret(f->oferte[0]) == 15);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  302-block  0
 call    3 never executed
-        1:  302-block  1
-       1*:  303:    assert(deleteEntitate(f,5) == 0);
-        1:  303-block  0
-call    0 returned 1
-branch  1 taken 0 (fallthrough)
-branch  2 taken 1
+    #####:  303:    assert(deleteEntitate(f,5) == 0);
+    %%%%%:  303-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
     %%%%%:  303-block  1
 call    3 never executed
-        1:  303-block  2
-        1:  304:    destroyAll(&list);
-        1:  304-block  0
-call    0 returned 1
-        1:  305:}
-function runAllTests called 1 returned 100% blocks executed 100%
-        1:  306:void runAllTests()
+    #####:  304:    destroyAll(&list);
+    %%%%%:  304-block  0
+call    0 never executed
+    #####:  305:}
+function runAllTests called 0 returned 0% blocks executed 0%
+    #####:  306:void runAllTests()
         -:  307:{
-        1:  308:    repotestadd();
-        1:  308-block  0
-call    0 returned 1
-        1:  309:    repotestdelete();
-call    0 returned 1
-        1:  310:    testValideazaOferta();
-call    0 returned 1
-        1:  311:    testCauta();
-call    0 returned 1
-        1:  312:    testAddEntitate();
-call    0 returned 1
-        1:  313:    testDeleteEntitate();
-call    0 returned 1
-        1:  314:    testUpdate();
-call    0 returned 1
-        1:  315:    testAsiguraCapacitate();
-call    0 returned 1
-        1:  316:    testFilterPret();
-call    0 returned 1
-        1:  317:    testFilterTip();
-call    0 returned 1
-        1:  318:    testdinsort();
-call    0 returned 1
-        1:  319:    testSortingFunctions();
-call    0 returned 1
-        1:  320:    testesortdestd();
-call    0 returned 1
-        1:  321:    testesortpretd();
-call    0 returned 1
-        1:  322:    testesortpret();
-call    0 returned 1
-        1:  323:    testesortdest();
-call    0 returned 1
-        1:  324:}
+    #####:  308:    repotestadd();
+    %%%%%:  308-block  0
+call    0 never executed
+    #####:  309:    repotestdelete();
+call    0 never executed
+    #####:  310:    testValideazaOferta();
+call    0 never executed
+    #####:  311:    testCauta();
+call    0 never executed
+    #####:  312:    testAddEntitate();
+call    0 never executed
+    #####:  313:    testDeleteEntitate();
+call    0 never executed
+    #####:  314:    testUpdate();
+call    0 never executed
+    #####:  315:    testAsiguraCapacitate();
+call    0 never executed
+    #####:  316:    testFilterPret();
+call    0 never executed
+    #####:  317:    testFilterTip();
+call    0 never executed
+    #####:  318:    testdinsort();
+call    0 never executed
+    #####:  319:    testSortingFunctions();
+call    0 never executed
+    #####:  320:    testesortdestd();
+call    0 never executed
+    #####:  321:    testesortpretd();
+call    0 never executed
+    #####:  322:    testesortpret();
+call    0 never executed
+    #####:  323:    testesortdest();
+call    0 never executed
+    #####:  324:}

@@ -1,6 +1,6 @@
-        -:    0:Source:D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 3 dinamic/main.c
-        -:    0:Graph:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 3 dinamic\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\main.c.gcno
-        -:    0:Data:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 3 dinamic\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\main.c.gcda
+        -:    0:Source:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/main.c
+        -:    0:Graph:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/cmake-build-debug-coverage/CMakeFiles/lab_2.dir/main.c.gcno
+        -:    0:Data:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/cmake-build-debug-coverage/CMakeFiles/lab_2.dir/main.c.gcda
         -:    0:Runs:1
         -:    1:#include <stdio.h>
         -:    2:#include "ui.h"
@@ -18,15 +18,14 @@
         -:   14:     e) Vizualizare oferta filtrate dupa un criteriu (destinatie, tip, pret)
         -:   15: */
         -:   16:
-function main called 1 returned 0% blocks executed 75%
+function main called 1 returned 100% blocks executed 100%
         1:   17:int main()
         -:   18:{
-        1:   19:    runAllTests();
-        1:   19-block  0
-call    0 returned 1
+        -:   19:    //runAllTests();
         1:   20:    run();
-call    0 returned 0
-    #####:   21:    return 0;
+        1:   20-block  0
+call    0 returned 1
+        1:   21:    return 0;
         -:   22:}
         -:   23:
         -:   24:

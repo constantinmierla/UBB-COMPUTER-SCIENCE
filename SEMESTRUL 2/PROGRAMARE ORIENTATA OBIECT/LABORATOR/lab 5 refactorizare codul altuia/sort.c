@@ -25,3 +25,21 @@ void sort(Offerte* l, CompareFct cmpF)
         }
     }
 }
+void sortbubble(Offerte* l, CompareFct cmpF)
+{
+    int ok = 1;
+    while(ok == 1)
+    {
+        ok = 0;
+        for (int i = 0; i < l->dimensiune-1; i++)
+        {
+            if(cmpF(l->oferte[i],l->oferte[i+1])>0)
+            {
+                Entitate temp = l->oferte[i];
+                l->oferte[i] = l->oferte[i+1];
+                l->oferte[i+1] = temp;
+                ok = 1;
+            }
+        }
+    }
+}

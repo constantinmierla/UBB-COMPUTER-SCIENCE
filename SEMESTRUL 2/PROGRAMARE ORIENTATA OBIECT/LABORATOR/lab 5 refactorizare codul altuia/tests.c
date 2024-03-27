@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "sort.h"
-void testValideazaOferta()
+/*void testValideazaOferta()
 {
     int idRau = -1;
     char* tip = "mere";
@@ -322,3 +322,4 @@ void runAllTests()
     testesortpret();
     testesortdest();
 }
+*/

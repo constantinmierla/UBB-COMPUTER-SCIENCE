@@ -12,6 +12,7 @@ typedef struct{
     char *producer;
     int pret;
     int id;
+    int stoc;
 } Oferta;
 
 /*
@@ -26,7 +27,7 @@ typedef struct{
  * Returneaza:
  *   oferta - o structura reprezentand o oferta cu specificatiile date
  */
-Oferta* creeazaOferta(char* tip,char* model, char* producer, int pret,int id);
+Oferta* creeazaOferta(char* tip,char* model, char* producer, int pret,int id, int stoc);
 
 void destroyOferta(Oferta*);
 

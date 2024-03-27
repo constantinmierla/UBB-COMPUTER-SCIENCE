@@ -16,5 +16,6 @@
 typedef int (*CompareFct)(Oferta* el1, Oferta* el2);
 void sort(Offerte* l, CompareFct cmpF);
 
+void sortbubble(Offerte* l, CompareFct cmpF);
 
 #endif //LAB_2_SORT_H*

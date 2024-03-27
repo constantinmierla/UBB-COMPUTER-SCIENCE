@@ -1,6 +1,6 @@
-        -:    0:Source:D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 3 dinamic/sort.c
-        -:    0:Graph:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 3 dinamic\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\sort.c.gcno
-        -:    0:Data:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 3 dinamic\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\sort.c.gcda
+        -:    0:Source:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/sort.c
+        -:    0:Graph:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/cmake-build-debug-coverage/CMakeFiles/lab_2.dir/sort.c.gcno
+        -:    0:Data:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/cmake-build-debug-coverage/CMakeFiles/lab_2.dir/sort.c.gcda
         -:    0:Runs:1
         -:    1://
         -:    2:// Created by Costi on 20-Mar-24.
@@ -15,33 +15,33 @@
         -:   11:* cmpf - relatia dupa care se sorteaza
         -:   12:*/
         -:   13:
-function sort called 5 returned 100% blocks executed 100%
-        5:   14:void sort(Offerte* l, CompareFct cmpF)
+function sort called 0 returned 0% blocks executed 0%
+    #####:   14:void sort(Offerte* l, CompareFct cmpF)
         -:   15:{
         -:   16:    int i, j;
-       20:   17:    for (i = 0; i < l->dimensiune - 1; i++) {
-        5:   17-block  0
-       15:   17-block  1
-       20:   17-block  2
-branch  0 taken 15
-branch  1 taken 5 (fallthrough)
-       45:   18:        for (j = i + 1; j < l->dimensiune; j++) {
-       15:   18-block  0
-       30:   18-block  1
-       45:   18-block  2
-branch  0 taken 30
-branch  1 taken 15 (fallthrough)
-       30:   19:            if (cmpF(l->oferte[i], l->oferte[j]) > 0) {
-       30:   19-block  0
-call    0 returned 30
-branch  1 taken 18 (fallthrough)
-branch  2 taken 12
+    #####:   17:    for (i = 0; i < l->dimensiune - 1; i++) {
+    %%%%%:   17-block  0
+    %%%%%:   17-block  1
+    %%%%%:   17-block  2
+branch  0 never executed
+branch  1 never executed
+    #####:   18:        for (j = i + 1; j < l->dimensiune; j++) {
+    %%%%%:   18-block  0
+    %%%%%:   18-block  1
+    %%%%%:   18-block  2
+branch  0 never executed
+branch  1 never executed
+    #####:   19:            if (cmpF(l->oferte[i], l->oferte[j]) > 0) {
+    %%%%%:   19-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
         -:   20:                // Swap elements l->lista[i] and l->lista[j]
-       18:   21:                Entitate temp = l->oferte[i];
-       18:   22:                l->oferte[i] = l->oferte[j];
-       18:   23:                l->oferte[j] = temp;
-       18:   23-block  0
+    #####:   21:                Entitate temp = l->oferte[i];
+    #####:   22:                l->oferte[i] = l->oferte[j];
+    #####:   23:                l->oferte[j] = temp;
+    %%%%%:   23-block  0
         -:   24:            }
         -:   25:        }
         -:   26:    }
-        5:   27:}
+    #####:   27:}

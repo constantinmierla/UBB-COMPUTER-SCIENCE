@@ -19,7 +19,7 @@
  * Returneaza:
  *   oferta - o structura reprezentand o oferta cu specificatiile date
  */
-Oferta* creeazaOferta(char* tip,char* model, char* producer, int pret,int id)
+Oferta* creeazaOferta(char* tip,char* model, char* producer, int pret,int id, int stoc)
 {
     Oferta* p =(Oferta*) malloc(sizeof(Oferta));
 
@@ -38,7 +38,7 @@ Oferta* creeazaOferta(char* tip,char* model, char* producer, int pret,int id)
     strcpy(p->producer, producer);
     p->pret = pret;
     p->id = id;
-
+    p->stoc = stoc;
     return p;
 }
 //Copiaza oferta
@@ -58,7 +58,7 @@ Oferta* copyOferta(Oferta* o)
     strcpy(p->producer,o->producer);
 
     p->pret = o->pret;
-
+    p->stoc = o->stoc;
     return p;
 }
 
@@ -110,6 +110,8 @@ int valideazaOferta(Oferta* o)
     if(o->id<=0)
         return -1;
     if(o->pret<=0)
+        return -1;
+    if(o->stoc<=0)
         return -1;
     if(strlen(o->tip)<1)
         return -1;

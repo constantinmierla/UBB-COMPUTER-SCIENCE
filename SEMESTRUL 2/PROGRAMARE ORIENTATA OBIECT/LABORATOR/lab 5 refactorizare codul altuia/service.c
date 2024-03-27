@@ -21,9 +21,9 @@ void destroyBigList(BigList* list)
  * Pre: list- de tip BigList*
  * Post: 0 daca entitatea exista deja in lista, 1 altfel
  */
-int addEnt(BigList* list, char* tip, char* model, char* producer, int pret, int id)
+int addEnt(BigList* list, char* tip, char* model, char* producer, int pret, int id, int stoc)
 {
-    Oferta* e = creeazaOferta(tip, model, producer, pret, id);
+    Oferta* e = creeazaOferta(tip, model, producer, pret, id, stoc);
     if(valideazaOferta(e) == 1)
     {
         addEntitate(list->lista,e);
@@ -53,13 +53,13 @@ int deleteEnt(BigList* list,int id)
  * Pre: list- de tip BigList*
  * Post: 0 daca entitatea exista deja in lista si s-a facut modificarea, 1 altfel
  */
-int updateEnt(BigList* list, char* tip, char* model, char* producer, int pret, int id)
+int updateEnt(BigList* list, char* tip, char* model, char* producer, int pret, int id, int stoc)
 {
     for(int i=0;i<list->lista->dimensiune;i++)
     {
         if(getId(get(list->lista,i))==id)
         {
-            Entitate e = creeazaOferta(tip, model, producer, pret, id);
+            Entitate e = creeazaOferta(tip, model, producer, pret, id, stoc);
             updateOferta(list->lista,e);
             return 0;
         }
@@ -101,22 +101,22 @@ int cmpPretD(Oferta* m1, Oferta* m2) {
         return -1;
 }
 
-int cmpDestinatie(Oferta* m1, Oferta* m2) {
-    /*if (strcmp(m1->destinatie, m2->destinatie) > 0)
+int cmpStoc(Oferta* m1, Oferta* m2) {
+    if (m1->stoc == m2->stoc)
+        return 0;
+    if (m1->stoc > m2->stoc)
         return 1;
-    if (strcmp(m1->destinatie, m2->destinatie) < 0)
-        return -1;
     else
-        return 0;*/
+        return -1;
 }
 
-int cmpDestinatieD(Oferta* m1, Oferta* m2) {
-    /*if (strcmp(m1->destinatie, m2->destinatie) > 0)
-        return -1;
-    if (strcmp(m1->destinatie, m2->destinatie) < 0)
+int cmpStocD(Oferta* m1, Oferta* m2) {
+    if (m1->stoc == m2->stoc)
+        return 0;
+    if (m1->stoc < m2->stoc)
         return 1;
     else
-        return 0;*/
+        return -1;
 }
 
 BigList* sortPret(BigList* l) {
@@ -129,15 +129,32 @@ BigList* sortPretD(BigList* l) {
     return l;
 }
 
-BigList* sortDestinatie(BigList* l) {
-    sort(l->lista, cmpDestinatie);
+BigList* sortStoc(BigList* l) {
+    sort(l->lista, cmpStoc);
     return l;
 }
-BigList* sortDestinatieD(BigList* l) {
-    sort(l->lista, cmpDestinatieD);
+BigList* sortStocD(BigList* l) {
+    sort(l->lista, cmpStocD);
+    return l;
+}
+BigList* sortPretb(BigList* l) {
+    sortbubble(l->lista, cmpPret);
     return l;
 }
 
+BigList* sortPretDb(BigList* l) {
+    sortbubble(l->lista, cmpPretD);
+    return l;
+}
+
+BigList* sortStocb(BigList* l) {
+    sortbubble(l->lista, cmpStoc);
+    return l;
+}
+BigList* sortStocDb(BigList* l) {
+    sortbubble(l->lista, cmpStocD);
+    return l;
+}
 /*Filtreaza ofertele care au pretul mai mic decat o valoare data*/
 Offerte* filterPret(BigList* list, int val)
 {
