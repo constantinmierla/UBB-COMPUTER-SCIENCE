@@ -48,7 +48,7 @@ bool bellman_ford(int n, int v, int s)
 
 //int main() {
 //ifstream in("graf.in");
-//ofstream out("graf.out");g
+//ofstream out("graf.out");
 int main(int argc, char *argv[])
 {
     int n, m, s;
