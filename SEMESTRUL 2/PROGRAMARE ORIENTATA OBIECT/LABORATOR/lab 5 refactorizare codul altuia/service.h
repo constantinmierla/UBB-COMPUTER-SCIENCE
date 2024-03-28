@@ -16,7 +16,7 @@ typedef struct{
 /*
 	Functie care creaza o lista ce contine o lista de oferte
 */
-BigList createBigList();
+BigList* createBigList();
 
 int undo_service(BigList* list);
 

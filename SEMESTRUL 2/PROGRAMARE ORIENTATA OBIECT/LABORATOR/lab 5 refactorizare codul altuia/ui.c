@@ -174,10 +174,16 @@ void filtrareTip(BigList* list)
 
     destroyOfferte(f);
 }
-
+void undo_ui(BigList* l)
+{
+    if(undo_service(l) == 0)
+        printf("Undo reusit!\n");
+    else
+        printf("Nu se mai poate face undo!\n");
+}
 void run()
 {
-    BigList list = createBigList();
+    BigList* list = createBigList();
 
     while(1)
     {
@@ -186,24 +192,24 @@ void run()
                "5. Sortare; 6. Filtrare Pret; 7. Filtrare tip; 8. Undo\n");
         scanf("%d",&cmd);
         if(cmd == 1)
-            readOfe(&list);
+            readOfe(list);
         else if(cmd == 2)
-            updateOfe(&list);
+            updateOfe(list);
         else if(cmd == 3)
-            deleteOfe(&list);
+            deleteOfe(list);
         else if(cmd == 4)
-            printOfferte(&list);
+            printOfferte(list);
         else if(cmd == 5)
-            sortare(&list);
+            sortare(list);
         else if(cmd == 6)
-            filtrarePret(&list);
+            filtrarePret(list);
         else if(cmd == 7)
-            filtrareTip(&list);
+            filtrareTip(list);
         else if(cmd == 8)
-            undo(&list);
+            undo_ui(list);
         else if(cmd==0)
         {
-            destroy(&list);
+            destroy(list);
             break;
         }
     }

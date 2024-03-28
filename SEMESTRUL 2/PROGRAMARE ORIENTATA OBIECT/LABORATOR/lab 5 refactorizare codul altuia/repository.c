@@ -21,7 +21,7 @@ void addEntitate(Offerte* f, Entitate e)
 /*Functie care mareste capacitatea.*/
 void asiguraCapacitate(Offerte* f)
 {
-
+    //devzt
     Entitate* capacitateNoua = malloc(sizeof(Entitate)*(f->capacitate * 2));
     //copiaza elementele
     for (int i = 0; i < f->dimensiune; i++)
@@ -59,14 +59,15 @@ int deleteEntitate(Offerte* f, int id)
 
 
 /*Functie care creeaza o entitate noua si returneaza pointerul la entitatea respectiva.*/
-Offerte* creeazaOfferte()
+Offerte* creeazaOfferte(DestroyFn destroy, CopyFn copy)
 {
 
-    Offerte* f = malloc(sizeof(Offerte));
+    Offerte* f = (Offerte*)malloc(sizeof(Offerte));
     f->dimensiune = 0;
     f->capacitate = 2;
-    f->oferte = malloc(sizeof(Entitate) * f->capacitate);
-
+    f->oferte = (Entitate)malloc(sizeof(Entitate) * f->capacitate);
+    f->destroy = destroy;
+    f->copy = copy;
     return f;
 }
 
@@ -79,6 +80,24 @@ void destroyOfferte(Offerte* f)
     free(f->oferte);
     free(f);
 
+}
+
+Entitate popElement(Offerte* f)
+{
+    Entitate e = f->oferte[f->dimensiune - 1];
+    f->dimensiune -= 1;
+    return e;
+}
+
+Entitate getElement(Offerte* f, int position)
+{
+    Entitate e = f->oferte[position];
+    return e;
+}
+
+int sizeList(Offerte* f)
+{
+    return f->dimensiune;
 }
 /*Functie care face update
  Primeste un pointer cu caracteristicile actualizate, distruge
@@ -131,12 +150,19 @@ Entitate set(Offerte* f, int poz, Entitate e)
 //Functie copy
 Offerte* copy(Offerte* p)
 {
-    Offerte* f = malloc(sizeof(Offerte));
+    Offerte* copiedList = creeazaOfferte(p->destroy, p->copy);
+
+    for(int i = 0; i < p->dimensiune; i++)
+    {
+        addEntitate(copiedList, p->copy(p->oferte[i]));
+    }
+    return copiedList;
+    /*Offerte* f = malloc(sizeof(Offerte));
     f->dimensiune = p->dimensiune;
     f->capacitate = p->capacitate;
     f->oferte = malloc(sizeof (Oferta)*p->dimensiune);
     for(int i=0; i< p->dimensiune;i++)
         f->oferte[i] = copyOferta(p->oferte[i]);
 
-    return f;
+    return f;*/
 }

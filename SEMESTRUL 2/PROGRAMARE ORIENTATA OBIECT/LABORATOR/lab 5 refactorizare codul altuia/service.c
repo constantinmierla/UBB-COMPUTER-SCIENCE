@@ -5,11 +5,11 @@
 #include "domain.h"
 #include "repository.h"
 #include "sort.h"
-BigList createBigList()
+BigList* createBigList()
 {
-    BigList listaMeds;
-    listaMeds.lista = creeazaOfferte();//de vzt
-    listaMeds.undo_lista = creeazaOfferte();
+    BigList* listaMeds = (BigList*)malloc(sizeof(BigList));
+    listaMeds->lista = creeazaOfferte((DestroyFn)destroyOferta, (CopyFn) copyOferta);//de vzt
+    listaMeds->undo_lista = creeazaOfferte((DestroyFn)destroyBigList, (CopyFn) copy);
     return listaMeds;
 }
 
@@ -22,12 +22,12 @@ void destroyBigList(BigList* list)
 
 int undo_service(BigList* list)
 {
-    if(sizeList(list->lista) == 0
+    if(sizeList(list->undo_lista) == 0)
         return 1;
 
-    BigList* lista_noua = popElement(list->undo_lista);
+    Offerte* lista_noua = popElement(list->undo_lista);
     destroyOfferte(list->lista);
-    list->undo_lista = lista_noua();
+    list->lista = lista_noua;
     return 0;
 }
 /*Adauga  o oferta in lista.
@@ -39,7 +39,10 @@ int addEnt(BigList* list, char* tip, char* model, char* producer, int pret, int 
     Oferta* e = creeazaOferta(tip, model, producer, pret, id, stoc);
     if(valideazaOferta(e) == 1)
     {
+        Offerte* copyy = copy(list->lista);
+        addEntitate(list->undo_lista,copyy);
         addEntitate(list->lista,e);
+
         return 1;
     }
     else
@@ -54,8 +57,12 @@ int addEnt(BigList* list, char* tip, char* model, char* producer, int pret, int 
  */
 int deleteEnt(BigList* list,int id)
 {
+    Offerte* l = list->lista;
     if(checkId(list,id))
     {
+        Offerte* copy_undo = copy(l);
+        addEntitate(list->undo_lista, copy_undo);
+        //devzt
         deleteEntitate(list->lista,id);
         return 1;
     }
@@ -68,10 +75,15 @@ int deleteEnt(BigList* list,int id)
  */
 int updateEnt(BigList* list, char* tip, char* model, char* producer, int pret, int id, int stoc)
 {
+    Offerte* o = list->lista;
+
     for(int i=0;i<list->lista->dimensiune;i++)
     {
         if(getId(get(list->lista,i))==id)
         {
+            Offerte* copie = copy(o);
+            addEntitate(list->undo_lista, copie);
+            //devzt
             Entitate e = creeazaOferta(tip, model, producer, pret, id, stoc);
             updateOferta(list->lista,e);
             return 0;

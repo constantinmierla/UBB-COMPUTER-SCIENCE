@@ -26,7 +26,7 @@ int deleteEntitate(Offerte*, int);
 void asiguraCapacitate(Offerte*);
 
 /* Creeaza o Oferta noua */
-Offerte* creeazaOfferte();
+Offerte* creeazaOfferte(DestroyFn destroy, CopyFn copy);
 
 /* Sterge Oferta */
 void destroyOfferte(Offerte*);
@@ -45,5 +45,11 @@ int cauta(Offerte*, int);
 
 /*Creeaza o copie la oferta data*/
 Offerte* copy(Offerte*);
+
+Entitate popElement(Offerte*);
+
+Entitate getElement(Offerte*, int);
+
+int sizeList(Offerte*);
 
 #endif

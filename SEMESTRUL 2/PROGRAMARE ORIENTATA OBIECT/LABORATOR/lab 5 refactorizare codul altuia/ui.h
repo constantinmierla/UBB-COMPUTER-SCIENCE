@@ -30,4 +30,6 @@ void filtrarePret(BigList* list);
 /*Afiseaza medicamentele dupa filtrare dupa nume*/
 void filtrareTip(BigList* list);
 
+void undo_ui(BigList* l);
+
 void run();
