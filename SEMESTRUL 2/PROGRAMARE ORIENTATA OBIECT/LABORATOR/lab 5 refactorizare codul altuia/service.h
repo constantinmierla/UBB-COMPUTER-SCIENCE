@@ -10,12 +10,15 @@
 
 typedef struct{
     Offerte* lista;
+    Offerte* undo_lista;
 } BigList;
 
 /*
 	Functie care creaza o lista ce contine o lista de oferte
 */
 BigList createBigList();
+
+int undo_service(BigList* list);
 
 /*Functie care dealoca lista ce contine lista de oferte*/
 void destroyBigList(BigList* );

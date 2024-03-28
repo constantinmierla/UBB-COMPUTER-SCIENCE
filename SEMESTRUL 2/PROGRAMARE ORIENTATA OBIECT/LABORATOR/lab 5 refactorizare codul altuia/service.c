@@ -8,15 +8,28 @@
 BigList createBigList()
 {
     BigList listaMeds;
-    listaMeds.lista = creeazaOfferte();
+    listaMeds.lista = creeazaOfferte();//de vzt
+    listaMeds.undo_lista = creeazaOfferte();
     return listaMeds;
 }
 
 void destroyBigList(BigList* list)
 {
     destroyOfferte(list->lista);
+    destroyOfferte(list->undo_lista);
+    free(list);
 }
 
+int undo_service(BigList* list)
+{
+    if(sizeList(list->lista) == 0
+        return 1;
+
+    BigList* lista_noua = popElement(list->undo_lista);
+    destroyOfferte(list->lista);
+    list->undo_lista = lista_noua();
+    return 0;
+}
 /*Adauga  o oferta in lista.
  * Pre: list- de tip BigList*
  * Post: 0 daca entitatea exista deja in lista, 1 altfel

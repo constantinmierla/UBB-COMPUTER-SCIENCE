@@ -5,12 +5,15 @@
 /*Creeaza o entitate*/
 typedef void* Entitate;
 
+typedef void(*DestroyFn)(Entitate);
+typedef Entitate(*CopyFn)(Entitate);
 
 typedef struct {
     Entitate* oferte;
     int dimensiune;
     int capacitate;
-
+    DestroyFn destroy;
+    CopyFn copy;
 }Offerte;
 
 /*Adauga o oferta noua.*/

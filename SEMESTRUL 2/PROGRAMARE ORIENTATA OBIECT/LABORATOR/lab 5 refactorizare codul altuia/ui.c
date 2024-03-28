@@ -183,7 +183,7 @@ void run()
     {
         int cmd;
         printf("0. Exit; 1. Adaugare; 2. Modificare; 3.Stergere; 4.Afisare Oferte;\n"
-               "5. Sortare; 6. Filtrare Pret; 7. Filtrare tip\n");
+               "5. Sortare; 6. Filtrare Pret; 7. Filtrare tip; 8. Undo\n");
         scanf("%d",&cmd);
         if(cmd == 1)
             readOfe(&list);
@@ -199,6 +199,8 @@ void run()
             filtrarePret(&list);
         else if(cmd == 7)
             filtrareTip(&list);
+        else if(cmd == 8)
+            undo(&list);
         else if(cmd==0)
         {
             destroy(&list);
