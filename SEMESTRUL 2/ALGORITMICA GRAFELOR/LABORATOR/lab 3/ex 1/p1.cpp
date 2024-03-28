@@ -46,11 +46,20 @@ bool bellman_ford(int n, int v, int s)
     return true;
 }
 
-int main() {
+//int main() {
+//ifstream in("graf.in");
+//ofstream out("graf.out");g
+int main(int argc, char *argv[])
+{
     int n, m, s;
 
-    ifstream in("graf.in");
-    ofstream out("graf.out");
+    if(argc < 3) {
+        cout << "Numar insuficient de argumente!";
+        return 0;
+    }
+
+    ifstream in(argv[1]);
+    ofstream out(argv[2]);
 
     in >> n >> m >> s;
 
