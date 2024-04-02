@@ -39,6 +39,8 @@ int getId(Oferta*);
 /*Primeste o entitate Oferta si ii returneaza stocul.*/
 int getPret(Oferta*);
 
+int getStoc(Oferta*);
+
 /*Incrementeaza stocul unui oferte.*/
 void setPret(Oferta*,int);
 

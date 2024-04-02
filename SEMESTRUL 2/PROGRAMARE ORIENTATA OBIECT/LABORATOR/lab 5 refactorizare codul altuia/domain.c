@@ -88,7 +88,10 @@ int getPret(Oferta* p)
     return p->pret;
 }
 
-
+int getStoc(Oferta* p)
+{
+    return p->stoc;
+}
 //Seteaza pret
 void setPret(Oferta* o,int pret_nou) //pt modificare
 {

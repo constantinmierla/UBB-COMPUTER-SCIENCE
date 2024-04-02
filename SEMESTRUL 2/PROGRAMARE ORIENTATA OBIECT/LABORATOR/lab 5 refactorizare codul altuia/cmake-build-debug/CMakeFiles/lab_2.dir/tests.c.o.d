@@ -1,23 +1,18 @@
 CMakeFiles/lab_2.dir/tests.c.o: \
  /mnt/d/FMI\ UBB\ CLUJ\ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL\ 2/PROGRAMARE\ ORIENTATA\ OBIECT/LABORATOR/lab\ 5\ refactorizare\ codul\ altuia/tests.c \
  /usr/include/stdc-predef.h \
- /mnt/d/FMI\ UBB\ CLUJ\ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL\ 2/PROGRAMARE\ ORIENTATA\ OBIECT/LABORATOR/lab\ 5\ refactorizare\ codul\ altuia/tests.h \
- /usr/include/assert.h /usr/include/features.h \
- /usr/include/features-time64.h \
+ /mnt/d/FMI\ UBB\ CLUJ\ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL\ 2/PROGRAMARE\ ORIENTATA\ OBIECT/LABORATOR/lab\ 5\ refactorizare\ codul\ altuia/domain.h \
+ /usr/include/stdlib.h \
+ /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+ /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/bits/timesize.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/long-double.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
- /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/string.h \
- /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+ /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
- /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
- /usr/include/strings.h \
- /mnt/d/FMI\ UBB\ CLUJ\ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL\ 2/PROGRAMARE\ ORIENTATA\ OBIECT/LABORATOR/lab\ 5\ refactorizare\ codul\ altuia/repository.h \
- /mnt/d/FMI\ UBB\ CLUJ\ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL\ 2/PROGRAMARE\ ORIENTATA\ OBIECT/LABORATOR/lab\ 5\ refactorizare\ codul\ altuia/domain.h \
- /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+ /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
@@ -47,13 +42,10 @@ CMakeFiles/lab_2.dir/tests.c.o: \
  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+ /mnt/d/FMI\ UBB\ CLUJ\ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL\ 2/PROGRAMARE\ ORIENTATA\ OBIECT/LABORATOR/lab\ 5\ refactorizare\ codul\ altuia/repository.h \
  /mnt/d/FMI\ UBB\ CLUJ\ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL\ 2/PROGRAMARE\ ORIENTATA\ OBIECT/LABORATOR/lab\ 5\ refactorizare\ codul\ altuia/service.h \
- /usr/include/stdio.h /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
- /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
- /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
- /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
- /mnt/d/FMI\ UBB\ CLUJ\ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL\ 2/PROGRAMARE\ ORIENTATA\ OBIECT/LABORATOR/lab\ 5\ refactorizare\ codul\ altuia/sort.h
+ /mnt/d/FMI\ UBB\ CLUJ\ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL\ 2/PROGRAMARE\ ORIENTATA\ OBIECT/LABORATOR/lab\ 5\ refactorizare\ codul\ altuia/tests.h \
+ /usr/include/assert.h /usr/include/string.h \
+ /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+ /usr/include/strings.h

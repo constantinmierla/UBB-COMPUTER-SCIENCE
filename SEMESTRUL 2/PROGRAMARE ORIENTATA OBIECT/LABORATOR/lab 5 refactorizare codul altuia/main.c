@@ -22,8 +22,8 @@
 
 int main()
 {
-    //runAllTests();
-    run();
+    runAllTests();
+    //run();
     return 0;
 }
 

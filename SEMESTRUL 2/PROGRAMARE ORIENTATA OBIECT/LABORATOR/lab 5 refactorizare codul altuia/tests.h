@@ -11,14 +11,4 @@
 
 #endif //LAB_2_TESTS_H
 
-void  testValideazaOferta();
-void  testCauta();
-void  testAddEntitate();
-void  testDeleteEntitate();
-void  testUpdate();
-void  testAsiguraCapacitate();
-void  testFilterPret();
-void  testFilterTip();
-void testdinsort();
-void testSortFunctions();
 void runAllTests();
