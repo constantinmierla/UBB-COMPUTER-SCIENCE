@@ -11,9 +11,15 @@
     · filtrare mașini după: producător, tip
     · sortare mașini după: nrInmatriculare, tip, producator + model
  */
-#include <iostream>
-
+#include "ui.h"
+#include "domain.h"
+#include "service.h"
+#include "repository.h"
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+
+    MasinaRepo repo;
+    MasinaService srv{repo};
+    UI ui{srv};
+    ui.run();
     return 0;
 }

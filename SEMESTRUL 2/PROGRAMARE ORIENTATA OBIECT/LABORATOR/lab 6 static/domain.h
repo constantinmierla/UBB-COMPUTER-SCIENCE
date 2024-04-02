@@ -21,7 +21,7 @@ public:
 
     }
     Masina(const Masina& ot) : nr{ ot.nr}, producator{ot.producator}, model{ot.model}, tip{ot.tip}{
-
+        cout << "*\n";
     }
     int getNR() const noexcept{
         return nr;
