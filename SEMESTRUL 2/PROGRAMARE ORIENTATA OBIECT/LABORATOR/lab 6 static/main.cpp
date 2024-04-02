@@ -15,11 +15,13 @@
 #include "domain.h"
 #include "service.h"
 #include "repository.h"
+#include "tests.h"
 int main() {
 
     MasinaRepo repo;
     MasinaService srv{repo};
     UI ui{srv};
+    test_total();
     ui.run();
     return 0;
 }

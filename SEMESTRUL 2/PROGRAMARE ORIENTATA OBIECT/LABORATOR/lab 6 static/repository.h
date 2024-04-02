@@ -21,11 +21,11 @@ public:
 
         MasinaRepo(const MasinaRepo& ot) = delete;
 
-        void store(const Masina& m);
+        bool store(const Masina& m);
 
-        void delMasinaRepo(int nr);
+        bool delMasinaRepo(int nr);
 
-        void modifyMasinaRepo(int nr, const Masina& masina_de_modificat);
+        bool modifyMasinaRepo(int nr, const Masina& masina_de_modificat);
 
         const Masina& srcMasinaRepo(int nr);
 
@@ -46,4 +46,6 @@ public:
 };
 
 ostream& operator<<(ostream& out, const MasinaRepoException& ex);
+
+
 #endif //LAB_6_STATIC_REPOSITORY_H

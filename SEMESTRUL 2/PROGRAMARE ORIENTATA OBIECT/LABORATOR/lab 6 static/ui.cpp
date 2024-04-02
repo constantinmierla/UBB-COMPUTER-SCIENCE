@@ -33,16 +33,20 @@ void UI::adaugaUI() {
     cin >> model;
     cout << "Introduceti tipul: ";
     cin >> tip;
-    ctr.addMasinaService(nr, producator, model, tip);
-    cout << "Masina adaugata cu succes!\n";
+    if (ctr.addMasinaService(nr, producator, model, tip))
+        cout << "Masina adaugata cu succes!\n";
+    else
+        cout << "Masina nu a putut fi adaugata!\n";
 }
 
 void UI::stergeUI() {
     int nr;
     cout << "Introduceti numarul de inmatriculare al masinii pe care doriti sa o stergeti: ";
     cin >> nr;
-    ctr.delMasinaService(nr);
-    cout << "Masina stearsa cu succes!\n";
+    if (ctr.delMasinaService(nr))
+        cout << "Masina stearsa cu succes!\n";
+    else
+        cout << "Masina nu a putut fi stearsa!\n";
 }
 
 void UI::modificaUI() {
@@ -56,8 +60,10 @@ void UI::modificaUI() {
     cin >> model;
     cout << "Introduceti noul tip: ";
     cin >> tip;
-    ctr.modifyMasinaService(nr, producator, model, tip);
-    cout << "Masina modificata cu succes!\n";
+    if (ctr.modifyMasinaService(nr, producator, model, tip))
+        cout << "Masina modificata cu succes!\n";
+    else
+        cout << "Masina nu a putut fi modificata!\n";
 }
 
 void UI::run()

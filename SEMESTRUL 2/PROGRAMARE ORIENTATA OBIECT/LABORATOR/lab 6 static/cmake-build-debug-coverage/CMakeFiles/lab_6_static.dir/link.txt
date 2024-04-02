@@ -1,0 +1,1 @@
+/usr/bin/c++ --coverage -g CMakeFiles/lab_6_static.dir/main.cpp.o CMakeFiles/lab_6_static.dir/domain.cpp.o CMakeFiles/lab_6_static.dir/repository.cpp.o CMakeFiles/lab_6_static.dir/service.cpp.o CMakeFiles/lab_6_static.dir/ui.cpp.o CMakeFiles/lab_6_static.dir/tests.cpp.o -o lab_6_static 

@@ -6,22 +6,28 @@
 #include <algorithm>
 #include <functional>
 
-void MasinaService::addMasinaService(int nr, const std::string &producator, const std::string &model,
+bool MasinaService::addMasinaService(int nr, const std::string &producator, const std::string &model,
                                      const std::string &tip) {
     Masina m{nr, producator, model, tip};
-    rep.store(m);
+    bool c = rep.store(m);
+    if (c)
+        return true;
+    return false;
 }
 
-void MasinaService::delMasinaService(int nr) {
-    rep.delMasinaRepo(nr);
+bool MasinaService::delMasinaService(int nr) {
+    bool c = rep.delMasinaRepo(nr);
+    if (c)
+        return true;
+    return false;
 }
 
-void MasinaService::modifyMasinaService(int nr, const std::string &producator, const std::string &model,
+bool MasinaService::modifyMasinaService(int nr, const std::string &producator, const std::string &model,
                                         const std::string &tip) {
     Masina m{nr, producator, model, tip};
-    rep.modifyMasinaRepo(nr, m);
+    bool c = rep.modifyMasinaRepo(nr, m);
+    if (c)
+        return true;
+    return false;
 }
 
-const Masina &MasinaService::srcMasinaService(int nr) {
-    return rep.srcMasinaRepo(nr);
-}

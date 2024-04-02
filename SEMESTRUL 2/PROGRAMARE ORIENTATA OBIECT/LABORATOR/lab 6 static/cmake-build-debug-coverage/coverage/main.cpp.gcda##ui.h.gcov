@@ -1,0 +1,34 @@
+        -:    0:Source:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/ui.h
+        -:    0:Graph:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/cmake-build-debug-coverage/CMakeFiles/lab_6_static.dir/main.cpp.gcno
+        -:    0:Data:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/cmake-build-debug-coverage/CMakeFiles/lab_6_static.dir/main.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Costi on 29-Mar-24.
+        -:    3://
+        -:    4:
+        -:    5:#ifndef LAB_6_STATIC_UI_H
+        -:    6:#define LAB_6_STATIC_UI_H
+        -:    7:#include "service.h"
+        -:    8:#include "domain.h"
+        -:    9:
+        -:   10:class UI{
+        -:   11:    MasinaService &ctr;
+        -:   12:
+        -:   13:    void adaugaUI();
+        -:   14:
+        -:   15:    void stergeUI();
+        -:   16:
+        -:   17:    void modificaUI();
+        -:   18:
+        -:   19:    static void afiseazaUI(const vector<Masina> &masini);
+        -:   20:
+        -:   21:public:
+function _ZN2UIC2ER13MasinaService called 1 returned 100% blocks executed 100%
+        1:   22:    UI(MasinaService &c) : ctr{c} {
+        -:   23:
+        1:   24:    }
+        -:   25:    UI(const UI &ot) = delete;
+        -:   26:
+        -:   27:    void run();
+        -:   28:};
+        -:   29:#endif //LAB_6_STATIC_UI_H

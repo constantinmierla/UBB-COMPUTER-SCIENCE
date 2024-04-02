@@ -16,7 +16,7 @@ class UI{
 
     void modificaUI();
 
-    void afiseazaUI(const vector<Masina> &masini);
+    static void afiseazaUI(const vector<Masina> &masini);
 
 public:
     UI(MasinaService &c) : ctr{c} {

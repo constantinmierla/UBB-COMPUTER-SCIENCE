@@ -29,13 +29,13 @@ public:
         return rep.getAll();
     }
 
-    void addMasinaService(int nr, const string &producator, const string &model, const string &tip);
+    bool addMasinaService(int nr, const string &producator, const string &model, const string &tip);
 
-    void delMasinaService(int nr);
+    bool delMasinaService(int nr);
 
-    void modifyMasinaService(int nr, const string &producator, const string &model, const string &tip);
+    bool modifyMasinaService(int nr, const string &producator, const string &model, const string &tip);
 
-    const Masina &srcMasinaService(int nr);
+    //const Masina &srcMasinaService(int nr);
 
 
 

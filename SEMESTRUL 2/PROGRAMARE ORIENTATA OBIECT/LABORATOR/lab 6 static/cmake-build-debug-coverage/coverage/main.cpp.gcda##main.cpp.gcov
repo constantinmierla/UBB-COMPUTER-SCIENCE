@@ -1,0 +1,43 @@
+        -:    0:Source:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/main.cpp
+        -:    0:Graph:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/cmake-build-debug-coverage/CMakeFiles/lab_6_static.dir/main.cpp.gcno
+        -:    0:Data:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/cmake-build-debug-coverage/CMakeFiles/lab_6_static.dir/main.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Costi on 29-Mar-24.
+        -:    3://
+        -:    4:/*
+        -:    5:    9 Închiriere mașini
+        -:    6:
+        -:    7:    Creați o aplicație care permite:
+        -:    8:    · gestiunea unei liste de mașini. Mașina: nrInmatriculare, producător, model, tip
+        -:    9:    · adăugare, ștergere, modificare și afișare mașini
+        -:   10:    · căutare mașina
+        -:   11:    · filtrare mașini după: producător, tip
+        -:   12:    · sortare mașini după: nrInmatriculare, tip, producator + model
+        -:   13: */
+        -:   14:#include "ui.h"
+        -:   15:#include "domain.h"
+        -:   16:#include "service.h"
+        -:   17:#include "repository.h"
+        -:   18:#include "tests.h"
+function main called 1 returned 100% blocks executed 80%
+        1:   19:int main() {
+        -:   20:
+        1:   21:    MasinaRepo repo;
+        1:   21-block  0
+call    0 returned 1
+        1:   22:    MasinaService srv{repo};
+call    0 returned 1
+        1:   23:    UI ui{srv};
+call    0 returned 1
+        1:   24:    test_total();
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   25:    //ui.run();
+        1:   26:    return 0;
+        1:   27:}
+        1:   27-block  0
+call    0 returned 1
+    $$$$$:   27-block  1
+call    1 never executed

@@ -42,8 +42,4 @@ public:
     string to_string_print();
 };
 
-bool cmpTip(const Masina& m1, const Masina& m2);
-
-bool cmpProducator(const Masina& m1, const Masina& m2);
-
 #endif //LAB_6_STATIC_DOMAIN_H

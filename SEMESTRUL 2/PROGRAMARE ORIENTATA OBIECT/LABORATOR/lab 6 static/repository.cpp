@@ -9,61 +9,62 @@
 using std::ostream;
 using std::stringstream;
 
-void MasinaRepo::store(const Masina& m){
+bool MasinaRepo::store(const Masina& m){
     if(exist(m)){
-        throw MasinaRepoException("Exista deja masina!" + std::to_string(m.getNR()) + " " + m.getModel());
+        return false;
     }
     all.push_back(m);
+    return true;
 }
-void MasinaRepo::delMasinaRepo(int nr) {
+bool MasinaRepo::delMasinaRepo(int nr) {
     if (nr >= 0)
     {
-        int poz;
+        int pozitie = -1;
         for(int i = 0; i < (int)all.size(); i++)
         {
             if(all[i].getNR() == nr)
             {
-                poz = i;
+                pozitie = i;
                 break;
             }
         }
-        if(poz == 0)
-            all.erase(all.begin(), all.begin()+1);
+        if(pozitie == -1) {
+            //all.erase(all.begin(), all.begin() + 1);
+            return false;
+        }
         else
-            all.erase(all.begin() + poz);
+            all.erase(all.begin() + pozitie);
+        return true;
     }
     else
-        throw MasinaRepoException("NrInmatriculare invalid!");
+        return false;
 }
 
-void MasinaRepo::modifyMasinaRepo(int nr, const Masina &masina_de_modificat) {
+bool MasinaRepo::modifyMasinaRepo(int nr, const Masina &masina_de_modificat) {
     if(nr >= 0)
     {
-        for(int i = 0; i < (int)all.size(); i++)
+        for(auto & i : all)
         {
-            if (all[i].getNR() == nr)
+            if (i.getNR() == nr)
             {
-                all[i] = masina_de_modificat;
-                break;
-                //sa verific si daca nu exista elementul dorit
+                i = masina_de_modificat;
+                return true;
             }
         }
+        return false;
     }
     else
-        throw MasinaRepoException("Nr invalid!");
+        return false;
 }
 
 const Masina &MasinaRepo::srcMasinaRepo(int nr) {
-    if(nr >= 0)
-    {
-        for(int i = 0; i < (int)all.size(); i++)
-        {
-            if(all[i].getNR() == nr)
-                return all[i];
+    if(nr >= 0) {
+        for (const auto & i : all) {
+            if (i.getNR() == nr)
+                return i;
         }
     }
-    else
-        throw MasinaRepoException("Nr invalid!");
+    throw MasinaRepoException("Nu exista masina!");
 }
 
 bool MasinaRepo::exist(const Masina &m) const {
@@ -90,8 +91,8 @@ const vector<Masina>& MasinaRepo::getAll() const noexcept {
     return all;
 }
 
-ostream& operator<<(ostream& out, const MasinaRepoException& ex)
+/*ostream& operator<<(ostream& out, const MasinaRepoException& ex)
 {
     out << ex.msg;
     return out;
-}
+}*/

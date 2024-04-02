@@ -5,4 +5,5 @@
 #ifndef LAB_6_STATIC_TESTS_H
 #define LAB_6_STATIC_TESTS_H
 
+void test_total();
 #endif //LAB_6_STATIC_TESTS_H
