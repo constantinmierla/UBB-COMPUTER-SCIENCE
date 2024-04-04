@@ -11,6 +11,7 @@ using std::cout;
 using std::cin;
 using std::ws;
 
+// Funcție pentru afișarea unei liste de mașini
 void UI::afiseazaUI(const vector<Masina> &masini) {
     if (masini.empty()) {
         cout << "Nu exista masini in lista!\n";
@@ -22,6 +23,7 @@ void UI::afiseazaUI(const vector<Masina> &masini) {
     cout <<'\n';
 }
 
+// Funcție pentru adăugarea unei mașini
 void UI::adaugaUI() {
     string producator, model, tip;
     int nr;
@@ -39,6 +41,7 @@ void UI::adaugaUI() {
         cout << "Masina nu a putut fi adaugata!\n";
 }
 
+// Funcție pentru ștergerea unei mașini
 void UI::stergeUI() {
     int nr;
     cout << "Introduceti numarul de inmatriculare al masinii pe care doriti sa o stergeti: ";
@@ -49,6 +52,7 @@ void UI::stergeUI() {
         cout << "Masina nu a putut fi stearsa!\n";
 }
 
+// Funcție pentru modificarea unei mașini
 void UI::modificaUI() {
     string producator, model, tip;
     int nr;
@@ -66,6 +70,7 @@ void UI::modificaUI() {
         cout << "Masina nu a putut fi modificata!\n";
 }
 
+// Meniul principal
 void UI::run()
 {
     while (true)

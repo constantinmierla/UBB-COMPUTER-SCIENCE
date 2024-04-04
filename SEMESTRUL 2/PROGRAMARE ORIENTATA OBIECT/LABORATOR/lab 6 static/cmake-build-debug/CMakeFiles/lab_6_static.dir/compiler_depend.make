@@ -593,7 +593,6 @@ CMakeFiles/lab_6_static.dir/service.cpp.o: /mnt/d/FMI\ UBB\ CLUJ\ 2023-2026/UBB-
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
-  /usr/include/c++/11/algorithm \
   /usr/include/c++/11/array \
   /usr/include/c++/11/backward/binders.h \
   /usr/include/c++/11/bits/algorithmfwd.h \
@@ -688,8 +687,6 @@ CMakeFiles/lab_6_static.dir/service.cpp.o: /mnt/d/FMI\ UBB\ CLUJ\ 2023-2026/UBB-
   /usr/include/c++/11/istream \
   /usr/include/c++/11/new \
   /usr/include/c++/11/ostream \
-  /usr/include/c++/11/pstl/execution_defs.h \
-  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
   /usr/include/c++/11/pstl/pstl_config.h \
   /usr/include/c++/11/stdexcept \
   /usr/include/c++/11/streambuf \
@@ -1233,8 +1230,6 @@ CMakeFiles/lab_6_static.dir/ui.cpp.o: /mnt/d/FMI\ UBB\ CLUJ\ 2023-2026/UBB-COMPU
 
 /mnt/d/FMI\ UBB\ CLUJ\ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL\ 2/PROGRAMARE\ ORIENTATA\ OBIECT/LABORATOR/lab\ 6\ static/tests.cpp:
 
-/usr/include/c++/11/pstl/glue_algorithm_defs.h:
-
 /usr/include/c++/11/sstream:
 
 /usr/include/c++/11/bits/sstream.tcc:
@@ -1453,8 +1448,6 @@ CMakeFiles/lab_6_static.dir/ui.cpp.o: /mnt/d/FMI\ UBB\ CLUJ\ 2023-2026/UBB-COMPU
 
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
 
-/usr/include/c++/11/pstl/execution_defs.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
 
 /mnt/d/FMI\ UBB\ CLUJ\ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL\ 2/PROGRAMARE\ ORIENTATA\ OBIECT/LABORATOR/lab\ 6\ static/service.cpp:
@@ -1548,8 +1541,6 @@ CMakeFiles/lab_6_static.dir/ui.cpp.o: /mnt/d/FMI\ UBB\ CLUJ\ 2023-2026/UBB-COMPU
 /usr/include/x86_64-linux-gnu/bits/long-double.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
-
-/usr/include/c++/11/algorithm:
 
 /usr/include/c++/11/bits/enable_special_members.h:
 

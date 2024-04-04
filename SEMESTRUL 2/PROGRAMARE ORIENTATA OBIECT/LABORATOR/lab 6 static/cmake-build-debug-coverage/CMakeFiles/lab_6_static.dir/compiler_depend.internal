@@ -597,7 +597,6 @@ CMakeFiles/lab_6_static.dir/service.cpp.o
  /usr/include/alloca.h
  /usr/include/asm-generic/errno-base.h
  /usr/include/asm-generic/errno.h
- /usr/include/c++/11/algorithm
  /usr/include/c++/11/array
  /usr/include/c++/11/backward/binders.h
  /usr/include/c++/11/bits/algorithmfwd.h
@@ -692,8 +691,6 @@ CMakeFiles/lab_6_static.dir/service.cpp.o
  /usr/include/c++/11/istream
  /usr/include/c++/11/new
  /usr/include/c++/11/ostream
- /usr/include/c++/11/pstl/execution_defs.h
- /usr/include/c++/11/pstl/glue_algorithm_defs.h
  /usr/include/c++/11/pstl/pstl_config.h
  /usr/include/c++/11/stdexcept
  /usr/include/c++/11/streambuf

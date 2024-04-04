@@ -1,6 +1,4 @@
 #include<stdlib.h>
-#include<string.h>
-#include <stdio.h>
 #include "service.h"
 #include "domain.h"
 #include "repository.h"

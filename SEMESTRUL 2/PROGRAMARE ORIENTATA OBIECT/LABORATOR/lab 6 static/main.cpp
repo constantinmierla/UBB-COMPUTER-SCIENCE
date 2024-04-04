@@ -12,7 +12,6 @@
     · sortare mașini după: nrInmatriculare, tip, producator + model
  */
 #include "ui.h"
-#include "domain.h"
 #include "service.h"
 #include "repository.h"
 #include "tests.h"

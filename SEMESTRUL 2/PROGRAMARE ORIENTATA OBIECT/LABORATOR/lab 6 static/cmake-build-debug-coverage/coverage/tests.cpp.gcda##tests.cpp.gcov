@@ -12,28 +12,27 @@
         -:    8:#include "repository.h"
         -:    9:#include <cassert>
         -:   10:#include <iostream>
-        -:   11:#include <vector>
-        -:   12:
-        -:   13:// teste domain
+        -:   11:
+        -:   12:// teste domain
 function _Z11test_domainv called 1 returned 100% blocks executed 62%
-        1:   14:void test_domain() {
-        2:   15:    Masina m1(123, "Audi", "A4", "sedan");
-        1:   15-block  0
+        1:   13:void test_domain() {
+        2:   14:    Masina m1(123, "Audi", "A4", "sedan");
+        1:   14-block  0
 call    0 returned 1
 call    1 returned 1
 branch  2 taken 1 (fallthrough)
 branch  3 taken 0 (throw)
-        1:   15-block  1
+        1:   14-block  1
 call    4 returned 1
 call    5 returned 1
 branch  6 taken 1 (fallthrough)
 branch  7 taken 0 (throw)
-        1:   15-block  2
+        1:   14-block  2
 call    8 returned 1
 call    9 returned 1
 branch 10 taken 1 (fallthrough)
 branch 11 taken 0 (throw)
-        1:   15-block  3
+        1:   14-block  3
 call   12 returned 1
 branch 13 taken 1 (fallthrough)
 branch 14 taken 0 (throw)
@@ -42,32 +41,44 @@ call   16 returned 1
 call   17 returned 1
 call   18 returned 1
 call   19 returned 1
-    $$$$$:   15-block  4
-    $$$$$:   15-block  5
-    $$$$$:   15-block  6
-    $$$$$:   15-block  7
-    $$$$$:   15-block  8
-    $$$$$:   15-block  9
-       1*:   16:    assert(m1.getNR() == 123);
+    $$$$$:   14-block  4
+    $$$$$:   14-block  5
+    $$$$$:   14-block  6
+    $$$$$:   14-block  7
+    $$$$$:   14-block  8
+    $$$$$:   14-block  9
+       1*:   15:    assert(m1.getNR() == 123);
 call    0 returned 1
 branch  1 taken 0 (fallthrough)
 branch  2 taken 1
-    %%%%%:   16-block  0
+    %%%%%:   15-block  0
 call    3 never executed
-       1*:   17:    assert(m1.getProducator() == "Audi");
-        1:   17-block  0
+       1*:   16:    assert(m1.getProducator() == "Audi");
+        1:   16-block  0
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
-        1:   17-block  1
+        1:   16-block  1
 call    3 returned 1
 branch  4 taken 0 (fallthrough)
 branch  5 taken 1
-    %%%%%:   17-block  2
+    %%%%%:   16-block  2
 call    6 never executed
-        1:   17-block  3
+        1:   16-block  3
 call    7 returned 1
-       1*:   18:    assert(m1.getModel() == "A4");
+       1*:   17:    assert(m1.getModel() == "A4");
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   17-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   17-block  1
+call    6 never executed
+        1:   17-block  2
+call    7 returned 1
+       1*:   18:    assert(m1.getTip() == "sedan");
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
@@ -79,44 +90,44 @@ branch  5 taken 1
 call    6 never executed
         1:   18-block  2
 call    7 returned 1
-       1*:   19:    assert(m1.getTip() == "sedan");
+        -:   19:
+        1:   20:    Masina m2 = m1;
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
-        1:   19-block  0
-call    3 returned 1
-branch  4 taken 0 (fallthrough)
-branch  5 taken 1
-    %%%%%:   19-block  1
-call    6 never executed
-        1:   19-block  2
-call    7 returned 1
-        -:   20:
-        1:   21:    Masina m2 = m1;
-call    0 returned 1
-branch  1 taken 1 (fallthrough)
-branch  2 taken 0 (throw)
-       1*:   22:    assert(m2.getNR() == 123);
-        1:   22-block  0
+       1*:   21:    assert(m2.getNR() == 123);
+        1:   21-block  0
 call    0 returned 1
 branch  1 taken 0 (fallthrough)
 branch  2 taken 1
-    %%%%%:   22-block  1
+    %%%%%:   21-block  1
 call    3 never executed
-       1*:   23:    assert(m2.getProducator() == "Audi");
-        1:   23-block  0
+       1*:   22:    assert(m2.getProducator() == "Audi");
+        1:   22-block  0
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
-        1:   23-block  1
+        1:   22-block  1
 call    3 returned 1
 branch  4 taken 0 (fallthrough)
 branch  5 taken 1
-    %%%%%:   23-block  2
+    %%%%%:   22-block  2
 call    6 never executed
-        1:   23-block  3
+        1:   22-block  3
 call    7 returned 1
-       1*:   24:    assert(m2.getModel() == "A4");
+       1*:   23:    assert(m2.getModel() == "A4");
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   23-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   23-block  1
+call    6 never executed
+        1:   23-block  2
+call    7 returned 1
+       1*:   24:    assert(m2.getTip() == "sedan");
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
@@ -128,72 +139,60 @@ branch  5 taken 1
 call    6 never executed
         1:   24-block  2
 call    7 returned 1
-       1*:   25:    assert(m2.getTip() == "sedan");
+        -:   25:
+       1*:   26:    assert(m1.to_string_print() == "NrInmatriculare: 123 | Producator: Audi | Model: A4 | Tip:sedan");
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
-        1:   25-block  0
+        1:   26-block  0
 call    3 returned 1
 branch  4 taken 0 (fallthrough)
 branch  5 taken 1
-    %%%%%:   25-block  1
+    %%%%%:   26-block  1
 call    6 never executed
-        1:   25-block  2
+        1:   26-block  2
 call    7 returned 1
-        -:   26:
-       1*:   27:    assert(m1.to_string_print() == "NrInmatriculare: 123 | Producator: Audi | Model: A4 | Tip:sedan");
-call    0 returned 1
-branch  1 taken 1 (fallthrough)
-branch  2 taken 0 (throw)
-        1:   27-block  0
-call    3 returned 1
-branch  4 taken 0 (fallthrough)
-branch  5 taken 1
-    %%%%%:   27-block  1
-call    6 never executed
-        1:   27-block  2
-call    7 returned 1
-        1:   28:}
+        1:   27:}
 call    0 returned 1
 call    1 returned 1
-    $$$$$:   28-block  0
+    $$$$$:   27-block  0
 call    2 never executed
-    $$$$$:   28-block  1
+    $$$$$:   27-block  1
 call    3 never executed
-        -:   29:
-        -:   30:// teste repository
+        -:   28:
+        -:   29:// teste repository
 function _Z15test_repositoryv called 1 returned 100% blocks executed 50%
-        1:   31:void test_repository()
-        -:   32:{
-        -:   33:
-        1:   34:    MasinaRepo repo;
-        1:   34-block  0
+        1:   30:void test_repository()
+        -:   31:{
+        -:   32:
+        1:   33:    MasinaRepo repo;
+        1:   33-block  0
 call    0 returned 1
-       1*:   35:    assert(repo.getAll().empty());
+       1*:   34:    assert(repo.getAll().empty());
 call    0 returned 1
 call    1 returned 1
 branch  2 taken 0 (fallthrough)
 branch  3 taken 1
-    %%%%%:   35-block  0
+    %%%%%:   34-block  0
 call    4 never executed
-        -:   36:
-        2:   37:    Masina m6(123, "Audi", "A4", "sedan");
-        1:   37-block  0
+        -:   35:
+        2:   36:    Masina m6(123, "Audi", "A4", "sedan");
+        1:   36-block  0
 call    0 returned 1
 call    1 returned 1
 branch  2 taken 1 (fallthrough)
 branch  3 taken 0 (throw)
-        1:   37-block  1
+        1:   36-block  1
 call    4 returned 1
 call    5 returned 1
 branch  6 taken 1 (fallthrough)
 branch  7 taken 0 (throw)
-        1:   37-block  2
+        1:   36-block  2
 call    8 returned 1
 call    9 returned 1
 branch 10 taken 1 (fallthrough)
 branch 11 taken 0 (throw)
-        1:   37-block  3
+        1:   36-block  3
 call   12 returned 1
 branch 13 taken 1 (fallthrough)
 branch 14 taken 0 (throw)
@@ -202,45 +201,45 @@ call   16 returned 1
 call   17 returned 1
 call   18 returned 1
 call   19 returned 1
-    $$$$$:   37-block  4
-    $$$$$:   37-block  5
-    $$$$$:   37-block  6
-    $$$$$:   37-block  7
-    $$$$$:   37-block  8
-    $$$$$:   37-block  9
-        1:   38:    repo.store(m6);
+    $$$$$:   36-block  4
+    $$$$$:   36-block  5
+    $$$$$:   36-block  6
+    $$$$$:   36-block  7
+    $$$$$:   36-block  8
+    $$$$$:   36-block  9
+        1:   37:    repo.store(m6);
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
-        -:   39:
-       1*:   40:    assert(!repo.delMasinaRepo(999));
-        1:   40-block  0
+        -:   38:
+       1*:   39:    assert(!repo.delMasinaRepo(999));
+        1:   39-block  0
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
-        1:   40-block  1
+        1:   39-block  1
 branch  3 taken 0 (fallthrough)
 branch  4 taken 1
-    %%%%%:   40-block  2
+    %%%%%:   39-block  2
 call    5 never executed
-        -:   41:
-        2:   42:    Masina m1(123, "Audi", "A4", "sedan");
-        1:   42-block  0
+        -:   40:
+        2:   41:    Masina m1(123, "Audi", "A4", "sedan");
+        1:   41-block  0
 call    0 returned 1
 call    1 returned 1
 branch  2 taken 1 (fallthrough)
 branch  3 taken 0 (throw)
-        1:   42-block  1
+        1:   41-block  1
 call    4 returned 1
 call    5 returned 1
 branch  6 taken 1 (fallthrough)
 branch  7 taken 0 (throw)
-        1:   42-block  2
+        1:   41-block  2
 call    8 returned 1
 call    9 returned 1
 branch 10 taken 1 (fallthrough)
 branch 11 taken 0 (throw)
-        1:   42-block  3
+        1:   41-block  3
 call   12 returned 1
 branch 13 taken 1 (fallthrough)
 branch 14 taken 0 (throw)
@@ -249,142 +248,142 @@ call   16 returned 1
 call   17 returned 1
 call   18 returned 1
 call   19 returned 1
+    $$$$$:   41-block  4
+    $$$$$:   41-block  5
+    $$$$$:   41-block  6
+    $$$$$:   41-block  7
+    $$$$$:   41-block  8
+    $$$$$:   41-block  9
+        2:   42:    Masina m2(456, "BMW", "X5", "SUV");
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   42-block  0
+call    4 returned 1
+call    5 returned 1
+branch  6 taken 1 (fallthrough)
+branch  7 taken 0 (throw)
+        1:   42-block  1
+call    8 returned 1
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   42-block  2
+call   12 returned 1
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0 (throw)
+call   15 returned 1
+call   16 returned 1
+call   17 returned 1
+call   18 returned 1
+call   19 returned 1
+    $$$$$:   42-block  3
     $$$$$:   42-block  4
     $$$$$:   42-block  5
     $$$$$:   42-block  6
     $$$$$:   42-block  7
     $$$$$:   42-block  8
-    $$$$$:   42-block  9
-        2:   43:    Masina m2(456, "BMW", "X5", "SUV");
-call    0 returned 1
-call    1 returned 1
-branch  2 taken 1 (fallthrough)
-branch  3 taken 0 (throw)
-        1:   43-block  0
-call    4 returned 1
-call    5 returned 1
-branch  6 taken 1 (fallthrough)
-branch  7 taken 0 (throw)
-        1:   43-block  1
-call    8 returned 1
-call    9 returned 1
-branch 10 taken 1 (fallthrough)
-branch 11 taken 0 (throw)
-        1:   43-block  2
-call   12 returned 1
-branch 13 taken 1 (fallthrough)
-branch 14 taken 0 (throw)
-call   15 returned 1
-call   16 returned 1
-call   17 returned 1
-call   18 returned 1
-call   19 returned 1
-    $$$$$:   43-block  3
-    $$$$$:   43-block  4
-    $$$$$:   43-block  5
-    $$$$$:   43-block  6
-    $$$$$:   43-block  7
-    $$$$$:   43-block  8
-        -:   44:
-        1:   45:    repo.store(m1);
+        -:   43:
+        1:   44:    repo.store(m1);
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
-       1*:   46:    assert(repo.getAll().size() == 1);
-        1:   46-block  0
+       1*:   45:    assert(repo.getAll().size() == 1);
+        1:   45-block  0
 call    0 returned 1
 call    1 returned 1
 branch  2 taken 0 (fallthrough)
 branch  3 taken 1
-    %%%%%:   46-block  1
+    %%%%%:   45-block  1
 call    4 never executed
-        -:   47:
-        1:   48:    repo.store(m2);
+        -:   46:
+        1:   47:    repo.store(m2);
+        1:   47-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   48:    assert(repo.getAll().size() == 2);
         1:   48-block  0
 call    0 returned 1
-branch  1 taken 1 (fallthrough)
-branch  2 taken 0 (throw)
-       1*:   49:    assert(repo.getAll().size() == 2);
-        1:   49-block  0
-call    0 returned 1
 call    1 returned 1
 branch  2 taken 0 (fallthrough)
 branch  3 taken 1
-    %%%%%:   49-block  1
+    %%%%%:   48-block  1
 call    4 never executed
-        -:   50:
-       1*:   51:    assert(repo.delMasinaRepo(123));
+        -:   49:
+       1*:   50:    assert(repo.delMasinaRepo(123));
+        1:   50-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   50-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   50-block  2
+call    5 never executed
+       1*:   51:    assert(repo.getAll().size() == 1);
         1:   51-block  0
 call    0 returned 1
-branch  1 taken 1 (fallthrough)
-branch  2 taken 0 (throw)
-        1:   51-block  1
-branch  3 taken 0 (fallthrough)
-branch  4 taken 1
-    %%%%%:   51-block  2
-call    5 never executed
-       1*:   52:    assert(repo.getAll().size() == 1);
+call    1 returned 1
+branch  2 taken 0 (fallthrough)
+branch  3 taken 1
+    %%%%%:   51-block  1
+call    4 never executed
+       1*:   52:    assert(repo.delMasinaRepo(456));
         1:   52-block  0
 call    0 returned 1
-call    1 returned 1
-branch  2 taken 0 (fallthrough)
-branch  3 taken 1
-    %%%%%:   52-block  1
-call    4 never executed
-       1*:   53:    assert(repo.delMasinaRepo(456));
-        1:   53-block  0
-call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
-        1:   53-block  1
+        1:   52-block  1
 branch  3 taken 0 (fallthrough)
 branch  4 taken 1
-    %%%%%:   53-block  2
+    %%%%%:   52-block  2
 call    5 never executed
-       1*:   54:    assert(repo.getAll().empty());
-        1:   54-block  0
+       1*:   53:    assert(repo.getAll().empty());
+        1:   53-block  0
 call    0 returned 1
 call    1 returned 1
 branch  2 taken 0 (fallthrough)
 branch  3 taken 1
-    %%%%%:   54-block  1
+    %%%%%:   53-block  1
 call    4 never executed
-        -:   55:
-        1:   56:    repo.store(m1);
-        1:   56-block  0
+        -:   54:
+        1:   55:    repo.store(m1);
+        1:   55-block  0
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
-       1*:   57:    assert(repo.modifyMasinaRepo(123, Masina(123, "Opel", "Corsa", "hatchback")));
-        1:   57-block  0
+       1*:   56:    assert(repo.modifyMasinaRepo(123, Masina(123, "Opel", "Corsa", "hatchback")));
+        1:   56-block  0
 call    0 returned 1
 call    1 returned 1
 branch  2 taken 1 (fallthrough)
 branch  3 taken 0 (throw)
-        1:   57-block  1
+        1:   56-block  1
 call    4 returned 1
 call    5 returned 1
 branch  6 taken 1 (fallthrough)
 branch  7 taken 0 (throw)
-        1:   57-block  2
+        1:   56-block  2
 call    8 returned 1
 call    9 returned 1
 branch 10 taken 1 (fallthrough)
 branch 11 taken 0 (throw)
-        1:   57-block  3
+        1:   56-block  3
 call   12 returned 1
 branch 13 taken 1 (fallthrough)
 branch 14 taken 0 (throw)
-        1:   57-block  4
+        1:   56-block  4
 call   15 returned 1
 branch 16 taken 1 (fallthrough)
 branch 17 taken 0 (throw)
-        1:   57-block  5
+        1:   56-block  5
 branch 18 taken 0 (fallthrough)
 branch 19 taken 1
-    %%%%%:   57-block  6
+    %%%%%:   56-block  6
 call   20 never executed
-        1:   57-block  7
+        1:   56-block  7
 call   21 returned 1
 call   22 returned 1
 call   23 returned 1
@@ -392,172 +391,213 @@ call   24 returned 1
 call   25 returned 1
 call   26 returned 1
 call   27 returned 1
-    $$$$$:   57-block  8
+    $$$$$:   56-block  8
 call   28 never executed
-    $$$$$:   57-block  9
-    $$$$$:   57-block 10
+    $$$$$:   56-block  9
+    $$$$$:   56-block 10
 call   29 never executed
-    $$$$$:   57-block 11
-    $$$$$:   57-block 12
+    $$$$$:   56-block 11
+    $$$$$:   56-block 12
 call   30 never executed
-    $$$$$:   57-block 13
-    $$$$$:   57-block 14
+    $$$$$:   56-block 13
+    $$$$$:   56-block 14
 call   31 never executed
-    $$$$$:   57-block 15
-    $$$$$:   57-block 16
+    $$$$$:   56-block 15
+    $$$$$:   56-block 16
 call   32 never executed
-    $$$$$:   57-block 17
-    $$$$$:   57-block 18
+    $$$$$:   56-block 17
+    $$$$$:   56-block 18
 call   33 never executed
-    $$$$$:   57-block 19
-    $$$$$:   57-block 20
+    $$$$$:   56-block 19
+    $$$$$:   56-block 20
 call   34 never executed
-    $$$$$:   57-block 21
-       1*:   58:    assert(repo.getAll().size() == 1);
+    $$$$$:   56-block 21
+       1*:   57:    assert(repo.getAll().size() == 1);
 call    0 returned 1
 call    1 returned 1
 branch  2 taken 0 (fallthrough)
 branch  3 taken 1
-    %%%%%:   58-block  0
+    %%%%%:   57-block  0
 call    4 never executed
-       1*:   59:    assert(repo.find("Opel", "Corsa").getModel() == "Corsa");
-        1:   59-block  0
+       1*:   58:    assert(repo.find("Opel", "Corsa").getModel() == "Corsa");
+        1:   58-block  0
 call    0 returned 1
 call    1 returned 1
 branch  2 taken 1 (fallthrough)
 branch  3 taken 0 (throw)
-        1:   59-block  1
+        1:   58-block  1
 call    4 returned 1
 call    5 returned 1
 branch  6 taken 1 (fallthrough)
 branch  7 taken 0 (throw)
-        1:   59-block  2
+        1:   58-block  2
 call    8 returned 1
 branch  9 taken 1 (fallthrough)
 branch 10 taken 0 (throw)
-        1:   59-block  3
+        1:   58-block  3
 call   11 returned 1
 branch 12 taken 1 (fallthrough)
 branch 13 taken 0 (throw)
-        1:   59-block  4
+        1:   58-block  4
 call   14 returned 1
 branch 15 taken 0 (fallthrough)
 branch 16 taken 1
-    %%%%%:   59-block  5
+    %%%%%:   58-block  5
 call   17 never executed
-        1:   59-block  6
+        1:   58-block  6
 call   18 returned 1
 call   19 returned 1
 call   20 returned 1
 call   21 returned 1
 call   22 returned 1
-    $$$$$:   59-block  7
+    $$$$$:   58-block  7
 call   23 never executed
-    $$$$$:   59-block  8
-    $$$$$:   59-block  9
+    $$$$$:   58-block  8
+    $$$$$:   58-block  9
 call   24 never executed
-    $$$$$:   59-block 10
-    $$$$$:   59-block 11
+    $$$$$:   58-block 10
+    $$$$$:   58-block 11
 call   25 never executed
-    $$$$$:   59-block 12
-    $$$$$:   59-block 13
+    $$$$$:   58-block 12
+    $$$$$:   58-block 13
 call   26 never executed
-    $$$$$:   59-block 14
-        -:   60:
-        -:   61:    try {
-        1:   62:        repo.srcMasinaRepo(999);
+    $$$$$:   58-block 14
+        -:   59:
+        -:   60:    try {
+        1:   61:        repo.srcMasinaRepo(999);
 call    0 returned 1
 branch  1 taken 0 (fallthrough)
 branch  2 taken 1 (throw)
-        1:   63:    } catch (const MasinaRepoException& ex) {
-        1:   63-block  0
+        1:   62:    } catch (const MasinaRepoException& ex) {
+        1:   62-block  0
 branch  0 taken 0 (fallthrough)
 branch  1 taken 1
-        1:   63-block  1
+        1:   62-block  1
 call    2 returned 1
-        1:   64:    }
+        1:   63:    }
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
-        -:   65:
-        -:   66:    try {
-        1:   67:        repo.delMasinaRepo(-1);
-        1:   67-block  0
+        -:   64:
+        -:   65:    try {
+        1:   66:        repo.delMasinaRepo(-1);
+        1:   66-block  0
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
-    =====:   68:    } catch (const MasinaRepoException& ex) {
-    $$$$$:   68-block  0
+    =====:   67:    } catch (const MasinaRepoException& ex) {
+    $$$$$:   67-block  0
 branch  0 never executed
 branch  1 never executed
-    $$$$$:   68-block  1
+    $$$$$:   67-block  1
 call    2 never executed
-    =====:   69:    }
+    =====:   68:    }
 call    0 never executed
 branch  1 never executed
 branch  2 never executed
-        -:   70:
-        -:   71:    try {
-       5*:   72:        repo.find("Ford", "Focus");
-        1:   72-block  0
+        -:   69:
+        -:   70:    try {
+       5*:   71:        repo.find("Ford", "Focus");
+        1:   71-block  0
 call    0 returned 1
 call    1 returned 1
 branch  2 taken 1 (fallthrough)
 branch  3 taken 0 (throw)
-        1:   72-block  1
+        1:   71-block  1
 call    4 returned 1
 call    5 returned 1
 branch  6 taken 1 (fallthrough)
 branch  7 taken 0 (throw)
-        1:   72-block  2
+        1:   71-block  2
 call    8 returned 1
 branch  9 taken 0 (fallthrough)
 branch 10 taken 1 (throw)
-    %%%%%:   72-block  3
+    %%%%%:   71-block  3
 call   11 never executed
 call   12 never executed
 call   13 never executed
 call   14 never executed
-        1:   72-block  4
+        1:   71-block  4
 call   15 returned 1
-        1:   72-block  5
-        1:   72-block  6
+        1:   71-block  5
+        1:   71-block  6
 call   16 returned 1
-        1:   72-block  7
-        1:   72-block  8
+        1:   71-block  7
+        1:   71-block  8
 call   17 returned 1
-        1:   72-block  9
-        1:   72-block 10
+        1:   71-block  9
+        1:   71-block 10
 call   18 returned 1
-        1:   72-block 11
-        1:   73:    } catch (const MasinaRepoException& ex) {
-        1:   73-block  0
+        1:   71-block 11
+        1:   72:    } catch (const MasinaRepoException& ex) {
+        1:   72-block  0
 branch  0 taken 0 (fallthrough)
 branch  1 taken 1
-        1:   73-block  1
+        1:   72-block  1
 call    2 returned 1
-        1:   74:    }
+        1:   73:    }
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
-        -:   75:
-        2:   76:    Masina m(123, "Audi", "A4", "sedan");
+        -:   74:
+        2:   75:    Masina m(123, "Audi", "A4", "sedan");
+        1:   75-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   75-block  1
+call    4 returned 1
+call    5 returned 1
+branch  6 taken 1 (fallthrough)
+branch  7 taken 0 (throw)
+        1:   75-block  2
+call    8 returned 1
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   75-block  3
+call   12 returned 1
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0 (throw)
+call   15 returned 1
+call   16 returned 1
+call   17 returned 1
+call   18 returned 1
+call   19 returned 1
+    $$$$$:   75-block  4
+    $$$$$:   75-block  5
+    $$$$$:   75-block  6
+    $$$$$:   75-block  7
+    $$$$$:   75-block  8
+    $$$$$:   75-block  9
+       1*:   76:    assert(repo.store(m));
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
         1:   76-block  0
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   76-block  1
+call    5 never executed
+        -:   77:
+        2:   78:    Masina q(123, "Audi", "A4", "sedan");
+        1:   78-block  0
 call    0 returned 1
 call    1 returned 1
 branch  2 taken 1 (fallthrough)
 branch  3 taken 0 (throw)
-        1:   76-block  1
+        1:   78-block  1
 call    4 returned 1
 call    5 returned 1
 branch  6 taken 1 (fallthrough)
 branch  7 taken 0 (throw)
-        1:   76-block  2
+        1:   78-block  2
 call    8 returned 1
 call    9 returned 1
 branch 10 taken 1 (fallthrough)
 branch 11 taken 0 (throw)
-        1:   76-block  3
+        1:   78-block  3
 call   12 returned 1
 branch 13 taken 1 (fallthrough)
 branch 14 taken 0 (throw)
@@ -566,39 +606,39 @@ call   16 returned 1
 call   17 returned 1
 call   18 returned 1
 call   19 returned 1
-    $$$$$:   76-block  4
-    $$$$$:   76-block  5
-    $$$$$:   76-block  6
-    $$$$$:   76-block  7
-    $$$$$:   76-block  8
-    $$$$$:   76-block  9
-       1*:   77:    assert(repo.store(m));
+    $$$$$:   78-block  4
+    $$$$$:   78-block  5
+    $$$$$:   78-block  6
+    $$$$$:   78-block  7
+    $$$$$:   78-block  8
+    $$$$$:   78-block  9
+       1*:   79:    assert(!repo.store(q));
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
-        1:   77-block  0
-branch  3 taken 0 (fallthrough)
-branch  4 taken 1
-    %%%%%:   77-block  1
-call    5 never executed
-        -:   78:
-        2:   79:    Masina q(123, "Audi", "A4", "sedan");
         1:   79-block  0
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   79-block  1
+call    5 never executed
+        -:   80:
+        2:   81:    Masina w(129, "Audi", "A4", "hatchback");
+        1:   81-block  0
 call    0 returned 1
 call    1 returned 1
 branch  2 taken 1 (fallthrough)
 branch  3 taken 0 (throw)
-        1:   79-block  1
+        1:   81-block  1
 call    4 returned 1
 call    5 returned 1
 branch  6 taken 1 (fallthrough)
 branch  7 taken 0 (throw)
-        1:   79-block  2
+        1:   81-block  2
 call    8 returned 1
 call    9 returned 1
 branch 10 taken 1 (fallthrough)
 branch 11 taken 0 (throw)
-        1:   79-block  3
+        1:   81-block  3
 call   12 returned 1
 branch 13 taken 1 (fallthrough)
 branch 14 taken 0 (throw)
@@ -607,82 +647,41 @@ call   16 returned 1
 call   17 returned 1
 call   18 returned 1
 call   19 returned 1
-    $$$$$:   79-block  4
-    $$$$$:   79-block  5
-    $$$$$:   79-block  6
-    $$$$$:   79-block  7
-    $$$$$:   79-block  8
-    $$$$$:   79-block  9
-       1*:   80:    assert(!repo.store(q));
+    $$$$$:   81-block  4
+    $$$$$:   81-block  5
+    $$$$$:   81-block  6
+    $$$$$:   81-block  7
+    $$$$$:   81-block  8
+    $$$$$:   81-block  9
+       1*:   82:    assert(!repo.modifyMasinaRepo(-1, w));
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
-        1:   80-block  0
-branch  3 taken 0 (fallthrough)
-branch  4 taken 1
-    %%%%%:   80-block  1
-call    5 never executed
-        -:   81:
-        2:   82:    Masina w(129, "Audi", "A4", "hatchback");
         1:   82-block  0
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   82-block  1
+call    5 never executed
+        -:   83:
+        1:   84:    MasinaRepo repo2;
+        1:   84-block  0
+call    0 returned 1
+        2:   85:    Masina y(123, "Audi", "A4", "sedan");
 call    0 returned 1
 call    1 returned 1
 branch  2 taken 1 (fallthrough)
 branch  3 taken 0 (throw)
-        1:   82-block  1
-call    4 returned 1
-call    5 returned 1
-branch  6 taken 1 (fallthrough)
-branch  7 taken 0 (throw)
-        1:   82-block  2
-call    8 returned 1
-call    9 returned 1
-branch 10 taken 1 (fallthrough)
-branch 11 taken 0 (throw)
-        1:   82-block  3
-call   12 returned 1
-branch 13 taken 1 (fallthrough)
-branch 14 taken 0 (throw)
-call   15 returned 1
-call   16 returned 1
-call   17 returned 1
-call   18 returned 1
-call   19 returned 1
-    $$$$$:   82-block  4
-    $$$$$:   82-block  5
-    $$$$$:   82-block  6
-    $$$$$:   82-block  7
-    $$$$$:   82-block  8
-    $$$$$:   82-block  9
-       1*:   83:    assert(!repo.modifyMasinaRepo(-1, w));
-call    0 returned 1
-branch  1 taken 1 (fallthrough)
-branch  2 taken 0 (throw)
-        1:   83-block  0
-branch  3 taken 0 (fallthrough)
-branch  4 taken 1
-    %%%%%:   83-block  1
-call    5 never executed
-        -:   84:
-        1:   85:    MasinaRepo repo2;
         1:   85-block  0
-call    0 returned 1
-        2:   86:    Masina y(123, "Audi", "A4", "sedan");
-call    0 returned 1
-call    1 returned 1
-branch  2 taken 1 (fallthrough)
-branch  3 taken 0 (throw)
-        1:   86-block  0
 call    4 returned 1
 call    5 returned 1
 branch  6 taken 1 (fallthrough)
 branch  7 taken 0 (throw)
-        1:   86-block  1
+        1:   85-block  1
 call    8 returned 1
 call    9 returned 1
 branch 10 taken 1 (fallthrough)
 branch 11 taken 0 (throw)
-        1:   86-block  2
+        1:   85-block  2
 call   12 returned 1
 branch 13 taken 1 (fallthrough)
 branch 14 taken 0 (throw)
@@ -691,57 +690,77 @@ call   16 returned 1
 call   17 returned 1
 call   18 returned 1
 call   19 returned 1
-    $$$$$:   86-block  3
-    $$$$$:   86-block  4
-    $$$$$:   86-block  5
-    $$$$$:   86-block  6
-    $$$$$:   86-block  7
-    $$$$$:   86-block  8
-       1*:   87:    assert(repo2.store(y)); // Adăugăm mașina în repo
+    $$$$$:   85-block  3
+    $$$$$:   85-block  4
+    $$$$$:   85-block  5
+    $$$$$:   85-block  6
+    $$$$$:   85-block  7
+    $$$$$:   85-block  8
+       1*:   86:    assert(repo2.store(y)); // Adăugăm mașina în repo
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
-        1:   87-block  0
+        1:   86-block  0
 branch  3 taken 0 (fallthrough)
 branch  4 taken 1
-    %%%%%:   87-block  1
+    %%%%%:   86-block  1
 call    5 never executed
-        -:   88:
-        1:   89:    const Masina& masina_recuperata = repo2.srcMasinaRepo(123);
-        1:   89-block  0
+        -:   87:
+        1:   88:    const Masina& masina_recuperata = repo2.srcMasinaRepo(123);
+        1:   88-block  0
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
-       1*:   90:    assert(masina_recuperata.getNR() == y.getNR());
-        1:   90-block  0
+       1*:   89:    assert(masina_recuperata.getNR() == y.getNR());
+        1:   89-block  0
 call    0 returned 1
 call    1 returned 1
 branch  2 taken 0 (fallthrough)
 branch  3 taken 1
-    %%%%%:   90-block  1
+    %%%%%:   89-block  1
 call    4 never executed
-       1*:   91:    assert(masina_recuperata.getProducator() == y.getProducator());
-        1:   91-block  0
+       1*:   90:    assert(masina_recuperata.getProducator() == y.getProducator());
+        1:   90-block  0
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
-        1:   91-block  1
+        1:   90-block  1
 call    3 returned 1
 branch  4 taken 1 (fallthrough)
 branch  5 taken 0 (throw)
-        1:   91-block  2
+        1:   90-block  2
 call    6 returned 1
 branch  7 taken 0 (fallthrough)
 branch  8 taken 1
-    %%%%%:   91-block  3
+    %%%%%:   90-block  3
 call    9 never executed
-        1:   91-block  4
+        1:   90-block  4
 call   10 returned 1
 call   11 returned 1
-    $$$$$:   91-block  5
+    $$$$$:   90-block  5
 call   12 never executed
-    $$$$$:   91-block  6
-       1*:   92:    assert(masina_recuperata.getModel() == y.getModel());
+    $$$$$:   90-block  6
+       1*:   91:    assert(masina_recuperata.getModel() == y.getModel());
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   91-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   91-block  1
+call    6 returned 1
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   91-block  2
+call    9 never executed
+        1:   91-block  3
+call   10 returned 1
+call   11 returned 1
+    $$$$$:   91-block  4
+call   12 never executed
+    $$$$$:   91-block  5
+       1*:   92:    assert(masina_recuperata.getTip() == y.getTip());
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
@@ -761,27 +780,7 @@ call   11 returned 1
     $$$$$:   92-block  4
 call   12 never executed
     $$$$$:   92-block  5
-       1*:   93:    assert(masina_recuperata.getTip() == y.getTip());
-call    0 returned 1
-branch  1 taken 1 (fallthrough)
-branch  2 taken 0 (throw)
-        1:   93-block  0
-call    3 returned 1
-branch  4 taken 1 (fallthrough)
-branch  5 taken 0 (throw)
-        1:   93-block  1
-call    6 returned 1
-branch  7 taken 0 (fallthrough)
-branch  8 taken 1
-    %%%%%:   93-block  2
-call    9 never executed
-        1:   93-block  3
-call   10 returned 1
-call   11 returned 1
-    $$$$$:   93-block  4
-call   12 never executed
-    $$$$$:   93-block  5
-        1:   94:}
+        1:   93:}
 call    0 returned 1
 call    1 returned 1
 call    2 returned 1
@@ -791,395 +790,395 @@ call    5 returned 1
 call    6 returned 1
 call    7 returned 1
 call    8 returned 1
-    $$$$$:   94-block  0
+    $$$$$:   93-block  0
 call    9 never executed
-    $$$$$:   94-block  1
+    $$$$$:   93-block  1
 call   10 never executed
-    $$$$$:   94-block  2
+    $$$$$:   93-block  2
 call   11 never executed
-    $$$$$:   94-block  3
+    $$$$$:   93-block  3
 call   12 never executed
-    $$$$$:   94-block  4
+    $$$$$:   93-block  4
 call   13 never executed
-    $$$$$:   94-block  5
+    $$$$$:   93-block  5
 call   14 never executed
-    $$$$$:   94-block  6
+    $$$$$:   93-block  6
 call   15 never executed
-    $$$$$:   94-block  7
+    $$$$$:   93-block  7
 call   16 never executed
-    $$$$$:   94-block  8
+    $$$$$:   93-block  8
 call   17 never executed
-        -:   95:
-        -:   96://teste service
+        -:   94:
+        -:   95://teste service
 function _Z12test_servicev called 1 returned 100% blocks executed 46%
-        1:   97:void test_service()
-        -:   98:{
-        1:   99:    MasinaRepo repo;
-        1:   99-block  0
+        1:   96:void test_service()
+        -:   97:{
+        1:   98:    MasinaRepo repo;
+        1:   98-block  0
 call    0 returned 1
-        1:  100:    MasinaService srv{repo};
+        1:   99:    MasinaService srv{repo};
 call    0 returned 1
-        -:  101:
-       1*:  102:    assert(srv.addMasinaService(123, "Audi", "A4", "sedan"));
+        -:  100:
+       1*:  101:    assert(srv.addMasinaService(123, "Audi", "A4", "sedan"));
 call    0 returned 1
 call    1 returned 1
 branch  2 taken 1 (fallthrough)
 branch  3 taken 0 (throw)
-        1:  102-block  0
+        1:  101-block  0
 call    4 returned 1
 call    5 returned 1
 branch  6 taken 1 (fallthrough)
 branch  7 taken 0 (throw)
-        1:  102-block  1
+        1:  101-block  1
 call    8 returned 1
 call    9 returned 1
 branch 10 taken 1 (fallthrough)
 branch 11 taken 0 (throw)
-        1:  102-block  2
+        1:  101-block  2
 call   12 returned 1
 branch 13 taken 1 (fallthrough)
 branch 14 taken 0 (throw)
-        1:  102-block  3
+        1:  101-block  3
 branch 15 taken 0 (fallthrough)
 branch 16 taken 1
-    %%%%%:  102-block  4
+    %%%%%:  101-block  4
 call   17 never executed
-        1:  102-block  5
+        1:  101-block  5
 call   18 returned 1
 call   19 returned 1
 call   20 returned 1
 call   21 returned 1
 call   22 returned 1
 call   23 returned 1
-    $$$$$:  102-block  6
+    $$$$$:  101-block  6
 call   24 never executed
-    $$$$$:  102-block  7
-    $$$$$:  102-block  8
+    $$$$$:  101-block  7
+    $$$$$:  101-block  8
 call   25 never executed
-    $$$$$:  102-block  9
-    $$$$$:  102-block 10
+    $$$$$:  101-block  9
+    $$$$$:  101-block 10
 call   26 never executed
-    $$$$$:  102-block 11
-    $$$$$:  102-block 12
+    $$$$$:  101-block 11
+    $$$$$:  101-block 12
 call   27 never executed
-    $$$$$:  102-block 13
-    $$$$$:  102-block 14
+    $$$$$:  101-block 13
+    $$$$$:  101-block 14
 call   28 never executed
-    $$$$$:  102-block 15
-    $$$$$:  102-block 16
+    $$$$$:  101-block 15
+    $$$$$:  101-block 16
 call   29 never executed
-    $$$$$:  102-block 17
-       1*:  103:    assert(srv.getAll().size() == 1);
+    $$$$$:  101-block 17
+       1*:  102:    assert(srv.getAll().size() == 1);
 call    0 returned 1
 call    1 returned 1
 branch  2 taken 0 (fallthrough)
 branch  3 taken 1
-    %%%%%:  103-block  0
+    %%%%%:  102-block  0
 call    4 never executed
-        -:  104:
-       1*:  105:    assert(srv.delMasinaService(123));
+        -:  103:
+       1*:  104:    assert(srv.delMasinaService(123));
+        1:  104-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  104-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:  104-block  2
+call    5 never executed
+       1*:  105:    assert(srv.getAll().empty());
         1:  105-block  0
 call    0 returned 1
-branch  1 taken 1 (fallthrough)
-branch  2 taken 0 (throw)
-        1:  105-block  1
-branch  3 taken 0 (fallthrough)
-branch  4 taken 1
-    %%%%%:  105-block  2
-call    5 never executed
-       1*:  106:    assert(srv.getAll().empty());
-        1:  106-block  0
-call    0 returned 1
 call    1 returned 1
 branch  2 taken 0 (fallthrough)
 branch  3 taken 1
-    %%%%%:  106-block  1
+    %%%%%:  105-block  1
 call    4 never executed
-        -:  107:
-       1*:  108:    assert(srv.addMasinaService(123, "Audi", "A4", "sedan"));
+        -:  106:
+       1*:  107:    assert(srv.addMasinaService(123, "Audi", "A4", "sedan"));
+        1:  107-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  107-block  1
+call    4 returned 1
+call    5 returned 1
+branch  6 taken 1 (fallthrough)
+branch  7 taken 0 (throw)
+        1:  107-block  2
+call    8 returned 1
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:  107-block  3
+call   12 returned 1
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0 (throw)
+        1:  107-block  4
+branch 15 taken 0 (fallthrough)
+branch 16 taken 1
+    %%%%%:  107-block  5
+call   17 never executed
+        1:  107-block  6
+call   18 returned 1
+call   19 returned 1
+call   20 returned 1
+call   21 returned 1
+call   22 returned 1
+call   23 returned 1
+    $$$$$:  107-block  7
+call   24 never executed
+    $$$$$:  107-block  8
+    $$$$$:  107-block  9
+call   25 never executed
+    $$$$$:  107-block 10
+    $$$$$:  107-block 11
+call   26 never executed
+    $$$$$:  107-block 12
+    $$$$$:  107-block 13
+call   27 never executed
+    $$$$$:  107-block 14
+    $$$$$:  107-block 15
+call   28 never executed
+    $$$$$:  107-block 16
+    $$$$$:  107-block 17
+call   29 never executed
+    $$$$$:  107-block 18
+       1*:  108:    assert(srv.modifyMasinaService(123, "Opel", "Corsa", "hatchback"));
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
         1:  108-block  0
-call    0 returned 1
-call    1 returned 1
-branch  2 taken 1 (fallthrough)
-branch  3 taken 0 (throw)
+call    4 returned 1
+call    5 returned 1
+branch  6 taken 1 (fallthrough)
+branch  7 taken 0 (throw)
         1:  108-block  1
-call    4 returned 1
-call    5 returned 1
-branch  6 taken 1 (fallthrough)
-branch  7 taken 0 (throw)
+call    8 returned 1
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
         1:  108-block  2
-call    8 returned 1
-call    9 returned 1
-branch 10 taken 1 (fallthrough)
-branch 11 taken 0 (throw)
+call   12 returned 1
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0 (throw)
         1:  108-block  3
-call   12 returned 1
-branch 13 taken 1 (fallthrough)
-branch 14 taken 0 (throw)
-        1:  108-block  4
 branch 15 taken 0 (fallthrough)
 branch 16 taken 1
-    %%%%%:  108-block  5
+    %%%%%:  108-block  4
 call   17 never executed
-        1:  108-block  6
+        1:  108-block  5
 call   18 returned 1
 call   19 returned 1
 call   20 returned 1
 call   21 returned 1
 call   22 returned 1
 call   23 returned 1
+    $$$$$:  108-block  6
+call   24 never executed
     $$$$$:  108-block  7
-call   24 never executed
     $$$$$:  108-block  8
+call   25 never executed
     $$$$$:  108-block  9
-call   25 never executed
     $$$$$:  108-block 10
+call   26 never executed
     $$$$$:  108-block 11
-call   26 never executed
     $$$$$:  108-block 12
+call   27 never executed
     $$$$$:  108-block 13
-call   27 never executed
     $$$$$:  108-block 14
+call   28 never executed
     $$$$$:  108-block 15
-call   28 never executed
     $$$$$:  108-block 16
+call   29 never executed
     $$$$$:  108-block 17
-call   29 never executed
-    $$$$$:  108-block 18
-       1*:  109:    assert(srv.modifyMasinaService(123, "Opel", "Corsa", "hatchback"));
-call    0 returned 1
-call    1 returned 1
-branch  2 taken 1 (fallthrough)
-branch  3 taken 0 (throw)
-        1:  109-block  0
-call    4 returned 1
-call    5 returned 1
-branch  6 taken 1 (fallthrough)
-branch  7 taken 0 (throw)
-        1:  109-block  1
-call    8 returned 1
-call    9 returned 1
-branch 10 taken 1 (fallthrough)
-branch 11 taken 0 (throw)
-        1:  109-block  2
-call   12 returned 1
-branch 13 taken 1 (fallthrough)
-branch 14 taken 0 (throw)
-        1:  109-block  3
-branch 15 taken 0 (fallthrough)
-branch 16 taken 1
-    %%%%%:  109-block  4
-call   17 never executed
-        1:  109-block  5
-call   18 returned 1
-call   19 returned 1
-call   20 returned 1
-call   21 returned 1
-call   22 returned 1
-call   23 returned 1
-    $$$$$:  109-block  6
-call   24 never executed
-    $$$$$:  109-block  7
-    $$$$$:  109-block  8
-call   25 never executed
-    $$$$$:  109-block  9
-    $$$$$:  109-block 10
-call   26 never executed
-    $$$$$:  109-block 11
-    $$$$$:  109-block 12
-call   27 never executed
-    $$$$$:  109-block 13
-    $$$$$:  109-block 14
-call   28 never executed
-    $$$$$:  109-block 15
-    $$$$$:  109-block 16
-call   29 never executed
-    $$$$$:  109-block 17
-       1*:  110:    assert(srv.getAll().size() == 1);
+       1*:  109:    assert(srv.getAll().size() == 1);
 call    0 returned 1
 call    1 returned 1
 branch  2 taken 0 (fallthrough)
 branch  3 taken 1
-    %%%%%:  110-block  0
+    %%%%%:  109-block  0
 call    4 never executed
-        -:  111:
-       1*:  112:    assert(srv.addMasinaService(123, "Audi", "A4", "sedan"));
+        -:  110:
+       1*:  111:    assert(srv.addMasinaService(123, "Audi", "A4", "sedan"));
+        1:  111-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  111-block  1
+call    4 returned 1
+call    5 returned 1
+branch  6 taken 1 (fallthrough)
+branch  7 taken 0 (throw)
+        1:  111-block  2
+call    8 returned 1
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:  111-block  3
+call   12 returned 1
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0 (throw)
+        1:  111-block  4
+branch 15 taken 0 (fallthrough)
+branch 16 taken 1
+    %%%%%:  111-block  5
+call   17 never executed
+        1:  111-block  6
+call   18 returned 1
+call   19 returned 1
+call   20 returned 1
+call   21 returned 1
+call   22 returned 1
+call   23 returned 1
+    $$$$$:  111-block  7
+call   24 never executed
+    $$$$$:  111-block  8
+    $$$$$:  111-block  9
+call   25 never executed
+    $$$$$:  111-block 10
+    $$$$$:  111-block 11
+call   26 never executed
+    $$$$$:  111-block 12
+    $$$$$:  111-block 13
+call   27 never executed
+    $$$$$:  111-block 14
+    $$$$$:  111-block 15
+call   28 never executed
+    $$$$$:  111-block 16
+    $$$$$:  111-block 17
+call   29 never executed
+    $$$$$:  111-block 18
+       1*:  112:    assert(!srv.addMasinaService(123, "Audi", "A4", "sedan"));
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
         1:  112-block  0
-call    0 returned 1
-call    1 returned 1
-branch  2 taken 1 (fallthrough)
-branch  3 taken 0 (throw)
+call    4 returned 1
+call    5 returned 1
+branch  6 taken 1 (fallthrough)
+branch  7 taken 0 (throw)
         1:  112-block  1
-call    4 returned 1
-call    5 returned 1
-branch  6 taken 1 (fallthrough)
-branch  7 taken 0 (throw)
+call    8 returned 1
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
         1:  112-block  2
-call    8 returned 1
-call    9 returned 1
-branch 10 taken 1 (fallthrough)
-branch 11 taken 0 (throw)
+call   12 returned 1
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0 (throw)
         1:  112-block  3
-call   12 returned 1
-branch 13 taken 1 (fallthrough)
-branch 14 taken 0 (throw)
-        1:  112-block  4
 branch 15 taken 0 (fallthrough)
 branch 16 taken 1
-    %%%%%:  112-block  5
+    %%%%%:  112-block  4
 call   17 never executed
-        1:  112-block  6
+        1:  112-block  5
 call   18 returned 1
 call   19 returned 1
 call   20 returned 1
 call   21 returned 1
 call   22 returned 1
 call   23 returned 1
+    $$$$$:  112-block  6
+call   24 never executed
     $$$$$:  112-block  7
-call   24 never executed
     $$$$$:  112-block  8
+call   25 never executed
     $$$$$:  112-block  9
-call   25 never executed
     $$$$$:  112-block 10
+call   26 never executed
     $$$$$:  112-block 11
-call   26 never executed
     $$$$$:  112-block 12
+call   27 never executed
     $$$$$:  112-block 13
-call   27 never executed
     $$$$$:  112-block 14
+call   28 never executed
     $$$$$:  112-block 15
-call   28 never executed
     $$$$$:  112-block 16
+call   29 never executed
     $$$$$:  112-block 17
-call   29 never executed
-    $$$$$:  112-block 18
-       1*:  113:    assert(!srv.addMasinaService(123, "Audi", "A4", "sedan"));
-call    0 returned 1
-call    1 returned 1
-branch  2 taken 1 (fallthrough)
-branch  3 taken 0 (throw)
-        1:  113-block  0
-call    4 returned 1
-call    5 returned 1
-branch  6 taken 1 (fallthrough)
-branch  7 taken 0 (throw)
-        1:  113-block  1
-call    8 returned 1
-call    9 returned 1
-branch 10 taken 1 (fallthrough)
-branch 11 taken 0 (throw)
-        1:  113-block  2
-call   12 returned 1
-branch 13 taken 1 (fallthrough)
-branch 14 taken 0 (throw)
-        1:  113-block  3
-branch 15 taken 0 (fallthrough)
-branch 16 taken 1
-    %%%%%:  113-block  4
-call   17 never executed
-        1:  113-block  5
-call   18 returned 1
-call   19 returned 1
-call   20 returned 1
-call   21 returned 1
-call   22 returned 1
-call   23 returned 1
-    $$$$$:  113-block  6
-call   24 never executed
-    $$$$$:  113-block  7
-    $$$$$:  113-block  8
-call   25 never executed
-    $$$$$:  113-block  9
-    $$$$$:  113-block 10
-call   26 never executed
-    $$$$$:  113-block 11
-    $$$$$:  113-block 12
-call   27 never executed
-    $$$$$:  113-block 13
-    $$$$$:  113-block 14
-call   28 never executed
-    $$$$$:  113-block 15
-    $$$$$:  113-block 16
-call   29 never executed
-    $$$$$:  113-block 17
-        -:  114:
-       1*:  115:    assert(!srv.delMasinaService(999));
+        -:  113:
+       1*:  114:    assert(!srv.delMasinaService(999));
 call    0 returned 1
 branch  1 taken 1 (fallthrough)
 branch  2 taken 0 (throw)
-        1:  115-block  0
+        1:  114-block  0
 branch  3 taken 0 (fallthrough)
 branch  4 taken 1
-    %%%%%:  115-block  1
+    %%%%%:  114-block  1
 call    5 never executed
-        -:  116:
-       1*:  117:    assert(!srv.modifyMasinaService(999, "Opel", "Corsa", "hatchback"));
-        1:  117-block  0
+        -:  115:
+       1*:  116:    assert(!srv.modifyMasinaService(999, "Opel", "Corsa", "hatchback"));
+        1:  116-block  0
 call    0 returned 1
 call    1 returned 1
 branch  2 taken 1 (fallthrough)
 branch  3 taken 0 (throw)
-        1:  117-block  1
+        1:  116-block  1
 call    4 returned 1
 call    5 returned 1
 branch  6 taken 1 (fallthrough)
 branch  7 taken 0 (throw)
-        1:  117-block  2
+        1:  116-block  2
 call    8 returned 1
 call    9 returned 1
 branch 10 taken 1 (fallthrough)
 branch 11 taken 0 (throw)
-        1:  117-block  3
+        1:  116-block  3
 call   12 returned 1
 branch 13 taken 1 (fallthrough)
 branch 14 taken 0 (throw)
-        1:  117-block  4
+        1:  116-block  4
 branch 15 taken 0 (fallthrough)
 branch 16 taken 1
-    %%%%%:  117-block  5
+    %%%%%:  116-block  5
 call   17 never executed
-        1:  117-block  6
+        1:  116-block  6
 call   18 returned 1
 call   19 returned 1
 call   20 returned 1
 call   21 returned 1
 call   22 returned 1
 call   23 returned 1
-    $$$$$:  117-block  7
+    $$$$$:  116-block  7
 call   24 never executed
-    $$$$$:  117-block  8
-    $$$$$:  117-block  9
+    $$$$$:  116-block  8
+    $$$$$:  116-block  9
 call   25 never executed
-    $$$$$:  117-block 10
-    $$$$$:  117-block 11
+    $$$$$:  116-block 10
+    $$$$$:  116-block 11
 call   26 never executed
-    $$$$$:  117-block 12
-    $$$$$:  117-block 13
+    $$$$$:  116-block 12
+    $$$$$:  116-block 13
 call   27 never executed
-    $$$$$:  117-block 14
-    $$$$$:  117-block 15
+    $$$$$:  116-block 14
+    $$$$$:  116-block 15
 call   28 never executed
-    $$$$$:  117-block 16
-    $$$$$:  117-block 17
+    $$$$$:  116-block 16
+    $$$$$:  116-block 17
 call   29 never executed
-    $$$$$:  117-block 18
+    $$$$$:  116-block 18
+        -:  117:
         -:  118:
-        -:  119:
-        1:  120:}
+        1:  119:}
 call    0 returned 1
-    $$$$$:  120-block  0
+    $$$$$:  119-block  0
 call    1 never executed
 function _Z10test_totalv called 1 returned 100% blocks executed 100%
-        1:  121:void test_total()
-        -:  122:{
-        1:  123:    test_domain();
-        1:  123-block  0
+        1:  120:void test_total()
+        -:  121:{
+        1:  122:    test_domain();
+        1:  122-block  0
 call    0 returned 1
-        1:  124:    test_repository();
+        1:  123:    test_repository();
 call    0 returned 1
-        1:  125:    test_service();
+        1:  124:    test_service();
 call    0 returned 1
-        1:  126:    std::cout << "All tests passed!\n";
+        1:  125:    std::cout << "All tests passed!\n";
 call    0 returned 1
-        1:  127:}
-        -:  128:
+        1:  126:}
+        -:  127:

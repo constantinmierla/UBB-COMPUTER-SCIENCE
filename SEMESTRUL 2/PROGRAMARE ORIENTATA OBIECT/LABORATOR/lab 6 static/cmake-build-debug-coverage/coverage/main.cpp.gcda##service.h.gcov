@@ -23,7 +23,7 @@
         -:   19:
         -:   20:public:
 function _ZN13MasinaServiceC2ER10MasinaRepo called 2 returned 100% blocks executed 100%
-        2:   21:    MasinaService(MasinaRepo &r) : rep{r} {
+        2:   21:    explicit MasinaService(MasinaRepo &r) : rep{r} {
         -:   22:
         2:   23:    }
         -:   24:

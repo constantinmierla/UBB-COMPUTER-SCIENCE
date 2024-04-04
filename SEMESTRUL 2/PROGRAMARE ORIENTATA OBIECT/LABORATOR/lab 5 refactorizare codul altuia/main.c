@@ -1,9 +1,7 @@
 //
 // Created by Costi on 27-Mar-24.
 //
-#include <stdio.h>
 #include "ui.h"
-#include <stdlib.h>
 #include "tests.h"
 /*
  *
@@ -23,7 +21,7 @@
 int main()
 {
     runAllTests();
-    //run();
+    run();
     return 0;
 }
 

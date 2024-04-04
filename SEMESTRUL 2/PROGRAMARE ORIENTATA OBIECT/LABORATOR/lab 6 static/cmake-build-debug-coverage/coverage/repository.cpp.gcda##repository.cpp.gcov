@@ -215,8 +215,8 @@ call    2 returned 8
         8:   78:    }
         -:   79:}
         -:   80:
-function _ZNK10MasinaRepo4findENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_ called 13 returned 31% blocks executed 64%
-       13:   81:const Masina& MasinaRepo::find(std::string producator, std::string model) const {
+function _ZNK10MasinaRepo4findERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_ called 13 returned 31% blocks executed 64%
+       13:   81:const Masina& MasinaRepo::find(const std::string& producator, const std::string& model) const {
        19:   82:    for(const auto& m: all)
        13:   82-block  0
 call    0 returned 13

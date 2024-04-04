@@ -5,33 +5,31 @@
         -:    1://
         -:    2:// Created by Costi on 27-Mar-24.
         -:    3://
-        -:    4:#include <stdio.h>
-        -:    5:#include "ui.h"
-        -:    6:#include <stdlib.h>
-        -:    7:#include "tests.h"
-        -:    8:/*
-        -:    9: *
-        -:   10:    8. Magazin electronice
-        -:   11:
-        -:   12:    Creati o aplicatie care permite gestiunea stocului de produse intr-un magazin de electronice.
-        -:   13:    Fiecare produs are un identificator unic, tip (laptop, frigider, televizor,etc), producator, model,
-        -:   14:    pret, cantitate.
-        -:   15:    Aplicatia permite:
-        -:   16:     a) Adaugarea de noi produse. Daca produsul este deja in stoc trebuie actualizat cantitatea
-        -:   17:     b) Actualizare produse (modificare pret sau cantitate)
-        -:   18:     c) Stergere produs
-        -:   19:     d) Vizualizare produse din stoc, ordonat dupa pret, cantitate (crescator/descrescator)
-        -:   20:     e) Vizualizare lista de produse filtrate dupa un criteriu (producator, pret, cantitate)
-        -:   21: */
-        -:   22:
+        -:    4:#include "ui.h"
+        -:    5:#include "tests.h"
+        -:    6:/*
+        -:    7: *
+        -:    8:    8. Magazin electronice
+        -:    9:
+        -:   10:    Creati o aplicatie care permite gestiunea stocului de produse intr-un magazin de electronice.
+        -:   11:    Fiecare produs are un identificator unic, tip (laptop, frigider, televizor,etc), producator, model,
+        -:   12:    pret, cantitate.
+        -:   13:    Aplicatia permite:
+        -:   14:     a) Adaugarea de noi produse. Daca produsul este deja in stoc trebuie actualizat cantitatea
+        -:   15:     b) Actualizare produse (modificare pret sau cantitate)
+        -:   16:     c) Stergere produs
+        -:   17:     d) Vizualizare produse din stoc, ordonat dupa pret, cantitate (crescator/descrescator)
+        -:   18:     e) Vizualizare lista de produse filtrate dupa un criteriu (producator, pret, cantitate)
+        -:   19: */
+        -:   20:
 function main called 1 returned 100% blocks executed 100%
-        1:   23:int main()
-        -:   24:{
-        1:   25:    runAllTests();
-        1:   25-block  0
+        1:   21:int main()
+        -:   22:{
+        1:   23:    runAllTests();
+        1:   23-block  0
 call    0 returned 1
-        -:   26:    //run();
-        1:   27:    return 0;
-        -:   28:}
-        -:   29:
-        -:   30:
+        -:   24:    //run();
+        1:   25:    return 0;
+        -:   26:}
+        -:   27:
+        -:   28:

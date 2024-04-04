@@ -8,7 +8,6 @@
 #include "repository.h"
 #include <cassert>
 #include <iostream>
-#include <vector>
 
 // teste domain
 void test_domain() {

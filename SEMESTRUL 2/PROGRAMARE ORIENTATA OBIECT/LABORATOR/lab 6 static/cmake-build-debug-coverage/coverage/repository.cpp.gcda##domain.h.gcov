@@ -21,7 +21,7 @@
         -:   17:    std::string tip;
         -:   18:
         -:   19:public:
-        -:   20:    Masina(int n, const string prod, const string mod, const string t) : nr{ n}, producator{prod}, model{mod}, tip{t}{
+        -:   20:    Masina(int n, const string& prod, const string& mod, const string& t) : nr{ n}, producator{prod}, model{mod}, tip{t}{
         -:   21:
         -:   22:    }
 function _ZN6MasinaC2ERKS_ called 11 returned 100% blocks executed 55%

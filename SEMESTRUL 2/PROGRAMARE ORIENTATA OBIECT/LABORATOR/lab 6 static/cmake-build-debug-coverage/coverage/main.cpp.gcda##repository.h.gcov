@@ -36,7 +36,7 @@ call    0 returned 4
         -:   29:
         -:   30:        const Masina& srcMasinaRepo(int nr);
         -:   31:
-        -:   32:        const Masina& find(string producator, string model) const;
+        -:   32:        const Masina& find(const string& producator, const string& model) const;
         -:   33:
         -:   34:        const vector<Masina>& getAll() const noexcept;
         -:   35:};
@@ -45,14 +45,14 @@ call    0 returned 4
         -:   38:        string msg;
         -:   39:
         -:   40:public:
-        -:   41:        MasinaRepoException(string m) : msg{ m } {
+        -:   41:        explicit MasinaRepoException(string m) : msg{ m } {
         -:   42:
         -:   43:        }
         -:   44:
-        -:   45:        friend ostream& operator<<(ostream& out, const MasinaRepoException& ex);
+        -:   45:        //friend ostream& operator<<(ostream& out, const MasinaRepoException& ex);
         -:   46:};
         -:   47:
-        -:   48:ostream& operator<<(ostream& out, const MasinaRepoException& ex);
+        -:   48://ostream& operator<<(ostream& out, const MasinaRepoException& ex);
         -:   49:
         -:   50:
         -:   51:#endif //LAB_6_STATIC_REPOSITORY_H
