@@ -303,14 +303,17 @@ void testIterator() { // nu stim reprezentarea MD, putem testa doar anumite lucr
 
 void testQuantity() {//scopul e sa adaugam multe date
     MD m;
+    int iteratie = 0;
     for (int i = 10; i >= 1; i--) {
-        for (int j = -3000; j < 3000; j = j + i) {
+        for (int j = -30000; j < 30000; j = j + i) {
+            iteratie++;
+            cout << "iteratia : " << iteratie << "\n";
             m.adauga(j, j);
         }
     }
-    assert(m.dim() == 17575);
+    assert(m.dim() == 175739); // 17575
     vector<TValoare> v;
-    v = m.cauta(-3000);
+    v = m.cauta(-30000);
     assert(v.size() == 10);
 
     IteratorMD im = m.iterator();
@@ -329,40 +332,25 @@ void testQuantity() {//scopul e sa adaugam multe date
 }
 
 void testNou() {
+    MD md;
+    md.adauga(1, 10);
+    md.adauga(2, 20);
+    md.adauga(1, 30);
+    md.adauga(3, 40);
 
-    MD m;
-    for (int i = 0; i < 10; i++)
-    {
-        m.adauga(i, i+1);
-    }
-    for (int i = 0; i < 10; i++)
-    {
-        m.adauga(i, i + 2);
-    }
+    vector<TValoare> valoriSterse;
 
-    assert(m.dim() == 20);
-    IteratorMD it = m.iterator();
-    assert(it.valid() == true);
-    assert(it.element().first == 0);
-    it.avanseazaPasi(3);
-    assert(it.element().first == 1);
-    try {
-        it.avanseazaPasi(-3);
-        assert(false);
-    }
-    catch (exception)
-    {
+    valoriSterse = md.stergeValoriPentruCheie(1);
+    assert(valoriSterse.size() == 2);
+    assert(valoriSterse[0] == 10);
+    assert(valoriSterse[1] == 30);
 
-    }
+    valoriSterse = md.stergeValoriPentruCheie(2);
+    assert(valoriSterse.size() == 1);
+    assert(valoriSterse[0] == 20);
 
-    try {
-        it.avanseazaPasi(30);
-        assert(false);
-    }
-    catch (exception)
-    {
-
-    }
+    valoriSterse = md.stergeValoriPentruCheie(4);
+    assert(valoriSterse.empty());
 }
 
 

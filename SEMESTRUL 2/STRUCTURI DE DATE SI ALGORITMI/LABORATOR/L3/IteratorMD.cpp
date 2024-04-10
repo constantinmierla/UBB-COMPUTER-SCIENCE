@@ -1,3 +1,6 @@
+//
+// Created by Costi on 06-Apr-24.
+//
 #include <iostream>
 #include "IteratorMD.h"
 #include "MD.h"
@@ -58,30 +61,6 @@ void IteratorMD::prim() {
     curent = md.prim;
     if (curent != nullptr)
         curentL = curent->e.second->prim;
-}
-
-
-
-void IteratorMD::avanseazaPasi(int k) {
-
-    if (k <= 0)
-        throw exception();
-
-    for(int i=0; i<k; i++)
-    {
-        if (curentL->urm == nullptr)
-        {
-            curent = curent->urmator();
-            if (curent != nullptr)
-                curentL = curent->e.second->prim;
-        }
-        else
-            curentL = curentL->urm;
-        if (!valid())
-            throw exception();
-    }
-
-
 }
 
 

@@ -1,3 +1,6 @@
+//
+// Created by Costi on 06-Apr-24.
+//
 #include "MD.h"
 #include "IteratorMD.h"
 #include <exception>
@@ -73,6 +76,7 @@ bool ListaV::sterge(TValoare v)
     }
     return false;
 }
+
 
 vector<TValoare> ListaV::cauta()
 {
@@ -313,6 +317,32 @@ IteratorMD MD::iterator() const {
     return IteratorMD(*this);
 }
 
+vector<TValoare> MD::stergeValoriPentruCheie(TCheie cheie) {
+    vector<TValoare> valoriSterse;
+
+    if (this->prim != nullptr) {
+        Nod* p = this->prim;
+        Nod* prec = nullptr;
+
+        while (p != nullptr) {
+            if (p->e.first == cheie) {
+                valoriSterse = p->e.second->cauta();
+
+                if (prec == nullptr)
+                    stergeCheie(nullptr);
+                else
+                    stergeCheie(prec);
+
+                break;
+            }
+
+            prec = p;
+            p = p->urm;
+        }
+    }
+
+    return valoriSterse;
+}
 
 MD::~MD() {
 
