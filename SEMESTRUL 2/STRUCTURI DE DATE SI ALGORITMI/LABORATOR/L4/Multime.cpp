@@ -83,7 +83,7 @@ void Multime::insertPosition(TElem e, int pos)
     }
 }
 
-//WC=AC=BC=Theta(n), => overall theta(n), n-capacitate
+//theta(1) amortizata
 void Multime::resize()
 {
     nod* newElems = new nod[ldi.capacitate * 2];
@@ -106,7 +106,6 @@ void Multime::resize()
     }
     newElems[ldi.capacitate].ant = -1;
 
-    //copy the other stuff and double capacity
     ldi.firstEmpty = ldi.capacitate;
     ldi.capacitate *= 2;
     delete[] ldi.nodes;
@@ -206,60 +205,42 @@ bool Multime::cauta(TElem elem) const {
 }
 
 /*
-* Intersecteaza elementele din b cu cele din a
-* daca un el. din b nu exista in a, il sterge
-* la fel si invers
-*
-* Pseudocod:
-*	subalgoritm intersectie( Mulime b )
-*		Iterator i = b.@iterator
-*		cat timp(i.valid) executa
-* 		daca(!cauta i.element in a)
-* 		@sterge i.element
-* 		i.urmator
-* 	Sf. cat timp
-*
-* 	i = b.@iterator
-* 	cat timp(i.valid) executa
-* 		daca(!cauta i.element in b)
-* 		@sterge i.element
-* 		i.urmator
-*		Sf. cat timp
-*	Sf. subalgoritm
-*
+ * Subalgoritm reuniune(b: Multime)
+
+    iterator i = b.iterator()
+
+    cat timp (i.valid())
+        elem = i.element()
+        daca (nu există elem în this)
+            this.adauga(elem)
+        i.urmator()
+
+    sf cat timp
+sf subalgoritm
+
 * Complexitate timp:
 *		n-dimensiunea lui a
 *		m-dimensiunea lui b
-*		trebuie sa parcurg multimea a de m ori,
-*       iar apoi multimea b de n ori
-*		caz favorabil = theta(1)
-		caz defavorabil = theta(m*max(m,n))
-		caz mediu = O(m*max(m,n))
-*
+*		caz favorabil = theta(n), cand orice element din b este mai mic decat orice element din a
+		caz defavorabil = theta(n*(max(n,m)))
+		caz overall = O(m*n)
 */
-void Multime::intersectie(const Multime& b) {
+void Multime::reuniune(const Multime& b)
+{
     IteratorMultime i = b.iterator();
-    TElem elem;
 
+    // parcurgem fiecare element din a doua mulțime
     while (i.valid()) {
-        elem=i.element();
-        if(cauta(elem)==false)
-            sterge(i.element());
+        TElem elem = i.element();
+
+        // adaugam elementul in prima mulțime doar daca nu exista deja
+        if (!cauta(elem))
+            adauga(elem);
+
+        // trecem la urmatorul element din a doua mulțime
         i.urmator();
     }
-    IteratorMultime i1 = this->iterator();
-
-    while (i1.valid()) {
-        elem = i1.element();
-        if (b.cauta(elem)==false)
-            sterge(i1.element());
-        i1.urmator();
-    }
-
-
 }
-
-
 
 //theta(1)
 int Multime::dim() const {

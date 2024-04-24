@@ -237,8 +237,26 @@ void testQuantity() {//scopul e sa adaugam multe date
 	assert(m.dim() == 0);
 }
 
+void testReuniune() {
+    Multime a, b;
 
-// nu stim reprezentarea multimii, putem testa doar anumite lucruri generale, nu stim in ce ordine vor fi afisate elementele.
+    a.adauga(1);
+    a.adauga(2);
+    a.adauga(3);
+    b.adauga(3);
+    b.adauga(4);
+    b.adauga(5);
+
+    a.reuniune(b);
+
+    assert(a.cauta(1) == true);
+    assert(a.cauta(2) == true);
+    assert(a.cauta(3) == true);
+    assert(a.cauta(4) == true);
+    assert(a.cauta(5) == true);
+    assert(a.dim() == 5);
+
+}
 void testAllExtins() {
 
 	testCreeaza();
@@ -246,7 +264,7 @@ void testAllExtins() {
 	testSterge();
 	testIterator();
 	testQuantity();
-
+    testReuniune();
 }
 
 

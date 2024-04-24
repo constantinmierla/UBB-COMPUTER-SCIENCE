@@ -66,9 +66,7 @@ public:
     //verifica daca multimea e vida;
     bool vida() const;
 
-    void intersectie(const Multime& b);
-
-    void redim();
+    void reuniune(const Multime& b);
 
     void afisare();
     //returneaza un iterator pe multime
