@@ -16,7 +16,7 @@ private:
 	const Multime& multime;
 	/* aici e reprezentarea  specifica a iteratorului */
     int pozitie_curenta;
-
+    int pozitie_anterioara;
 
 public:
 
@@ -33,4 +33,6 @@ public:
 		//returneaza valoarea elementului din container referit de iterator
 		//arunca exceptie daca iteratorul nu e valid
 		TElem element() const;
+
+        void anterior();
 };

@@ -58,3 +58,44 @@ bool IteratorMultime::valid() const {
         return true;
     return false;
 }
+/*
+ * anterior()
+    daca iteratorul nu este valid
+        arunca o excepție
+
+    daca pozitia curenta este 0
+        iteratorul devine nevalid
+        return
+
+    poziție_temporara <- poziția curenta - 1
+
+    cat timp poziția_temporară >= 0 și elementul de la poziția_temporară este EMPTY_POSITION sau DELETED_POSITION
+        scade poziția_temporara
+
+    dacă poziția_temporara < 0
+        iteratorul devine nevalid
+    altfel
+        muta iteratorul la pozitia_temporara
+ */
+//Muta iteratorul la o pozitie valida anterioara din multime.
+//Complexitate: Theta(1) pentru best case, Theta(n) pentru worst case => O(n) total case. unde n este dimensiunea multimii.
+void IteratorMultime::anterior() {
+    if (!valid())
+        throw std::runtime_error("bad");
+
+    if (pozitie_curenta == 0) {
+        pozitie_curenta = NOT_VALID;
+        return;
+    }
+
+    int pozitie_temporara = pozitie_curenta - 1;
+    while ((multime.get_elemente()[pozitie_temporara] == EMPTY_POSITION || multime.get_elemente()[pozitie_temporara] == DELETED_POSITION) && pozitie_temporara >= 0) {
+        pozitie_temporara--;
+    }
+
+    if (pozitie_temporara < 0) {
+        pozitie_curenta = NOT_VALID;
+    } else {
+        pozitie_curenta = pozitie_temporara;
+    }
+}
