@@ -93,6 +93,7 @@ public:
     // destructorul arborelui binar
     ~AB();
 
-    /// gaseste dif deintre val min si val max
-    int dif_max_min();
+
+    /// gaseste si returneaza valoarea maxima din arbore
+    int maxim();
 };

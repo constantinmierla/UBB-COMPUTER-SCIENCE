@@ -184,7 +184,30 @@ void test3_Extra() {
     }
 }
 
+void testeazaMaxim() {
+    AB arborev;
+    try {
+        arborev.maxim();
+        assert(false);
+    } catch (const std::exception&) {
+        assert(true);
+    }
 
+    AB arbore(10);
+    assert(arbore.maxim() == 10);
+
+    AB arbores(5);
+    AB arbored(15);
+    AB arborec(arbores, 10, arbored);
+    assert(arborec.maxim() == 15);
+
+
+    AB arboresn(20);
+    AB arboredn(-15);
+    AB arborecn(arboresn, 10, arboredn);
+    assert(arborecn.maxim() == 20);
+
+}
 void testAllExtins() {
 	string ordine[]={"preordine","postordine","inordine","latime"};
 	AB ab=creeazaArbore();
@@ -196,6 +219,7 @@ void testAllExtins() {
 	test3_Extra();
 	testExceptii();
     }
+    testeazaMaxim();
 }
 
 

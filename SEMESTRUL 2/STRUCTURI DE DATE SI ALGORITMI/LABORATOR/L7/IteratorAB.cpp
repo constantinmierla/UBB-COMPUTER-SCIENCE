@@ -1,9 +1,9 @@
 #include "AB.h"
 #include "IteratorAB.h"
 
-/// caz favoranil : Teta(1)
-/// caz defavorabil : Teta(n)
-/// caz mediu : Teta(n)
+/// caz favoranil : Theta(1)
+/// caz defavorabil : Theta(n)
+/// caz mediu : Theta(n)
 /// overall case : O(n)
 IteratorInordine::IteratorInordine(const AB& _ab):ab(_ab) {
     actual = NULL;
@@ -11,9 +11,9 @@ IteratorInordine::IteratorInordine(const AB& _ab):ab(_ab) {
     prim();
 }
 
-/// caz favoranil : Teta(1)
-/// caz defavorabil : Teta(n)
-/// caz mediu : Teta(n)
+/// caz favoranil : Theta(1)
+/// caz defavorabil : Theta(n)
+/// caz mediu : Theta(n)
 /// overall case : O(n)
 void IteratorInordine::prim(){
     while (!s.empty())
@@ -31,19 +31,19 @@ void IteratorInordine::prim(){
         actual = s.top();
 }
 
-// Teta(1)
+// Theta(1)
 bool IteratorInordine::valid(){
     return actual != NULL;
 }
 
-// Teta(1)
+// Theta(1)
 TElem IteratorInordine::element() {
     if (!valid())
         throw(exception());
     return actual->element;
 }
 
-// Teta(1)
+// Theta(1)
 void IteratorInordine::urmator(){
     if (!valid())
         throw(exception());
@@ -70,15 +70,15 @@ void IteratorInordine::urmator(){
     }
 }
 
-// Teta(1)
+// Theta(1)
 IteratorPreordine::IteratorPreordine(const AB& _ab):ab(_ab){
     actual = NULL;
     prim();
 }
 
-/// caz favoranil : Teta(1)
-/// caz defavorabil : Teta(n)
-/// caz mediu : Teta(n)
+/// caz favoranil : Theta(1)
+/// caz defavorabil : Theta(n)
+/// caz mediu : Theta(n)
 /// overall case : O(n)
 void IteratorPreordine::prim(){
     while (!s.empty())
@@ -88,12 +88,12 @@ void IteratorPreordine::prim(){
     s.push(ab.radacina);
 }
 
-// Teta(1)
+// Theta(1)
 bool IteratorPreordine::valid(){
     return actual != NULL;
 }
 
-// Teta(1)
+// Theta(1)
 TElem IteratorPreordine::element(){
     if (!valid())
         throw(exception());
@@ -101,7 +101,7 @@ TElem IteratorPreordine::element(){
     return actual->element;
 }
 
-// Teta(1)
+// Theta(1)
 void IteratorPreordine::urmator(){
     if (!valid())
         throw(exception());
@@ -120,14 +120,14 @@ void IteratorPreordine::urmator(){
         actual = NULL;
 }
 
-// Teta(1)
+// Theta(1)
 IteratorPostordine::IteratorPostordine(const AB& _ab):ab(_ab){
     actual.p = _ab.radacina;
 }
 
-/// caz favoranil : Teta(1)
-/// caz defavorabil : Teta(n)
-/// caz mediu : Teta(n)
+/// caz favoranil : Theta(1)
+/// caz defavorabil : Theta(n)
+/// caz mediu : Theta(n)
 /// overall case : O(n)
 void IteratorPostordine::prim(){ ///!
     while (!s.empty())
@@ -145,21 +145,21 @@ void IteratorPostordine::prim(){ ///!
     }
 }
 
-// Teta(1)
+// Theta(1)
 bool IteratorPostordine::valid(){
     return actual.p != NULL && !s.empty();
 }
 
-// Teta(1)
+// Theta(1)
 TElem IteratorPostordine::element(){
     if (!valid())
         throw(exception());
     return actual.p->element;
 }
 
-/// caz favoranil : Teta(1)
-/// caz defavorabil : Teta(n)
-/// caz mediu : Teta(n)
+/// caz favoranil : Theta(1)
+/// caz defavorabil : Theta(n)
+/// caz mediu : Theta(n)
 /// overall case : O(n)
 void IteratorPostordine::urmator(){
     if (!valid())
@@ -188,15 +188,15 @@ void IteratorPostordine::urmator(){
     }
 }
 
-// Teta(1)
+// Theta(1)
 IteratorLatime::IteratorLatime(const AB& _ab):ab(_ab){
     actual = NULL;
     prim();
 }
 
-/// caz favoranil : Teta(1)
-/// caz defavorabil : Teta(n)
-/// caz mediu : Teta(n)
+/// caz favoranil : Theta(1)
+/// caz defavorabil : Theta(n)
+/// caz mediu : Theta(n)
 /// overall case : O(n)
 void IteratorLatime::prim(){
     while (!q.empty())
@@ -205,19 +205,19 @@ void IteratorLatime::prim(){
     q.push(ab.radacina);
 }
 
-// Teta(1)
+// Theta(1)
 bool IteratorLatime::valid(){
     return actual != NULL;
 }
 
-// Teta(1)
+// Theta(1)
 TElem IteratorLatime::element(){
     if (!valid())
         throw(exception());
     return actual->element;
 }
 
-// Teta(1)
+// Theta(1)
 void IteratorLatime::urmator(){
     if (!valid())
         throw(exception());

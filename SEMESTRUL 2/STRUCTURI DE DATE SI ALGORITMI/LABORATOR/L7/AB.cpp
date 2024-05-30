@@ -3,35 +3,35 @@
 #include <exception>
 #include <string>
 
-// Teta(1)
+// Theta(1)
 AB::AB() {
     this->radacina = NULL;
 }
 
-/// caz favoranil : Teta(1)
-/// caz defavorabil : Teta(n)
-/// caz mediu : Teta(n)
+/// caz favoranil : Theta(1)
+/// caz defavorabil : Theta(n)
+/// caz mediu : Theta(n)
 /// overall case : O(n)
 AB::AB(const AB& ab) {
     this->radacina = copiere(ab.radacina);
 }
 
-// Teta(1)
+// Theta(1)
 AB::AB(TElem e){
     this->radacina = new Nod(e, NULL, NULL);
 }
 
-/// caz favoranil : Teta(1)
-/// caz defavorabil : Teta(n)
-/// caz mediu : Teta(n)
+/// caz favoranil : Theta(1)
+/// caz defavorabil : Theta(n)
+/// caz mediu : Theta(n)
 /// overall case : O(n)
 AB::AB(const AB& st, TElem e, const AB& dr){
     this->radacina = new Nod(e, copiere(st.radacina), copiere(dr.radacina));
 }
 
-/// caz favoranil : Teta(1)
-/// caz defavorabil : Teta(n)
-/// caz mediu : Teta(n)
+/// caz favoranil : Theta(1)
+/// caz defavorabil : Theta(n)
+/// caz mediu : Theta(n)
 /// overall case : O(n)
 PNod AB::copiere(PNod p) const {
     if (p != NULL) {
@@ -44,9 +44,9 @@ PNod AB::copiere(PNod p) const {
     return NULL;
 }
 
-/// caz favoranil : Teta(1)
-/// caz defavorabil : Teta(n)
-/// caz mediu : Teta(n)
+/// caz favoranil : Theta(1)
+/// caz defavorabil : Theta(n)
+/// caz mediu : Theta(n)
 /// overall case : O(n)
 void AB::distrugeSubarbori(PNod p) {
     if (p != NULL) {
@@ -55,9 +55,9 @@ void AB::distrugeSubarbori(PNod p) {
     }
 }
 
-/// caz favoranil : Teta(1)
-/// caz defavorabil : Teta(n)
-/// caz mediu : Teta(n)
+/// caz favoranil : Theta(1)
+/// caz defavorabil : Theta(n)
+/// caz mediu : Theta(n)
 /// overall case : O(n)
 void AB::distruge(PNod p) {
     if (p != NULL) {
@@ -67,9 +67,9 @@ void AB::distruge(PNod p) {
     }
 }
 
-/// caz favoranil : Teta(1)
-/// caz defavorabil : Teta(n)
-/// caz mediu : Teta(n)
+/// caz favoranil : Theta(1)
+/// caz defavorabil : Theta(n)
+/// caz mediu : Theta(n)
 /// overall case : O(n)
 void AB::adaugaSubSt(const AB& st){
     if (this->vid())
@@ -80,9 +80,9 @@ void AB::adaugaSubSt(const AB& st){
     this->radacina->st = copiere(st.radacina);
 }
 
-/// caz favoranil : Teta(1)
-/// caz defavorabil : Teta(n)
-/// caz mediu : Teta(n)
+/// caz favoranil : Theta(1)
+/// caz defavorabil : Theta(n)
+/// caz mediu : Theta(n)
 /// overall case : O(n)
 void AB::adaugaSubDr(const AB& dr){
     if (this->vid())
@@ -93,14 +93,14 @@ void AB::adaugaSubDr(const AB& dr){
     this->radacina->dr = copiere(dr.radacina);
 }
 
-// Teta(1)
+// Theta(1)
 TElem AB::element() const{
     if (this->vid())
         throw(exception());
     return this->radacina->element;
 }
 
-// Teta(1)
+// Theta(1)
 AB AB::stang() const{
     if (this->vid())
         throw(exception());
@@ -109,7 +109,7 @@ AB AB::stang() const{
     return ab;
 }
 
-// Teta(1)
+// Theta(1)
 AB AB::drept() const{
     if (this->vid())
         throw(exception());
@@ -118,20 +118,20 @@ AB AB::drept() const{
     return ab;
 }
 
-/// caz favoranil : Teta(1)
-/// caz defavorabil : Teta(n)
-/// caz mediu : Teta(n)
+/// caz favoranil : Theta(1)
+/// caz defavorabil : Theta(n)
+/// caz mediu : Theta(n)
 /// overall case : O(n)
 AB::~AB() {
     distruge(this->radacina);
 }
 
-// Teta(1)
+// Theta(1)
 bool AB::vid() const{
     return this->radacina == NULL;
 }
 
-// Teta(1)
+// Theta(1)
 IteratorAB* AB::iterator(string s) const {
     if (s=="preordine")
         return new IteratorPreordine(*this);
@@ -144,19 +144,45 @@ IteratorAB* AB::iterator(string s) const {
     return nullptr;
 };
 
-// Complexitate :  Teta(n)
-/// caz favoranil : Teta(1) daca n e 1
-/// caz defavorabil : Teta(n)
-/// caz mediu : Teta(n)
-/// overall case : Teta(n)
-int AB::dif_max_min()
+/*
+ * maxim()
+    dacă arborele este vid
+        arunca exceptie
+
+    maxi <- valoarea elementului din radacina
+
+    coada q
+    adauga radacina in q
+
+    cat timp q nu este goala
+        aux <- q.front()
+        q.pop()
+
+        daca aux.st nu este NULL
+            adauga aux.st în q
+
+        daca aux.dr nu este NULL
+            adauga aux.dr în q
+
+        daca aux.element > maxi
+            maxi <- aux.element
+
+    return maxi
+ */
+/// gaseste si returneaza valoarea maxima din arbore
+/// Complexitate :  Theta(n)
+/// caz favoranil : Theta(1) daca n e 1
+/// caz defavorabil : Theta(n)
+/// caz mediu : Theta(n)
+/// overall case : Theta(n)
+int AB::maxim()
 {
     if (this->vid())
         throw(exception());
 
-    // initializam min si max cu radacina
-    TElem mini = radacina->element, maxi = radacina->element;
-    // parcurgem arborele prim latime
+    // initializam max cu radacina
+    TElem maxi = radacina->element;
+    // parcurgem arborele prin latime
     queue<PNod> q;
     // se adauga radacina in coada
     q.push(radacina);
@@ -174,9 +200,7 @@ int AB::dif_max_min()
 
         if (aux->element > maxi)
             maxi = aux->element;
-        if (aux->element < mini)
-            mini = aux->element;
     }
 
-    return maxi - mini;
+    return maxi;
 }
