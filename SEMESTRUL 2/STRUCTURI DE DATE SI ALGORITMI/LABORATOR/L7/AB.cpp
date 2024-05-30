@@ -148,7 +148,7 @@ IteratorAB* AB::iterator(string s) const {
  * maxim()
     dacă arborele este vid
         arunca exceptie
-
+6
     maxi <- valoarea elementului din radacina
 
     coada q
@@ -171,10 +171,6 @@ IteratorAB* AB::iterator(string s) const {
  */
 /// gaseste si returneaza valoarea maxima din arbore
 /// Complexitate :  Theta(n)
-/// caz favoranil : Theta(1) daca n e 1
-/// caz defavorabil : Theta(n)
-/// caz mediu : Theta(n)
-/// overall case : Theta(n)
 int AB::maxim()
 {
     if (this->vid())

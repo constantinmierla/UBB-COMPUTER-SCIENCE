@@ -1,6 +1,56 @@
 #include "AB.h"
 #include "IteratorAB.h"
 
+// Theta(1)
+IteratorPreordine::IteratorPreordine(const AB& _ab):ab(_ab){
+    actual = NULL;
+    prim();
+}
+
+/// caz favoranil : Theta(1)
+/// caz defavorabil : Theta(n)
+/// caz mediu : Theta(n)
+/// overall case : O(n)
+void IteratorPreordine::prim(){
+    while (!s.empty())
+        s.pop();
+
+    actual = ab.radacina;
+    s.push(ab.radacina);
+}
+
+// Theta(1)
+bool IteratorPreordine::valid(){
+    return actual != NULL;
+}
+
+// Theta(1)
+TElem IteratorPreordine::element(){
+    if (!valid())
+        throw(exception());
+
+    return actual->element;
+}
+
+// Theta(1)
+void IteratorPreordine::urmator(){
+    if (!valid())
+        throw(exception());
+
+    PNod aux = s.top();
+    s.pop();
+
+    if (aux->dr != NULL)
+        s.push(aux->dr);
+    if (aux->st != NULL)
+        s.push(aux->st);
+
+    if (!s.empty())
+        actual = s.top();
+    else
+        actual = NULL;
+}
+
 /// caz favoranil : Theta(1)
 /// caz defavorabil : Theta(n)
 /// caz mediu : Theta(n)
@@ -68,56 +118,6 @@ void IteratorInordine::urmator(){
     {
         actual = NULL;
     }
-}
-
-// Theta(1)
-IteratorPreordine::IteratorPreordine(const AB& _ab):ab(_ab){
-    actual = NULL;
-    prim();
-}
-
-/// caz favoranil : Theta(1)
-/// caz defavorabil : Theta(n)
-/// caz mediu : Theta(n)
-/// overall case : O(n)
-void IteratorPreordine::prim(){
-    while (!s.empty())
-        s.pop();
-
-    actual = ab.radacina;
-    s.push(ab.radacina);
-}
-
-// Theta(1)
-bool IteratorPreordine::valid(){
-    return actual != NULL;
-}
-
-// Theta(1)
-TElem IteratorPreordine::element(){
-    if (!valid())
-        throw(exception());
-
-    return actual->element;
-}
-
-// Theta(1)
-void IteratorPreordine::urmator(){
-    if (!valid())
-        throw(exception());
-
-    PNod aux = s.top();
-    s.pop();
-
-    if (aux->dr != NULL)
-        s.push(aux->dr);
-    if (aux->st != NULL)
-        s.push(aux->st);
-
-    if (!s.empty())
-        actual = s.top();
-    else
-        actual = NULL;
 }
 
 // Theta(1)
