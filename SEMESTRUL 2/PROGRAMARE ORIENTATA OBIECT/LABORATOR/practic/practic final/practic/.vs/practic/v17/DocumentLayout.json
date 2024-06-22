@@ -1,0 +1,179 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E377DF07-27EA-4728-A6B7-0C9BBD38E493}|practic.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\repo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E377DF07-27EA-4728-A6B7-0C9BBD38E493}|practic.vcxproj|solutionrelative:repo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E377DF07-27EA-4728-A6B7-0C9BBD38E493}|practic.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\domeniu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E377DF07-27EA-4728-A6B7-0C9BBD38E493}|practic.vcxproj|solutionrelative:domeniu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E377DF07-27EA-4728-A6B7-0C9BBD38E493}|practic.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\repo.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E377DF07-27EA-4728-A6B7-0C9BBD38E493}|practic.vcxproj|solutionrelative:repo.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E377DF07-27EA-4728-A6B7-0C9BBD38E493}|practic.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\gui.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E377DF07-27EA-4728-A6B7-0C9BBD38E493}|practic.vcxproj|solutionrelative:gui.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E377DF07-27EA-4728-A6B7-0C9BBD38E493}|practic.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\service.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E377DF07-27EA-4728-A6B7-0C9BBD38E493}|practic.vcxproj|solutionrelative:service.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E377DF07-27EA-4728-A6B7-0C9BBD38E493}|practic.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\domeniu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E377DF07-27EA-4728-A6B7-0C9BBD38E493}|practic.vcxproj|solutionrelative:domeniu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E377DF07-27EA-4728-A6B7-0C9BBD38E493}|practic.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\GUI.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E377DF07-27EA-4728-A6B7-0C9BBD38E493}|practic.vcxproj|solutionrelative:GUI.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E377DF07-27EA-4728-A6B7-0C9BBD38E493}|practic.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\service.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E377DF07-27EA-4728-A6B7-0C9BBD38E493}|practic.vcxproj|solutionrelative:service.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E377DF07-27EA-4728-A6B7-0C9BBD38E493}|practic.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\practic.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E377DF07-27EA-4728-A6B7-0C9BBD38E493}|practic.vcxproj|solutionrelative:practic.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 116,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "gui.cpp",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\gui.cpp",
+              "RelativeDocumentMoniker": "gui.cpp",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\gui.cpp",
+              "RelativeToolTip": "gui.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-22T07:39:07.437Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "service.cpp",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\service.cpp",
+              "RelativeDocumentMoniker": "service.cpp",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\service.cpp",
+              "RelativeToolTip": "service.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-22T07:39:01.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "repo.cpp",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\repo.cpp",
+              "RelativeDocumentMoniker": "repo.cpp",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\repo.cpp",
+              "RelativeToolTip": "repo.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-22T07:38:53.554Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "domeniu.cpp",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\domeniu.cpp",
+              "RelativeDocumentMoniker": "domeniu.cpp",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\domeniu.cpp",
+              "RelativeToolTip": "domeniu.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-22T07:38:47.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "repo.h",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\repo.h",
+              "RelativeDocumentMoniker": "repo.h",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\repo.h",
+              "RelativeToolTip": "repo.h",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABMAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-22T07:37:47.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GUI.h",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\GUI.h",
+              "RelativeDocumentMoniker": "GUI.h",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\GUI.h",
+              "RelativeToolTip": "GUI.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-22T07:38:33.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "service.h",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\service.h",
+              "RelativeDocumentMoniker": "service.h",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\service.h",
+              "RelativeToolTip": "service.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-22T07:38:11.955Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "practic.cpp",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\practic.cpp",
+              "RelativeDocumentMoniker": "practic.cpp",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\practic.cpp",
+              "RelativeToolTip": "practic.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-22T07:22:41.225Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 106,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "domeniu.h",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\domeniu.h",
+              "RelativeDocumentMoniker": "domeniu.h",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\practic\\practic final\\practic\\domeniu.h",
+              "RelativeToolTip": "domeniu.h",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA0AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-22T07:37:41.332Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

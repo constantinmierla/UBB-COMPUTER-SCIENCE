@@ -1,0 +1,10 @@
+﻿  gui.cpp
+  main.cpp
+D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\pregatire practic\Melodie1\QtWidgetsApplication2\model.h(13,28): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'gui.cpp')
+  
+D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\pregatire practic\Melodie1\QtWidgetsApplication2\model.h(13,28): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cpp')
+  
+D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\pregatire practic\Melodie1\QtWidgetsApplication2\gui.cpp(12,67): warning C4353: nonstandard extension used: constant 0 as function expression.  Use '__noop' function intrinsic instead
+  QtWidgetsApplication2.vcxproj -> D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\pregatire practic\Melodie1\QtWidgetsApplication2\x64\Debug\QtWidgetsApplication2.exe
