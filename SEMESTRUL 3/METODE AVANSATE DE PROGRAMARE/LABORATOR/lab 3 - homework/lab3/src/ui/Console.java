@@ -131,17 +131,6 @@ public class Console {
      */
     void printFriendships() {
 
-//        for (User u : socialNetwork.getUsers()) {
-//            System.out.println("Friends of user: " + u.getFirstName() + " " + u.getLastName());
-//            for (Friendship f : socialNetwork.getFriendships()) {
-//                if (f.getIdUser1().equals(u.getId())) {
-//                    System.out.println(socialNetwork.findUser(f.getIdUser2()).getFirstName());
-//                } else if (f.getIdUser2().equals(u.getId())) {
-//                    System.out.println(socialNetwork.findUser(f.getIdUser1()).getFirstName());
-//                }
-//            }
-//        }
-
         for (User u : socialNetwork.getUsers()) {
             System.out.println("Friends of user: " + u.getFirstname() + " " + u.getLastname() + " ( Number of friends: " + u.getFriends().size() + " )");
             if (u.getFriends() != null) {

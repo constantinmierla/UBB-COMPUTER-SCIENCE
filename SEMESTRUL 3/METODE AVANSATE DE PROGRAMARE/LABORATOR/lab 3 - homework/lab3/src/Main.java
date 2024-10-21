@@ -18,7 +18,6 @@ public class Main {
         SocialNetwork socialNetwork = new SocialNetwork(repoUser, repoFriendship);
         Console ui = new Console(socialNetwork);
 
-        // Create Users with Romanian names
         User u1 = new User("Andrei", "Popescu");
         User u2 = new User("Maria", "Ionescu");
         User u3 = new User("Ion", "Vasilescu");
