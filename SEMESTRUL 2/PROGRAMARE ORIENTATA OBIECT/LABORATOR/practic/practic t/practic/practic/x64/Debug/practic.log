@@ -1,4 +1,12 @@
-﻿  main.cpp
+﻿  Reading Qt configuration (C:/Qt/6.7.1/msvc2019_64/bin/qmake)
+  gui.cpp
+  main.cpp
+  service.cpp
+  teste.cpp
+  validator.cpp
+D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\practic\practic t\practic\model.h(13,32): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'gui.cpp')
+  
 D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\practic\practic t\practic\model.h(13,32): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'main.cpp')
   

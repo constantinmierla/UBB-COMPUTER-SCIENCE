@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3f46fc97-a4cd-4c46-9c3b-8a059e2afdb6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/ALGORITMICA GRAFELOR/LABORATOR/lab 7 practic/cmake-build-debug/CMakeFiles/Progress/1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/ALGORITMICA GRAFELOR/LABORATOR/lab 7 practic/cmake-build-debug/CMakeFiles/Progress/count.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/ALGORITMICA GRAFELOR/LABORATOR/lab 7 practic/cmake-build-debug/CMakeFiles/lab_7_practic.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/ALGORITMICA GRAFELOR/LABORATOR/lab 7 practic/cmake-build-debug/CMakeFiles/lab_7_practic.dir/compiler_depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/ALGORITMICA GRAFELOR/LABORATOR/lab 7 practic/cmake-build-debug/CMakeFiles/lab_7_practic.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/ALGORITMICA GRAFELOR/LABORATOR/lab 7 practic/cmake-build-debug/CMakeFiles/lab_7_practic.dir/compiler_depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/ALGORITMICA GRAFELOR/LABORATOR/lab 7 practic/cmake-build-debug/CMakeFiles/lab_7_practic.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/ALGORITMICA GRAFELOR/LABORATOR/lab 7 practic/cmake-build-debug/CMakeFiles/lab_7_practic.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/ALGORITMICA GRAFELOR/LABORATOR/lab 7 practic/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/ALGORITMICA GRAFELOR/LABORATOR/lab 7 practic/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/ALGORITMICA GRAFELOR/LABORATOR/lab 7 practic/cmake-build-debug/lab_7_practic" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/ALGORITMICA GRAFELOR/LABORATOR/lab 7 practic/cmake-build-debug/lab_7_practic" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/.vs/practic/FileContentIndex/fb65b623-d36d-4c61-bfed-0d833875174d.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/.vs/practic/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/.vs/practic/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/.vs/practic/v17/Browse.VC.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/.vs/practic/v17/Browse.VC.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/.vs/practic/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/.vs/practic/v17/DocumentLayout.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/gui.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/gui.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/main.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/main.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/practic.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/practic.ilk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/practic.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/practic.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/practic.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/practic.tlog/CL.command.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/practic.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/practic.tlog/CL.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/practic.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/practic.tlog/CL.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/practic.tlog/practic.write.1u.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/practic.tlog/practic.write.1u.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/service.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/service.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/teste.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/teste.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/validator.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/validator.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/vc143.idb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/practic/x64/Debug/vc143.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/tractoare.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/tractoare.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/x64/Debug/practic.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/x64/Debug/practic.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/x64/Debug/practic.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/practic/practic t/practic/x64/Debug/practic.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/LABORATOR/lab 3 - classwork/lab3/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/LABORATOR/lab 3 - classwork/lab3/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/LABORATOR/lab 3 - classwork/lab3/src/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/LABORATOR/lab 3 - classwork/lab3/src/Circle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/LABORATOR/lab 3 - homework/lab3/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/LABORATOR/lab 3 - homework/lab3/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/LABORATOR/lab 3 - homework/lab3/src/repository/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/LABORATOR/lab 3 - homework/lab3/src/repository/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/LABORATOR/lab2 - homework/Sem1-MAP/src/SortingTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/SEMINAR/S1/untitled/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/SEMINAR/S1/untitled/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/SEMINAR/S1/untitled/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/SEMINAR/S1/untitled/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/SEMINAR/S1/untitled/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/SEMINAR/S1/untitled/s1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/SEMINAR/S1/untitled/src/Container.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/SEMINAR/S1/untitled/src/Factory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/SEMINAR/S1/untitled/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/SEMINAR/S1/untitled/src/MessageTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/SEMINAR/S1/untitled/src/QueueContainer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/SEMINAR/S1/untitled/src/StackContainer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/SEMINAR/S1/untitled/src/Strategy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/SEMINAR/S1/untitled/src/Task.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/SEMINAR/S1/untitled/src/TaskContainerFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/SEMINAR/S2/S2/src/MyMap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../METODE AVANSATE DE PROGRAMARE/SEMINAR/S2/S2/src/Student.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jupyter Notebook" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2nmdDQh8b2LMsxLOYWvJZmUw4Ij" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Jupyter&quot;
+    ]
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="L2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3f46fc97-a4cd-4c46-9c3b-8a059e2afdb6" name="Changes" comment="" />
+      <created>1729582065162</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1729582065162</updated>
+      <workItem from="1729582066956" duration="90000" />
+      <workItem from="1729582198730" duration="306000" />
+      <workItem from="1729582539339" duration="164000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/L2$main.coverage" NAME="main Coverage Results" MODIFIED="1729582206098" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

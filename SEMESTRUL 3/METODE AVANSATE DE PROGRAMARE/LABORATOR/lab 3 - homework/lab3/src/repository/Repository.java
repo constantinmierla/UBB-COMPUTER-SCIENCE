@@ -3,7 +3,7 @@ package repository;
 import domain.Entity;
 
 /**
- * Interface defining basic CRUD operations (Create, Read, Update, Delete)
+ * Interface defining basic CRUD operations
  * for a repository that manages entities of type E with an identifier of type ID.
  *
  * @param <ID> - the type of the identifier used for entities
