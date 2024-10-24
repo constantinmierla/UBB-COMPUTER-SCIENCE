@@ -1,0 +1,84 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  extern fopen, fprintf, fclose
+    11                                  import fopen msvcrt.dll
+    12                                  import fprintf msvcrt.dll
+    13                                  import fclose msvcrt.dll
+    14                                  ; our data is declared here (the variables needed by our program)
+    15                                  segment data use32 class=data
+    16                                      ; ...
+    17 00000000 32352E74787400              file_name db '25.txt', 0
+    18 00000007 7700                        mode_access db 'w', 0
+    19 00000009 FFFFFFFF                    file_descriptor dd -1
+    20                                      
+    21 0000000D 746869732069732061-         string db 'this is a wonderful string 32312dw sow wow!@'
+    21 00000016 20776F6E6465726675-
+    21 0000001F 6C20737472696E6720-
+    21 00000028 333233313264772073-
+    21 00000031 6F7720776F772140   
+    22                                      string_len equ ($ - string)
+    23                                      
+    24 00000039 FF<rept>                    updated_string times (string_len + 1) db -1
+    25                                      
+    26 00000066 257300                      print_format db '%s', 0
+    27                                  ; our code starts here
+    28                                  segment code use32 class=code
+    29                                      start:
+    30                                          ; Se dau un nume de fisier si un text (definite in segmentul de date). Textul contine litere mici, litere mari, cifre si caractere speciale. Sa se inlocuiasca toate spatiile din textul dat cu caracterul 'S'.
+    31                                          
+    32                                          ; open file
+    33 00000000 68[07000000]                    push dword mode_access
+    34 00000005 68[00000000]                    push dword file_name
+    35 0000000A FF15[00000000]                  call [fopen]
+    36 00000010 83C408                          add esp, 4 * 2
+    37                                          
+    38                                          ; check if the file opened correctly
+    39 00000013 83F800                          cmp eax, 0
+    40 00000016 744A                            je final
+    41 00000018 A3[09000000]                    mov [file_descriptor], eax
+    42                                          
+    43                                          ; iterate through the string
+    44 0000001D FC                              cld
+    45 0000001E BE[0D000000]                    mov esi, string
+    46 00000023 BF[39000000]                    mov edi, updated_string
+    47 00000028 B92C000000                      mov ecx, string_len
+    48                                          string_loop:
+    49 0000002D AC                                  lodsb ; al = the current character
+    50                                             
+    51 0000002E 3C20                                cmp al, ' '
+    52 00000030 7502                                jne not_space
+    53                                                  
+    54                                              ; if we reach this point, the character is a space - we need to replace it    
+    55 00000032 B053                                mov al, 'S' 
+    56                                              
+    57                                              not_space: 
+    58 00000034 AA                                  stosb ; move it into edi 
+    59 00000035 E2F6                            loop string_loop
+    60                                          
+    61                                          ; our string is inside edi - but since we want to pass it to a C function, we need to append 0 as well
+    62 00000037 B000                            mov al, 0
+    63 00000039 AA                              stosb
+    64                                          
+    65                                          ; now we print the new string
+    66 0000003A 68[39000000]                    push dword updated_string
+    67 0000003F 68[66000000]                    push dword print_format
+    68 00000044 FF35[09000000]                  push dword [file_descriptor]
+    69 0000004A FF15[00000000]                  call [fprintf]
+    70 00000050 83C40C                          add esp, 4 * 3
+    71                                          
+    72                                          ; close the file
+    73 00000053 FF35[09000000]                  push dword [file_descriptor]
+    74 00000059 FF15[00000000]                  call [fclose]
+    75 0000005F 83C404                          add esp, 4
+    76                                          
+    77                                          final: 
+    78                                          ; exit(0)
+    79 00000062 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    80 00000064 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

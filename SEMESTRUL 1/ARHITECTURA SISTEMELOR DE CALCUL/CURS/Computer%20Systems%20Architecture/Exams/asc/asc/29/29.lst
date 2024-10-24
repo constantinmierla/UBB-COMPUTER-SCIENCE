@@ -1,0 +1,137 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  extern fopen, fread, fprintf, fclose
+    11                                  import fopen msvcrt.dll
+    12                                  import fread msvcrt.dll 
+    13                                  import fprintf msvcrt.dll
+    14                                  import fclose msvcrt.dll
+    15                                  ; our data is declared here (the variables needed by our program)
+    16                                  segment data use32 class=data
+    17                                      ; ...
+    18 00000000 32392E74787400              file_name db '29.txt', 0
+    19 00000007 612B00                      mod_access db 'a+', 0
+    20 0000000A FFFFFFFF                    file_descriptor dd -1
+    21                                      
+    22 0000000E 0A000000                    ten dd 10
+    23 00000012 00000000                    maximum dd 0
+    24                                      
+    25 00000016 00000000                    buffer dd 0
+    26                                      
+    27 0000001A 20256400                    print_format db ' %d', 0
+    28                                  ; our code starts here
+    29                                  segment code use32 class=code
+    30                                      start:
+    31                                          ; Se da un fisier text. Fisierul contine numere (în baza 10) separate prin spatii. Sa se citeasca continutul acestui fisier, sa se determine maximul numerelor citite si sa se scrie rezultatul la sfarsitul f
+    32                                          
+    33                                          ; open the file
+    34                                          ; fopen(file_name, mod_access)
+    35 00000000 68[07000000]                    push dword mod_access
+    36 00000005 68[00000000]                    push dword file_name
+    37 0000000A FF15[00000000]                  call [fopen]
+    38 00000010 83C408                          add esp, 4 * 2
+    39                                          
+    40                                          ; check if the file was created sucessfully
+    41 00000013 83F800                          cmp eax, 0
+    42 00000016 0F84B3000000                    je final 
+    43 0000001C A3[0A000000]                    mov [file_descriptor], eax
+    44                                          
+    45                                          ; read character by character until the characther is not a space / digit
+    46                                          while_read_char:
+    47                                              ; fread(buffer, size, count, file_name)
+    48 00000021 FF35[0A000000]                      push dword [file_descriptor]
+    49 00000027 6A01                                push dword 1
+    50 00000029 6A01                                push dword 1
+    51 0000002B 68[16000000]                        push dword buffer
+    52 00000030 FF15[00000000]                      call [fread]
+    53 00000036 83C410                              add esp, 4 * 4
+    54                                              
+    55                                              ; check if something was read
+    56 00000039 83F800                              cmp eax, 0
+    57 0000003C 7468                                je end_while_read_char
+    58                                              
+    59                                              ; we store the character
+    60 0000003E A1[16000000]                        mov eax, [buffer]
+    61                                              
+    62                                              ; we check if the character is a space - we read another one if so
+    63 00000043 83F820                              cmp eax, ' '
+    64 00000046 74D9                                je while_read_char
+    65                                              
+    66                                              ; we check if the character is a digit
+    67 00000048 83F830                              cmp eax, '0'
+    68 0000004B 7259                                jb end_while_read_char ; if it was not a space and is below the digit '0' - we reached the end of file - we jump outside
+    69 0000004D 83F839                              cmp eax, '9'
+    70 00000050 7754                                ja end_while_read_char ; if it was not a space and is above the digit '9' - we reached the end of file - we jump outside 
+    71                                              
+    72                                              ; if we reach this point, it means out character is a digit - we try to build the number now
+    73 00000052 83E830                              sub eax, 48 ; we convert the character into a real digit - now in eax we have the number we want to build
+    74                                              
+    75                                              while_digit:
+    76                                                  ; we read another character - that's why we need to push the register to not alterate them
+    77 00000055 60                                      pushad
+    78 00000056 FF35[0A000000]                          push dword [file_descriptor]
+    79 0000005C 6A01                                    push dword 1
+    80 0000005E 6A01                                    push dword 1
+    81 00000060 68[16000000]                            push dword buffer
+    82 00000065 FF15[00000000]                          call [fread]
+    83 0000006B 83C410                                  add esp, 4 * 4
+    84                                                  
+    85                                                  ; check if something was read
+    86 0000006E 83F800                                  cmp eax, 0
+    87 00000071 7503                                    jne more_char
+    88                                                  
+    89 00000073 61                                      popad
+    90 00000074 EB1E                                    jmp end_while_digit
+    91                                                  
+    92                                                  more_char:
+    93 00000076 61                                      popad
+    94                                                  
+    95                                                  ; know we check again if out character is a valid digit - if not, we end this while
+    96 00000077 8B1D[16000000]                          mov ebx, [buffer]
+    97 0000007D 83FB30                                  cmp ebx, '0'
+    98 00000080 7212                                    jb end_while_digit
+    99 00000082 83FB39                                  cmp ebx, '9'
+   100 00000085 770D                                    ja end_while_digit
+   101                                                  
+   102                                                  ; if we reached here, it means ebx = our character is a digit - we transform it into an actual digit
+   103 00000087 83EB30                                  sub ebx, 48
+   104                                                  
+   105                                                  ; we update the number - eax = eax * 10 + ebx (we assume the result will fit into a doubleword)
+   106 0000008A F725[0E000000]                          mul dword [ten] ; edx:eax = eax * 10 - but the result will still fit into eax, so we don't really care about edx
+   107 00000090 01D8                                    add eax, ebx
+   108                                                  
+   109                                                  ; now we read another one
+   110 00000092 EBC1                                    jmp while_digit
+   111                                                  
+   112                                              end_while_digit:
+   113                                              ; we have a number - we compare it to the maximum
+   114 00000094 3B05[12000000]                      cmp eax, [maximum]
+   115 0000009A 7E85                                jle while_read_char ; it's not greater than the actual maximum - we don't care about it anymore - we keep reading
+   116                                              
+   117                                              ; if we reached this point - it's greater than the actual maximum - we update it
+   118 0000009C A3[12000000]                        mov [maximum], eax
+   119 000000A1 E97BFFFFFF                          jmp while_read_char ; and of course, we read another character
+   120                                              
+   121                                          end_while_read_char:   
+   122                                          ; append the maximum
+   123 000000A6 FF35[12000000]                  push dword [maximum]
+   124 000000AC 68[1A000000]                    push dword print_format
+   125 000000B1 FF35[0A000000]                  push dword [file_descriptor]
+   126 000000B7 FF15[00000000]                  call [fprintf]
+   127 000000BD 83C40C                          add esp, 4 * 3
+   128                                          
+   129                                          ; close the file 
+   130 000000C0 FF35[0A000000]                  push dword [file_descriptor]
+   131 000000C6 FF15[00000000]                  call [fclose]
+   132 000000CC 83C404                          add esp, 4
+   133                                              
+   134                                          final: 
+   135                                          ; exit(0)
+   136 000000CF 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   137 000000D1 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

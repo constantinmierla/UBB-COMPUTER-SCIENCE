@@ -1,0 +1,142 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  extern printf, fopen, fclose, fread
+    12                                  import printf msvcrt.dll  
+    13                                  import fopen msvcrt.dll 
+    14                                  import fclose msvcrt.dll 
+    15                                  import fread msvcrt.dll 
+    16                                                            
+    17                                  ; our data is declared here (the variables needed by our program)
+    18                                  segment data use32 class=data
+    19                                      ; ...
+    20 00000000 65783666696C652E74-         file_name db 'ex6file.txt', 0
+    20 00000009 787400             
+    21 0000000C 7200                        mod_access db 'r', 0
+    22 0000000E FFFFFFFF                    descriptor_file dd  -1
+    23                                      
+    24                                      len equ 1 ; we want to read character by character
+    25 00000012 <res 00000001>              buffer resb len ; we store here the digit everytime we read one
+    26                                      
+    27 00000013 00000000                    max_freq dd 0 ; this is the max 
+    28 00000017 00000000                    answer_digit dd 0 ; this is the digit with the maximum frequency
+    29                                      
+    30 0000001B 00<rept>                    frequency times 10 db 0 ; we initalize the frequency vector
+    31                                      
+    32                                      ; format db '%d', 0
+    33 00000025 546865206469676974-         answer_format db 'The digit with the maximum frequency is %d, appearing %d times'
+    33 0000002E 207769746820746865-
+    33 00000037 206D6178696D756D20-
+    33 00000040 6672657175656E6379-
+    33 00000049 2069732025642C2061-
+    33 00000052 7070656172696E6720-
+    33 0000005B 25642074696D6573   
+    34                                      
+    35                                  ; our code starts here
+    36                                  segment code use32 class=code
+    37                                      start:
+    38                                          ; ...
+    39                                          
+    40                                          ; deschidere fisier
+    41 00000000 68[0C000000]                    push dword mod_access
+    42 00000005 68[00000000]                    push dword file_name
+    43 0000000A FF15[00000000]                  call [fopen]
+    44 00000010 83C408                          add esp, 4 * 2
+    45 00000013 A3[0E000000]                    mov [descriptor_file], eax
+    46                                          
+    47                                          ; check if everything worked
+    48 00000018 83F800                          cmp eax, 0
+    49 0000001B 7477                            je final
+    50                                          
+    51                                          ; read the digits
+    52                                          read_loop:
+    53 0000001D FF35[0E000000]                      push dword [descriptor_file]
+    54 00000023 6A01                                push dword len
+    55 00000025 6A01                                push dword 1
+    56 00000027 68[12000000]                        push dword buffer
+    57 0000002C FF15[00000000]                      call [fread]
+    58 00000032 83C410                              add esp, 4 * 4
+    59                                              
+    60                                              ; eax = number of charcaters / bytes read
+    61 00000035 83F800                              cmp eax, 0 ; if it's 0, it means we reached the end of the file
+    62 00000038 741C                                je close_file
+    63                                              
+    64                                              ; we check if the character read is a digit
+    65 0000003A B800000000                          mov eax, 0 ; clear the digit "container"
+    66 0000003F A0[12000000]                        mov al, byte [buffer] ; we move the byte from buffer into al
+    67                                              
+    68 00000044 3C30                                cmp al, '0'
+    69 00000046 72D5                                jb read_loop ; it means the character is below '0', meaning it's not a digit - so we want to read another one
+    70                                              
+    71 00000048 3C39                                cmp al, '9'
+    72 0000004A 77D1                                ja read_loop ; it means the character is above '9', meaning it's not a digit - so we want to read another one
+    73                                              
+    74                                              ; if we reach this point it means the character is a digit
+    75 0000004C 2C30                                sub al, 48 ; we convert from the ascii code of the digit to the actual digit value (the ascii code of '0' is 48)
+    76                                              
+    77                                              ; now we want to increase the frequency
+    78                                              ; for digit 0 -> we increase the byte from [frequency + 0]
+    79                                              ; for digit 1 -> we increase the byte from [frequency + 1]
+    80                                              ; for digit x -> we increase the byte from [frequency + x]
+    81 0000004E FE80[1B000000]                      inc byte [frequency + eax]
+    82                                              
+    83                                              ; in case you want to output everytime each digit you read
+    84                                              ; push dword eax
+    85                                              ; push dword format
+    86                                              ; call [printf]
+    87                                              ; add esp, 4 * 2
+    88                                              
+    89                                              ; we read another one
+    90 00000054 EBC7                                jmp read_loop
+    91                                              
+    92                                          
+    93                                          close_file:
+    94                                          ; close the opened file
+    95 00000056 FF35[0E000000]                  push dword [descriptor_file]
+    96 0000005C FF15[00000000]                  call [fclose]
+    97 00000062 83C404                          add esp, 4
+    98                                          
+    99                                          ; we closed the file, we read everything we need, now we go through the loop and find the maximum
+   100 00000065 C705[13000000]0000-             mov dword [max_freq], 0
+   100 0000006D 0000               
+   101 0000006F B90A000000                      mov ecx, 10 ; the counter for the loop
+   102                                          
+   103                                          frequency_loop:
+   104                                              
+   105                                              ; we are on digit with the value (ecx - 1) and the frequency [frequency + (ecx - 1)]
+   106 00000074 89CB                                mov ebx, ecx
+   107 00000076 83EB01                              sub ebx, 1 ; we computed ecx - 1 = ebx = our digit
+   108                                              
+   109 00000079 8A83[1B000000]                      mov al, byte [frequency + ebx] ; we move into al the frequency of the current digit
+   110                                              
+   111                                              ; we compare with the maximum 
+   112 0000007F 3A05[13000000]                      cmp al, byte [max_freq]
+   113 00000085 7C0B                                jl not_a_better_max
+   114                                              
+   115                                              ; if we reach this point, it means we found a better maximum, so we update the solution
+   116 00000087 A2[13000000]                        mov byte [max_freq], al
+   117 0000008C 881D[17000000]                      mov byte [answer_digit], bl ; our digit is inside ebx, but in reality, since the digit is on a byte, it means it is contained in bl
+   118                                                  
+   119                                              not_a_better_max:
+   120                                              
+   121 00000092 E2E0                            loop frequency_loop
+   122                                          
+   123                                          final:
+   124                                          
+   125                                          ; now we print what we have
+   126 00000094 FF35[13000000]                  push dword [max_freq]
+   127 0000009A FF35[17000000]                  push dword [answer_digit]
+   128 000000A0 68[25000000]                    push dword answer_format
+   129 000000A5 FF15[00000000]                  call [printf]
+   130 000000AB 83C40C                          add esp, 4 * 3
+   131                                          
+   132                                          ; exit(0)
+   133 000000AE 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   134 000000B0 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

@@ -1,0 +1,147 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  extern fopen, fclose, printf, fread
+    11                                  import fopen msvcrt.dll
+    12                                  import fclose msvcrt.dll
+    13                                  import printf msvcrt.dll
+    14                                  import fread msvcrt.dll
+    15                                  ; our data is declared here (the variables needed by our program)
+    16                                  segment data use32 class=data
+    17                                      ; ...
+    18 00000000 02000000                    two dd 2
+    19                                      
+    20 00000004 7200                        mode_access db 'r', 0
+    21 00000006 392E74787400                file_name db '9.txt', 0
+    22 0000000C FFFFFFFF                    file_descriptor dd -1
+    23                                      
+    24 00000010 00                          a_char db 0
+    25                                      
+    26 00000011 <res 00000190>              frequency_array resw 200 ; the n(th) word from this array has as a value the number of times the character with the ascii code of n appears
+    27 000001A1 00000000                    maximum dd 0
+    28 000001A5 00000000                    answer_char dd 0
+    29                                      
+    30 000001A9 256420256300                print_format db '%d %c', 0
+    31                                  ; our code starts here
+    32                                  segment code use32 class=code
+    33                                      start:
+    34                                          ; A text file is given. Read the content of the file, determine the special character with the highest frequency and display the character along with its frequency on the screen. The name of text file is def
+    35                                          
+    36                                          ; open the file
+    37 00000000 68[04000000]                    push dword mode_access
+    38 00000005 68[06000000]                    push dword file_name
+    39 0000000A FF15[00000000]                  call [fopen]
+    40 00000010 83C408                          add esp, 4 * 2
+    41                                          
+    42                                          ; check if the file opened correctly
+    43 00000013 83F800                          cmp eax, 0
+    44 00000016 0F84B4000000                    je final
+    45 0000001C A3[0C000000]                    mov [file_descriptor], eax
+    46                                          
+    47                                          ; read character by character from the file
+    48                                          read_characters:
+    49 00000021 FF35[0C000000]                      push dword [file_descriptor]
+    50 00000027 6A01                                push dword 1
+    51 00000029 6A01                                push dword 1
+    52 0000002B 68[10000000]                        push dword a_char
+    53 00000030 FF15[00000000]                      call [fread]
+    54 00000036 83C410                              add esp, 4 * 4
+    55                                              
+    56                                              ; we check if we read something
+    57 00000039 83F800                              cmp eax, 0
+    58 0000003C 743D                                je end_read_characters
+    59                                              
+    60                                              ; move the character inside al
+    61 0000003E A0[10000000]                        mov al, byte [a_char]
+    62                                              
+    63                                              ; check if the character is a digit
+    64 00000043 3C30                                cmp al, '0'
+    65 00000045 7206                                jb not_a_digit
+    66 00000047 3C39                                cmp al, '9'
+    67 00000049 7702                                ja not_a_digit
+    68                                              ; if we reach this point, it means it is a digit, so we read another character
+    69 0000004B EBD4                                jmp read_characters
+    70                                              
+    71                                              not_a_digit:
+    72                                              
+    73                                              ; check if the character is a lowercase letter
+    74 0000004D 3C61                                cmp al, 'a'
+    75 0000004F 7206                                jb not_a_lowercase
+    76 00000051 3C7A                                cmp al, 'z'
+    77 00000053 7702                                ja not_a_lowercase
+    78                                              ; if we reach this point, it means it is a lowercase letter, so we read another character
+    79 00000055 EBCA                                jmp read_characters
+    80                                              
+    81                                              not_a_lowercase:
+    82                                              
+    83                                              ; chech if the character is an uppercase letter
+    84 00000057 3C41                                cmp al, 'A'
+    85 00000059 7206                                jb not_an_uppercase
+    86 0000005B 3C5A                                cmp al, 'Z'
+    87 0000005D 7702                                ja not_an_uppercase
+    88                                              ; if we reach this point, it means it is an uppercase letter, so we read another character
+    89 0000005F EBC0                                jmp read_characters
+    90                                              
+    91                                              not_an_uppercase:
+    92                                              
+    93                                              ; if it is a space, we read another character
+    94 00000061 3C20                                cmp al, ' '
+    95 00000063 74BC                                je read_characters
+    96                                              
+    97                                              ; if it is a "new line", we read another character
+    98 00000065 3C0A                                cmp al, 10
+    99 00000067 74B8                                je read_characters
+   100                                              
+   101                                              ; if we reach this point, it means that it is a special character -> we increment the frequency
+   102 00000069 B400                                mov ah, 0 ; ax = al 
+   103                                              ; we also multiply it with 2, since our frequency array is made up of words
+   104 0000006B 66F725[00000000]                    mul word [two] ; eax = 2 * al
+   105                                              ; now we increment the frequency
+   106 00000072 66FF80[11000000]                    inc word [frequency_array + eax]
+   107                                             
+   108                                              ; and of course ... we read again
+   109 00000079 EBA6                                jmp read_characters
+   110                                              
+   111                                          end_read_characters:
+   112                                          ; we loop through the array and find the maximum, while also keeping the ascii code of the character
+   113                                          ; for that we need a counter
+   114                                         
+   115 0000007B BE[11000000]                    mov esi, frequency_array
+   116 00000080 B9C8000000                      mov ecx, 200 ; we have 200 words
+   117 00000085 BB00000000                      mov ebx, 0 ; 
+   118                                          loop_array:
+   119 0000008A B800000000                          mov eax, 0
+   120 0000008F 66AD                                lodsw            
+   121                                              ; we compare it with the maximum
+   122 00000091 3B05[A1010000]                      cmp eax, [maximum]
+   123 00000097 760B                                jbe not_a_better_maximum
+   124                                              ; if we reach this point, we have a better maximum
+   125 00000099 A3[A1010000]                        mov [maximum], eax 
+   126 0000009E 891D[A5010000]                      mov [answer_char], ebx 
+   127                                              
+   128                                              not_a_better_maximum: 
+   129 000000A4 43                                  inc ebx
+   130 000000A5 E2E3                                loop loop_array 
+   131                                          
+   132                                          ; we print the result
+   133 000000A7 FF35[A5010000]                  push dword [answer_char]
+   134 000000AD FF35[A1010000]                  push dword [maximum]
+   135 000000B3 68[A9010000]                    push dword print_format
+   136 000000B8 FF15[00000000]                  call [printf]
+   137 000000BE 83C40C                          add esp, 4 * 3
+   138                                          
+   139                                          ; close the file 
+   140 000000C1 FF35[0C000000]                  push dword [file_descriptor]
+   141 000000C7 FF15[00000000]                  call [fclose]
+   142 000000CD 83C404                          add esp, 4
+   143                                          
+   144                                          final:
+   145                                          ; exit(0)
+   146 000000D0 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   147 000000D2 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

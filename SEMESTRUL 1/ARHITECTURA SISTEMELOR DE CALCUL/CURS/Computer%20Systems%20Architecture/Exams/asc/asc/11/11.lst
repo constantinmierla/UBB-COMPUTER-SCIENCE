@@ -1,0 +1,71 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  extern fopen, fclose, fprintf, scanf
+    11                                  import fopen msvcrt.dll
+    12                                  import fclose msvcrt.dll
+    13                                  import fprintf msvcrt.dll
+    14                                  import scanf msvcrt.dll
+    15                                  ; our data is declared here (the variables needed by our program)
+    16                                  segment data use32 class=data
+    17                                      ; ...
+    18                                  
+    19 00000000 7700                        mode_access db 'w', 0
+    20 00000002 31312E74787400              file_name db '11.txt', 0
+    21 00000009 FFFFFFFF                    file_descriptor dd -1
+    22                                      
+    23 0000000D <res 00000064>              a_word resb 100 ; we assume a word has a maximum of 100 characters
+    24 00000071 257300                      read_format db '%s', 0
+    25 00000074 25730A00                    print_format db '%s', 10, 0
+    26                                  ; our code starts here
+    27                                  segment code use32 class=code
+    28                                      start:
+    29                                          ; A file name is given (defined in the data segment). Create a file with the given name, then read words from the keyboard and write those words in the file, until character '$' is read from the keyboard.
+    30                                          
+    31                                          ; open the file
+    32 00000000 68[00000000]                    push dword mode_access
+    33 00000005 68[02000000]                    push dword file_name
+    34 0000000A FF15[00000000]                  call [fopen]
+    35 00000010 83C408                          add esp, 4 * 2
+    36                                          
+    37                                          ; check if the file was opened correctly
+    38 00000013 83F800                          cmp eax, 0
+    39 00000016 744B                            je final
+    40 00000018 A3[09000000]                    mov [file_descriptor], eax
+    41                                          
+    42                                          ; read word from the keyboard
+    43                                          while_read_words:
+    44 0000001D 68[0D000000]                        push dword a_word
+    45 00000022 68[71000000]                        push dword read_format
+    46 00000027 FF15[00000000]                      call [scanf]
+    47 0000002D 83C408                              add esp, 4 * 2
+    48                                              
+    49                                              ; check if we reach '$'
+    50 00000030 803D[0D000000]24                    cmp byte [a_word], '$'
+    51 00000037 741B                                je end_while_read_words
+    52                                              
+    53                                              ; we append it to the file
+    54 00000039 68[0D000000]                        push dword a_word
+    55 0000003E 68[74000000]                        push dword print_format
+    56 00000043 FF35[09000000]                      push dword [file_descriptor]
+    57 00000049 FF15[00000000]                      call [fprintf]
+    58 0000004F 83C40C                              add esp, 4 * 3
+    59                                              
+    60 00000052 EBC9                                jmp while_read_words ; read another word
+    61                                              
+    62                                          end_while_read_words:
+    63                                          ; close the file
+    64 00000054 FF35[09000000]                  push dword [file_descriptor]
+    65 0000005A FF15[00000000]                  call [fclose]
+    66 00000060 83C404                          add esp, 4
+    67                                          
+    68                                          final:
+    69                                          ; exit(0)
+    70 00000063 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    71 00000065 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

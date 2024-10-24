@@ -1,0 +1,166 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  extern fopen, fprintf, fclose
+    11                                  import fopen msvcrt.dll
+    12                                  import fprintf msvcrt.dll
+    13                                  import fclose msvcrt.dll
+    14                                  ; our data is declared here (the variables needed by our program)
+    15                                  segment data use32 class=data
+    16                                      ; ...
+    17                                      
+    18 00000000 6100                        mode_access db 'a', 0
+    19 00000002 32332E74787400              file_name db '23.txt', 0
+    20 00000009 FFFFFFFF                    file_descriptor dd -1
+    21                                      
+    22 0000000D C2EC                        hexa_number dw 0xECC2
+    23 0000000F 00000000                    nibble dd 0
+    24 00000013 10                          sixteen db 16
+    25                                      
+    26 00000014 256400                      print_format db '%d', 0
+    27 00000017 0A00                        print_new_line db 10, 0
+    28                                      
+    29                                  ; our code starts here
+    30                                  segment code use32 class=code
+    31                                      convert:
+    32 00000000 88D8                            mov al, bl
+    33 00000002 B400                            mov ah, 0
+    34 00000004 B208                            mov dl, 8 ; dl = byte 8
+    35 00000006 F6F2                            div dl ; al = bl / 8 and ah = bl % 8
+    36                                          
+    37 00000008 A2[0F000000]                    mov [nibble], al
+    38                                          ; we print it now
+    39 0000000D 60                              pushad
+    40 0000000E FF35[0F000000]                  push dword [nibble]
+    41 00000014 68[14000000]                    push dword print_format
+    42 00000019 FF35[09000000]                  push dword [file_descriptor]
+    43 0000001F FF15[00000000]                  call [fprintf]
+    44 00000025 83C40C                          add esp, 4 * 3
+    45 00000028 61                              popad
+    46                                          
+    47                                          ; (y / 4 % 2)
+    48 00000029 88D8                            mov al, bl
+    49 0000002B B400                            mov ah, 0
+    50 0000002D B204                            mov dl, 4 ; dl = byte 4
+    51 0000002F F6F2                            div dl ; al = bl / 4 and ah = bl % 4
+    52 00000031 B400                            mov ah, 0 ; ax = al = bl / 4
+    53 00000033 B202                            mov dl, 2
+    54 00000035 F6F2                            div dl ; al = bl / 4 / 2 and ah = bl / 4 % 2
+    55                                          
+    56 00000037 8825[0F000000]                  mov [nibble], ah
+    57                                          ; we print it now
+    58 0000003D 60                              pushad
+    59 0000003E FF35[0F000000]                  push dword [nibble]
+    60 00000044 68[14000000]                    push dword print_format
+    61 00000049 FF35[09000000]                  push dword [file_descriptor]
+    62 0000004F FF15[00000000]                  call [fprintf]
+    63 00000055 83C40C                          add esp, 4 * 3
+    64 00000058 61                              popad
+    65                                          
+    66                                          ; (y / 2 % 2)
+    67 00000059 88D8                            mov al, bl
+    68 0000005B B400                            mov ah, 0
+    69 0000005D B202                            mov dl, 2 ; dl = byte 2
+    70 0000005F F6F2                            div dl ; al = bl / 2 and ah = bl % 2
+    71 00000061 B400                            mov ah, 0 ; ax = al = bl / 2
+    72 00000063 B202                            mov dl, 2
+    73 00000065 F6F2                            div dl ; al = bl / 2 / 2 and ah = bl / 2 % 2
+    74                                          
+    75 00000067 8825[0F000000]                  mov [nibble], ah
+    76                                          ; we print it now
+    77 0000006D 60                              pushad
+    78 0000006E FF35[0F000000]                  push dword [nibble]
+    79 00000074 68[14000000]                    push dword print_format
+    80 00000079 FF35[09000000]                  push dword [file_descriptor]
+    81 0000007F FF15[00000000]                  call [fprintf]
+    82 00000085 83C40C                          add esp, 4 * 3
+    83 00000088 61                              popad
+    84                                          
+    85                                          ; (y % 2)
+    86 00000089 88D8                            mov al, bl
+    87 0000008B B400                            mov ah, 0
+    88 0000008D B202                            mov dl, 2 ; dl = byte 2
+    89 0000008F F6F2                            div dl ; al = bl / 2 and ah = bl % 2
+    90                                          
+    91 00000091 8825[0F000000]                  mov [nibble], ah
+    92                                          ; we print it now
+    93 00000097 60                              pushad
+    94 00000098 FF35[0F000000]                  push dword [nibble]
+    95 0000009E 68[14000000]                    push dword print_format
+    96 000000A3 FF35[09000000]                  push dword [file_descriptor]
+    97 000000A9 FF15[00000000]                  call [fprintf]
+    98 000000AF 83C40C                          add esp, 4 * 3
+    99 000000B2 61                              popad
+   100                                          
+   101                                          ; print the new line
+   102 000000B3 60                              pushad 
+   103 000000B4 68[17000000]                    push dword print_new_line
+   104 000000B9 FF35[09000000]                  push dword [file_descriptor]
+   105 000000BF FF15[00000000]                  call [fprintf]
+   106 000000C5 83C408                          add esp, 4 * 2
+   107 000000C8 61                              popad 
+   108                                          
+   109 000000C9 C3                              ret
+   110                                  
+   111                                      start:
+   112                                          ; A file name and a hexadecimal number (on 16 bits) are given. Create a file with the given name and write each nibble composing the hexadecimal number on a different line to file.
+   113                                          
+   114                                          ; open the file
+   115 000000CA 68[00000000]                    push dword mode_access
+   116 000000CF 68[02000000]                    push dword file_name
+   117 000000D4 FF15[00000000]                  call [fopen]
+   118 000000DA 83C408                          add esp, 4 * 2
+   119                                          
+   120                                          ; check if the file was opened
+   121 000000DD 83F800                          cmp eax, 0
+   122 000000E0 743F                            je final
+   123 000000E2 A3[09000000]                    mov [file_descriptor], eax
+   124                                          
+   125                                          ; the number itself consists of 2 bytes - each byte is composed of two nibbles
+   126                                          ; because of the little endian representation - we need to get first time the second byte from the memory, and then the first byte
+   127                                          
+   128 000000E7 B901000000                      mov ecx, 1
+   129                                          loop_bytes:
+   130 000000EC 8A81[0D000000]                      mov al, [hexa_number + ecx] ; get the corresponding byte - consisting of two nibbles
+   131                                              ; how do we split those two nibbles? - if we look at it in a binary way, we can see that if we have a number as a byte - call it x, we can get the first nibble by performing (x // 16) and the second nibb
+   132                                              
+   133                                              ; in order to perform this division (which is unsigned) we need to move al into ax
+   134 000000F2 B400                                mov ah, 0
+   135                                              
+   136                                              ; now we perform the divison
+   137 000000F4 F635[13000000]                      div byte [sixteen] ; and now inside al = (x // 16) and inside ah = (x % 16)
+   138                                              
+   139                                              ; now we want to convert each nibble into a binary number
+   140                                              ; a decimal number y on 4 bits has the corresponding binary number (y / 8) | (y / 4 % 2) | (y / 2 % 2) | (y % 2)
+   141                                              
+   142                                              ; and this is what are going to do - first with al, then with ax
+   143                                              ; since we will perform division, we need to safe store those values inside ebx
+   144 000000FA 88C3                                mov bl, al
+   145 000000FC 88E7                                mov bh, ah
+   146                                              
+   147 000000FE E8FDFEFFFF                          call convert
+   148 00000103 88FB                                mov bl, bh ; bl gets the value of bh as well, since inside convert we work with bl
+   149 00000105 E8F6FEFFFF                          call convert
+   150                                              
+   151 0000010A 83F900                              cmp ecx, 0
+   152 0000010D 7403                                je close_file
+   153                                              
+   154 0000010F 49                                  dec ecx
+   155 00000110 EBDA                                jmp loop_bytes
+   156                                         
+   157                                          ; close the file
+   158                                          close_file:
+   159 00000112 FF35[09000000]                  push dword [file_descriptor]
+   160 00000118 FF15[00000000]                  call [fclose]
+   161 0000011E 83C404                          add esp, 4
+   162                                          
+   163                                          final:
+   164                                          ; exit(0)
+   165 00000121 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   166 00000123 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

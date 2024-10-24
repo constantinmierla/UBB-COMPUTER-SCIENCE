@@ -1,0 +1,84 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  extern fopen, fclose, scanf, fprintf
+    11                                  import fopen msvcrt.dll
+    12                                  import fclose msvcrt.dll
+    13                                  import scanf msvcrt.dll
+    14                                  import fprintf msvcrt.dll
+    15                                  ; our data is declared here (the variables needed by our program)
+    16                                  segment data use32 class=data
+    17                                      ; ...
+    18 00000000 07000000                    seven dd 7
+    19 00000004 00000000                    answer dd 0
+    20                                      
+    21 00000008 7700                        mode_access db 'w', 0
+    22 0000000A 31372E74787400              file_name db '17.txt', 0
+    23 00000011 FFFFFFFF                    file_descriptor dd -1
+    24                                      
+    25 00000015 00000000                    number dd 0
+    26 00000019 256400                      read_format db '%d', 0
+    27 0000001C 256400                      print_format db '%d', 0
+    28                                      
+    29                                  ; our code starts here
+    30                                  segment code use32 class=code
+    31                                      start:
+    32                                          ; A file name is given (defined in the data segment). Create a file with the given name, then read numbers from the keyboard and write only the numbers divisible by 7 to file, until the value '0' is read fro
+    33                                          
+    34                                          ; open the file
+    35 00000000 68[08000000]                    push dword mode_access
+    36 00000005 68[0A000000]                    push dword file_name
+    37 0000000A FF15[00000000]                  call [fopen]
+    38 00000010 83C408                          add esp, 4 * 2
+    39                                          
+    40                                          ; check if the file opened correctly
+    41 00000013 83F800                          cmp eax, 0
+    42 00000016 7463                            je final 
+    43 00000018 A3[11000000]                    mov [file_descriptor], eax
+    44                                          
+    45                                          ; read numbers
+    46                                          while_read_numbers:
+    47 0000001D 68[15000000]                        push dword number
+    48 00000022 68[19000000]                        push dword read_format
+    49 00000027 FF15[00000000]                      call [scanf]
+    50 0000002D 83C408                              add esp, 4 * 2
+    51                                              
+    52 00000030 A1[15000000]                        mov eax, dword [number]
+    53 00000035 83F800                              cmp eax, 0
+    54 00000038 7418                                je end_while_read_numbers
+    55                                              
+    56 0000003A BA00000000                          mov edx, 0
+    57 0000003F F735[00000000]                      div dword [seven]
+    58                                              
+    59 00000045 83FA00                              cmp edx, 0
+    60 00000048 7506                                jne not_divisible
+    61                                              
+    62 0000004A FF05[04000000]                      inc dword [answer]
+    63                                              
+    64                                              not_divisible:
+    65 00000050 EBCB                                jmp while_read_numbers
+    66                                              
+    67                                          end_while_read_numbers:
+    68                                          
+    69                                          ; print the result
+    70 00000052 FF35[04000000]                  push dword [answer]
+    71 00000058 68[1C000000]                    push dword print_format
+    72 0000005D FF35[11000000]                  push dword [file_descriptor]
+    73 00000063 FF15[00000000]                  call [fprintf]
+    74 00000069 83C40C                          add esp, 4 * 3
+    75                                          
+    76                                          ; close the file
+    77 0000006C FF35[11000000]                  push dword [file_descriptor]
+    78 00000072 FF15[00000000]                  call [fclose]
+    79 00000078 83C404                          add esp, 4
+    80                                          
+    81                                          final:
+    82                                          ; exit(0)
+    83 0000007B 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    84 0000007D FF15[00000000]                  call    [exit]       ; call exit to terminate the program

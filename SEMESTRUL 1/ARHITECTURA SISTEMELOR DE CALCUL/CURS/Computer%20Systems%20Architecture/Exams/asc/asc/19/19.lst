@@ -1,0 +1,79 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  extern fopen, fprintf, fclose
+    11                                  import fopen msvcrt.dll
+    12                                  import fprintf msvcrt.dll
+    13                                  import fclose msvcrt.dll
+    14                                  ; our data is declared here (the variables needed by our program)
+    15                                  segment data use32 class=data
+    16                                      ; ...
+    17 00000000 7700                        mode_access db 'w', 0
+    18 00000002 31392E74787400              file_name db '19.txt', 0
+    19 00000009 FFFFFFFF                    file_descriptor dd -1
+    20                                      
+    21 0000000D 546869732069732061-         string db 'This is a 34@SADD@!!DSA--0023521-125 string'
+    21 00000016 203334405341444440-
+    21 0000001F 21214453412D2D3030-
+    21 00000028 32333532312D313235-
+    21 00000031 20737472696E67     
+    22                                      string_len equ ($ - string)
+    23 00000038 00000000                    sum dd 0
+    24                                      
+    25 0000003C 256400                      print_format db '%d', 0
+    26                                  ; our code starts here
+    27                                  segment code use32 class=code
+    28                                      start:
+    29                                          ; A file name and a text (which can contain any type of character) are given in data segment. Calculate the sum of digits in the text. Create a file with the given name and write the result to file.
+    30                                          
+    31                                          ; open the file
+    32 00000000 68[00000000]                    push dword mode_access
+    33 00000005 68[02000000]                    push dword file_name
+    34 0000000A FF15[00000000]                  call [fopen]
+    35 00000010 83C408                          add esp, 4 * 2
+    36                                          
+    37                                          ; check if the file opened correctly
+    38 00000013 83F800                          cmp eax, 0
+    39 00000016 7450                            je final
+    40 00000018 A3[09000000]                    mov [file_descriptor], eax 
+    41                                          
+    42                                          ; iterate through the string
+    43 0000001D BE[0D000000]                    mov esi, string
+    44 00000022 B92B000000                      mov ecx, string_len
+    45 00000027 B800000000                      mov eax, 0
+    46                                          loop_string:
+    47 0000002C AC                                  lodsb
+    48                                              
+    49 0000002D 3C30                                cmp al, '0'
+    50 0000002F 720C                                jb not_a_digit
+    51 00000031 3C39                                cmp al, '9'
+    52 00000033 7708                                ja not_a_digit
+    53                                              
+    54 00000035 2C30                                sub al, 48
+    55 00000037 0105[38000000]                      add dword [sum], eax
+    56                                              
+    57                                              not_a_digit:
+    58 0000003D E2ED                                loop loop_string
+    59                                          
+    60                                          ; print the result
+    61 0000003F FF35[38000000]                  push dword [sum]
+    62 00000045 68[3C000000]                    push dword print_format
+    63 0000004A FF35[09000000]                  push dword [file_descriptor]
+    64 00000050 FF15[00000000]                  call [fprintf]
+    65 00000056 83C40C                          add esp, 4 * 3
+    66                                          
+    67                                          ; close the file
+    68 00000059 FF35[09000000]                  push dword [file_descriptor]
+    69 0000005F FF15[00000000]                  call [fclose]
+    70 00000065 83C404                          add esp, 4
+    71                                          
+    72                                          final:
+    73                                          ; exit(0)
+    74 00000068 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    75 0000006A FF15[00000000]                  call    [exit]       ; call exit to terminate the program

@@ -1,0 +1,111 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  extern fopen, scanf, fprintf, fclose
+    11                                  import fopen msvcrt.dll
+    12                                  import scanf msvcrt.dll
+    13                                  import fprintf msvcrt.dll
+    14                                  import fclose msvcrt.dll
+    15                                  ; our data is declared here (the variables needed by our program)
+    16                                  segment data use32 class=data
+    17                                      ; ...
+    18                                      
+    19 00000000 6100                        mode_access db 'a', 0
+    20 00000002 32362E74787400              file_name db '26.txt', 0
+    21                                      
+    22 00000009 FFFFFFFF                    file_descriptor dd -1
+    23                                      
+    24 0000000D <res 00000064>              a_word resb 100 ; we assume a word has a maximum of 100 characters
+    25 00000071 257300                      read_word_format db '%s', 0
+    26                                      
+    27 00000074 00                          ok db 0
+    28 00000075 25730A00                    print_word_format db '%s', 10, 0
+    29                                  ; our code starts here
+    30                                  segment code use32 class=code
+    31                                      start:
+    32                                          ; Se da un nume de fisier (definit in segmentul de date). Sa se creeze un fisier cu numele dat, apoi sa se citeasca de la tastatura cuvinte pana cand se citeste de la tastatura caracterul '$'. Sa se scrie in
+    33                                          
+    34                                          ; open the file
+    35 00000000 68[00000000]                    push dword mode_access
+    36 00000005 68[02000000]                    push dword file_name
+    37 0000000A FF15[00000000]                  call [fopen]
+    38 00000010 83C408                          add esp, 4 * 2
+    39                                          
+    40                                          ; check if the file was created correctly
+    41 00000013 83F800                          cmp eax, 0
+    42 00000016 747D                            je final
+    43 00000018 A3[09000000]                    mov [file_descriptor], eax
+    44                                          
+    45                                          ; read the words
+    46                                          read_words:
+    47                                              ; read a word
+    48 0000001D 68[0D000000]                        push dword a_word
+    49 00000022 68[71000000]                        push dword read_word_format
+    50 00000027 FF15[00000000]                      call [scanf]
+    51 0000002D 83C408                              add esp, 4 * 2
+    52                                              
+    53                                              ; iterate through the letters of the word
+    54 00000030 B900000000                          mov ecx, 0 ; the counter to iterate over the letters inside the word
+    55 00000035 C605[74000000]00                    mov byte [ok], 0 ; we assume we don't have a valid word
+    56                                              through_word:
+    57                                                  ; save the letter
+    58 0000003C 8A81[0D000000]                          mov al, byte [a_word + ecx]
+    59                                                  
+    60                                                  ; check if we reached the end of the word
+    61 00000042 3C00                                    cmp al, 0
+    62 00000044 7416                                    je end_through_word
+    63                                                  
+    64                                                  ; check if we reached the '$' sign
+    65 00000046 3C24                                    cmp al, '$' 
+    66 00000048 7412                                    je end_through_word
+    67                                                  
+    68                                                  ; check if we have an uppercase letter
+    69 0000004A 41                                      inc ecx
+    70                                                  
+    71 0000004B 3C41                                    cmp al, 'A'
+    72 0000004D 72ED                                    jb through_word
+    73 0000004F 3C5A                                    cmp al, 'Z'
+    74 00000051 77E9                                    ja through_word
+    75                                                  
+    76                                                  ; if we reached this point, it means we have an uppercase letter - we mark the word as being correct
+    77 00000053 C605[74000000]01                        mov byte [ok], 1
+    78 0000005A EBE0                                    jmp through_word
+    79                                                  
+    80                                              end_through_word: 
+    81                                              
+    82 0000005C 803D[74000000]01                    cmp byte [ok], 1
+    83 00000063 751B                                jne not_ok ; the word is not valid - we read another one
+    84                                              
+    85                                              ; if we reached this point - it means the word contains at least an uppercase letter - we append it to the file
+    86 00000065 60                                  pushad 
+    87 00000066 68[0D000000]                        push dword a_word
+    88 0000006B 68[75000000]                        push dword print_word_format
+    89 00000070 FF35[09000000]                      push dword [file_descriptor]
+    90 00000076 FF15[00000000]                      call [fprintf]
+    91 0000007C 83C40C                              add esp, 4 * 3
+    92 0000007F 61                                  popad 
+    93                                              
+    94                                              not_ok:
+    95                                              ; we compare again if we reached the '$' character - since we didn't change eax, it means the value of that character is still inside al
+    96 00000080 3C24                                cmp al, '$' 
+    97 00000082 7402                                je end_read_words
+    98                                              
+    99                                              ; otherwise - we read another word
+   100 00000084 EB97                                jmp read_words
+   101                                              
+   102                                          end_read_words:
+   103                                          ; we close the file 
+   104 00000086 FF35[09000000]                  push dword [file_descriptor]
+   105 0000008C FF15[00000000]                  call [fclose]
+   106 00000092 83C404                          add esp, 4
+   107                                          
+   108                                          final:
+   109                                          ; exit(0)
+   110 00000095 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   111 00000097 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

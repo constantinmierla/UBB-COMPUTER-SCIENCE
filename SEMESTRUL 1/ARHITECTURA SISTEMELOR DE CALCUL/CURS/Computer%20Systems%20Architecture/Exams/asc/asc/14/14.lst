@@ -1,0 +1,87 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  extern fopen, fclose, fprintf
+    11                                  import fopen msvcrt.dll
+    12                                  import fclose msvcrt.dll
+    13                                  import fprintf msvcrt.dll
+    14                                  ; our data is declared here (the variables needed by our program)
+    15                                  segment data use32 class=data
+    16                                      ; ...
+    17                                      
+    18 00000000 7700                        mode_access db 'w', 0
+    19 00000002 31342E74787400              file_name db '14.txt', 0
+    20 00000009 FFFFFFFF                    file_descriptor dd -1
+    21                                      
+    22 0000000D 546869732069732053-         string db 'This is Such a NICE String @! - and OF course some special charS'
+    22 00000016 7563682061204E4943-
+    22 0000001F 4520537472696E6720-
+    22 00000028 4021202D20616E6420-
+    22 00000031 4F4620636F75727365-
+    22 0000003A 20736F6D6520737065-
+    22 00000043 6369616C2063686172-
+    22 0000004C 53                 
+    23                                      string_len equ ($ - string)
+    24 0000004D 00<rept>                    updated_string times (string_len + 1) db 0
+    25                                      
+    26 0000008E 257300                      print_format db '%s', 0
+    27                                  ; our code starts here
+    28                                  segment code use32 class=code
+    29                                      start:
+    30                                          ; A file name and a text (defined in the data segment) are given. The text contains lowercase letters, uppercase letters, digits and special characters. Transform all the uppercase letters from the given tex
+    31                                          
+    32                                          ; open the file
+    33 00000000 68[00000000]                    push dword mode_access 
+    34 00000005 68[02000000]                    push dword file_name
+    35 0000000A FF15[00000000]                  call [fopen]
+    36 00000010 83C408                          add esp, 4 * 2
+    37                                          
+    38                                          ; chech if the file was opened correctly
+    39 00000013 83F800                          cmp eax, 0
+    40 00000016 744C                            je final
+    41 00000018 A3[09000000]                    mov [file_descriptor], eax
+    42                                          
+    43                                          ; loop through the text char by char
+    44 0000001D BE[0D000000]                    mov esi, string
+    45 00000022 BF[4D000000]                    mov edi, updated_string
+    46 00000027 B940000000                      mov ecx, string_len
+    47                                          
+    48                                          text_loop:
+    49 0000002C AC                                  lodsb ; al - the current character
+    50                                              
+    51                                              ; check if the character is an uppercase letter
+    52 0000002D 3C41                                cmp al, 'A'
+    53 0000002F 7208                                jb not_uppercase
+    54 00000031 3C5A                                cmp al, 'Z'
+    55 00000033 7704                                ja not_uppercase
+    56                                              
+    57                                              ; if we reach this point, it means our character is an uppercase letter - we transform it
+    58 00000035 2C41                                sub al, 65
+    59 00000037 0461                                add al, 97
+    60                                              
+    61                                              not_uppercase:
+    62 00000039 AA                                  stosb 
+    63 0000003A E2F0                                loop text_loop
+    64                                          
+    65                                          ; we print the text
+    66 0000003C 68[4D000000]                    push dword updated_string
+    67 00000041 68[8E000000]                    push dword print_format
+    68 00000046 FF35[09000000]                  push dword [file_descriptor]
+    69 0000004C FF15[00000000]                  call [fprintf]
+    70 00000052 83C40C                          add esp, 4 * 3
+    71                                          
+    72                                          ; close the file
+    73 00000055 FF35[09000000]                  push dword [file_descriptor]
+    74 0000005B FF15[00000000]                  call [fclose]
+    75 00000061 83C404                          add esp, 4
+    76                                          
+    77                                          final:
+    78                                          ; exit(0)
+    79 00000064 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    80 00000066 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

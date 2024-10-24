@@ -1,0 +1,65 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  extern fopen, fclose, fprintf, scanf
+    11                                  import fopen msvcrt.dll
+    12                                  import fclose msvcrt.dll
+    13                                  import fprintf msvcrt.dll
+    14                                  import scanf msvcrt.dll
+    15                                  ; our data is declared here (the variables needed by our program)
+    16                                  segment data use32 class=data
+    17                                      ; ...
+    18                                      
+    19 00000000 7700                        mode_access db 'w', 0
+    20 00000002 31302E74787400              file_name db '10.txt', 0
+    21 00000009 FFFFFFFF                    file_descriptor dd -1
+    22                                      
+    23                                      ; read_format db '%[^”,10,”]%s', 0
+    24 0000000D 255B5E5C6E5D257300          read_format db '%[^\n]%s', 0
+    25 00000016 <res 00000078>              text resb 120
+    26                                      
+    27 0000008E 257300                      print_format db '%s', 0
+    28                                  ; our code starts here
+    29                                  segment code use32 class=code
+    30                                      start:
+    31                                          ; Read a file name and a text from the keyboard. Create a file with that name in the current folder and write the text that has been read to file. Observations: The file name has maximum 30 characters. The t
+    32                                          
+    33                                          ; open the file
+    34 00000000 68[00000000]                    push dword mode_access
+    35 00000005 68[02000000]                    push dword file_name
+    36 0000000A FF15[00000000]                  call [fopen]
+    37 00000010 83C408                          add esp, 4 * 2
+    38                                          
+    39                                          ; check if the file opened correctly
+    40 00000013 83F800                          cmp eax, 0
+    41 00000016 7440                            je final
+    42 00000018 A3[09000000]                    mov [file_descriptor], eax
+    43                                          
+    44                                          ; read the text
+    45 0000001D 68[16000000]                    push dword text
+    46 00000022 68[0D000000]                    push dword read_format
+    47 00000027 FF15[00000000]                  call [scanf]
+    48 0000002D 83C408                          add esp, 4 * 2
+    49                                          
+    50                                          ; print the text
+    51 00000030 68[16000000]                    push dword text
+    52 00000035 68[8E000000]                    push dword print_format
+    53 0000003A FF35[09000000]                  push dword [file_descriptor]
+    54 00000040 FF15[00000000]                  call [fprintf]
+    55 00000046 83C40C                          add esp, 4 * 3
+    56                                          
+    57                                          ; close the file
+    58 00000049 FF35[09000000]                  push dword [file_descriptor]
+    59 0000004F FF15[00000000]                  call [fclose]
+    60 00000055 83C404                          add esp, 4
+    61                                          
+    62                                          final:
+    63                                          ; exit(0)
+    64 00000058 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    65 0000005A FF15[00000000]                  call    [exit]       ; call exit to terminate the program
