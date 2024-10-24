@@ -1,0 +1,117 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, scanf, printf              
+     6                                  import exit msvcrt.dll 
+     7                                  import scanf msvcrt.dll 
+     8                                  import printf msvcrt.dll  
+     9                                  
+    10                                  ; Se citeste o propozitie de la tastatura. 
+    11                                  ; Sa se numere literele din fiecare cuvant si sa se afiseze aceste numere pe ecran.
+    12                                  
+    13                                  segment data use32 class=data
+    14 00000000 00000000                    litera dd 0
+    15 00000004 256300                      format_char db '%c', 0
+    16 00000007 00000000<rept>              sir_de_caractere times 100 dd 0
+    17                                      
+    18 00000197 00000000                    nr_caractere dd 0
+    19 0000019B 00000000                    nr_cuvinte dd 0
+    20 0000019F 00000000                    nr_litere_cuv_curent dd 0
+    21 000001A3 00<rept>                    numere times 100 db 0
+    22                                      
+    23 00000207 25642000                    format_int db '%d ', 0
+    24                                      
+    25 0000020B 616D20616A756E7320-         mesaj db "am ajuns aici", 0
+    25 00000214 6169636900         
+    26                                  
+    27                                  segment code use32 class=code
+    28                                      start:
+    29 00000000 BF[07000000]                    mov edi, sir_de_caractere
+    30 00000005 FC                              cld
+    31                                      
+    32 00000006 68[00000000]                    push dword litera
+    33 0000000B 68[04000000]                    push dword format_char
+    34 00000010 FF15[00000000]                  call [scanf]
+    35 00000016 83C408                          add esp, 4 * 2
+    36                                          
+    37                                          citire_tastatura:
+    38 00000019 A1[00000000]                        mov eax, [litera]
+    39 0000001E 83F82E                              cmp eax, '.'
+    40 00000021 7423                                je cand_ii_gata_i_gata
+    41                                              
+    42 00000023 AB                                  stosd
+    43                                              
+    44 00000024 A1[97010000]                        mov eax, [nr_caractere]
+    45 00000029 83C001                              add eax, 1
+    46 0000002C A3[97010000]                        mov [nr_caractere], eax
+    47                                              
+    48 00000031 68[00000000]                        push dword litera
+    49 00000036 68[04000000]                        push dword format_char
+    50 0000003B FF15[00000000]                      call [scanf]
+    51 00000041 83C408                              add esp, 4 * 2
+    52 00000044 EBD3                            jmp citire_tastatura  
+    53                                              
+    54                                          cand_ii_gata_i_gata:
+    55 00000046 90                                  nop
+    56                                          
+    57 00000047 BF[A3010000]                    mov edi, numere
+    58 0000004C BE[07000000]                    mov esi, sir_de_caractere
+    59 00000051 FC                              cld
+    60 00000052 8B0D[97010000]                  mov ecx, [nr_caractere]
+    61                                          parsare_cuvinte:
+    62 00000058 890D[97010000]                      mov [nr_caractere], ecx
+    63 0000005E AD                                  lodsd    ; eax = caracter
+    64 0000005F 83F820                              cmp eax, ' '
+    65 00000062 740F                                je spatiu
+    66                                              
+    67 00000064 A1[9F010000]                        mov eax, [nr_litere_cuv_curent]
+    68 00000069 83C001                              add eax, 1
+    69 0000006C A3[9F010000]                        mov [nr_litere_cuv_curent], eax
+    70 00000071 EB1D                                jmp continua_parsare
+    71                                              
+    72                                              spatiu:
+    73                                                  ; prelucrare informatii
+    74 00000073 A1[9F010000]                            mov eax, [nr_litere_cuv_curent]
+    75 00000078 AB                                      stosd
+    76                                                  
+    77 00000079 B800000000                              mov eax, 0
+    78 0000007E A3[9F010000]                            mov [nr_litere_cuv_curent], eax
+    79                                                  
+    80 00000083 A1[9B010000]                            mov eax, [nr_cuvinte]
+    81 00000088 83C001                                  add eax, 1
+    82 0000008B A3[9B010000]                            mov [nr_cuvinte], eax
+    83                                              
+    84                                              continua_parsare:
+    85 00000090 90                                      nop
+    86                                              
+    87 00000091 8B0D[97010000]                      mov ecx, [nr_caractere]
+    88 00000097 E2BF                            loop parsare_cuvinte
+    89                                          
+    90                                          ; pun nr de litere al ultimului cuvant in sirul de numere
+    91 00000099 A1[9F010000]                    mov eax, [nr_litere_cuv_curent]
+    92 0000009E AB                              stosd
+    93                                          ; actualizez nr de cuvinte
+    94 0000009F A1[9B010000]                    mov eax, [nr_cuvinte]
+    95 000000A4 83C001                          add eax, 1
+    96 000000A7 A3[9B010000]                    mov [nr_cuvinte], eax
+    97                                          
+    98 000000AC BE[A3010000]                    mov esi, numere
+    99 000000B1 FC                              cld
+   100 000000B2 8B0D[9B010000]                  mov ecx, [nr_cuvinte]
+   101                                          afisare:
+   102 000000B8 890D[9B010000]                      mov [nr_cuvinte], ecx
+   103                                              
+   104 000000BE AD                                  lodsd   ; eax = nr litere
+   105 000000BF 50                                  push eax
+   106 000000C0 68[07020000]                        push dword format_int
+   107 000000C5 FF15[00000000]                      call [printf]
+   108 000000CB 83C408                              add esp, 4 * 2
+   109                                              
+   110 000000CE 8B0D[9B010000]                      mov ecx, [nr_cuvinte]
+   111 000000D4 E2E2                            loop afisare
+   112                                              
+   113                                      
+   114                                      finish:
+   115 000000D6 6A00                            push dword 0    
+   116 000000D8 FF15[00000000]                  call [exit]       

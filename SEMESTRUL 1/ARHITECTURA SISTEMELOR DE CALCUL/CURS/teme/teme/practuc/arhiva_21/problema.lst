@@ -1,0 +1,164 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, scanf, fopen, fclose, fread, printf               
+     6                                  import exit msvcrt.dll 
+     7                                  import scanf msvcrt.dll 
+     8                                  import fopen msvcrt.dll
+     9                                  import fclose msvcrt.dll
+    10                                  import fread msvcrt.dll
+    11                                  import printf msvcrt.dll  
+    12                                  
+    13                                  ; Sa se citeasca de la tastatura un nume de fisier si un numar. 
+    14                                  ; Sa se citeasca din fisierul dat cuvintele separate prin spatii si sa se afiseze in consola cuvintele care sunt pe pozitiile multipli de numarul citit de la tastatura.
+    15                                  
+    16                                  
+    17                                  segment data use32 class=data
+    18 00000000 00<rept>                    nume_fisier times 100 db 0
+    19 00000064 612B00                      mod_acces db 'a+', 0
+    20 00000067 FFFFFFFF                    descriptor_fisier dd -1
+    21                                      
+    22 0000006B 257300                      format_string db '%s', 0
+    23 0000006E 256400                      format_int db '%d', 0
+    24 00000071 25732000                    format_string_afisare db '%s ', 0
+    25                                      
+    26 00000075 00000000                    numar dd 0
+    27                                      
+    28 00000079 00<rept>                    buffer times 1000 db 0
+    29 00000461 00<rept>                    cuvant times 100 db 0
+    30                                      
+    31 000004C5 01                          pozitie_curenta db 1
+    32                                      
+    33 000004C6 00                          nr_caractere_actual db 0
+    34                                  
+    35                                  segment code use32 class=code
+    36                                      start:
+    37                                          ; citire nume de fisier de la tastatura
+    38 00000000 68[00000000]                    push dword nume_fisier
+    39 00000005 68[6B000000]                    push dword format_string
+    40 0000000A FF15[00000000]                  call [scanf]
+    41 00000010 83C408                          add esp, 4 * 2
+    42                                          
+    43                                          ; citire numar de la tastatura
+    44 00000013 68[75000000]                    push dword numar
+    45 00000018 68[6E000000]                    push dword format_int
+    46 0000001D FF15[00000000]                  call [scanf]
+    47 00000023 83C408                          add esp, 4 * 2
+    48                                          
+    49                                          ; fopen()
+    50 00000026 68[64000000]                    push dword mod_acces
+    51 0000002B 68[00000000]                    push dword nume_fisier
+    52 00000030 FF15[00000000]                  call [fopen]
+    53 00000036 83C408                          add esp, 4 * 2
+    54                                          
+    55 00000039 83F800                          cmp eax, 0
+    56 0000003C 0F84E6000000                    je finish
+    57 00000042 A3[67000000]                    mov [descriptor_fisier], eax
+    58                                          
+    59                                          ; fread()
+    60 00000047 FF35[67000000]                  push dword [descriptor_fisier]
+    61 0000004D 68E8030000                      push dword 1000
+    62 00000052 6A01                            push dword 1
+    63 00000054 68[79000000]                    push dword buffer
+    64 00000059 FF15[00000000]                  call [fread]
+    65 0000005F 83C410                          add esp, 4 * 4
+    66                                          
+    67                                          ; parcurg bufferul
+    68 00000062 BE[79000000]                    mov esi, buffer
+    69 00000067 BF[61040000]                    mov edi, cuvant
+    70 0000006C FC                              cld 
+    71                                          while_caractere:
+    72 0000006D AC                                  lodsb   ; al = caracter din sir
+    73                                              
+    74 0000006E 3C00                                cmp al, 0
+    75 00000070 7475                                je stop_caractere
+    76                                              
+    77 00000072 3C20                                cmp al, ' '
+    78 00000074 740F                                je spatiu
+    79                                              
+    80 00000076 AA                                  stosb   ; stochez caracterul pentru a retine cuvantul 
+    81                                                      ; pe care il parcurg momentan
+    82 00000077 A0[C6040000]                        mov al, [nr_caractere_actual]
+    83 0000007C 0401                                add al, 1
+    84 0000007E A2[C6040000]                        mov [nr_caractere_actual], al
+    85 00000083 EB5F                                jmp continua
+    86                                              
+    87                                              spatiu:
+    88 00000085 66BA0000                                mov dx, 0
+    89 00000089 66B80000                                mov ax, 0
+    90 0000008D A0[C5040000]                            mov al, [pozitie_curenta]
+    91 00000092 8B1D[75000000]                          mov ebx, [numar]
+    92                                                  
+    93                                                  ; presupunem ca numarul citit de la tastatura incape pe 2 Bytes
+    94 00000098 66F7F3                                  div bx    ; dx:ax / bx -> dx rest
+    95                                                  
+    96 0000009B 6683FA00                                cmp dx, 0
+    97 0000009F 7402                                    je multiplu
+    98                                                  
+    99                                                  ; nu e multiplu
+   100 000000A1 EB13                                    jmp continua_spatiu
+   101                                                  
+   102                                                  multiplu:
+   103                                                      ; daca e multiplu, afisez cuvantul pe ecran
+   104 000000A3 68[61040000]                                push dword cuvant
+   105 000000A8 68[71000000]                                push dword format_string_afisare
+   106 000000AD FF15[00000000]                              call [printf]
+   107 000000B3 83C408                                      add esp, 4 * 2
+   108                                                   
+   109                                                  ; trebuie sa resetez cuvant si pozitia curenta
+   110                                                  continua_spatiu:
+   111 000000B6 A0[C5040000]                                mov al, [pozitie_curenta]
+   112 000000BB 0401                                        add al, 1
+   113 000000BD A2[C5040000]                                mov [pozitie_curenta], al
+   114                                                      
+   115 000000C2 B900000000                                  mov ecx, 0
+   116 000000C7 8A0D[C6040000]                              mov cl, [nr_caractere_actual]
+   117 000000CD BF[61040000]                                mov edi, cuvant
+   118 000000D2 FC                                          cld
+   119                                                      curatare_cuvant:
+   120 000000D3 B000                                            mov al, 0
+   121 000000D5 AA                                              stosb
+   122 000000D6 E2FB                                        loop curatare_cuvant
+   123 000000D8 BF[61040000]                                mov edi, cuvant
+   124                                                      
+   125 000000DD B000                                        mov al, 0
+   126 000000DF A2[C6040000]                                mov [nr_caractere_actual], al
+   127                                                  
+   128                                              continua:
+   129 000000E4 90                                      nop
+   130 000000E5 EB86                            jmp while_caractere    
+   131                                              
+   132                                          stop_caractere:
+   133 000000E7 90                                  nop
+   134                                              
+   135                                          ; verific ultimul cuvant
+   136 000000E8 66BA0000                        mov dx, 0
+   137 000000EC 66B80000                        mov ax, 0
+   138 000000F0 A0[C5040000]                    mov al, [pozitie_curenta]
+   139 000000F5 8B1D[75000000]                  mov ebx, [numar]
+   140                                                  
+   141                                          ; presupunem ca numarul citit de la tastatura incape pe 2 Bytes
+   142 000000FB 66F7F3                          div bx
+   143                                          
+   144 000000FE 6683FA00                        cmp dx, 0
+   145 00000102 7402                            je e_bun
+   146                                          
+   147                                          ; nu e bun, merg la inchidere
+   148 00000104 EB13                            jmp close
+   149                                          
+   150                                          e_bun:
+   151 00000106 68[61040000]                        push dword cuvant
+   152 0000010B 68[71000000]                        push dword format_string_afisare
+   153 00000110 FF15[00000000]                      call [printf]
+   154 00000116 83C408                              add esp, 4 * 2
+   155                                              
+   156                                          close:
+   157                                              ; fclose()
+   158 00000119 FF35[67000000]                      push dword [descriptor_fisier]
+   159 0000011F FF15[00000000]                      call [fclose]
+   160 00000125 83C404                              add esp, 4 * 1
+   161                                      
+   162                                      finish:
+   163 00000128 6A00                            push dword 0    
+   164 0000012A FF15[00000000]                  call [exit]       

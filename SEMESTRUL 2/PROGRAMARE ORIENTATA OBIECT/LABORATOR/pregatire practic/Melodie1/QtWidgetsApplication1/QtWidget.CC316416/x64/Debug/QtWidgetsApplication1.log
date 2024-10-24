@@ -1,0 +1,13 @@
+﻿  Reading Qt configuration (C:/Qt/6.7.1/msvc2019_64/bin/qmake)
+  repo.cpp
+  serv.cpp
+  ui.cpp
+  domain.cpp
+  GUI.cpp
+  main.cpp
+D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\pregatire practic\Melodie1\QtWidgetsApplication1\MyTable.h(14,18): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cpp')
+  
+  qrc_GUI.cpp
+  moc_GUI.cpp
+  QtWidgetsApplication1.vcxproj -> D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\pregatire practic\Melodie1\QtWidgetsApplication1\x64\Debug\QtWidgetsApplication1.exe

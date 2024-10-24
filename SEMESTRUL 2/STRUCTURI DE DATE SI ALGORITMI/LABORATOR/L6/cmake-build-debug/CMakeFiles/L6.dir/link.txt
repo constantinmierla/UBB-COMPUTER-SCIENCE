@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/L6.dir/main.cpp.o CMakeFiles/L6.dir/IteratorMultime.cpp.o CMakeFiles/L6.dir/Multime.cpp.o CMakeFiles/L6.dir/TestExtins.cpp.o CMakeFiles/L6.dir/TestScurt.cpp.o -o L6 

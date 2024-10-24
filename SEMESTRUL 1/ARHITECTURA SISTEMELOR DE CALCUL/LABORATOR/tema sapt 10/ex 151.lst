@@ -1,0 +1,39 @@
+     1                                  bits 32
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, scanf, printf               
+     6                                  import exit msvcrt.dll    
+     7                                  import scanf msvcrt.dll
+     8                                  import printf msvcrt.dll
+     9                                  
+    10                                  segment data use32 class=data
+    11 00000000 00000000                	a dd 0
+    12 00000004 00000000                	b dd 0
+    13 00000008 2564256400              	format_d db "%d%d", 0
+    14 0000000D 255800                  	format_hexa db "%X", 0
+    15                                      ; ...
+    16                                  
+    17                                  ; our code starts here
+    18                                  segment code use32 class=code
+    19                                      ;15/1. Sa se citeasca de la tastatura doua numere a si b (in baza 10) si sa se calculeze a+b. Sa se afiseze rezultatul adunarii in baza 16.
+    20                                  
+    21                                      start:
+    22 00000000 68[00000000]            		push dword a
+    23 00000005 68[04000000]            		push dword b
+    24 0000000A 68[08000000]            		push dword format_d
+    25 0000000F FF15[00000000]          		call [scanf]
+    26 00000015 83C40C                  		add esp, 4 * 3
+    27                                  
+    28 00000018 A1[00000000]            		mov eax, [a]
+    29 0000001D 0305[04000000]          		add eax, [b]
+    30                                  		
+    31 00000023 50                      		push eax
+    32 00000024 68[0D000000]            		push dword format_hexa
+    33 00000029 FF15[00000000]          		call [printf]
+    34 0000002F 83C408                  		add esp, 4 * 2
+    35                                          ; ...
+    36                                      
+    37                                          ; exit(0)
+    38 00000032 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    39 00000034 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

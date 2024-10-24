@@ -1,0 +1,541 @@
+        -:    0:Source:D:/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 2/tests.c
+        -:    0:Graph:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 2\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\tests.c.gcno
+        -:    0:Data:D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 2\cmake-build-debug-coverage\CMakeFiles\lab_2.dir\tests.c.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Costi on 12-Mar-24.
+        -:    3://
+        -:    4:#include <assert.h>
+        -:    5:#include <string.h>
+        -:    6:#include "tests.h"
+        -:    7:
+        -:    8:
+        -:    9:// teste DOMAIN
+function test_creeazaOferta called 1 returned 100% blocks executed 71%
+        1:   10:void test_creeazaOferta() {
+        1:   11:    oferta o = creeazaOferta("munte", "Busteni", "2024-03-15", 150.0);
+        1:   11-block  0
+call    0 returned 1
+       1*:   12:    assert(strcmp(o.tip, "munte") == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   12-block  0
+call    2 never executed
+        1:   12-block  1
+       1*:   13:    assert(strcmp(o.destinatie, "Busteni") == 0);
+        1:   13-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   13-block  1
+call    2 never executed
+        1:   13-block  2
+       1*:   14:    assert(strcmp(o.data_plecarii, "2024-03-15") == 0);
+        1:   14-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   14-block  1
+call    2 never executed
+        1:   14-block  2
+       1*:   15:    assert(o.pret == 150.0);
+        1:   15-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   15-block  1
+call    2 never executed
+        1:   15-block  2
+        1:   16:}
+        -:   17:
+function test_destroyOferta called 1 returned 100% blocks executed 73%
+        1:   18:void test_destroyOferta() {
+        1:   19:    oferta o = creeazaOferta("munte", "Busteni", "2024-03-15", 150.0);
+        1:   19-block  0
+call    0 returned 1
+        1:   20:    distrugeOferta(&o);
+call    0 returned 1
+       1*:   21:    assert(strcmp(o.tip, "") == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   21-block  0
+call    2 never executed
+        1:   21-block  1
+       1*:   22:    assert(strcmp(o.destinatie, "") == 0);
+        1:   22-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   22-block  1
+call    2 never executed
+        1:   22-block  2
+       1*:   23:    assert(strcmp(o.data_plecarii, "") == 0);
+        1:   23-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   23-block  1
+call    2 never executed
+        1:   23-block  2
+       1*:   24:    assert(o.pret == -1);
+        1:   24-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   24-block  1
+call    2 never executed
+        1:   24-block  2
+        1:   25:}
+        -:   26:
+function test_ValideazaOferta called 1 returned 100% blocks executed 81%
+        1:   27:void test_ValideazaOferta() {
+        -:   28:
+        1:   29:    oferta o1 = creeazaOferta("munte", "Busteni", "2024-03-15", 150.0);
+        1:   29-block  0
+call    0 returned 1
+       1*:   30:    assert(valideazaOferta(o1) == 1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   30-block  0
+call    3 never executed
+        1:   30-block  1
+        -:   31:
+        1:   32:    oferta o2 = creeazaOferta("mare", "Busteni", "2024-03-15", 150.0);
+        1:   32-block  0
+call    0 returned 1
+       1*:   33:    assert(valideazaOferta(o2) == 1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   33-block  0
+call    3 never executed
+        1:   33-block  1
+        -:   34:
+        1:   35:    oferta o3 = creeazaOferta("mere", "Busteni","2024-03-15", 150.0);
+        1:   35-block  0
+call    0 returned 1
+       1*:   36:    assert(valideazaOferta(o3) == 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   36-block  0
+call    3 never executed
+        1:   36-block  1
+        -:   37:
+        1:   38:    oferta o4 = creeazaOferta("mare","", "2024-03-21", 100.0);
+        1:   38-block  0
+call    0 returned 1
+       1*:   39:    assert(valideazaOferta(o4)== 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   39-block  0
+call    3 never executed
+        1:   39-block  1
+        -:   40:
+        1:   41:    oferta o5 = creeazaOferta("mare", "Busteni", "", 150.0);
+        1:   41-block  0
+call    0 returned 1
+       1*:   42:    assert(valideazaOferta(o5) == 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   42-block  0
+call    3 never executed
+        1:   42-block  1
+        -:   43:
+        1:   44:    oferta o6 = creeazaOferta("mare", "Busteni", "2023-02-21", -2);
+        1:   44-block  0
+call    0 returned 1
+       1*:   45:    assert(valideazaOferta(o6) == 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   45-block  0
+call    3 never executed
+        1:   45-block  1
+        1:   46:}
+        -:   47:
+        -:   48:
+        -:   49:// teste REPOSITORY
+        -:   50:
+function test_createEmpty called 1 returned 100% blocks executed 80%
+        1:   51:void test_createEmpty() {
+        1:   52:    List v = createEmpty();
+        1:   52-block  0
+call    0 returned 1
+       1*:   53:    assert(v.length == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   53-block  0
+call    2 never executed
+        1:   53-block  1
+        1:   54:}
+        -:   55:
+function testAddAndGet called 1 returned 100% blocks executed 79%
+        1:   56:void testAddAndGet() {
+        1:   57:    List v = createEmpty();
+        1:   57-block  0
+call    0 returned 1
+        1:   58:    oferta el1 = creeazaOferta("mare", "destinatie1", "01-01-2025", 100.0);
+call    0 returned 1
+        1:   59:    oferta el2 = creeazaOferta("mare", "destinatie2", "01-01-2026", 200.0);
+call    0 returned 1
+        1:   60:    add(&v, el1);
+call    0 returned 1
+        1:   61:    add(&v, el2);
+call    0 returned 1
+       1*:   62:    assert(size(&v) == 2);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   62-block  0
+call    3 never executed
+        1:   62-block  1
+       1*:   63:    assert(strcmp(get(&v, 0).tip, el1.tip) == 0);
+        1:   63-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   63-block  1
+call    3 never executed
+        1:   63-block  2
+       1*:   64:    assert(strcmp(get(&v, 0).destinatie, el1.destinatie) == 0);
+        1:   64-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   64-block  1
+call    3 never executed
+        1:   64-block  2
+       1*:   65:    assert(strcmp(get(&v, 0).data_plecarii, el1.data_plecarii) == 0);
+        1:   65-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   65-block  1
+call    3 never executed
+        1:   65-block  2
+       1*:   66:    assert(get(&v, 0).pret == el1.pret);
+        1:   66-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   66-block  1
+call    3 never executed
+        1:   66-block  2
+        -:   67:
+       1*:   68:    assert(strcmp(get(&v, 1).tip, el2.tip) == 0);
+        1:   68-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   68-block  1
+call    3 never executed
+        1:   68-block  2
+       1*:   69:    assert(strcmp(get(&v, 1).destinatie, el2.destinatie) == 0);
+        1:   69-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   69-block  1
+call    3 never executed
+        1:   69-block  2
+       1*:   70:    assert(strcmp(get(&v, 1).data_plecarii, el2.data_plecarii) == 0);
+        1:   70-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   70-block  1
+call    3 never executed
+        1:   70-block  2
+       1*:   71:    assert(get(&v, 1).pret == el2.pret);
+        1:   71-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   71-block  1
+call    3 never executed
+        1:   71-block  2
+        1:   72:}
+        -:   73:
+function test_addCantitate called 1 returned 100% blocks executed 85%
+        1:   74:void test_addCantitate() {
+        1:   75:    List v = createEmpty();
+        1:   75-block  0
+call    0 returned 1
+        1:   76:    oferta el1 = creeazaOferta("mare", "destinatie1", "01-01-2025", 100.0);
+call    0 returned 1
+        1:   77:    oferta el2 = creeazaOferta("mare", "destinatie2", "01-01-2026", 200.0);
+call    0 returned 1
+        1:   78:    oferta el3 = creeazaOferta("mare", "destinatie3", "01-01-2027", 300.0);
+call    0 returned 1
+        1:   79:    add(&v, el1);
+call    0 returned 1
+        1:   80:    add(&v, el2);
+call    0 returned 1
+       1*:   81:    assert(size(&v) == 2);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   81-block  0
+call    3 never executed
+        1:   81-block  1
+        -:   82:
+        -:   83:
+        1:   84:    addOferta(&v, el3, 1);
+        1:   84-block  0
+call    0 returned 1
+        -:   85:
+        -:   86:
+       1*:   87:    assert(strcmp(get(&v, 0).tip, el1.tip) == 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   87-block  0
+call    3 never executed
+        1:   87-block  1
+       1*:   88:    assert(strcmp(get(&v, 1).tip, el3.tip) == 0); // el3 is now at index 1
+        1:   88-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   88-block  1
+call    3 never executed
+        1:   88-block  2
+        1:   89:}
+        -:   90:
+        -:   91:
+function test_delete called 1 returned 100% blocks executed 81%
+        1:   92:void test_delete() {
+        1:   93:    List v = createEmpty();
+        1:   93-block  0
+call    0 returned 1
+        1:   94:    oferta el1 = creeazaOferta("mare", "destinatie1", "01-01-2025", 100.0);
+call    0 returned 1
+        1:   95:    oferta el2 = creeazaOferta("mare", "destinatie2", "01-01-2026", 200.0);
+call    0 returned 1
+        1:   96:    add(&v, el1);
+call    0 returned 1
+        1:   97:    add(&v, el2);
+call    0 returned 1
+       1*:   98:    assert(size(&v) == 2);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   98-block  0
+call    3 never executed
+        1:   98-block  1
+        -:   99:
+        1:  100:    sterge(&v, 0);
+        1:  100-block  0
+call    0 returned 1
+       1*:  101:    assert(size(&v) == 1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  101-block  0
+call    3 never executed
+        1:  101-block  1
+        -:  102:
+       1*:  103:    assert(strcmp(get(&v, 0).tip, el2.tip) == 0);
+        1:  103-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  103-block  1
+call    3 never executed
+        1:  103-block  2
+       1*:  104:    assert(strcmp(get(&v, 0).destinatie, el2.destinatie) == 0);
+        1:  104-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  104-block  1
+call    3 never executed
+        1:  104-block  2
+       1*:  105:    assert(strcmp(get(&v, 0).data_plecarii, el2.data_plecarii) == 0);
+        1:  105-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  105-block  1
+call    3 never executed
+        1:  105-block  2
+       1*:  106:    assert(get(&v, 0).pret == el2.pret);
+        1:  106-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  106-block  1
+call    3 never executed
+        1:  106-block  2
+        1:  107:}
+        -:  108:
+        -:  109:
+function test_size called 1 returned 100% blocks executed 92%
+        1:  110:void test_size() {
+        1:  111:    List v = createEmpty();
+        1:  111-block  0
+call    0 returned 1
+        -:  112:
+        1:  113:    oferta el1 = creeazaOferta("mare", "destinatie1", "01-01-2025", 100.0);
+call    0 returned 1
+        1:  114:    oferta el2 = creeazaOferta("munte", "destinatie2", "01-01-2026", 200.0);
+call    0 returned 1
+        1:  115:    oferta el3 = creeazaOferta("mare", "destinatie3", "01-01-2027", 300.0);
+call    0 returned 1
+        1:  116:    add(&v, el1);
+call    0 returned 1
+        1:  117:    add(&v, el2);
+call    0 returned 1
+        1:  118:    add(&v, el3);
+call    0 returned 1
+        -:  119:
+        -:  120:
+       1*:  121:    assert(size(&v) == 3);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  121-block  0
+call    3 never executed
+        1:  121-block  1
+        1:  122:}
+        -:  123:
+        -:  124://teste SERVICE
+        -:  125:
+function test_adaugaService called 1 returned 100% blocks executed 79%
+        1:  126:void test_adaugaService() {
+        1:  127:    List v = createEmpty();
+        1:  127-block  0
+call    0 returned 1
+        1:  128:    char tip[] = "munte";
+        1:  129:    char destinatie[] = "Bucegi";
+        1:  130:    char data_plecarii[] = "2024-05-15";
+        1:  131:    float pret = 150.0;
+        -:  132:
+        -:  133:
+        1:  134:    int result = adaugaOferta(&v, tip, destinatie, data_plecarii, pret);
+call    0 returned 1
+       1*:  135:    assert(result == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  135-block  0
+call    2 never executed
+        1:  135-block  1
+       1*:  136:    assert(size(&v) == 1);
+        1:  136-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  136-block  1
+call    3 never executed
+        1:  136-block  2
+        1:  137:    float pretnegativ = -2;
+        1:  138:    result = adaugaOferta(&v,tip,destinatie,data_plecarii,pretnegativ);
+        1:  138-block  0
+call    0 returned 1
+       1*:  139:    assert(result == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  139-block  0
+call    2 never executed
+        1:  139-block  1
+        1:  140:}
+        -:  141:
+function test_modificaService called 1 returned 100% blocks executed 80%
+        1:  142:void test_modificaService() {
+        1:  143:    List v = createEmpty();
+        1:  143-block  0
+call    0 returned 1
+        1:  144:    char tip[] = "munte";
+        1:  145:    char destinatie[] = "Bucegi";
+        1:  146:    char data_plecarii[] = "2024-05-15";
+        1:  147:    float pret = 150.0;
+        -:  148:
+        -:  149:
+        1:  150:    adaugaOferta(&v, tip, destinatie, data_plecarii, pret);
+call    0 returned 1
+        -:  151:
+        -:  152:
+        1:  153:    float pret_nou = 200.0;
+        1:  154:    int result = modificaOferta(&v, tip, destinatie, data_plecarii, pret_nou);
+call    0 returned 1
+       1*:  155:    assert(result == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  155-block  0
+call    2 never executed
+        1:  155-block  1
+        1:  156:    char tipnou[]= "mare";
+        1:  157:    result = modificaOferta(&v,tipnou,destinatie,data_plecarii,pret_nou);
+        1:  157-block  0
+call    0 returned 1
+       1*:  158:    assert(result == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  158-block  0
+call    2 never executed
+        1:  158-block  1
+        1:  159:    char tipnou2[] = "mere";
+        1:  160:    result = modificaOferta(&v,tipnou2,destinatie,data_plecarii,pret_nou);
+        1:  160-block  0
+call    0 returned 1
+       1*:  161:    assert(result == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  161-block  0
+call    2 never executed
+        1:  161-block  1
+        1:  162:}
+        -:  163:
+function test_stergeService called 1 returned 100% blocks executed 80%
+        1:  164:void test_stergeService() {
+        1:  165:    List v = createEmpty();
+        1:  165-block  0
+call    0 returned 1
+        1:  166:    char tip[] = "munte";
+        1:  167:    char destinatie[] = "Bucegi";
+        1:  168:    char data_plecarii[] = "2024-05-15";
+        1:  169:    float pret = 150.0;
+        -:  170:
+        -:  171:
+        1:  172:    adaugaOferta(&v, tip, destinatie, data_plecarii, pret);
+call    0 returned 1
+        -:  173:
+        -:  174:
+        1:  175:    int result = stergeOferta(&v, tip, destinatie, data_plecarii);
+call    0 returned 1
+       1*:  176:    assert(result == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  176-block  0
+call    2 never executed
+        1:  176-block  1
+       1*:  177:    assert(size(&v) == 0);
+        1:  177-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  177-block  1
+call    3 never executed
+        1:  177-block  2
+        -:  178:
+        1:  179:    char tipnou[] = "mare";
+        -:  180:
+        1:  181:    result = stergeOferta(&v,tipnou,destinatie,data_plecarii);
+        1:  181-block  0
+call    0 returned 1
+       1*:  182:    assert(result == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  182-block  0
+call    2 never executed
+        1:  182-block  1
+        1:  183:}
+        -:  184:
+function test_filtru called 1 returned 100% blocks executed 100%
+        1:  185:void test_filtru() {
+        -:  186:
+        -:  187:
+        1:  188:}
+        -:  189:
+function test_sort called 1 returned 100% blocks executed 100%
+        1:  190:void test_sort() {
+        -:  191:
+        1:  192:}

@@ -1,0 +1,40 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit               
+     6                                  import exit msvcrt.dll    
+     7                                  
+     8                                  
+     9                                  segment data use32 class=data
+    10                                      
+    11 00000000 09                          a db 9
+    12 00000001 0200                        b dw 2
+    13 00000003 08000000                    c dd 8
+    14 00000007 0400000000000000            d dq 4
+    15                                  
+    16                                  
+    17                                  segment code use32 class=code
+    18                                  
+    19                                      ;14. (a+d)-(c-b)+c = a+d - c + b + c = a + d + b   ;a - byte, b - word, c - double word, d - qword - Interpretare fara semn
+    20                                  
+    21                                      start:;;;
+    22                                         ; mov eax,0
+    23                                          ;mov ebx, 0
+    24                                          ;mov ebx, [d] ; ebx = 4
+    25                                          ;mov al, [a]; al = 9
+    26                                          ;mov ah, 0
+    27                                          ;add ax, [b] ; ax = 9+2 = 11
+    28                                          ;add eax, ebx ; eax = 11+4 = 15
+    29 00000000 B800000000                      mov eax, 0
+    30 00000005 A0[00000000]                    mov al, [a]
+    31 0000000A B400                            mov ah, 0
+    32 0000000C 8B1D[07000000]                  mov ebx, [d] 
+    33 00000012 01D8                            add eax, ebx ; a+d = 13
+    34 00000014 B900000000                      mov ecx, 0
+    35 00000019 668B0D[03000000]                mov cx, [c]
+    36 00000020 01C8                            add eax, ecx ; (a+d) + c = 13 + 8 = 21
+    37 00000022 662B0D[01000000]                sub cx, [b] ; c-b = 8-2=6
+    38 00000029 29C8                            sub eax, ecx ; (a+d)-(c-b)+c = 21 - 6 = 15
+    39 0000002B 6A00                            push    dword 0      
+    40 0000002D FF15[00000000]                  call    [exit]      

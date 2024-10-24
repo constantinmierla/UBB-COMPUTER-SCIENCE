@@ -1,0 +1,398 @@
+        -:    0:Source:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/ui.cpp
+        -:    0:Graph:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/cmake-build-debug-coverage/CMakeFiles/lab_6_static.dir/ui.cpp.gcno
+        -:    0:Data:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/cmake-build-debug-coverage/CMakeFiles/lab_6_static.dir/ui.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Costi on 29-Mar-24.
+        -:    3://
+        -:    4:
+        -:    5:#include "ui.h"
+        -:    6:#include "domain.h"
+        -:    7:#include <iostream>
+        -:    8:#include <string>
+        -:    9:
+        -:   10:using std::cout;
+        -:   11:using std::cin;
+        -:   12:using std::ws;
+        -:   13:
+function _ZN2UI10afiseazaUIERKSt6vectorI6MasinaSaIS1_EE called 0 returned 0% blocks executed 0%
+    #####:   14:void UI::afiseazaUI(const vector<Masina> &masini) {
+    #####:   15:    if (masini.empty()) {
+    %%%%%:   15-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   16:        cout << "Nu exista masini in lista!\n";
+    %%%%%:   16-block  0
+call    0 never executed
+    #####:   17:        return;
+        -:   18:    }
+    #####:   19:    for (const auto &m : masini) {
+    %%%%%:   19-block  0
+call    0 never executed
+call    1 never executed
+    %%%%%:   19-block  1
+call    2 never executed
+    %%%%%:   19-block  2
+call    3 never executed
+branch  4 never executed
+branch  5 never executed
+    #####:   20:        cout << "NrInmatriculare: " << m.getNR() << " | Producator: " << m.getProducator() << " | Model: " << m.getModel() << " | Tip:" << m.getTip() << "\n";
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:   20-block  0
+call    3 never executed
+call    4 never executed
+branch  5 never executed
+branch  6 never executed
+    %%%%%:   20-block  1
+call    7 never executed
+branch  8 never executed
+branch  9 never executed
+    %%%%%:   20-block  2
+call   10 never executed
+branch 11 never executed
+branch 12 never executed
+    %%%%%:   20-block  3
+call   13 never executed
+branch 14 never executed
+branch 15 never executed
+    %%%%%:   20-block  4
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+    %%%%%:   20-block  5
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+    %%%%%:   20-block  6
+call   22 never executed
+branch 23 never executed
+branch 24 never executed
+    %%%%%:   20-block  7
+call   25 never executed
+branch 26 never executed
+branch 27 never executed
+    %%%%%:   20-block  8
+call   28 never executed
+branch 29 never executed
+branch 30 never executed
+    %%%%%:   20-block  9
+call   31 never executed
+branch 32 never executed
+branch 33 never executed
+    %%%%%:   20-block 10
+call   34 never executed
+branch 35 never executed
+branch 36 never executed
+    %%%%%:   20-block 11
+call   37 never executed
+call   38 never executed
+call   39 never executed
+call   40 never executed
+    $$$$$:   20-block 12
+call   41 never executed
+    $$$$$:   20-block 13
+    $$$$$:   20-block 14
+call   42 never executed
+    $$$$$:   20-block 15
+    $$$$$:   20-block 16
+call   43 never executed
+    $$$$$:   20-block 17
+        -:   21:    }
+    #####:   22:    cout <<'\n';
+    %%%%%:   22-block  0
+call    0 never executed
+        -:   23:}
+        -:   24:
+function _ZN2UI8adaugaUIEv called 0 returned 0% blocks executed 0%
+    #####:   25:void UI::adaugaUI() {
+    #####:   26:    string producator, model, tip;
+    %%%%%:   26-block  0
+call    0 never executed
+call    1 never executed
+call    2 never executed
+        -:   27:    int nr;
+    #####:   28:    cout << "Introduceti numarul de inmatriculare: ";
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   29:    cin >> nr;
+    %%%%%:   29-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   30:    cout << "Introduceti producatorul: ";
+    %%%%%:   30-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   31:    cin >> producator;
+    %%%%%:   31-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   32:    cout << "Introduceti modelul: ";
+    %%%%%:   32-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   33:    cin >> model;
+    %%%%%:   33-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   34:    cout << "Introduceti tipul: ";
+    %%%%%:   34-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   35:    cin >> tip;
+    %%%%%:   35-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   36:    if (ctr.addMasinaService(nr, producator, model, tip))
+    %%%%%:   36-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:   36-block  1
+branch  3 never executed
+branch  4 never executed
+    #####:   37:        cout << "Masina adaugata cu succes!\n";
+    %%%%%:   37-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:   38:    else
+    #####:   39:        cout << "Masina nu a putut fi adaugata!\n";
+    %%%%%:   39-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   40:}
+    %%%%%:   40-block  0
+call    0 never executed
+call    1 never executed
+call    2 never executed
+    $$$$$:   40-block  1
+call    3 never executed
+    $$$$$:   40-block  2
+call    4 never executed
+    $$$$$:   40-block  3
+call    5 never executed
+        -:   41:
+function _ZN2UI8stergeUIEv called 0 returned 0% blocks executed 0%
+    #####:   42:void UI::stergeUI() {
+        -:   43:    int nr;
+    #####:   44:    cout << "Introduceti numarul de inmatriculare al masinii pe care doriti sa o stergeti: ";
+    %%%%%:   44-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   45:    cin >> nr;
+    %%%%%:   45-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   46:    if (ctr.delMasinaService(nr))
+    %%%%%:   46-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:   46-block  1
+branch  3 never executed
+branch  4 never executed
+    #####:   47:        cout << "Masina stearsa cu succes!\n";
+    %%%%%:   47-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:   48:    else
+    #####:   49:        cout << "Masina nu a putut fi stearsa!\n";
+    %%%%%:   49-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   50:}
+    %%%%%:   50-block  0
+        -:   51:
+function _ZN2UI10modificaUIEv called 0 returned 0% blocks executed 0%
+    #####:   52:void UI::modificaUI() {
+    #####:   53:    string producator, model, tip;
+    %%%%%:   53-block  0
+call    0 never executed
+call    1 never executed
+call    2 never executed
+        -:   54:    int nr;
+    #####:   55:    cout << "Introduceti numarul de inmatriculare al masinii pe care doriti sa o modificati: ";
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   56:    cin >> nr;
+    %%%%%:   56-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   57:    cout << "Introduceti noul producator: ";
+    %%%%%:   57-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   58:    cin >> producator;
+    %%%%%:   58-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   59:    cout << "Introduceti noul model: ";
+    %%%%%:   59-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   60:    cin >> model;
+    %%%%%:   60-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   61:    cout << "Introduceti noul tip: ";
+    %%%%%:   61-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   62:    cin >> tip;
+    %%%%%:   62-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   63:    if (ctr.modifyMasinaService(nr, producator, model, tip))
+    %%%%%:   63-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:   63-block  1
+branch  3 never executed
+branch  4 never executed
+    #####:   64:        cout << "Masina modificata cu succes!\n";
+    %%%%%:   64-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:   65:    else
+    #####:   66:        cout << "Masina nu a putut fi modificata!\n";
+    %%%%%:   66-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   67:}
+    %%%%%:   67-block  0
+call    0 never executed
+call    1 never executed
+call    2 never executed
+    $$$$$:   67-block  1
+call    3 never executed
+    $$$$$:   67-block  2
+call    4 never executed
+    $$$$$:   67-block  3
+call    5 never executed
+        -:   68:
+function _ZN2UI3runEv called 0 returned 0% blocks executed 0%
+    #####:   69:void UI::run()
+        -:   70:{
+        -:   71:    while (true)
+        -:   72:    {
+    #####:   73:        cout << "1. Adauga masina\n";
+    %%%%%:   73-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   74:        cout << "2. Sterge masina\n";
+    %%%%%:   74-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   75:        cout << "3. Modifica masina\n";
+    %%%%%:   75-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   76:        cout << "4. Afiseaza masini\n";
+    %%%%%:   76-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   77:        cout << "5. Exit\n";
+    %%%%%:   77-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   78:        cout << "Introduceti optiunea: ";
+    %%%%%:   78-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:   79:        int opt;
+    #####:   80:        cin >> opt;
+    %%%%%:   80-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   81:        if (opt == 1)
+    %%%%%:   81-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:   82:            adaugaUI();
+    %%%%%:   82-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   83:        else if (opt == 2)
+    %%%%%:   83-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:   84:            stergeUI();
+    %%%%%:   84-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   85:        else if (opt == 3)
+    %%%%%:   85-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:   86:            modificaUI();
+    %%%%%:   86-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   87:        else if (opt == 4)
+    %%%%%:   87-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:   88:            afiseazaUI(ctr.getAll());
+    %%%%%:   88-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed
+branch  3 never executed
+    #####:   89:        else if (opt == 5) {
+    %%%%%:   89-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:   90:            cout << "Iesire aplicatie...";
+    %%%%%:   90-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   91:            break;
+        -:   92:        }
+        -:   93:        else
+    #####:   94:            cout << "Optiune invalida!\n";
+    %%%%%:   94-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   95:    }
+    %%%%%:   95-block  0
+    #####:   96:}
+    %%%%%:   96-block  0

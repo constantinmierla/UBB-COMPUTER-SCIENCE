@@ -1,0 +1,160 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit            
+     6                                  extern scanf, printf
+     7                                  extern fopen, fread, fprintf, fclose
+     8                                    
+     9                                  import exit msvcrt.dll 
+    10                                  
+    11                                  import scanf msvcrt.dll
+    12                                  import printf msvcrt.dll
+    13                                  
+    14                                  import fopen msvcrt.dll
+    15                                  import fread msvcrt.dll
+    16                                  import fprintf msvcrt.dll
+    17                                  import fclose msvcrt.dll
+    18                                  
+    19                                  segment data use32 class=data
+    20 00000000 00<rept>                    string times 100 db 0
+    21 00000064 257300                      format_string db "%s", 0
+    22                                      
+    23 00000067 00000000                    number dd 0
+    24 0000006B 256400                      format_number db "%d", 0
+    25                                      
+    26 0000006E 612B00                      mod_acces db 'a+', 0
+    27 00000071 FFFFFFFF                    descriptor_fisier_citire dd -1
+    28 00000075 00000000                    buffer dd 0
+    29                                      
+    30 00000079 6F75747075742E7478-         fisier_afisare db "output.txt", 0
+    30 00000082 7400               
+    31 00000084 FFFFFFFF                    descriptor_fisier_afisare dd -1
+    32                                      
+    33 00000088 00<rept>                    cuvant times 200 db 0
+    34                                  
+    35                                  segment code use32 class=code
+    36                                      start:
+    37 00000000 68[00000000]                    push dword string
+    38 00000005 68[64000000]                    push dword format_string
+    39 0000000A FF15[00000000]                  call [scanf]
+    40 00000010 83C408                          add esp, 4 * 2
+    41                                          
+    42 00000013 68[67000000]                    push dword number
+    43 00000018 68[6B000000]                    push dword format_number
+    44 0000001D FF15[00000000]                  call [scanf]
+    45 00000023 83C408                          add esp, 4 * 2
+    46                                          
+    47                                          ; deschid fisierul din care citesc
+    48 00000026 68[6E000000]                    push dword mod_acces
+    49 0000002B 68[00000000]                    push dword string
+    50 00000030 FF15[00000000]                  call [fopen]
+    51 00000036 83C408                          add esp, 4 * 2
+    52                                          
+    53 00000039 83F800                          cmp eax, 0
+    54 0000003C 0F84F1000000                    je stop
+    55 00000042 A3[71000000]                    mov [descriptor_fisier_citire], eax
+    56                                          
+    57                                          ; deschid fisierul in care salvez
+    58 00000047 68[6E000000]                    push dword mod_acces
+    59 0000004C 68[79000000]                    push dword fisier_afisare
+    60 00000051 FF15[00000000]                  call [fopen]
+    61 00000057 83C408                          add esp, 4 * 2
+    62                                          
+    63 0000005A 83F800                          cmp eax, 0
+    64 0000005D 0F84D0000000                    je stop
+    65 00000063 A3[84000000]                    mov [descriptor_fisier_afisare], eax
+    66                                          
+    67 00000068 BB00000000                      mov ebx, 0
+    68 0000006D BF[88000000]                    mov edi, cuvant
+    69 00000072 FC                              cld
+    70                                          
+    71                                          while_read_from_file:
+    72                                              ; fread(buffer, size, count, descriptor_fisier)
+    73 00000073 FF35[71000000]                      push dword [descriptor_fisier_citire]
+    74 00000079 6A01                                push dword 1
+    75 0000007B 6A01                                push dword 1
+    76 0000007D 68[75000000]                        push dword buffer
+    77 00000082 FF15[00000000]                      call [fread]
+    78 00000088 83C410                              add esp, 4 * 4
+    79                                              
+    80 0000008B 83F800                              cmp eax, 0
+    81 0000008E 0F8480000000                        je end_while_read
+    82                                              
+    83 00000094 A1[75000000]                        mov eax, [buffer]
+    84                                              
+    85 00000099 83F861                              cmp eax, 'a'
+    86 0000009C 7470                                je not_consoana
+    87 0000009E 83F865                              cmp eax, 'e'
+    88 000000A1 746B                                je not_consoana
+    89 000000A3 83F869                              cmp eax, 'i'
+    90 000000A6 7466                                je not_consoana
+    91 000000A8 83F86F                              cmp eax, 'o'
+    92 000000AB 7461                                je not_consoana
+    93 000000AD 83F875                              cmp eax, 'u'
+    94 000000B0 745C                                je not_consoana
+    95                                              
+    96 000000B2 83F820                              cmp eax, ' '
+    97 000000B5 7405                                je space
+    98                                              
+    99                                              ; daca s-a ajuns aici, inseamna ca am dat de o consoana
+   100 000000B7 83C301                              add ebx, 1
+   101 000000BA EB52                                jmp not_consoana
+   102                                                  
+   103                                              space:
+   104                                                  ; verific criteriul si execut operatiile necesare
+   105 000000BC A1[67000000]                            mov eax, [number]
+   106 000000C1 39D8                                    cmp eax, ebx
+   107 000000C3 7549                                    jne not_consoana
+   108                                                  
+   109                                                  ; pun cuvantul citit in fisierul de iesire
+   110 000000C5 BF[88000000]                            mov edi, cuvant
+   111 000000CA BE[88000000]                            mov esi, cuvant
+   112 000000CF FC                                      cld
+   113                                                  
+   114 000000D0 AD                                      lodsd
+   115                                                  while_cuvant:
+   116 000000D1 83F800                                      cmp eax, 0
+   117 000000D4 741D                                        je sfarsit_cuvant
+   118                                                      
+   119 000000D6 50                                          push dword eax
+   120 000000D7 6825630000                                  push dword "%c"
+   121 000000DC FF35[84000000]                              push dword [descriptor_fisier_afisare]
+   122 000000E2 FF15[00000000]                              call [fprintf]
+   123 000000E8 83C40C                                      add esp, 4 * 3
+   124                                                      
+   125 000000EB B800000000                                  mov eax, 0
+   126 000000F0 AB                                          stosd
+   127                                                      
+   128 000000F1 EBDE                                        jmp while_cuvant
+   129                                                      
+   130                                                  sfarsit_cuvant:
+   131                                                      ; mai pun in fisier un spatiu
+   132 000000F3 6A20                                        push dword ' '
+   133 000000F5 6825630000                                  push dword "%c"
+   134 000000FA FF35[84000000]                              push dword [descriptor_fisier_afisare]
+   135 00000100 FF15[00000000]                              call [fprintf]
+   136 00000106 83C40C                                      add esp, 4 * 3
+   137                                                      
+   138 00000109 BF[88000000]                                mov edi, cuvant
+   139                                                  
+   140                                              not_consoana:
+   141                                                  ; adaug litera in cuvant
+   142 0000010E AB                                      stosd
+   143                                              
+   144 0000010F E95FFFFFFF                          jmp while_read_from_file
+   145                                          
+   146                                          end_while_read:
+   147 00000114 90                                  nop
+   148                                          
+   149                                          ; inchid fisierele deschise
+   150 00000115 FF35[71000000]                  push dword [descriptor_fisier_citire]
+   151 0000011B FF15[00000000]                  call [fclose]
+   152 00000121 83C404                          add esp, 4
+   153                                          
+   154 00000124 FF35[84000000]                  push dword [descriptor_fisier_afisare]
+   155 0000012A FF15[00000000]                  call [fclose]
+   156 00000130 83C404                          add esp, 4
+   157                                      stop:
+   158 00000133 6A00                            push dword 0  
+   159 00000135 FF15[00000000]                  call [exit]       

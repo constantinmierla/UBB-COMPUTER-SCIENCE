@@ -1,0 +1,35 @@
+        -:    0:Source:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/main.c
+        -:    0:Graph:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/cmake-build-debug-coverage/CMakeFiles/lab_2.dir/main.c.gcno
+        -:    0:Data:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/cmake-build-debug-coverage/CMakeFiles/lab_2.dir/main.c.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Costi on 27-Mar-24.
+        -:    3://
+        -:    4:#include "ui.h"
+        -:    5:#include "tests.h"
+        -:    6:/*
+        -:    7: *
+        -:    8:    8. Magazin electronice
+        -:    9:
+        -:   10:    Creati o aplicatie care permite gestiunea stocului de produse intr-un magazin de electronice.
+        -:   11:    Fiecare produs are un identificator unic, tip (laptop, frigider, televizor,etc), producator, model,
+        -:   12:    pret, cantitate.
+        -:   13:    Aplicatia permite:
+        -:   14:     a) Adaugarea de noi produse. Daca produsul este deja in stoc trebuie actualizat cantitatea
+        -:   15:     b) Actualizare produse (modificare pret sau cantitate)
+        -:   16:     c) Stergere produs
+        -:   17:     d) Vizualizare produse din stoc, ordonat dupa pret, cantitate (crescator/descrescator)
+        -:   18:     e) Vizualizare lista de produse filtrate dupa un criteriu (producator, pret, cantitate)
+        -:   19: */
+        -:   20:
+function main called 1 returned 100% blocks executed 100%
+        1:   21:int main()
+        -:   22:{
+        1:   23:    runAllTests();
+        1:   23-block  0
+call    0 returned 1
+        -:   24:    //run();
+        1:   25:    return 0;
+        -:   26:}
+        -:   27:
+        -:   28:

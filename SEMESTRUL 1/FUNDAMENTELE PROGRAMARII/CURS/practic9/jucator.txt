@@ -1,0 +1,10 @@
+costi,mr,180,Fundas
+mierla,constantin,227,Fundas
+oanea,raul,187,Fundas
+coanea,radu,150,Pivot
+mirela,constant,201,Extrema
+mie,cos,217,Extrema
+dsd,sff,214,Fundas
+dsd,dsd,208,Fundas
+sds,dsd,213,Extrema
+dsdsad,dawd,158,Fundas

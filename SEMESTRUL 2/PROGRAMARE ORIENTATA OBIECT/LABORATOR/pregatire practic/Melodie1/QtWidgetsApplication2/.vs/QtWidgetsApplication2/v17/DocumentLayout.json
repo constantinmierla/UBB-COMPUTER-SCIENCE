@@ -1,0 +1,212 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\model.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|solutionrelative:model.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\gui.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|solutionrelative:gui.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\gui.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|solutionrelative:gui.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\serv.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|solutionrelative:serv.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\input.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|solutionrelative:input.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\validator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|solutionrelative:validator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\serv.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|solutionrelative:serv.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\repo.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|solutionrelative:repo.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\repo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|solutionrelative:repo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\domain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{16A33F3F-7CC7-4C32-AF5B-141CDBCBACD4}|QtWidgetsApplication2.vcxproj|solutionrelative:domain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 388,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "input.txt",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\input.txt",
+              "RelativeDocumentMoniker": "input.txt",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\input.txt",
+              "RelativeToolTip": "input.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-06-21T07:14:59.624Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "validator.h",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\validator.h",
+              "RelativeDocumentMoniker": "validator.h",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\validator.h",
+              "RelativeToolTip": "validator.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-21T07:13:41.103Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "main.cpp",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\main.cpp",
+              "RelativeDocumentMoniker": "main.cpp",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\main.cpp",
+              "RelativeToolTip": "main.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-21T07:12:51.065Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "gui.cpp",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\gui.cpp",
+              "RelativeDocumentMoniker": "gui.cpp",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\gui.cpp",
+              "RelativeToolTip": "gui.cpp",
+              "ViewState": "AQIAAEoAAAAAAAAAAAApwFgAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-21T06:48:45.377Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "serv.cpp",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\serv.cpp",
+              "RelativeDocumentMoniker": "serv.cpp",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\serv.cpp",
+              "RelativeToolTip": "serv.cpp",
+              "ViewState": "AQIAABIAAAAAAAAAAAApwB8AAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-21T06:28:50.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "repo.cpp",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\repo.cpp",
+              "RelativeDocumentMoniker": "repo.cpp",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\repo.cpp",
+              "RelativeToolTip": "repo.cpp",
+              "ViewState": "AQIAABoAAAAAAAAAAAAAACcAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-20T18:28:00.09Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "domain.h",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\domain.h",
+              "RelativeDocumentMoniker": "domain.h",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\domain.h",
+              "RelativeToolTip": "domain.h",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAABgAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-20T18:14:24.219Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 201,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "repo.h",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\repo.h",
+              "RelativeDocumentMoniker": "repo.h",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\repo.h",
+              "RelativeToolTip": "repo.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-20T18:27:56.812Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "serv.h",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\serv.h",
+              "RelativeDocumentMoniker": "serv.h",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\serv.h",
+              "RelativeToolTip": "serv.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-21T06:28:35.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "gui.h",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\gui.h",
+              "RelativeDocumentMoniker": "gui.h",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\gui.h",
+              "RelativeToolTip": "gui.h",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAABAAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-21T06:48:36.93Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "model.h",
+              "DocumentMoniker": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\model.h",
+              "RelativeDocumentMoniker": "model.h",
+              "ToolTip": "D:\\FMI UBB CLUJ 2023-2026\\UBB-COMPUTER-SCIENCE\\SEMESTRUL 2\\PROGRAMARE ORIENTATA OBIECT\\LABORATOR\\pregatire practic\\Melodie1\\QtWidgetsApplication2\\model.h",
+              "RelativeToolTip": "model.h",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAACMAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-21T07:30:59.043Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

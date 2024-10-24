@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/lab_7_practic.dir/main.cpp.o -o lab_7_practic 

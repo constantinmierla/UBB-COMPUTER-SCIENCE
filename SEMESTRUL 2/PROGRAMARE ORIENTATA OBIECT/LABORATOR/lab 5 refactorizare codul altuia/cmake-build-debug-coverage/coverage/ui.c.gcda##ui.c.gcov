@@ -1,0 +1,446 @@
+        -:    0:Source:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/ui.c
+        -:    0:Graph:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/cmake-build-debug-coverage/CMakeFiles/lab_2.dir/ui.c.gcno
+        -:    0:Data:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/cmake-build-debug-coverage/CMakeFiles/lab_2.dir/ui.c.gcda
+        -:    0:Runs:1
+        -:    1:#include <stdio.h>
+        -:    2://#include "domain.h"
+        -:    3://#include "repository.h"
+        -:    4:#include "service.h"
+        -:    5:#include "ui.h"
+        -:    6:#include "string.h"
+        -:    7://#include "tests.h"
+function updateOfe called 0 returned 0% blocks executed 0%
+    #####:    8:void updateOfe(BigList* list)
+        -:    9:{
+        -:   10:    char tip[30], model[30], producator[30];
+    #####:   11:    printf("Introduceti Id-ul:\n");
+    %%%%%:   11-block  0
+call    0 never executed
+        -:   12:    int id;
+    #####:   13:    scanf("%d",&id);
+call    0 never executed
+    #####:   14:    printf("Introduceti tip : \n");
+call    0 never executed
+    #####:   15:    scanf("%s", tip);
+call    0 never executed
+    #####:   16:    printf("Introduceti model : \n");
+call    0 never executed
+    #####:   17:    scanf("%s", model);
+call    0 never executed
+    #####:   18:    printf("Introduceti producator : \n");
+call    0 never executed
+    #####:   19:    scanf("%s", producator);
+call    0 never executed
+    #####:   20:    printf("Introduceti noul pret:\n");
+call    0 never executed
+        -:   21:    int pret;
+    #####:   22:    scanf("%d",&pret);
+call    0 never executed
+        -:   23:    int stoc;
+    #####:   24:    printf("Introduceti noul stoc:\n");
+call    0 never executed
+    #####:   25:    scanf("%d",&stoc);
+call    0 never executed
+    #####:   26:    if (!updateEnt(list, tip, model, producator, pret, id, stoc))
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   27:        printf("Modificarea a avut loc cu succes!\n");
+    %%%%%:   27-block  0
+call    0 never executed
+        -:   28:    else
+    #####:   29:        printf("Oferta cu id-ul dat nu exista!\n");
+    %%%%%:   29-block  0
+call    0 never executed
+        -:   30:
+    #####:   31:}
+function readOfe called 0 returned 0% blocks executed 0%
+    #####:   32:void readOfe(BigList* list)
+        -:   33:{
+    #####:   34:    printf("Adauga oferta : tip, model, producatorul, pret, id, stoc\n");
+    %%%%%:   34-block  0
+call    0 never executed
+        -:   35:    char tip[30], destinatie[30], data_plecarii[30];
+        -:   36:    int pret;
+    #####:   37:    printf("Introduceti id:\n");
+call    0 never executed
+    #####:   38:    int id=-1;
+    #####:   39:    scanf("%d",&id);
+call    0 never executed
+    #####:   40:    if (checkId(list, id) == 0)
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:   41:    {
+    #####:   42:        printf("Introduceti tip : \n");
+    %%%%%:   42-block  0
+call    0 never executed
+    #####:   43:        scanf("%s", tip);
+call    0 never executed
+    #####:   44:        printf("Introduceti model : \n");
+call    0 never executed
+    #####:   45:        scanf("%s", destinatie);
+call    0 never executed
+    #####:   46:        printf("Introduceti producatorul : \n");
+call    0 never executed
+    #####:   47:        scanf("%s", data_plecarii);
+call    0 never executed
+    #####:   48:        printf("Introduceti pret : \n");
+call    0 never executed
+    #####:   49:        scanf("%d", &pret);
+call    0 never executed
+    #####:   50:        printf("Introduceti stoc : \n");
+call    0 never executed
+        -:   51:        int stoc;
+    #####:   52:        scanf("%d", &stoc);
+call    0 never executed
+    #####:   53:        if(addEnt(list, tip,destinatie,data_plecarii,pret,id, stoc))
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   54:            printf("Oferta a fost adaugata cu succes!\n");
+    %%%%%:   54-block  0
+call    0 never executed
+        -:   55:        else
+    #####:   56:            printf("Oferta invalida!\n");
+    %%%%%:   56-block  0
+call    0 never executed
+        -:   57:    }
+        -:   58:
+    #####:   59:}
+        -:   60:
+function printOfferte called 0 returned 0% blocks executed 0%
+    #####:   61:void printOfferte(BigList* list)
+        -:   62:{
+    #####:   63:    for(int i = 0; i< list->lista->dimensiune;i++)
+    %%%%%:   63-block  0
+    %%%%%:   63-block  1
+branch  0 never executed
+branch  1 never executed
+        -:   64:    {
+    #####:   65:        Oferta* m = get(list->lista,i);
+    %%%%%:   65-block  0
+call    0 never executed
+    #####:   66:        printf("Id: %d; Tip: %s; model: %s; producatorul: %s; Pret: %d; Stoc: %d\n",m->id,m->tip,m->model,m->producer,m->pret, m->stoc);
+call    0 never executed
+        -:   67:    }
+    #####:   68:}
+        -:   69:
+function deleteOfe called 0 returned 0% blocks executed 0%
+    #####:   70:void deleteOfe(BigList* list)
+        -:   71:{
+    #####:   72:    printf("Id-ul ofertei pe care doriti sa il stergeti:\n");
+    %%%%%:   72-block  0
+call    0 never executed
+        -:   73:    int id;
+    #####:   74:    scanf("%d",&id);
+call    0 never executed
+    #####:   75:    if(!deleteEnt(list,id))
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   76:        printf("Aceasta oferta nu exista!\n");
+    %%%%%:   76-block  0
+call    0 never executed
+        -:   77:    else
+    #####:   78:        printf("Oferta stearsa cu succes!\n");
+    %%%%%:   78-block  0
+call    0 never executed
+    #####:   79:}
+function destroy called 0 returned 0% blocks executed 0%
+    #####:   80:void destroy(BigList *list)
+        -:   81:{
+    #####:   82:    destroyAll(list);
+    %%%%%:   82-block  0
+call    0 never executed
+    #####:   83:}
+        -:   84:
+function sortare called 0 returned 0% blocks executed 0%
+    #####:   85:void sortare(BigList *list)
+        -:   86:{
+        -:   87:    char nume[20];
+    #####:   88:    printf("Alegeti tipul de sortare: bubble, selection\n");
+    %%%%%:   88-block  0
+call    0 never executed
+    #####:   89:    scanf("%s",nume);
+call    0 never executed
+    #####:   90:    if(strcmp(nume,"selection") == 0) {
+branch  0 never executed
+branch  1 never executed
+    #####:   91:        printf("alegeti sortarea : stoc, pret: ");
+    %%%%%:   91-block  0
+call    0 never executed
+        -:   92:        char crit[20], t[20];
+    #####:   93:        scanf("%s", t);
+call    0 never executed
+    #####:   94:        if (strcmp(t, "pret") == 0) {
+branch  0 never executed
+branch  1 never executed
+    #####:   95:            printf("crescator sau descrescator : ");
+    %%%%%:   95-block  0
+call    0 never executed
+    #####:   96:            scanf("%s", crit);
+call    0 never executed
+    #####:   97:            if (strcmp(crit, "crescator") == 0) {
+branch  0 never executed
+branch  1 never executed
+    #####:   98:                BigList *filt = sortPret(list);
+    %%%%%:   98-block  0
+call    0 never executed
+    #####:   99:                printOfferte(filt);
+call    0 never executed
+        -:  100:            } else {
+    #####:  101:                BigList *filt = sortPretD(list);
+    %%%%%:  101-block  0
+call    0 never executed
+    #####:  102:                printOfferte(filt);
+call    0 never executed
+        -:  103:            }
+    #####:  104:        } else if (strcmp(t, "stoc") == 0) {
+    %%%%%:  104-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  105:            printf("crescator sau descrescator : ");
+    %%%%%:  105-block  0
+call    0 never executed
+    #####:  106:            scanf("%s", crit);
+call    0 never executed
+    #####:  107:            if (strcmp(crit, "crescator") == 0) {
+branch  0 never executed
+branch  1 never executed
+    #####:  108:                BigList *filt = sortStoc(list);
+    %%%%%:  108-block  0
+call    0 never executed
+    #####:  109:                printOfferte(filt);
+call    0 never executed
+        -:  110:            } else {
+    #####:  111:                BigList *filt = sortStocD(list);
+    %%%%%:  111-block  0
+call    0 never executed
+    #####:  112:                printOfferte(filt);
+call    0 never executed
+        -:  113:            }
+        -:  114:        }
+        -:  115:    }
+    #####:  116:    else if(strcmp(nume,"bubble") == 0)
+    %%%%%:  116-block  0
+branch  0 never executed
+branch  1 never executed
+        -:  117:    {
+    #####:  118:        printf("alegeti sortarea : stoc, pret: ");
+    %%%%%:  118-block  0
+call    0 never executed
+        -:  119:        char crit[20], t[20];
+    #####:  120:        scanf("%s", t);
+call    0 never executed
+    #####:  121:        if (strcmp(t, "pret") == 0) {
+branch  0 never executed
+branch  1 never executed
+    #####:  122:            printf("crescator sau descrescator : ");
+    %%%%%:  122-block  0
+call    0 never executed
+    #####:  123:            scanf("%s", crit);
+call    0 never executed
+    #####:  124:            if (strcmp(crit, "crescator") == 0) {
+branch  0 never executed
+branch  1 never executed
+    #####:  125:                BigList *filt = sortPretb(list);
+    %%%%%:  125-block  0
+call    0 never executed
+    #####:  126:                printOfferte(filt);
+call    0 never executed
+        -:  127:            } else {
+    #####:  128:                BigList *filt = sortPretDb(list);
+    %%%%%:  128-block  0
+call    0 never executed
+    #####:  129:                printOfferte(filt);
+call    0 never executed
+        -:  130:            }
+    #####:  131:        } else if (strcmp(t, "stoc") == 0) {
+    %%%%%:  131-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  132:            printf("crescator sau descrescator : ");
+    %%%%%:  132-block  0
+call    0 never executed
+    #####:  133:            scanf("%s", crit);
+call    0 never executed
+    #####:  134:            if (strcmp(crit, "crescator") == 0) {
+branch  0 never executed
+branch  1 never executed
+    #####:  135:                BigList *filt = sortStocb(list);
+    %%%%%:  135-block  0
+call    0 never executed
+    #####:  136:                printOfferte(filt);
+call    0 never executed
+        -:  137:            } else {
+    #####:  138:                BigList *filt = sortStocDb(list);
+    %%%%%:  138-block  0
+call    0 never executed
+    #####:  139:                printOfferte(filt);
+call    0 never executed
+        -:  140:            }
+        -:  141:        }
+        -:  142:    }
+        -:  143:    else
+    #####:  144:        printf("Sortare invalida!\n");
+    %%%%%:  144-block  0
+call    0 never executed
+    #####:  145:}
+        -:  146:
+function filtrarePret called 0 returned 0% blocks executed 0%
+    #####:  147:void filtrarePret(BigList* list)
+        -:  148:{
+    #####:  149:    printf("Dati o valoare intrega, pozitiva, nenula:\n");
+    %%%%%:  149-block  0
+call    0 never executed
+        -:  150:    int val;
+    #####:  151:    scanf("%d",&val);
+call    0 never executed
+    #####:  152:    Offerte* f = filterPret(list,val);
+call    0 never executed
+    #####:  153:    for(int i=0;i<f->dimensiune;i++)
+    %%%%%:  153-block  0
+branch  0 never executed
+branch  1 never executed
+        -:  154:    {
+    #####:  155:        Oferta* m = get(f,i);
+    %%%%%:  155-block  0
+call    0 never executed
+    #####:  156:        printf("Id: %d; Tip: %s; model: %s; producatorul: %s; Pret: %d; Stoc: %d\n",m->id,m->tip,m->model,m->producer,m->pret, m->stoc);
+call    0 never executed
+        -:  157:    }
+        -:  158:
+    #####:  159:    destroyOfferte(f);
+    %%%%%:  159-block  0
+call    0 never executed
+        -:  160:
+    #####:  161:}
+        -:  162:
+function filtrareTip called 0 returned 0% blocks executed 0%
+    #####:  163:void filtrareTip(BigList* list)
+        -:  164:{
+    #####:  165:    printf("Dati o litera: ");
+    %%%%%:  165-block  0
+call    0 never executed
+        -:  166:    char litera[2];
+    #####:  167:    scanf("%s",litera);
+call    0 never executed
+    #####:  168:    Offerte* f = filterTip(list,litera[0]);
+call    0 never executed
+    #####:  169:    for(int i=0;i<f->dimensiune;i++)
+    %%%%%:  169-block  0
+branch  0 never executed
+branch  1 never executed
+        -:  170:    {
+    #####:  171:        Oferta* m = get(f,i);
+    %%%%%:  171-block  0
+call    0 never executed
+    #####:  172:        printf("Id: %d; Tip: %s; model: %s; producatorul: %s; Pret: %d; Stoc: %d\n",m->id,m->tip,m->model,m->producer,m->pret, m->stoc);
+call    0 never executed
+        -:  173:    }
+        -:  174:
+    #####:  175:    destroyOfferte(f);
+    %%%%%:  175-block  0
+call    0 never executed
+    #####:  176:}
+function undo_ui called 0 returned 0% blocks executed 0%
+    #####:  177:void undo_ui(BigList* l)
+        -:  178:{
+    #####:  179:    if(undo_service(l) == 0)
+    %%%%%:  179-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  180:        printf("Undo reusit!\n");
+    %%%%%:  180-block  0
+call    0 never executed
+        -:  181:    else
+    #####:  182:        printf("Nu se mai poate face undo!\n");
+    %%%%%:  182-block  0
+call    0 never executed
+    #####:  183:}
+function run called 0 returned 0% blocks executed 0%
+    #####:  184:void run()
+        -:  185:{
+    #####:  186:    BigList* list = createBigList();
+    %%%%%:  186-block  0
+call    0 never executed
+        -:  187:
+        -:  188:    while(1)
+    #####:  189:    {
+        -:  190:        int cmd;
+    #####:  191:        printf("0. Exit; 1. Adaugare; 2. Modificare; 3.Stergere; 4.Afisare Oferte;\n"
+    %%%%%:  191-block  0
+call    0 never executed
+        -:  192:               "5. Sortare; 6. Filtrare Pret; 7. Filtrare tip; 8. Undo\n");
+    #####:  193:        scanf("%d",&cmd);
+call    0 never executed
+    #####:  194:        if(cmd == 1)
+branch  0 never executed
+branch  1 never executed
+    #####:  195:            readOfe(list);
+    %%%%%:  195-block  0
+call    0 never executed
+    #####:  196:        else if(cmd == 2)
+    %%%%%:  196-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  197:            updateOfe(list);
+    %%%%%:  197-block  0
+call    0 never executed
+    #####:  198:        else if(cmd == 3)
+    %%%%%:  198-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  199:            deleteOfe(list);
+    %%%%%:  199-block  0
+call    0 never executed
+    #####:  200:        else if(cmd == 4)
+    %%%%%:  200-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  201:            printOfferte(list);
+    %%%%%:  201-block  0
+call    0 never executed
+    #####:  202:        else if(cmd == 5)
+    %%%%%:  202-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  203:            sortare(list);
+    %%%%%:  203-block  0
+call    0 never executed
+    #####:  204:        else if(cmd == 6)
+    %%%%%:  204-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  205:            filtrarePret(list);
+    %%%%%:  205-block  0
+call    0 never executed
+    #####:  206:        else if(cmd == 7)
+    %%%%%:  206-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  207:            filtrareTip(list);
+    %%%%%:  207-block  0
+call    0 never executed
+    #####:  208:        else if(cmd == 8)
+    %%%%%:  208-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  209:            undo_ui(list);
+    %%%%%:  209-block  0
+call    0 never executed
+    #####:  210:        else if(cmd==0)
+    %%%%%:  210-block  0
+branch  0 never executed
+branch  1 never executed
+        -:  211:        {
+    #####:  212:            destroy(list);
+    %%%%%:  212-block  0
+call    0 never executed
+    #####:  213:            break;
+        -:  214:        }
+        -:  215:    }
+        -:  216:
+    #####:  217:}

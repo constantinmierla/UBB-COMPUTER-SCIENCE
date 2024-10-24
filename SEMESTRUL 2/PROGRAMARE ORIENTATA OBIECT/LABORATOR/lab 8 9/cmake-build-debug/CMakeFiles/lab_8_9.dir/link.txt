@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/lab_8_9.dir/main.cpp.o CMakeFiles/lab_8_9.dir/domain.cpp.o CMakeFiles/lab_8_9.dir/repository.cpp.o CMakeFiles/lab_8_9.dir/service.cpp.o CMakeFiles/lab_8_9.dir/teste.cpp.o CMakeFiles/lab_8_9.dir/ui.cpp.o -o lab_8_9 

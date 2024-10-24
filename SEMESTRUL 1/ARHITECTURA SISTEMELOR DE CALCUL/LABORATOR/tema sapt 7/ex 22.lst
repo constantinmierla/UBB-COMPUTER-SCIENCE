@@ -1,0 +1,49 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; ...
+    14                                  ;Se dau 2 siruri de octeti S1 si S2 de aceeasi lungime. Sa se construiasca sirul D astfel incat fiecare element din D sa reprezinte minumul dintre elementele de pe pozitiile corespunzatoare din S1 si S2.
+    15                                  ;S: 1, 3, 6, 2, 3, 7
+    16                                  ;t: 6, 3, 8, 1, 2, 5
+    17                                  ;D: 1, 3, 6, 1, 2, 5
+    18 00000000 010306020307                s db 1,3,6,2,3,7
+    19                                      l equ $-s
+    20 00000006 010306010205                t db 1,3,6,1,2,5
+    21 0000000C 0000000000000000            d times 1 dq 0
+    22                                  ; our code starts here
+    23                                  segment code use32 class=code
+    24                                      start:
+    25                                          ; ...
+    26 00000000 B906000000                      mov ecx, l
+    27 00000005 BE00000000                      mov esi, 0
+    28 0000000A BF00000000                      mov edi, 0
+    29 0000000F B800000000                      mov eax, 0
+    30 00000014 BB00000000                      mov ebx, 0
+    31 00000019 E31F                            jecxz sfarsit
+    32                                          repeta:
+    33 0000001B 8A86[00000000]                      mov al, [s+esi]
+    34 00000021 8A9E[06000000]                      mov bl, [t+esi]
+    35 00000027 38D8                                cmp al, bl
+    36 00000029 7E06                                jle done ;în funcţie de instrucţiunea de salt condiţionat utilizată (aici JLE) se stabileste criteriul de comparare.
+    37                                              ;In acest caz: daca continutul din EAX in interpretarea cu semn este mai mic sau egal cu continutul din EBX atunci JUMP la eticheta Done, 
+    38 0000002B 8886[0C000000]                          mov [d+esi], al
+    39                                              done:
+    40                                              ;instructiuni care urmează etichetei done
+    41 00000031 889E[0C000000]                          mov [d+esi], bl
+    42 00000037 46                                  inc esi
+    43                                           
+    44 00000038 E2E1                            loop repeta
+    45                                          sfarsit:
+    46 0000003A A1[0C000000]                    mov eax, [d]
+    47                                          ; exit(0)
+    48 0000003F 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    49 00000041 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

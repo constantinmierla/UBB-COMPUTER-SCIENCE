@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/ex_1.dir/p1.cpp.o -o ex_1 

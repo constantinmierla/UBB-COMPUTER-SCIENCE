@@ -1,0 +1,61 @@
+     1                                  bits 32
+     2                                  
+     3                                  global start
+     4                                  
+     5                                  extern exit, scanf, printf
+     6                                  import exit msvcrt.dll
+     7                                  import scanf msvcrt.dll
+     8                                  import printf msvcrt.dll
+     9                                  
+    10                                  extern afisare_hexazecimal
+    11                                  extern afisare_zecimal
+    12                                  extern stocare_numere
+    13                                  
+    14                                  segment data use32 class=data
+    15 00000000 313031313031303131-         sir db '10110101', '10110001', '11100101', '10000110', '00110110'
+    15 00000009 303131303030313131-
+    15 00000012 313030313031313030-
+    15 0000001B 303031313030303131-
+    15 00000024 30313130           
+    16                                      n equ ($-sir) / 8
+    17                                      
+    18 00000028 00<rept>                    sir_numere times n db 0
+    19                                      
+    20 0000002D 42617A612031303A20-         mesaj_zecimal db "Baza 10: ", 0
+    20 00000036 00                 
+    21 00000037 25642000                    format_zecimal db "%d ", 0
+    22                                      
+    23 0000003B 0A0D42617A61203136-         mesaj_hexa db 10, 13, "Baza 16: ", 0
+    23 00000044 3A2000             
+    24 00000047 25782000                    format_hexa db "%x ", 0
+    25                                  
+    26                                  segment code use32 class=code
+    27                                      start:
+    28 00000000 BE[00000000]                    mov esi, sir
+    29 00000005 BF[28000000]                    mov edi, sir_numere
+    30 0000000A B905000000                      mov ecx, n
+    31 0000000F E329                            jecxz sfarsit
+    32                                          
+    33                                          ; apelez functia de transformare a numerelor din string in int
+    34                                          ; si care stocheaza numerele transformate
+    35 00000011 57                              push edi
+    36 00000012 56                              push esi
+    37 00000013 51                              push ecx
+    38 00000014 E8(00000000)                    call stocare_numere
+    39 00000019 83C40C                          add esp, 4 * 3
+    40                                          
+    41                                          ; apelez functia de afisare a numerelor in baza 10
+    42 0000001C 68[28000000]                    push sir_numere
+    43 00000021 6A05                            push n
+    44 00000023 E8(00000000)                    call afisare_zecimal
+    45 00000028 83C408                          add esp, 4 * 2
+    46                                          
+    47                                          ; apelez functia de afisare a numerelor in baza 16
+    48 0000002B 68[28000000]                    push sir_numere
+    49 00000030 6A05                            push n
+    50 00000032 E8(00000000)                    call afisare_hexazecimal
+    51 00000037 83C408                          add esp, 4 * 2
+    52                                              
+    53                                      sfarsit:
+    54 0000003A 6A00                            push dword 0
+    55 0000003C FF15[00000000]                  call [exit]

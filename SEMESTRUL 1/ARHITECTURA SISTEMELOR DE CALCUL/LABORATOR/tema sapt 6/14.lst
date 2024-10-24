@@ -1,0 +1,46 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                  ; ... 
+    14                                      ; a - dword
+    15 00000000 5B1AA6B5                    a DD 10110101101001100001101001011011b ; 14-17: 1000b, cand shiftez la dreapta 
+    16                                                                             ; ar trebui sa imi apara 8 pe prima poz in eax
+    17                                                                             ; a = B5A61A5B
+    18 00000004 00000000                    b DD 0
+    19 00000008 00                          cc DB 0                                ; bitii 0-5 ai lui C coincid cu bitii 1-6 ai lui B
+    20                                                                             ; bitii 6-7 ai lui C coincid cu bitii 17-18 ai lui B
+    21                                  segment code use32 class=code
+    22                                  start:
+    23                                      ; nr intreg format din bitii 14-17 ai lui a
+    24 00000000 A1[00000000]                mov EAX, [a]
+    25 00000005 C1E80E                      shr EAX, 14           
+    26 00000008 83E00F                      and EAX, 0000000Fh    ; AL = n = 8
+    27                                      
+    28                                      ; b = rotirea la stanga a lui a cu n biti
+    29 0000000B 88C1                        mov CL, AL
+    30 0000000D A1[00000000]                mov EAX, [a]
+    31 00000012 D3C0                        rol EAX, CL
+    32 00000014 A3[04000000]                mov [b], EAX          ; b = A61A5BB5h = 10100100000110100101101110110101b 
+    33                                      
+    34                                      ; bitii 0-5 ai lui C coincid cu bitii 1-6 ai lui B
+    35 00000019 B300                        mov BL, 0
+    36 0000001B D1E8                        shr EAX, 1
+    37 0000001D 83E03F                      and EAX, 0000003Fh    
+    38 00000020 88C3                        mov BL, AL            ; bl = 00011010b = 1Ah
+    39                                      
+    40                                      ; bitii 6-7 ai lui C coincid cu bitii 17-18 ai lui B
+    41 00000022 A1[04000000]                mov EAX, [b]                  
+    42 00000027 C1E811                      shr EAX, 17           ; eax = 101001000001101b = 0000520Dh
+    43 0000002A 83E003                      and EAX, 00000003h    ; eax = 00000001h
+    44 0000002D C0E006                      shl AL, 6
+    45 00000030 08C3                        or BL, AL             ; bl = 01011010b = 5Ah
+    46 00000032 881D[08000000]              mov [cc], BL          ; c = rezultat

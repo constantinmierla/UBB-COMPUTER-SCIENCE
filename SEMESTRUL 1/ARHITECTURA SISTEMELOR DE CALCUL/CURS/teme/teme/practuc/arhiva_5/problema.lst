@@ -1,0 +1,95 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, scanf, printf               
+     6                                  import exit msvcrt.dll   
+     7                                  import scanf msvcrt.dll 
+     8                                  import printf msvcrt.dll
+     9                                  
+    10                                  segment data use32 class=data
+    11 00000000 00<rept>                    sir_citit times 100 db 0
+    12 00000064 257300                      format_string db '%s', 0
+    13                                      
+    14 00000067 00<rept>                    sir_litere_mici times 100 db 0
+    15 000000CB FFFFFFFF                    descriptor_sir_mici dd -1
+    16 000000CF 00000000                    nr_litere_mici dd 0
+    17                                      
+    18 000000D3 00<rept>                    sir_litere_mari times 100 db 0
+    19 00000137 FFFFFFFF                    descriptor_sir_mari dd -1
+    20 0000013B 00000000                    nr_litere_mari dd 0
+    21                                      
+    22 0000013F 25730D0A                    format_string_new_line db '%s', 13, 10
+    23                                  
+    24                                  segment code use32 class=code
+    25                                      start:
+    26                                          ; citire sir
+    27 00000000 68[00000000]                    push dword sir_citit
+    28 00000005 68[64000000]                    push dword format_string
+    29 0000000A FF15[00000000]                  call [scanf]
+    30 00000010 83C408                          add esp, 4 * 2
+    31                                          
+    32                                          ; pregatire parcurgere
+    33 00000013 B8[D3000000]                    mov eax, sir_litere_mari
+    34 00000018 A3[37010000]                    mov [descriptor_sir_mari], eax
+    35                                          
+    36 0000001D B8[67000000]                    mov eax, sir_litere_mici
+    37 00000022 A3[CB000000]                    mov [descriptor_sir_mici], eax
+    38                                          
+    39 00000027 BE[00000000]                    mov esi, sir_citit
+    40 0000002C FC                              cld 
+    41                                          
+    42                                          ; parcurgere sir
+    43                                          parsare:
+    44 0000002D AC                                  lodsb     ; al = caracterul s[i]
+    45                                              
+    46 0000002E 3C00                                cmp al, 0
+    47 00000030 7432                                je sfarsit_citire
+    48                                              
+    49                                              ; verific daca e litera mica
+    50 00000032 3C61                                cmp al, 'a'
+    51 00000034 7C13                                jl posibil_lit_mare
+    52 00000036 3C7A                                cmp al, 'z'
+    53 00000038 7F26                                jg nu_e_litera
+    54                                              
+    55                                              ; aici e litera mica
+    56 0000003A 8B3D[CB000000]                      mov edi, [descriptor_sir_mici]
+    57 00000040 AA                                  stosb
+    58 00000041 893D[CB000000]                      mov [descriptor_sir_mici], edi
+    59 00000047 EB18                                jmp continua
+    60                                              
+    61                                              posibil_lit_mare:
+    62 00000049 3C41                                    cmp al, 'A'
+    63 0000004B 7C13                                    jl nu_e_litera
+    64 0000004D 3C5A                                    cmp al, 'Z'
+    65 0000004F 770F                                    ja nu_e_litera
+    66                                                  
+    67                                                  ; litera mare
+    68 00000051 8B3D[37010000]                          mov edi, [descriptor_sir_mari]
+    69 00000057 AA                                      stosb
+    70 00000058 893D[37010000]                          mov [descriptor_sir_mari], edi
+    71 0000005E EB01                                    jmp continua
+    72                                              
+    73                                              nu_e_litera:
+    74 00000060 90                                      nop
+    75                                                  
+    76                                              continua:
+    77 00000061 90                                      nop
+    78 00000062 EBC9                            jmp parsare
+    79                                              
+    80                                          sfarsit_citire:
+    81 00000064 90                                  nop
+    82                                              
+    83                                          ; afisez sirurile
+    84 00000065 68[67000000]                    push dword sir_litere_mici
+    85 0000006A 68[3F010000]                    push dword format_string_new_line
+    86 0000006F FF15[00000000]                  call [printf]
+    87 00000075 83C408                          add esp, 4 * 2
+    88                                          
+    89 00000078 68[D3000000]                    push dword sir_litere_mari
+    90 0000007D FF15[00000000]                  call [printf]
+    91 00000083 83C404                          add esp, 4
+    92                                      
+    93                                      finish:
+    94 00000086 6A00                            push dword 0    
+    95 00000088 FF15[00000000]                  call [exit]       

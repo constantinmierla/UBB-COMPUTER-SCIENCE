@@ -1,0 +1,139 @@
+     1                                  bits 32
+     2                                  
+     3                                  global start
+     4                                  
+     5                                  extern exit               
+     6                                  import exit msvcrt.dll    
+     7                                  
+     8                                  extern fopen, fread, fprintf, fclose
+     9                                  import fopen msvcrt.dll
+    10                                  import fread msvcrt.dll
+    11                                  import fprintf msvcrt.dll
+    12                                  import fclose msvcrt.dll
+    13                                  
+    14                                  segment data use32 class=data
+    15 00000000 6669736965722E7478-         nume_fisier db 'fisier.txt', 0
+    15 00000009 7400               
+    16 0000000B 612B00                      mod_acces db 'a+', 0
+    17 0000000E FFFFFFFF                    descriptor_fisier dd -1
+    18                                  
+    19 00000012 0A000000                    ten dd 10
+    20 00000016 40420F00                    minimum dd 1000000
+    21                                  
+    22 0000001A 00000000                    buffer dd 0
+    23                                  
+    24 0000001E 20256400                    print_format db ' %d', 0
+    25                                  
+    26                                  segment code use32 class=code
+    27                                      start:
+    28                                          ; fopen(nume_fisier, mod_acces)
+    29 00000000 68[0B000000]                    push dword mod_acces
+    30 00000005 68[00000000]                    push dword nume_fisier
+    31 0000000A FF15[00000000]                  call [fopen]
+    32 00000010 83C408                          add esp, 4 * 2
+    33                                  
+    34                                          ; verific daca fisierul a fost creat cu succes
+    35 00000013 83F800                          cmp eax, 0
+    36 00000016 0F84B4000000                    je final
+    37 0000001C A3[0E000000]                    mov [descriptor_fisier], eax
+    38                                  
+    39                                          ; citesc caracter cu caracter pana cand caracterul respectiv nu mai e spatiu || cifra
+    40                                          while_read_char:
+    41                                              ; fread(buffer, size, count, nume_fisier)
+    42 00000021 FF35[0E000000]                      push dword [descriptor_fisier]
+    43 00000027 6A01                                push dword 1
+    44 00000029 6A01                                push dword 1
+    45 0000002B 68[1A000000]                        push dword buffer
+    46 00000030 FF15[00000000]                      call [fread]
+    47 00000036 83C410                              add esp, 4 * 4
+    48                                  
+    49                                              ; verificam daca am citit ceva
+    50 00000039 83F800                              cmp eax, 0
+    51 0000003C 7469                                je end_while_read_char
+    52                                  
+    53                                              ; stocam caracterul
+    54 0000003E A1[1A000000]                        mov eax, [buffer]
+    55                                  
+    56                                              ; verificam daca caracterul este spatiu
+    57 00000043 83F820                              cmp eax, ' '
+    58 00000046 74D9                                je while_read_char   ; daca e spatiu, citesc urmatorul fisier
+    59                                  
+    60                                              ; verificam daca caracterul e cifra
+    61 00000048 83F830                              cmp eax, '0'
+    62 0000004B 725A                                jb end_while_read_char ; daca nu e spatiu si e mai mic decat caracterul '0', terminam citirea
+    63 0000004D 83F839                              cmp eax, '9'
+    64 00000050 7755                                ja end_while_read_char ; daca nu e spatiu si e mai mare decat caracterul '9', terminam citirea
+    65                                  
+    66 00000052 83E830                              sub eax, 48 ; convertim caracterul in cifra
+    67                                  
+    68                                              while_digit:
+    69                                                  ; mai citesc un caracter, dar mai intai dau push tuturor registrilor
+    70 00000055 60                                      pushad
+    71 00000056 FF35[0E000000]                          push dword [descriptor_fisier]
+    72 0000005C 6A01                                    push dword 1
+    73 0000005E 6A01                                    push dword 1
+    74 00000060 68[1A000000]                            push dword buffer
+    75 00000065 FF15[00000000]                          call [fread]
+    76 0000006B 83C410                                  add esp, 4 * 4
+    77                                  
+    78                                                  ; verific daca am citit ceva
+    79 0000006E 83F800                                  cmp eax, 0
+    80 00000071 7503                                    jne more_char    ; daca eax != 0 (inseamna ca am mai citit un caracter), mergem la eticheta more_char
+    81                                  
+    82                                                  ; daca eax == 0 (nu am mai citit nimic), luam registrii de pe stiva si incheiem citirea cifrelor
+    83 00000073 61                                      popad
+    84 00000074 EB1F                                    jmp end_while_digit
+    85                                  
+    86                                                  more_char:
+    87 00000076 90                                          nop
+    88                                                      
+    89 00000077 61                                      popad
+    90                                  
+    91                                                  ; verificam daca caracterul citit e o cifra valida
+    92 00000078 8B1D[1A000000]                          mov ebx, [buffer]
+    93 0000007E 83FB30                                  cmp ebx, '0'
+    94 00000081 7212                                    jb end_while_digit
+    95 00000083 83FB39                                  cmp ebx, '9'
+    96 00000086 770D                                    ja end_while_digit
+    97                                  
+    98                                                  ; daca caracterul e cifra, convertim din char in int
+    99 00000088 83EB30                                  sub ebx, 48
+   100                                  
+   101                                                  ; update numar: eax = eax * 10 + ebx 
+   102 0000008B F725[12000000]                          mul dword [ten] ; edx:eax = eax * 10, dar tinem in evidenta doar eax
+   103                                                                  ; intrucat presupunem ca rezulttul incape intr un dword
+   104 00000091 01D8                                    add eax, ebx
+   105                                  
+   106                                                  ; citim din nou un caracter
+   107 00000093 EBC0                                    jmp while_digit
+   108                                  
+   109                                              end_while_digit:
+   110                                              
+   111                                              
+   112                                              ; acum avem un numar, il comparam cu minimul
+   113 00000095 3B05[16000000]                      cmp eax, [minimum]
+   114 0000009B 7D84                                jge while_read_char ; daca eax >= minimum, citim din nou
+   115                                  
+   116                                              ; daca eax < minimum, update minimum
+   117 0000009D A3[16000000]                        mov [minimum], eax
+   118 000000A2 E97AFFFFFF                          jmp while_read_char ; and of course, we read another character
+   119                                  
+   120                                          end_while_read_char:
+   121                                          
+   122                                          
+   123                                          ; append minimum
+   124 000000A7 FF35[16000000]                  push dword [minimum]
+   125 000000AD 68[1E000000]                    push dword print_format
+   126 000000B2 FF35[0E000000]                  push dword [descriptor_fisier]
+   127 000000B8 FF15[00000000]                  call [fprintf]
+   128 000000BE 83C40C                          add esp, 4 * 3
+   129                                  
+   130                                          ; inchidem fisierul
+   131 000000C1 FF35[0E000000]                  push dword [descriptor_fisier]
+   132 000000C7 FF15[00000000]                  call [fclose]
+   133 000000CD 83C404                          add esp, 4
+   134                                  
+   135                                      final:
+   136                                          ; exit(0)
+   137 000000D0 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   138 000000D2 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

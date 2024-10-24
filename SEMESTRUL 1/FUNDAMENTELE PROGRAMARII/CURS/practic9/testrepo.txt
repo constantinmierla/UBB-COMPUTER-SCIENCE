@@ -1,0 +1,2 @@
+oanea,raul,187,Fundas
+coanea,radu,150,Pivot

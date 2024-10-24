@@ -1,0 +1,48 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, scanf, printf              
+     6                                  import exit msvcrt.dll    
+     7                                  import scanf msvcrt.dll
+     8                                  import printf msvcrt.dll
+     9                                  
+    10                                  segment data use32 class=data
+    11 00000000 00000000                	a dd 0
+    12 00000004 256400                  	format db "%d", 0
+    13                                      ; ...
+    14                                  
+    15                                  ; our code starts here
+    16                                  segment code use32 class=code
+    17                                      ;30/1. Se citesc de la tastatura numere (in baza 10) pana cand se introduce cifra 0. Determinaţi şi afişaţi cel mai mic număr dintre cele citite.
+    18                                      start:
+    19 00000000 68[00000000]            	push dword a
+    20 00000005 68[04000000]            	push dword format
+    21 0000000A FF15[00000000]          	call [scanf]
+    22 00000010 83C408                  	add esp, 4 * 2
+    23 00000013 8B1D[00000000]          	mov ebx, dword[a]
+    24                                  	read_numbers:
+    25 00000019 68[00000000]            		push dword a
+    26 0000001E 68[04000000]            		push dword format
+    27 00000023 FF15[00000000]          		call [scanf]
+    28 00000029 83C408                  		add esp, 4 * 2
+    29                                  		
+    30 0000002C A1[00000000]            		mov eax, dword[a]
+    31 00000031 83F800                  		cmp eax, 0
+    32 00000034 7408                    		jz final
+    33                                  		
+    34 00000036 39C3                    		cmp ebx, eax
+    35 00000038 7CDF                    		jl read_numbers
+    36 0000003A 89C3                    		mov ebx, eax
+    37 0000003C EBDB                    		jmp read_numbers
+    38                                  
+    39                                  	final:
+    40 0000003E 53                      		push ebx
+    41 0000003F 68[04000000]            		push dword format
+    42 00000044 FF15[00000000]          		call [printf]
+    43 0000004A 83C408                  		add esp, 4 * 2
+    44                                          ; ...
+    45                                      
+    46                                          ; exit(0)
+    47 0000004D 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    48 0000004F FF15[00000000]                  call    [exit]       ; call exit to terminate the program

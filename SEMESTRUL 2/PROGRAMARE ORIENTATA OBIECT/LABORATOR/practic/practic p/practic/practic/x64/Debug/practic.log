@@ -1,0 +1,18 @@
+﻿  Reading Qt configuration (C:/Qt/6.7.1/msvc2019_64/bin/qmake)
+  repo.cpp
+  service.cpp
+  teste.cpp
+  validator.cpp
+  gui.cpp
+  practic.cpp
+  main.cpp
+D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\practic\practic p\practic\model.h(13,33): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cpp')
+  
+D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\practic\practic p\practic\model.h(13,33): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'gui.cpp')
+  
+D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\practic\practic p\practic\gui.cpp(60,21): warning C4101: 'ex': unreferenced local variable
+  qrc_practic.cpp
+  moc_practic.cpp
+  practic.vcxproj -> D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\practic\practic p\practic\x64\Debug\practic.exe

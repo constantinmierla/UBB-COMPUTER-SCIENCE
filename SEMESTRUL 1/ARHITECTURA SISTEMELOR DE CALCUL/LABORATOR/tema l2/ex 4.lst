@@ -1,0 +1,56 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; ...
+    14                                      ; ex 15 : (a*2)+2*(b-3)-d-2*c
+    15                                      ; ex 30 : [(a-b)*5+d]-2*c
+    16 00000000 08                          a db 8
+    17 00000001 03                          b db 3
+    18 00000002 02                          c db 2
+    19 00000003 0300                        d dw 3
+    20                                  ; our code starts here
+    21                                  segment code use32 class=code
+    22                                      start:
+    23                                          ; ...
+    24 00000000 A0[00000000]                MOV AL, [a]       ; AL = a
+    25 00000005 8A1D[01000000]              MOV BL, [b]       ; BL = b
+    26 0000000B 8A0D[02000000]              MOV CL, [c]       ; CL = c
+    27 00000011 668B15[03000000]            MOV DX, [d]       ; DX = d
+    28                                  
+    29                                      ;ex 15 (a*2) + 2*(b-3) - d - 2*c
+    30                                  
+    31 00000018 00C0                        ADD AL, AL ; AX = 2*a = 2*8 = 16
+    32 0000001A 80EB03                      SUB BL, 3 ; BX = b-3 = 0
+    33 0000001D 00DB                        ADD BL, BL ; BX = (b-3)*2 = 0
+    34 0000001F 00C9                        ADD CL, CL ; CX = 2*c = 4
+    35 00000021 6601D8                      ADD AX, BX ; AX = 2*a + 2*(b-3) = 16 + 0 = 16
+    36 00000024 6629D0                      SUB AX, DX ; AX = 2*a + 2*(b-3) - d = 16 - 3 = 13
+    37 00000027 6629C8                      SUB AX, CX ; AX = 2*a + 2*(b-3) - d - 2*c = 13-4 = 9
+    38                                      
+    39                                      
+    40 0000002A B800000000                  MOV EAX, 0
+    41 0000002F BA00000000                  MOV EDX, 0
+    42 00000034 BB00000000                  MOV EBX, 0
+    43 00000039 B900000000                  MOV ECX, 0
+    44                                          ; ex 30 : [(a-b)*5+d]-2*c
+    45                                  
+    46 0000003E B005                        MOV AL, 5 ; AL = 5
+    47 00000040 8A15[00000000]              MOV DL, [a] ; DL = a = 8
+    48 00000046 2A15[01000000]              SUB DL, [b] ; DL = a-b = 8-3=5
+    49 0000004C 66F7E2                      MUL DX ; AX = 5*(a-b) =25
+    50 0000004F 660305[03000000]            ADD AX, [d] ; 5*(a-b)+d = 25+3=28
+    51 00000056 8A1D[02000000]              MOV BL, [c] ; BL = c = 2
+    52 0000005C 00DB                        ADD BL, BL ;  BL = 2*c = 4
+    53 0000005E 6629D8                      SUB AX, BX ;  AX = [(a-b)*5+d]-2*c = 24
+    54                                          ; exit(0)
+    55 00000061 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    56 00000063 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

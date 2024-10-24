@@ -1,0 +1,1047 @@
+        -:    0:Source:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/tests.c
+        -:    0:Graph:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/cmake-build-debug-coverage/CMakeFiles/lab_2.dir/tests.c.gcno
+        -:    0:Data:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/cmake-build-debug-coverage/CMakeFiles/lab_2.dir/tests.c.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Costi on 12-Mar-24.
+        -:    3://
+        -:    4:#include "tests.h"
+        -:    5:#include "domain.h"
+        -:    6:#include "repository.h"
+        -:    7:#include "service.h"
+        -:    8:#include <assert.h>
+        -:    9:#include <string.h>
+        -:   10:#include <stdlib.h>
+        -:   11:#include <stdio.h>
+        -:   12:#include "sort.h"
+        -:   13:
+function testValideazaOferta called 1 returned 100% blocks executed 80%
+        1:   14:void testValideazaOferta() {
+        1:   15:    int idRau = -1;
+        1:   16:    char* tip = "laptop";
+        1:   17:    int pretRau = -1;
+        1:   18:    char* producator = "lenovo";
+        1:   19:    char* model = "g5";
+        -:   20:
+        1:   21:    Oferta* o = creeazaOferta(tip, producator, model, 15, -1, 10);
+        1:   21-block  0
+call    0 returned 1
+       1*:   22:    assert(valideazaOferta(o) == -1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   22-block  0
+call    3 never executed
+        -:   23:
+        1:   24:    Oferta* o1 = creeazaOferta("", producator, model, 15, -1, 10);
+        1:   24-block  0
+call    0 returned 1
+       1*:   25:    assert(valideazaOferta(o1) == -1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   25-block  0
+call    3 never executed
+        -:   26:
+        1:   27:    Oferta* o2 = creeazaOferta(tip, "", "", 15, 1, 10);
+        1:   27-block  0
+call    0 returned 1
+       1*:   28:    assert(valideazaOferta(o2) == -1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   28-block  0
+call    3 never executed
+        -:   29:
+        1:   30:    Oferta* o3 = creeazaOferta(tip, producator, model, pretRau, 1, 10);
+        1:   30-block  0
+call    0 returned 1
+       1*:   31:    assert(valideazaOferta(o3) == -1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   31-block  0
+call    3 never executed
+        -:   32:
+        1:   33:    Oferta* o4 = creeazaOferta(tip, producator, model, 15, idRau, 10);
+        1:   33-block  0
+call    0 returned 1
+       1*:   34:    assert(valideazaOferta(o4) == -1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   34-block  0
+call    3 never executed
+        -:   35:
+        1:   36:    Oferta* o5 = creeazaOferta(tip, producator, model, 15, 1, -1);
+        1:   36-block  0
+call    0 returned 1
+       1*:   37:    assert(valideazaOferta(o5) == -1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   37-block  0
+call    3 never executed
+        -:   38:
+        1:   39:    Oferta* o6 = creeazaOferta("", producator, model, 15, 1, 10);
+        1:   39-block  0
+call    0 returned 1
+       1*:   40:    assert(valideazaOferta(o6) == -1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   40-block  0
+call    3 never executed
+        -:   41:
+        1:   42:    Oferta* o7 = creeazaOferta(tip, producator, "", 15, 1, 10);
+        1:   42-block  0
+call    0 returned 1
+       1*:   43:    assert(valideazaOferta(o7) == -1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   43-block  0
+call    3 never executed
+        -:   44:
+        1:   45:    Oferta* o8 = creeazaOferta(tip, producator, model, 15, 1, 10);
+        1:   45-block  0
+call    0 returned 1
+       1*:   46:    assert(valideazaOferta(o8) == 1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   46-block  0
+call    3 never executed
+        1:   47:    destroyOferta(o);
+        1:   47-block  0
+call    0 returned 1
+        1:   48:    destroyOferta(o1);
+call    0 returned 1
+        1:   49:    destroyOferta(o2);
+call    0 returned 1
+        1:   50:    destroyOferta(o3);
+call    0 returned 1
+        1:   51:    destroyOferta(o4);
+call    0 returned 1
+        1:   52:    destroyOferta(o5);
+call    0 returned 1
+        1:   53:    destroyOferta(o6);
+call    0 returned 1
+        1:   54:    destroyOferta(o7);
+call    0 returned 1
+        1:   55:    destroyOferta(o8);
+call    0 returned 1
+        1:   56:}
+        -:   57:
+function testCopyOferta called 1 returned 100% blocks executed 69%
+        1:   58:void testCopyOferta() {
+        1:   59:    Oferta* o = creeazaOferta("laptop", "Lenovo", "ThinkPad", 1500, 1, 5);
+        1:   59-block  0
+call    0 returned 1
+        1:   60:    Oferta* copy = copyOferta(o);
+call    0 returned 1
+        -:   61:
+        -:   62:    // Verificăm că adresa de memorie a obiectului copiat este diferită de adresa obiectului original
+       1*:   63:    assert(copy != o);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   63-block  0
+call    2 never executed
+        -:   64:
+        -:   65:    // Verificăm că obiectul copiat are aceleași valori ca obiectul original
+       1*:   66:    assert(strcmp(copy->tip, o->tip) == 0);
+        1:   66-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   66-block  1
+call    2 never executed
+       1*:   67:    assert(strcmp(copy->model, o->model) == 0);
+        1:   67-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   67-block  1
+call    2 never executed
+       1*:   68:    assert(strcmp(copy->producer, o->producer) == 0);
+        1:   68-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   68-block  1
+call    2 never executed
+       1*:   69:    assert(copy->pret == o->pret);
+        1:   69-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   69-block  1
+call    2 never executed
+       1*:   70:    assert(copy->stoc == o->stoc);
+        1:   70-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   70-block  1
+call    2 never executed
+        -:   71:
+       1*:   72:    assert(getId(copy) == getId(o));
+        1:   72-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 0 (fallthrough)
+branch  3 taken 1
+    %%%%%:   72-block  1
+call    4 never executed
+       1*:   73:    assert(getPret(copy) == getPret(o));
+        1:   73-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 0 (fallthrough)
+branch  3 taken 1
+    %%%%%:   73-block  1
+call    4 never executed
+        1:   74:    setPret(o, 2000);
+        1:   74-block  0
+call    0 returned 1
+       1*:   75:    assert(getPret(o) == 2000);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   75-block  0
+call    3 never executed
+        1:   76:    destroyOferta(o);
+        1:   76-block  0
+call    0 returned 1
+        1:   77:    destroyOferta(copy);
+call    0 returned 1
+        1:   78:}
+        -:   79:
+function testAddEntitate called 1 returned 100% blocks executed 79%
+        1:   80:void testAddEntitate() {
+        -:   81:    // Cream o structură de date Offerte
+        1:   82:    Offerte* f = creeazaOfferte((DestroyFn)destroyOferta, (CopyFn) copyOferta);
+        1:   82-block  0
+call    0 returned 1
+        -:   83:
+        -:   84:    // Adăugăm oferte noi
+        1:   85:    Oferta* o1 = creeazaOferta("laptop", "Lenovo", "ThinkPad", 1500, 1, 10);
+call    0 returned 1
+        1:   86:    addEntitate(f, o1);
+call    0 returned 1
+        -:   87:
+        -:   88:    // Verificăm că dimensiunea a crescut și că oferta a fost adăugată corect
+       1*:   89:    assert(sizeList(f) == 1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   89-block  0
+call    3 never executed
+       1*:   90:    assert(getElement(f, 0) == o1);
+        1:   90-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   90-block  1
+call    3 never executed
+        -:   91:
+        -:   92:    // Adăugăm o a doua ofertă
+        1:   93:    Oferta* o2 = creeazaOferta("telefon", "Samsung", "Galaxy S20", 1200, 2, 5);
+        1:   93-block  0
+call    0 returned 1
+        1:   94:    addEntitate(f, o2);
+call    0 returned 1
+        -:   95:
+        -:   96:    // Verificăm că dimensiunea a crescut și că a doua ofertă a fost adăugată corect
+       1*:   97:    assert(sizeList(f) == 2);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   97-block  0
+call    3 never executed
+       1*:   98:    assert(getElement(f, 1) == o2);
+        1:   98-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   98-block  1
+call    3 never executed
+        -:   99:
+        -:  100:    // Eliberăm memoria
+        1:  101:    destroyOfferte(f);
+        1:  101-block  0
+call    0 returned 1
+        1:  102:}
+        -:  103:
+function testAsiguraCapacitate called 1 returned 100% blocks executed 85%
+        1:  104:void testAsiguraCapacitate() {
+        -:  105:    // Cream o structură de date Offerte cu o capacitate inițială mică
+        1:  106:    Offerte* f = creeazaOfferte((DestroyFn)destroyOferta, (CopyFn) copyOferta);
+        1:  106-block  0
+call    0 returned 1
+        -:  107:
+        -:  108:    // Adăugăm oferte până când capacitatea inițială este depășită
+        6:  109:    for (int i = 0; i < 5; i++) {
+        6:  109-block  0
+branch  0 taken 5
+branch  1 taken 1 (fallthrough)
+        5:  110:        Oferta* o = creeazaOferta("laptop", "Lenovo", "ThinkPad", 1500, i + 1, 10);
+        5:  110-block  0
+call    0 returned 5
+        5:  111:        addEntitate(f, o);
+call    0 returned 5
+        -:  112:    }
+        -:  113:
+        -:  114:    // Verificăm că dimensiunea și capacitatea au crescut corect
+       1*:  115:    assert(sizeList(f) == 5);
+        1:  115-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  115-block  1
+call    3 never executed
+       1*:  116:    assert(f->capacitate == 8); // Capacitatea ar trebui să fie dublul valorii inițiale (2)
+        1:  116-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  116-block  1
+call    2 never executed
+        -:  117:
+        -:  118:    // Eliberăm memoria
+        1:  119:    destroyOfferte(f);
+        1:  119-block  0
+call    0 returned 1
+        1:  120:}
+        -:  121:
+function testDeleteEntitate called 1 returned 100% blocks executed 81%
+        1:  122:void testDeleteEntitate() {
+        -:  123:    // Cream o structură de date Offerte cu oferte adăugate
+        1:  124:    Offerte* f = creeazaOfferte((DestroyFn)destroyOferta, (CopyFn) copyOferta);
+        1:  124-block  0
+call    0 returned 1
+        1:  125:    Oferta* o1 = creeazaOferta("laptop", "Lenovo", "ThinkPad", 1500, 1, 10);
+call    0 returned 1
+        1:  126:    Oferta* o2 = creeazaOferta("telefon", "Samsung", "Galaxy S20", 1200, 2, 5);
+call    0 returned 1
+        1:  127:    addEntitate(f, o1);
+call    0 returned 1
+        1:  128:    addEntitate(f, o2);
+call    0 returned 1
+        -:  129:
+        -:  130:    // Ștergem prima ofertă
+        1:  131:    int result1 = deleteEntitate(f, 1);
+call    0 returned 1
+        -:  132:    // Verificăm că prima ofertă a fost ștearsă corect
+       1*:  133:    assert(result1 == 0); // Întoarce 1 dacă ștergerea a fost cu succes
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  133-block  0
+call    2 never executed
+       1*:  134:    assert(sizeList(f) == 1); // Dimensiunea trebuie să fie acum 1
+        1:  134-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  134-block  1
+call    3 never executed
+        -:  135:
+        -:  136:    // Ștergem o ofertă care nu există
+        1:  137:    int result2 = deleteEntitate(f, 3);
+        1:  137-block  0
+call    0 returned 1
+        -:  138:    // Verificăm că ștergerea unei oferte inexistente returnează 0
+       1*:  139:    assert(result2 == 1); // Întoarce 0 dacă oferta nu a fost găsită
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  139-block  0
+call    2 never executed
+        -:  140:
+        -:  141:    // Eliberăm memoria
+        1:  142:    destroyOfferte(f);
+        1:  142-block  0
+call    0 returned 1
+        1:  143:}
+function testUpdateOferta called 1 returned 100% blocks executed 86%
+        1:  144:void testUpdateOferta()
+        -:  145:{
+        1:  146:    Offerte* f = creeazaOfferte((DestroyFn)destroyOferta, (CopyFn) copyOferta);
+        1:  146-block  0
+call    0 returned 1
+        -:  147:
+        -:  148:    // Adăugare entitate pentru testare
+        1:  149:    addEntitate(f, creeazaOferta("laptop", "Lenovo", "ThinkPad", 1500, 10,2));
+call    0 returned 1
+call    1 returned 1
+        -:  150:
+        -:  151:    // Testare actualizare entitate existentă
+        1:  152:    Oferta* oferta_actualizata = creeazaOferta("laptop", "Dell", "XPS 13", 1800, 8,1);
+call    0 returned 1
+       1*:  153:    assert(updateOferta(f, oferta_actualizata) == -1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  153-block  0
+call    3 never executed
+        -:  154:
+       1*:  155:    assert(updateOferta(f, creeazaOferta("laptop", "Dell", "XPS 13", 1800, 10,2)) == 0);
+        1:  155-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 0 (fallthrough)
+branch  3 taken 1
+    %%%%%:  155-block  1
+call    4 never executed
+        -:  156:
+        1:  157:    destroyOfferte(f);
+        1:  157-block  0
+call    0 returned 1
+        1:  158:    destroyOferta(oferta_actualizata);
+call    0 returned 1
+        1:  159:}
+        -:  160:
+function testCauta called 1 returned 100% blocks executed 83%
+        1:  161:void testCauta()
+        -:  162:{
+        1:  163:    Offerte* f = creeazaOfferte((DestroyFn)destroyOferta, (CopyFn) copyOferta);
+        1:  163-block  0
+call    0 returned 1
+        -:  164:
+        -:  165:    // Testare căutare într-o listă goală
+       1*:  166:    assert(cauta(f, 1) == -1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  166-block  0
+call    3 never executed
+        -:  167:
+        -:  168:    // Adăugare câteva entități pentru testare
+        1:  169:    addEntitate(f, creeazaOferta("laptop", "Lenovo", "ThinkPad", 1500, 10, 1));
+        1:  169-block  0
+call    0 returned 1
+call    1 returned 1
+        1:  170:    addEntitate(f, creeazaOferta("telefon", "Samsung", "Galaxy S20", 1000, 5, 3));
+call    0 returned 1
+call    1 returned 1
+        1:  171:    addEntitate(f, creeazaOferta("smartwatch", "Apple", "Watch Series 6", 400, 3, 2));
+call    0 returned 1
+call    1 returned 1
+        -:  172:
+        -:  173:    // Testare căutare ID inexistent
+       1*:  174:    assert(cauta(f, 4) == -1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  174-block  0
+call    3 never executed
+        -:  175:
+        -:  176:    // Testare căutare ID valid
+       1*:  177:    assert(cauta(f, 3));
+        1:  177-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  177-block  1
+call    3 never executed
+        -:  178:
+        1:  179:    destroyOfferte(f);
+        1:  179-block  0
+call    0 returned 1
+        1:  180:}
+        -:  181:
+function testCopy called 1 returned 100% blocks executed 88%
+        1:  182:void testCopy()
+        -:  183:{
+        -:  184:    // Creăm o listă de oferte pentru test
+        1:  185:    Offerte* originalList = creeazaOfferte((DestroyFn)destroyOferta, (CopyFn) copyOferta);
+        1:  185-block  0
+call    0 returned 1
+        1:  186:    addEntitate(originalList, creeazaOferta("laptop", "Lenovo", "ThinkPad", 1500, 10, 1));
+call    0 returned 1
+call    1 returned 1
+        1:  187:    addEntitate(originalList, creeazaOferta("telefon", "Samsung", "Galaxy S20", 1000, 5, 2));
+call    0 returned 1
+call    1 returned 1
+        1:  188:    addEntitate(originalList, creeazaOferta("smartwatch", "Apple", "Watch Series 6", 400, 3, 3));
+call    0 returned 1
+call    1 returned 1
+        -:  189:
+        -:  190:    // Copiem lista
+        1:  191:    Offerte* copiedList = copy(originalList);
+call    0 returned 1
+        -:  192:
+        -:  193:    // Verificăm că dimensiunea și capacitatea sunt aceleași
+       1*:  194:    assert(sizeList(originalList) == sizeList(copiedList));
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 0 (fallthrough)
+branch  3 taken 1
+    %%%%%:  194-block  0
+call    4 never executed
+       1*:  195:    assert(originalList->capacitate == copiedList->capacitate);
+        1:  195-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  195-block  1
+call    2 never executed
+        -:  196:
+        -:  197:
+        -:  198:    // Eliberăm memoria
+        1:  199:    destroyOfferte(originalList);
+        1:  199-block  0
+call    0 returned 1
+        1:  200:    destroyOfferte(copiedList);
+call    0 returned 1
+        1:  201:}
+        -:  202:
+function testPopElement called 1 returned 100% blocks executed 93%
+        1:  203:void testPopElement()
+        -:  204:{
+        -:  205:    // Creăm o listă de oferte pentru test
+        1:  206:    Offerte* listaOferte = creeazaOfferte((DestroyFn)destroyOferta, (CopyFn) copyOferta);
+        1:  206-block  0
+call    0 returned 1
+        1:  207:    addEntitate(listaOferte, creeazaOferta("laptop", "Lenovo", "ThinkPad", 1500, 10, 1));
+call    0 returned 1
+call    1 returned 1
+        1:  208:    addEntitate(listaOferte, creeazaOferta("telefon", "Samsung", "Galaxy S20", 1000, 5, 2));
+call    0 returned 1
+call    1 returned 1
+        1:  209:    addEntitate(listaOferte, creeazaOferta("smartwatch", "Apple", "Watch Series 6", 400, 3, 3));
+call    0 returned 1
+call    1 returned 1
+        -:  210:
+        -:  211:    // Extragem ultimul element din listă
+        1:  212:    Entitate ultimulElement = popElement(listaOferte);
+call    0 returned 1
+        -:  213:
+        -:  214:    // Verificăm că dimensiunea listei a scăzut cu 1
+       1*:  215:    assert(sizeList(listaOferte) == 2);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  215-block  0
+call    3 never executed
+        -:  216:
+        -:  217:    // Eliberăm memoria
+        1:  218:    destroyOferta(ultimulElement);
+        1:  218-block  0
+call    0 returned 1
+        1:  219:    destroyOfferte(listaOferte);
+call    0 returned 1
+        1:  220:}
+        -:  221:
+function service_tests called 1 returned 100% blocks executed 64%
+        1:  222:void service_tests() {
+        1:  223:    BigList* newService = createBigList();
+        1:  223-block  0
+call    0 returned 1
+        1:  224:    Offerte* undo = newService->undo_lista;
+        1:  225:    Offerte* elements = newService->lista;
+       1*:  226:    assert(newService->undo_lista->dimensiune == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  226-block  0
+call    2 never executed
+       1*:  227:    assert(newService->lista->dimensiune == 0);
+        1:  227-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  227-block  1
+call    2 never executed
+        1:  228:    addEnt(newService, "type", "model", "producer", 100, 1, 10);
+        1:  228-block  0
+call    0 returned 1
+        -:  229:
+       1*:  230:    assert(elements->dimensiune == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  230-block  0
+call    2 never executed
+       1*:  231:    assert(undo->dimensiune == 1);
+        1:  231-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  231-block  1
+call    2 never executed
+        -:  232:
+        1:  233:    Oferta* oferta1 = getElement(elements, 0);
+        1:  233-block  0
+call    0 returned 1
+       1*:  234:    assert(strcmp(oferta1->tip, "type") == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  234-block  0
+call    2 never executed
+       1*:  235:    assert(strcmp(oferta1->model, "model") == 0);
+        1:  235-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  235-block  1
+call    2 never executed
+       1*:  236:    assert(strcmp(oferta1->producer, "producer") == 0);
+        1:  236-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  236-block  1
+call    2 never executed
+       1*:  237:    assert(oferta1->pret == 100);
+        1:  237-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  237-block  1
+call    2 never executed
+       1*:  238:    assert(oferta1->stoc == 10);
+        1:  238-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  238-block  1
+call    2 never executed
+        -:  239:
+        -:  240:
+       1*:  241:    assert(updateEnt(newService, "type", "model", "producer", 100, 59, 10) == -1);
+        1:  241-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  241-block  1
+call    3 never executed
+        -:  242:
+        1:  243:    addEnt(newService, "type", "model", "producer", 100, 2, 10);
+        1:  243-block  0
+call    0 returned 1
+       1*:  244:    assert(elements->dimensiune == 2);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  244-block  0
+call    2 never executed
+       1*:  245:    assert(undo->dimensiune == 2);
+        1:  245-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  245-block  1
+call    2 never executed
+        -:  246:
+       1*:  247:    assert(updateEnt(newService, "type", "model", "producer", 100, 1, 10) == 0);
+        1:  247-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  247-block  1
+call    3 never executed
+        -:  248:
+       1*:  249:    assert(undo->dimensiune == 3);
+        1:  249-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  249-block  1
+call    2 never executed
+        -:  250:
+        1:  251:    addEnt(newService, "type", "model", "producer", 100, 3, 10);
+        1:  251-block  0
+call    0 returned 1
+       1*:  252:    assert(elements->dimensiune == 3);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  252-block  0
+call    2 never executed
+       1*:  253:    assert(undo->dimensiune == 4);
+        1:  253-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  253-block  1
+call    2 never executed
+        -:  254:
+        1:  255:    int length = elements->dimensiune;
+       1*:  256:        assert(deleteEnt(newService, 3) == 1);
+        1:  256-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  256-block  1
+call    3 never executed
+       1*:  257:    assert(deleteEnt(newService, 5) == 0);
+        1:  257-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  257-block  1
+call    3 never executed
+        -:  258:    int i;
+        4:  259:    for (i = 0; i < length; i++)
+        1:  259-block  0
+        3:  259-block  1
+        4:  259-block  2
+branch  0 taken 3
+branch  1 taken 1 (fallthrough)
+        -:  260:    {
+       3*:  261:        assert(undo_service(newService) == 0);
+        3:  261-block  0
+call    0 returned 3
+branch  1 taken 0 (fallthrough)
+branch  2 taken 3
+    %%%%%:  261-block  1
+call    3 never executed
+        -:  262:    }
+        -:  263:
+        -:  264:    //undo_service
+        -:  265:    int ok;
+        1:  266:    ok = undo_service(newService);
+        1:  266-block  0
+call    0 returned 1
+       1*:  267:    assert(ok == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  267-block  0
+call    2 never executed
+       1*:  268:    assert(undo_service(newService) == 0);
+        1:  268-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  268-block  1
+call    3 never executed
+       1*:  269:    assert(undo->dimensiune == 0);
+        1:  269-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  269-block  1
+call    2 never executed
+       1*:  270:    assert(undo_service(newService) == 1);
+        1:  270-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  270-block  1
+call    3 never executed
+        -:  271:
+       1*:  272:    assert(addEnt(newService,"","","", -1,-1,5) == 0);
+        1:  272-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  272-block  1
+call    3 never executed
+        -:  273:
+        1:  274:    destroyBigList(newService);
+        1:  274-block  0
+call    0 returned 1
+        -:  275:
+        1:  276:}
+function testFilterPret called 1 returned 100% blocks executed 92%
+        1:  277:void testFilterPret()
+        -:  278:{
+        1:  279:    BigList* newService = createBigList();
+        1:  279-block  0
+call    0 returned 1
+        1:  280:    Offerte* undo = newService->undo_lista;
+        1:  281:    Offerte* elements = newService->lista;
+        -:  282:
+        1:  283:    addEnt(newService,"type", "model", "producer", 100, 59, 10);
+call    0 returned 1
+        1:  284:    addEnt(newService,"type", "model", "producer", 40, 40, 10);
+call    0 returned 1
+        1:  285:    addEnt(newService,"type", "model", "producer", 160, 23, 10);
+call    0 returned 1
+        -:  286:
+        1:  287:    Offerte * f1 = filterPret(newService, 50);
+call    0 returned 1
+        -:  288:
+       1*:  289:    assert(f1->dimensiune == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  289-block  0
+call    2 never executed
+        -:  290:
+        1:  291:    int ok = undo_service(newService);
+        1:  291-block  0
+call    0 returned 1
+        1:  292:    ok = undo_service(newService);
+call    0 returned 1
+        1:  293:    ok = undo_service(newService);
+call    0 returned 1
+        1:  294:    destroyOfferte(f1);
+call    0 returned 1
+        1:  295:    destroyBigList(newService);
+call    0 returned 1
+        1:  296:}
+        -:  297:
+function testFilterTip called 1 returned 100% blocks executed 88%
+        1:  298:void testFilterTip()
+        -:  299:{
+        1:  300:    BigList* newService = createBigList();
+        1:  300-block  0
+call    0 returned 1
+        1:  301:    Offerte* undo = newService->undo_lista;
+        1:  302:    Offerte* elements = newService->lista;
+        -:  303:
+        1:  304:    addEnt(newService,"type", "model", "producer", 100, 59, 10);
+call    0 returned 1
+        1:  305:    addEnt(newService,"type", "model", "producer", 40, 40, 10);
+call    0 returned 1
+        1:  306:    addEnt(newService,"type", "model", "producer", 160, 23, 10);
+call    0 returned 1
+        -:  307:
+        1:  308:    Offerte * f2 = filterTip(newService, 'r');
+call    0 returned 1
+       1*:  309:    assert(f2->dimensiune == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  309-block  0
+call    2 never executed
+        1:  310:    Offerte * f1 = filterTip(newService, 't');
+        1:  310-block  0
+call    0 returned 1
+       1*:  311:    assert(f1->dimensiune == 3);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  311-block  0
+call    2 never executed
+        -:  312:
+        1:  313:    int ok = undo_service(newService);
+        1:  313-block  0
+call    0 returned 1
+        1:  314:    ok = undo_service(newService);
+call    0 returned 1
+        1:  315:    ok = undo_service(newService);
+call    0 returned 1
+        1:  316:    destroyOfferte(f1);
+call    0 returned 1
+        1:  317:    destroyOfferte(f2);
+call    0 returned 1
+        1:  318:    destroyBigList(newService);
+call    0 returned 1
+        1:  319:}
+        -:  320:
+function testsortingfunctions called 1 returned 100% blocks executed 68%
+        1:  321:void testsortingfunctions()
+        -:  322:{
+        1:  323:    Oferta oferta1 = {"type", "model", "producer", 100, 59, 10};
+        1:  324:    Oferta oferta2 = {"type", "model", "producer", 40, 40, 12};
+       1*:  325:    assert(cmpPret(&oferta1, &oferta2) > 0);
+        1:  325-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  325-block  1
+call    3 never executed
+       1*:  326:    assert(cmpPret(&oferta2, &oferta1) < 0);
+        1:  326-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  326-block  1
+call    3 never executed
+       1*:  327:    assert(cmpPret(&oferta1, &oferta1) == 0);
+        1:  327-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  327-block  1
+call    3 never executed
+        -:  328:
+        -:  329:    // Test cmpPretD function
+       1*:  330:    assert(cmpPretD(&oferta1, &oferta2) < 0);
+        1:  330-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  330-block  1
+call    3 never executed
+       1*:  331:    assert(cmpPretD(&oferta2, &oferta1) > 0);
+        1:  331-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  331-block  1
+call    3 never executed
+       1*:  332:    assert(cmpPretD(&oferta1, &oferta1) == 0);
+        1:  332-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  332-block  1
+call    3 never executed
+        -:  333:
+        -:  334:    // Test cmpDestinatie function
+       1*:  335:    assert(cmpStoc(&oferta1, &oferta2) < 0);
+        1:  335-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  335-block  1
+call    3 never executed
+       1*:  336:    assert(cmpStoc(&oferta2, &oferta1) > 0);
+        1:  336-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  336-block  1
+call    3 never executed
+       1*:  337:    assert(cmpStoc(&oferta1, &oferta1) == 0);
+        1:  337-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  337-block  1
+call    3 never executed
+        -:  338:
+        -:  339:
+        -:  340:    // Test cmpDestinatieD function
+       1*:  341:    assert(cmpStocD(&oferta1, &oferta2) > 0);
+        1:  341-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  341-block  1
+call    3 never executed
+       1*:  342:    assert(cmpStocD(&oferta2, &oferta1) < 0);
+        1:  342-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  342-block  1
+call    3 never executed
+       1*:  343:    assert(cmpStocD(&oferta1, &oferta1) == 0);
+        1:  343-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  343-block  1
+call    3 never executed
+        -:  344:
+        1:  345:}
+        -:  346:
+function testesort called 1 returned 100% blocks executed 81%
+        1:  347:void testesort()
+        -:  348:{
+        1:  349:    BigList *list = createBigList();
+        1:  349-block  0
+call    0 returned 1
+        -:  350:
+        1:  351:    Offerte* f = list->lista;
+        1:  352:    Oferta* m = creeazaOferta("type", "model", "producer", 100, 59, 15);
+call    0 returned 1
+        1:  353:    Oferta* m1 = creeazaOferta("type", "model", "producer", 50, 59, 13);
+call    0 returned 1
+        1:  354:    Oferta* m2 = creeazaOferta("type", "model", "producer", 60, 59, 18);
+call    0 returned 1
+        -:  355:
+        1:  356:    addEntitate(f,m);
+call    0 returned 1
+        1:  357:    addEntitate(f,m1);
+call    0 returned 1
+        1:  358:    addEntitate(f,m2);
+call    0 returned 1
+        1:  359:    BigList* sortedList = sortPret(list);
+call    0 returned 1
+       1*:  360:    assert(getPret(sortedList->lista->oferte[0]) == 50);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  360-block  0
+call    3 never executed
+        1:  361:    BigList* sortedListB = sortPretb(list);
+        1:  361-block  0
+call    0 returned 1
+       1*:  362:    assert(getPret(sortedListB->lista->oferte[0]) == 50);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  362-block  0
+call    3 never executed
+        1:  363:    BigList* sortedListD = sortPretD(list);
+        1:  363-block  0
+call    0 returned 1
+       1*:  364:    assert(getPret(sortedListD->lista->oferte[0]) == 100);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  364-block  0
+call    3 never executed
+        1:  365:    BigList* sortedListDB = sortPretDb(list);
+        1:  365-block  0
+call    0 returned 1
+       1*:  366:    assert(getPret(sortedListDB->lista->oferte[0]) == 100);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  366-block  0
+call    3 never executed
+        -:  367:
+        1:  368:    BigList* sortedListS = sortStoc(list);
+        1:  368-block  0
+call    0 returned 1
+       1*:  369:    assert(getStoc(sortedListS->lista->oferte[0]) == 13);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  369-block  0
+call    3 never executed
+        1:  370:    BigList* sortedListSB = sortStocb(list);
+        1:  370-block  0
+call    0 returned 1
+       1*:  371:    assert(getStoc(sortedListSB->lista->oferte[0]) == 13);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  371-block  0
+call    3 never executed
+        1:  372:    BigList* sortedListSD = sortStocD(list);
+        1:  372-block  0
+call    0 returned 1
+       1*:  373:    assert(getStoc(sortedListSD->lista->oferte[0]) == 18);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  373-block  0
+call    3 never executed
+        -:  374:
+        1:  375:    Oferta* m3 = creeazaOferta("type", "model", "producer", 60, 59, 20);
+        1:  375-block  0
+call    0 returned 1
+        1:  376:    addEntitate(f, m3);
+call    0 returned 1
+        1:  377:    BigList* sortedListSDB = sortStocDb(list);
+call    0 returned 1
+       1*:  378:    assert(getStoc(sortedListSDB->lista->oferte[0]) == 20);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  378-block  0
+call    3 never executed
+        -:  379:
+        1:  380:    destroyAll(list);
+        1:  380-block  0
+call    0 returned 1
+        -:  381:
+        1:  382:}
+        -:  383:
+function runAllTests called 1 returned 100% blocks executed 100%
+        1:  384:void runAllTests()
+        -:  385:{
+        1:  386:    testValideazaOferta();
+        1:  386-block  0
+call    0 returned 1
+        1:  387:    testCopyOferta();
+call    0 returned 1
+        1:  388:    testAddEntitate();
+call    0 returned 1
+        1:  389:    testAsiguraCapacitate();
+call    0 returned 1
+        1:  390:    testDeleteEntitate();
+call    0 returned 1
+        1:  391:    testUpdateOferta();
+call    0 returned 1
+        1:  392:    testCauta();
+call    0 returned 1
+        1:  393:    testCopy();
+call    0 returned 1
+        1:  394:    testPopElement();
+call    0 returned 1
+        1:  395:    service_tests();
+call    0 returned 1
+        1:  396:    testFilterPret();
+call    0 returned 1
+        1:  397:    testFilterTip();
+call    0 returned 1
+        1:  398:    testsortingfunctions();
+call    0 returned 1
+        1:  399:    testesort();
+call    0 returned 1
+        -:  400:
+        1:  401:}

@@ -1,0 +1,58 @@
+        -:    0:Source:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/repository.h
+        -:    0:Graph:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/cmake-build-debug-coverage/CMakeFiles/lab_6_static.dir/tests.cpp.gcno
+        -:    0:Data:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/cmake-build-debug-coverage/CMakeFiles/lab_6_static.dir/tests.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Costi on 29-Mar-24.
+        -:    3://
+        -:    4:
+        -:    5:#ifndef LAB_6_STATIC_REPOSITORY_H
+        -:    6:#define LAB_6_STATIC_REPOSITORY_H
+        -:    7:#include "domain.h"
+        -:    8:#include <vector>
+        -:    9:#include <string>
+        -:   10:#include <ostream>
+        -:   11:
+        -:   12:using std::vector;
+        -:   13:using std::string;
+        -:   14:using std::ostream;
+        -:   15:
+        -:   16:class MasinaRepo{
+        -:   17:        vector<Masina> all;
+        -:   18:        bool exist(const Masina& m) const;
+        -:   19:public:
+function _ZN10MasinaRepoC2Ev called 0 returned 0% blocks executed 0%
+    #####:   20:        MasinaRepo() = default;
+    %%%%%:   20-block  0
+call    0 never executed
+        -:   21:
+        -:   22:        MasinaRepo(const MasinaRepo& ot) = delete;
+        -:   23:
+        -:   24:        bool store(const Masina& m);
+        -:   25:
+        -:   26:        bool delMasinaRepo(int nr);
+        -:   27:
+        -:   28:        bool modifyMasinaRepo(int nr, const Masina& masina_de_modificat);
+        -:   29:
+        -:   30:        const Masina& srcMasinaRepo(int nr);
+        -:   31:
+        -:   32:        const Masina& find(const string& producator, const string& model) const;
+        -:   33:
+        -:   34:        const vector<Masina>& getAll() const noexcept;
+        -:   35:};
+        -:   36:
+        -:   37:class MasinaRepoException{
+        -:   38:        string msg;
+        -:   39:
+        -:   40:public:
+        -:   41:        explicit MasinaRepoException(string m) : msg{ m } {
+        -:   42:
+        -:   43:        }
+        -:   44:
+        -:   45:        //friend ostream& operator<<(ostream& out, const MasinaRepoException& ex);
+        -:   46:};
+        -:   47:
+        -:   48://ostream& operator<<(ostream& out, const MasinaRepoException& ex);
+        -:   49:
+        -:   50:
+        -:   51:#endif //LAB_6_STATIC_REPOSITORY_H

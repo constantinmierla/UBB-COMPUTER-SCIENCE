@@ -1,0 +1,372 @@
+        -:    0:Source:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/service.c
+        -:    0:Graph:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/cmake-build-debug-coverage/CMakeFiles/lab_2.dir/service.c.gcno
+        -:    0:Data:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 5 refactorizare codul altuia/cmake-build-debug-coverage/CMakeFiles/lab_2.dir/service.c.gcda
+        -:    0:Runs:1
+        -:    1:#include<stdlib.h>
+        -:    2:#include<string.h>
+        -:    3:#include <stdio.h>
+        -:    4:#include "service.h"
+        -:    5:#include "domain.h"
+        -:    6:#include "repository.h"
+        -:    7:#include "sort.h"
+function createBigList called 4 returned 100% blocks executed 100%
+        4:    8:BigList* createBigList()
+        -:    9:{
+        4:   10:    BigList* listaMeds = (BigList*)malloc(sizeof(BigList));
+        4:   11:    listaMeds->lista = creeazaOfferte((DestroyFn)destroyOferta, (CopyFn) copyOferta);//de vzt
+        4:   11-block  0
+call    0 returned 4
+        4:   12:    listaMeds->undo_lista = creeazaOfferte((DestroyFn)destroyBigList, (CopyFn) copy);
+call    0 returned 4
+        4:   13:    return listaMeds;
+        -:   14:}
+        -:   15:
+function destroyBigList called 4 returned 100% blocks executed 100%
+        4:   16:void destroyBigList(BigList* list)
+        -:   17:{
+        4:   18:    destroyOfferte(list->lista);
+        4:   18-block  0
+call    0 returned 4
+        4:   19:    destroyOfferte(list->undo_lista);
+call    0 returned 4
+        4:   20:    free(list);
+        4:   21:}
+        -:   22:
+function undo_service called 12 returned 100% blocks executed 100%
+       12:   23:int undo_service(BigList* list)
+        -:   24:{
+       12:   25:    if(sizeList(list->undo_lista) == 0)
+       12:   25-block  0
+call    0 returned 12
+branch  1 taken 1 (fallthrough)
+branch  2 taken 11
+        1:   26:        return 1;
+        1:   26-block  0
+        -:   27:
+       11:   28:    Offerte* lista_noua = popElement(list->undo_lista);
+       11:   28-block  0
+call    0 returned 11
+       11:   29:    destroyOfferte(list->lista);
+call    0 returned 11
+       11:   30:    list->lista = lista_noua;
+       11:   31:    return 0;
+        -:   32:}
+        -:   33:/*Adauga  o oferta in lista.
+        -:   34: * Pre: list- de tip BigList*
+        -:   35: * Post: 0 daca entitatea exista deja in lista, 1 altfel
+        -:   36: */
+function addEnt called 10 returned 100% blocks executed 100%
+       10:   37:int addEnt(BigList* list, char* tip, char* model, char* producer, int pret, int id, int stoc)
+        -:   38:{
+       10:   39:    Oferta* e = creeazaOferta(tip, model, producer, pret, id, stoc);
+       10:   39-block  0
+call    0 returned 10
+       10:   40:    if(valideazaOferta(e) == 1)
+call    0 returned 10
+branch  1 taken 9 (fallthrough)
+branch  2 taken 1
+        -:   41:    {
+        9:   42:        Offerte* copyy = copy(list->lista);
+        9:   42-block  0
+call    0 returned 9
+        9:   43:        addEntitate(list->undo_lista,copyy);
+call    0 returned 9
+        9:   44:        addEntitate(list->lista,e);
+call    0 returned 9
+        -:   45:
+        9:   46:        return 1;
+        -:   47:    }
+        -:   48:    else
+        -:   49:    {
+        1:   50:        destroyOferta(e);
+        1:   50-block  0
+call    0 returned 1
+        1:   51:        return 0;
+        -:   52:    }
+        -:   53:}
+        -:   54:/*Functie care sterge o entitate
+        -:   55: *Pre:list de tip BigList*, id de tip int
+        -:   56: * Post: 1 daca id-ul este in lista si a fost sters, 0 altfel
+        -:   57: */
+function deleteEnt called 2 returned 100% blocks executed 100%
+        2:   58:int deleteEnt(BigList* list,int id)
+        -:   59:{
+        2:   60:    Offerte* l = list->lista;
+        2:   61:    if(checkId(list,id))
+        2:   61-block  0
+call    0 returned 2
+branch  1 taken 1 (fallthrough)
+branch  2 taken 1
+        -:   62:    {
+        1:   63:        Offerte* copy_undo = copy(l);
+        1:   63-block  0
+call    0 returned 1
+        1:   64:        addEntitate(list->undo_lista, copy_undo);
+call    0 returned 1
+        -:   65:        //devzt
+        1:   66:        deleteEntitate(list->lista,id);
+call    0 returned 1
+        1:   67:        return 1;
+        -:   68:    }
+        1:   69:    return 0;
+        1:   69-block  0
+        -:   70:}
+        -:   71:
+        -:   72:/*Face update .
+        -:   73: * Pre: list- de tip BigList*
+        -:   74: * Post: 0 daca entitatea exista deja in lista si s-a facut modificarea, 1 altfel
+        -:   75: */
+function updateEnt called 2 returned 100% blocks executed 100%
+        2:   76:int updateEnt(BigList* list, char* tip, char* model, char* producer, int pret, int id, int stoc)
+        -:   77:{
+        2:   78:    Offerte* o = list->lista;
+        -:   79:
+        3:   80:    for(int i=0;i<list->lista->dimensiune;i++)
+        2:   80-block  0
+        1:   80-block  1
+        3:   80-block  2
+branch  0 taken 2
+branch  1 taken 1 (fallthrough)
+        -:   81:    {
+        2:   82:        if(getId(get(list->lista,i))==id)
+        2:   82-block  0
+call    0 returned 2
+call    1 returned 2
+branch  2 taken 1 (fallthrough)
+branch  3 taken 1
+        -:   83:        {
+        1:   84:            Offerte* copie = copy(o);
+        1:   84-block  0
+call    0 returned 1
+        1:   85:            addEntitate(list->undo_lista, copie);
+call    0 returned 1
+        -:   86:            //devzt
+        1:   87:            Entitate e = creeazaOferta(tip, model, producer, pret, id, stoc);
+call    0 returned 1
+        1:   88:            updateOferta(list->lista,e);
+call    0 returned 1
+        1:   89:            return 0;
+        -:   90:        }
+        -:   91:
+        -:   92:    }
+        1:   93:    return -1;
+        1:   93-block  0
+        -:   94:}
+        -:   95:
+        -:   96:/*Cauta daca un id este in lista*/
+function checkId called 2 returned 100% blocks executed 100%
+        2:   97:int checkId(BigList* list,int id)
+        -:   98:{
+        2:   99:    if(cauta(list->lista,id) != -1)
+        2:   99-block  0
+call    0 returned 2
+branch  1 taken 1 (fallthrough)
+branch  2 taken 1
+        1:  100:        return 1;
+        1:  100-block  0
+        1:  101:    return 0;
+        1:  101-block  0
+        -:  102:}
+        -:  103:
+        -:  104:
+        -:  105:/*Dealoca tot*/
+function destroyAll called 1 returned 100% blocks executed 100%
+        1:  106:void destroyAll(BigList* list)
+        -:  107:{
+        1:  108:    destroyBigList(list);
+        1:  108-block  0
+call    0 returned 1
+        1:  109:}
+        -:  110:
+function cmpPret called 8 returned 100% blocks executed 100%
+        8:  111:int cmpPret(Oferta* m1, Oferta* m2) {
+        8:  112:    if (m1->pret == m2->pret)
+        8:  112-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 7
+        1:  113:        return 0;
+        1:  113-block  0
+        7:  114:    if (m1->pret > m2->pret)
+        7:  114-block  0
+branch  0 taken 3 (fallthrough)
+branch  1 taken 4
+        3:  115:        return 1;
+        3:  115-block  0
+        -:  116:    else
+        4:  117:        return -1;
+        4:  117-block  0
+        -:  118:}
+        -:  119:
+function cmpPretD called 8 returned 100% blocks executed 100%
+        8:  120:int cmpPretD(Oferta* m1, Oferta* m2) {
+        8:  121:    if (m1->pret == m2->pret)
+        8:  121-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 7
+        1:  122:        return 0;
+        1:  122-block  0
+        7:  123:    if (m1->pret < m2->pret)
+        7:  123-block  0
+branch  0 taken 4 (fallthrough)
+branch  1 taken 3
+        4:  124:        return 1;
+        4:  124-block  0
+        -:  125:    else
+        3:  126:        return -1;
+        3:  126-block  0
+        -:  127:}
+        -:  128:
+function cmpStoc called 8 returned 100% blocks executed 100%
+        8:  129:int cmpStoc(Oferta* m1, Oferta* m2) {
+        8:  130:    if (m1->stoc == m2->stoc)
+        8:  130-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 7
+        1:  131:        return 0;
+        1:  131-block  0
+        7:  132:    if (m1->stoc > m2->stoc)
+        7:  132-block  0
+branch  0 taken 3 (fallthrough)
+branch  1 taken 4
+        3:  133:        return 1;
+        3:  133-block  0
+        -:  134:    else
+        4:  135:        return -1;
+        4:  135-block  0
+        -:  136:}
+        -:  137:
+function cmpStocD called 18 returned 100% blocks executed 100%
+       18:  138:int cmpStocD(Oferta* m1, Oferta* m2) {
+       18:  139:    if (m1->stoc == m2->stoc)
+       18:  139-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 17
+        1:  140:        return 0;
+        1:  140-block  0
+       17:  141:    if (m1->stoc < m2->stoc)
+       17:  141-block  0
+branch  0 taken 7 (fallthrough)
+branch  1 taken 10
+        7:  142:        return 1;
+        7:  142-block  0
+        -:  143:    else
+       10:  144:        return -1;
+       10:  144-block  0
+        -:  145:}
+        -:  146:
+function sortPret called 1 returned 100% blocks executed 100%
+        1:  147:BigList* sortPret(BigList* l) {
+        1:  148:    sort(l->lista, cmpPret);
+        1:  148-block  0
+call    0 returned 1
+        1:  149:    return l;
+        -:  150:}
+        -:  151:
+function sortPretD called 1 returned 100% blocks executed 100%
+        1:  152:BigList* sortPretD(BigList* l) {
+        1:  153:    sort(l->lista, cmpPretD);
+        1:  153-block  0
+call    0 returned 1
+        1:  154:    return l;
+        -:  155:}
+        -:  156:
+function sortStoc called 1 returned 100% blocks executed 100%
+        1:  157:BigList* sortStoc(BigList* l) {
+        1:  158:    sort(l->lista, cmpStoc);
+        1:  158-block  0
+call    0 returned 1
+        1:  159:    return l;
+        -:  160:}
+function sortStocD called 1 returned 100% blocks executed 100%
+        1:  161:BigList* sortStocD(BigList* l) {
+        1:  162:    sort(l->lista, cmpStocD);
+        1:  162-block  0
+call    0 returned 1
+        1:  163:    return l;
+        -:  164:}
+function sortPretb called 1 returned 100% blocks executed 100%
+        1:  165:BigList* sortPretb(BigList* l) {
+        1:  166:    sortbubble(l->lista, cmpPret);
+        1:  166-block  0
+call    0 returned 1
+        1:  167:    return l;
+        -:  168:}
+        -:  169:
+function sortPretDb called 1 returned 100% blocks executed 100%
+        1:  170:BigList* sortPretDb(BigList* l) {
+        1:  171:    sortbubble(l->lista, cmpPretD);
+        1:  171-block  0
+call    0 returned 1
+        1:  172:    return l;
+        -:  173:}
+        -:  174:
+function sortStocb called 1 returned 100% blocks executed 100%
+        1:  175:BigList* sortStocb(BigList* l) {
+        1:  176:    sortbubble(l->lista, cmpStoc);
+        1:  176-block  0
+call    0 returned 1
+        1:  177:    return l;
+        -:  178:}
+function sortStocDb called 1 returned 100% blocks executed 100%
+        1:  179:BigList* sortStocDb(BigList* l) {
+        1:  180:    sortbubble(l->lista, cmpStocD);
+        1:  180-block  0
+call    0 returned 1
+        1:  181:    return l;
+        -:  182:}
+        -:  183:/*Filtreaza ofertele care au pretul mai mic decat o valoare data*/
+function filterPret called 1 returned 100% blocks executed 100%
+        1:  184:Offerte* filterPret(BigList* list, int val)
+        -:  185:{
+        1:  186:    Offerte* f = copy(list->lista);
+        1:  186-block  0
+call    0 returned 1
+        -:  187:
+        4:  188:    for(int i=0; i<f->dimensiune;i++)
+        3:  188-block  0
+        4:  188-block  1
+branch  0 taken 3
+branch  1 taken 1 (fallthrough)
+        -:  189:    {
+        3:  190:        Oferta* m = get(f,i);
+        3:  190-block  0
+call    0 returned 3
+        3:  191:        if(m->pret > val)
+branch  0 taken 2 (fallthrough)
+branch  1 taken 1
+        2:  192:            deleteEntitate(f,m->id), i--;
+        2:  192-block  0
+call    0 returned 2
+        -:  193:    }
+        1:  194:    return f;
+        1:  194-block  0
+        -:  195:}
+        -:  196:
+        -:  197:/*Filtreaza ofertele dupa tip*/
+function filterTip called 2 returned 100% blocks executed 100%
+        2:  198:Offerte* filterTip(BigList* list, char litera)
+        -:  199:{
+        2:  200:    Offerte* f = copy(list->lista);
+        2:  200-block  0
+call    0 returned 2
+        -:  201:
+        8:  202:    for(int i=0; i<f->dimensiune;i++)
+        6:  202-block  0
+        8:  202-block  1
+branch  0 taken 6
+branch  1 taken 2 (fallthrough)
+        -:  203:    {
+        6:  204:        Oferta* m = get(f,i);
+        6:  204-block  0
+call    0 returned 6
+        6:  205:        if(m->tip[0] != litera)
+branch  0 taken 3 (fallthrough)
+branch  1 taken 3
+        3:  206:            deleteEntitate(f,m->id), i--;
+        3:  206-block  0
+call    0 returned 3
+        -:  207:    }
+        -:  208:
+        2:  209:    return f;
+        2:  209-block  0
+        -:  210:}

@@ -1,0 +1,4 @@
+din fisier se va pune peste directory textul cmd
+se va apasa enter
+se va scrie main.exe
+si gata

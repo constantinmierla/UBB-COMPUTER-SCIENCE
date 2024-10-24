@@ -1,0 +1,8 @@
+# ninja log v5
+3	75	7314478376960585	CMakeFiles/seminar_1.dir/main.c.obj	fda387483c81c4bc
+75	181	7314478377975508	seminar_1.exe	2005a5b9689fa52c
+10	109	7314482257285777	CMakeFiles/seminar_1.dir/gestiune_melodii.c.obj	4722eeb4b1664962
+3	121	7314482257417129	CMakeFiles/seminar_1.dir/main.c.obj	fda387483c81c4bc
+16	94	7314489805941427	CMakeFiles/seminar_1.dir/gestiune_melodii.c.obj	4722eeb4b1664962
+2	103	7314489806054450	CMakeFiles/seminar_1.dir/main.c.obj	fda387483c81c4bc
+103	232	7314489807291399	seminar_1.exe	d13e630cb4d2ffab

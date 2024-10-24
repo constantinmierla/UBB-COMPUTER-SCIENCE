@@ -1,0 +1,60 @@
+        -:    0:Source:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/domain.h
+        -:    0:Graph:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/cmake-build-debug-coverage/CMakeFiles/lab_6_static.dir/ui.cpp.gcno
+        -:    0:Data:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/cmake-build-debug-coverage/CMakeFiles/lab_6_static.dir/ui.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Costi on 29-Mar-24.
+        -:    3://
+        -:    4:
+        -:    5:#ifndef LAB_6_STATIC_DOMAIN_H
+        -:    6:#define LAB_6_STATIC_DOMAIN_H
+        -:    7:#include <string>
+        -:    8:#include <iostream>
+        -:    9:
+        -:   10:using std::string;
+        -:   11:using std::cout;
+        -:   12:
+        -:   13:class Masina{
+        -:   14:    int nr;
+        -:   15:    std::string producator;
+        -:   16:    std::string model;
+        -:   17:    std::string tip;
+        -:   18:
+        -:   19:public:
+        -:   20:    Masina(int n, const string& prod, const string& mod, const string& t) : nr{ n}, producator{prod}, model{mod}, tip{t}{
+        -:   21:
+        -:   22:    }
+        -:   23:    Masina(const Masina& ot) : nr{ ot.nr}, producator{ot.producator}, model{ot.model}, tip{ot.tip}{
+        -:   24:        cout << "*\n";
+        -:   25:    }
+function _ZNK6Masina5getNREv called 0 returned 0% blocks executed 0%
+    #####:   26:    int getNR() const noexcept{
+    #####:   27:        return nr;
+    %%%%%:   27-block  0
+        -:   28:    }
+        -:   29:
+function _ZNK6Masina13getProducatorB5cxx11Ev called 0 returned 0% blocks executed 0%
+    #####:   30:    string getProducator() const{
+    #####:   31:        return producator;
+    %%%%%:   31-block  0
+call    0 never executed
+        -:   32:    }
+        -:   33:
+function _ZNK6Masina8getModelB5cxx11Ev called 0 returned 0% blocks executed 0%
+    #####:   34:    string getModel() const{
+    #####:   35:        return model;
+    %%%%%:   35-block  0
+call    0 never executed
+        -:   36:    }
+        -:   37:
+function _ZNK6Masina6getTipB5cxx11Ev called 4 returned 100% blocks executed 100%
+        4:   38:    string getTip()const{
+        4:   39:        return tip;
+        4:   39-block  0
+call    0 returned 4
+        -:   40:    }
+        -:   41:
+        -:   42:    string to_string_print();
+        -:   43:};
+        -:   44:
+        -:   45:#endif //LAB_6_STATIC_DOMAIN_H

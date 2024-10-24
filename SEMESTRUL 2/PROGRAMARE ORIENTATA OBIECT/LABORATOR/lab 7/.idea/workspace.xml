@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="lab_7" targetName="lab_7" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+      <configuration PROFILE_NAME="Debug-Coverage" ENABLED="true" CONFIG_NAME="Debug" GENERATION_OPTIONS="-DCMAKE_CXX_FLAGS=--coverage -DCMAKE_C_FLAGS=--coverage" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="51ed46fd-a403-4aeb-9daa-34c80a104c5b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../lab 7 v2/.idea/lab 7 v2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 v2/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 v2/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 v2/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 v2/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 v2/DynamicVector.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 v2/Masina.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 v2/Masina.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 v2/RepoMasina.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 v2/RepoMasina.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 v2/ServiceMasina.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 v2/ServiceMasina.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 v2/UI.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 v2/UI.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 v2/ValidatorMasina.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 v2/ValidatorMasina.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 vectordinamic/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 vectordinamic/.idea/lab 7 vectordinamic.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 vectordinamic/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 vectordinamic/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 vectordinamic/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 vectordinamic/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 vectordinamic/Pet.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 vectordinamic/Pet.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 vectordinamic/VectDinNewDelete.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 vectordinamic/VectDinNewDelete.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 vectordinamic/VectDinSmartPointer.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 vectordinamic/VectDinSmartPointer.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 vectordinamic/VectorDinamicTemplate.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab 7 vectordinamic/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/lab 7.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarRepo.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarRepo.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarStore.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarStore.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Console.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Console.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DynamicArray.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exceptions.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exceptions.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Masina.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Masina.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestDynamicArray.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestDynamicArray.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestMasina.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestMasina.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestRepo.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestRepo.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestStore.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestStore.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestValidatorMasina.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestValidatorMasina.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ValidatorMasina.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ValidatorMasina.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab 6 static/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../lab 6 static/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L3/TestExtins.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L3/TestExtins.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L3/cmake-build-debug/CMakeFiles/L3.dir/TestExtins.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L3/cmake-build-debug/CMakeFiles/L3.dir/TestExtins.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L3/cmake-build-debug/CMakeFiles/L3.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../../STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L3/cmake-build-debug/CMakeFiles/L3.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L3/cmake-build-debug/L3" beforeDir="false" afterPath="$PROJECT_DIR$/../../../STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L3/cmake-build-debug/L3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L3/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L3/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="0" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug-Coverage" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;constantinmierla&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/constantinmierla/UBB-COMPUTER-SCIENCE.git&quot;,
+    &quot;accountId&quot;: &quot;ab8b258e-ad3c-4f9e-b34b-d3a9d008e01f&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2024" />
+    <option name="minorVersion" value="1" />
+    <option name="productBranch" value="Classic" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2eseawVKPxWdor4huua74cUSI0v" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "CMake Application.lab_7.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="lab_7" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="lab_7" TARGET_NAME="lab_7" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="lab_7" RUN_TARGET_NAME="lab_7">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="51ed46fd-a403-4aeb-9daa-34c80a104c5b" name="Changes" comment="" />
+      <created>1712697779479</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1712697779479</updated>
+      <workItem from="1712697782072" duration="2554000" />
+      <workItem from="1712700921898" duration="1359000" />
+      <workItem from="1712725490825" duration="1969000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="D:\FMI UBB CLUJ 2023-2026\UBB-COMPUTER-SCIENCE\SEMESTRUL 2\PROGRAMARE ORIENTATA OBIECT\LABORATOR\lab 7\cmake-build-debug-coverage" NAME="lab_7 Coverage Results" MODIFIED="1712725713292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="gcov/llvm" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

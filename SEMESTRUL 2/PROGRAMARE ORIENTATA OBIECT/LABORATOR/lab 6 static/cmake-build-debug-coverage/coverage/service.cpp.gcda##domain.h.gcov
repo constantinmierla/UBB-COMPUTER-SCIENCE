@@ -1,0 +1,64 @@
+        -:    0:Source:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/domain.h
+        -:    0:Graph:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/cmake-build-debug-coverage/CMakeFiles/lab_6_static.dir/service.cpp.gcno
+        -:    0:Data:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/cmake-build-debug-coverage/CMakeFiles/lab_6_static.dir/service.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Costi on 29-Mar-24.
+        -:    3://
+        -:    4:
+        -:    5:#ifndef LAB_6_STATIC_DOMAIN_H
+        -:    6:#define LAB_6_STATIC_DOMAIN_H
+        -:    7:#include <string>
+        -:    8:#include <iostream>
+        -:    9:
+        -:   10:using std::string;
+        -:   11:using std::cout;
+        -:   12:
+        -:   13:class Masina{
+        -:   14:    int nr;
+        -:   15:    std::string producator;
+        -:   16:    std::string model;
+        -:   17:    std::string tip;
+        -:   18:
+        -:   19:public:
+function _ZN6MasinaC2EiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_S7_ called 15 returned 100% blocks executed 62%
+       15:   20:    Masina(int n, const string& prod, const string& mod, const string& t) : nr{ n}, producator{prod}, model{mod}, tip{t}{
+       15:   20-block  0
+call    0 returned 15
+call    1 returned 15
+branch  2 taken 15 (fallthrough)
+branch  3 taken 0 (throw)
+       15:   20-block  1
+call    4 returned 15
+branch  5 taken 15 (fallthrough)
+branch  6 taken 0 (throw)
+        -:   21:
+       15:   22:    }
+       15:   22-block  0
+    $$$$$:   22-block  1
+call    0 never executed
+    $$$$$:   22-block  2
+call    1 never executed
+        -:   23:    Masina(const Masina& ot) : nr{ ot.nr}, producator{ot.producator}, model{ot.model}, tip{ot.tip}{
+        -:   24:        cout << "*\n";
+        -:   25:    }
+        -:   26:    int getNR() const noexcept{
+        -:   27:        return nr;
+        -:   28:    }
+        -:   29:
+        -:   30:    string getProducator() const{
+        -:   31:        return producator;
+        -:   32:    }
+        -:   33:
+        -:   34:    string getModel() const{
+        -:   35:        return model;
+        -:   36:    }
+        -:   37:
+        -:   38:    string getTip()const{
+        -:   39:        return tip;
+        -:   40:    }
+        -:   41:
+        -:   42:    string to_string_print();
+        -:   43:};
+        -:   44:
+        -:   45:#endif //LAB_6_STATIC_DOMAIN_H

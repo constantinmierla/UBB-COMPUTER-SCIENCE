@@ -1,0 +1,24 @@
+        -:    0:Source:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L1/main.cpp
+        -:    0:Graph:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L1/cmake-build-debug-coverage/CMakeFiles/L1.dir/main.cpp.gcno
+        -:    0:Data:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/STRUCTURI DE DATE SI ALGORITMI/LABORATOR/L1/cmake-build-debug-coverage/CMakeFiles/L1.dir/main.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Costi on 24-Mar-24.
+        -:    3://
+        -:    4:#include <iostream>
+        -:    5:#include "TestScurt.h"
+        -:    6:#include "TestExtins.h"
+        -:    7:using namespace std;
+        -:    8:
+function main called 1 returned 100% blocks executed 100%
+        1:    9:int main() {
+        -:   10:
+        1:   11:    testAll();
+        1:   11-block  0
+call    0 returned 1
+        1:   12:    testAllExtins();
+call    0 returned 1
+        -:   13:
+        1:   14:    cout<<"End";
+call    0 returned 1
+        1:   15:}

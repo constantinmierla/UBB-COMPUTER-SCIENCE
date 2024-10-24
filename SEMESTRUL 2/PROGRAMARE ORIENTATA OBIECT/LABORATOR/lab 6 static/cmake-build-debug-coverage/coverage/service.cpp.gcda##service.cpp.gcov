@@ -1,0 +1,78 @@
+        -:    0:Source:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/service.cpp
+        -:    0:Graph:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/cmake-build-debug-coverage/CMakeFiles/lab_6_static.dir/service.cpp.gcno
+        -:    0:Data:/mnt/d/FMI UBB CLUJ 2023-2026/UBB-COMPUTER-SCIENCE/SEMESTRUL 2/PROGRAMARE ORIENTATA OBIECT/LABORATOR/lab 6 static/cmake-build-debug-coverage/CMakeFiles/lab_6_static.dir/service.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Costi on 29-Mar-24.
+        -:    3://
+        -:    4:
+        -:    5:#include "service.h"
+        -:    6:
+function _ZN13MasinaService16addMasinaServiceEiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_S7_ called 4 returned 100% blocks executed 82%
+        4:    7:bool MasinaService::addMasinaService(int nr, const std::string &producator, const std::string &model,
+        -:    8:                                     const std::string &tip) {
+        4:    9:    Masina m{nr, producator, model, tip};
+        4:    9-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        4:   10:    bool c = rep.store(m);
+        4:   10-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        4:   11:    if (c)
+        4:   11-block  0
+branch  0 taken 3 (fallthrough)
+branch  1 taken 1
+        3:   12:        return true;
+        3:   12-block  0
+        1:   13:    return false;
+        1:   13-block  0
+        4:   14:}
+        4:   14-block  0
+call    0 returned 4
+    $$$$$:   14-block  1
+call    1 never executed
+        -:   15:
+function _ZN13MasinaService16delMasinaServiceEi called 2 returned 100% blocks executed 100%
+        2:   16:bool MasinaService::delMasinaService(int nr) {
+        2:   17:    bool c = rep.delMasinaRepo(nr);
+        2:   17-block  0
+call    0 returned 2
+        2:   18:    if (c)
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:   19:        return true;
+        1:   19-block  0
+        1:   20:    return false;
+        1:   20-block  0
+        -:   21:}
+        -:   22:
+function _ZN13MasinaService19modifyMasinaServiceEiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_S7_ called 2 returned 100% blocks executed 82%
+        2:   23:bool MasinaService::modifyMasinaService(int nr, const std::string &producator, const std::string &model,
+        -:   24:                                        const std::string &tip) {
+        2:   25:    Masina m{nr, producator, model, tip};
+        2:   25-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   26:    bool c = rep.modifyMasinaRepo(nr, m);
+        2:   26-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   27:    if (c)
+        2:   27-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:   28:        return true;
+        1:   28-block  0
+        1:   29:    return false;
+        1:   29-block  0
+        2:   30:}
+        2:   30-block  0
+call    0 returned 2
+    $$$$$:   30-block  1
+call    1 never executed
+        -:   31:

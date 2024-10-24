@@ -1,0 +1,154 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, scanf, fopen, fprintf, fclose, printf                
+     6                                  import exit msvcrt.dll 
+     7                                  import scanf msvcrt.dll 
+     8                                  import fopen msvcrt.dll
+     9                                  import fprintf msvcrt.dll  
+    10                                  import fclose msvcrt.dll
+    11                                  import printf msvcrt.dll
+    12                                  
+    13                                  ; Se citește de la tastatură un număr N și apoi N numere.
+    14                                  ; Să se calculeze suma numerelor pare introduse, să se calculeze suma numerelor impare introduse, apoi diferența dintre cele două sume.
+    15                                  ; Să se afișeze în fișierul output.txt cele 3 rezultate, în baza 16, pe linii separate
+    16                                  
+    17                                  
+    18                                  segment data use32 class=data
+    19 00000000 00000000                    nr_elemente dd 0
+    20 00000004 00000000                    nr_elemente_aux dd 0
+    21 00000008 256400                      format_int db "%d", 0
+    22                                      
+    23 0000000B 00000000<rept>              numere times 100 dd 0
+    24 0000019B 00000000                    numar dd 0
+    25                                      
+    26 0000019F 00000000                    suma_pare dd 0
+    27 000001A3 00000000                    suma_impare dd 0
+    28 000001A7 00000000                    diferenta_sume dd 0
+    29                                      
+    30 000001AB 6F75747075742E7478-         nume_fisier db "output.txt", 0
+    30 000001B4 7400               
+    31 000001B6 612B00                      mod_acces db 'a+', 0
+    32 000001B9 FFFFFFFF                    descriptor_fisier dd -1
+    33 000001BD 25780D0A                    format_hexa db "%x", 13, 10
+    34                                      
+    35 000001C1 00000000                    verific dd 0
+    36                                  
+    37                                  segment code use32 class=code
+    38                                      start:
+    39 00000000 68[00000000]                    push dword nr_elemente
+    40 00000005 68[08000000]                    push dword format_int
+    41 0000000A FF15[00000000]                  call [scanf]
+    42 00000010 83C408                          add esp, 4 * 2
+    43                                          
+    44 00000013 8B0D[00000000]                  mov ecx, [nr_elemente]
+    45 00000019 890D[04000000]                  mov [nr_elemente_aux], ecx
+    46 0000001F 83F900                          cmp ecx, 0
+    47 00000022 0F8421010000                    je finish
+    48                                          
+    49 00000028 BF[0B000000]                    mov edi, numere
+    50 0000002D FC                              cld
+    51                                          
+    52                                          citeste_numere:
+    53 0000002E 890D[00000000]                      mov [nr_elemente], ecx
+    54                                              
+    55 00000034 68[9B010000]                        push dword numar
+    56 00000039 68[08000000]                        push dword format_int
+    57 0000003E FF15[00000000]                      call [scanf]
+    58 00000044 83C408                              add esp, 4 * 2
+    59                                              
+    60 00000047 A1[9B010000]                        mov eax, [numar]
+    61 0000004C AB                                  stosd
+    62                                              
+    63 0000004D 8B0D[00000000]                      mov ecx, [nr_elemente]
+    64 00000053 E2D9                            loop citeste_numere
+    65                                          
+    66 00000055 8B0D[04000000]                  mov ecx, [nr_elemente_aux]
+    67 0000005B BE[0B000000]                    mov esi, numere
+    68 00000060 FC                              cld
+    69                                          
+    70                                          prelucrare_numere:
+    71 00000061 890D[04000000]                      mov [nr_elemente_aux], ecx
+    72                                              
+    73 00000067 AD                                  lodsd
+    74 00000068 A3[9B010000]                        mov [numar], eax
+    75 0000006D BA00000000                          mov edx, 0
+    76 00000072 BB02000000                          mov ebx, 2
+    77 00000077 F7F3                                div ebx
+    78                                              
+    79 00000079 83FA01                              cmp edx, 1
+    80 0000007C 7415                                je impar
+    81                                              
+    82                                              ; par 
+    83 0000007E A1[9B010000]                        mov eax, [numar]
+    84 00000083 8B15[9F010000]                      mov edx, [suma_pare]
+    85 00000089 01C2                                add edx, eax
+    86 0000008B 8915[9F010000]                      mov [suma_pare], edx
+    87 00000091 EB13                                jmp continua
+    88                                              
+    89                                              ; impare
+    90                                              impar:
+    91 00000093 A1[9B010000]                            mov eax, [numar]
+    92 00000098 8B15[A3010000]                          mov edx, [suma_impare]
+    93 0000009E 01C2                                    add edx, eax
+    94 000000A0 8915[A3010000]                          mov [suma_impare], edx
+    95                                              
+    96                                              continua:
+    97 000000A6 90                                      nop
+    98                                                  
+    99 000000A7 8B0D[04000000]                      mov ecx, [nr_elemente_aux]
+   100 000000AD E2B2                            loop prelucrare_numere
+   101                                          
+   102 000000AF A1[9F010000]                    mov eax, [suma_pare]
+   103 000000B4 8B1D[A3010000]                  mov ebx, [suma_impare]
+   104                                          
+   105 000000BA 39D8                            cmp eax, ebx
+   106 000000BC 770A                            ja mai_mare_pare
+   107                                          
+   108 000000BE 29C3                            sub ebx, eax
+   109 000000C0 891D[A7010000]                  mov [diferenta_sume], ebx
+   110 000000C6 EB07                            jmp fisiere
+   111                                          
+   112                                          mai_mare_pare:
+   113 000000C8 29D8                                sub eax, ebx
+   114 000000CA A3[A7010000]                        mov [diferenta_sume], eax
+   115                                          
+   116                                          fisiere:
+   117                                              ; fopen(fisier, mod)
+   118 000000CF 68[B6010000]                        push dword mod_acces
+   119 000000D4 68[AB010000]                        push dword nume_fisier
+   120 000000D9 FF15[00000000]                      call [fopen]
+   121 000000DF 83C408                              add esp, 4 * 2
+   122                                              
+   123 000000E2 83F800                              cmp eax, 0
+   124 000000E5 7462                                je finish
+   125 000000E7 A3[B9010000]                        mov [descriptor_fisier], eax
+   126                                              
+   127                                              ; fprintf(descriptor_fisier, format, numar)
+   128 000000EC FF35[9F010000]                      push dword [suma_pare]
+   129 000000F2 68[BD010000]                        push dword format_hexa
+   130 000000F7 FF35[B9010000]                      push dword [descriptor_fisier]
+   131 000000FD FF15[00000000]                      call [fprintf]
+   132 00000103 83C40C                              add esp, 4 * 3
+   133                                              
+   134 00000106 FF35[A3010000]                      push dword [suma_impare]
+   135 0000010C 68[BD010000]                        push dword format_hexa
+   136 00000111 FF35[B9010000]                      push dword [descriptor_fisier]
+   137 00000117 FF15[00000000]                      call [fprintf]
+   138 0000011D 83C40C                              add esp, 4 * 3
+   139                                              
+   140 00000120 FF35[A7010000]                      push dword [diferenta_sume]
+   141 00000126 68[BD010000]                        push dword format_hexa
+   142 0000012B FF35[B9010000]                      push dword [descriptor_fisier]
+   143 00000131 FF15[00000000]                      call [fprintf]
+   144 00000137 83C40C                              add esp, 4 * 3
+   145                                              
+   146                                              ; fclose()
+   147 0000013A FF35[B9010000]                      push dword [descriptor_fisier]
+   148 00000140 FF15[00000000]                      call [fclose]
+   149 00000146 83C404                              add esp, 4 * 1
+   150                                      
+   151                                      finish:
+   152 00000149 6A00                            push dword 0    
+   153 0000014B FF15[00000000]                  call [exit]       
