@@ -1,5 +1,4 @@
 # Babes-Bolyai University - COMPUTER SCIENCE 
-Table of contents
 # 📕 Semester 1
     🧮 Algebra
     📊 Mathematical Analysis
