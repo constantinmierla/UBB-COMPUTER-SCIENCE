@@ -1,6 +1,10 @@
 package org.example.domain;
 
 import java.util.Objects;
+/**
+ * Represents a user in the system with a first name and a last name.
+ * Extends the `Entity` class with a Long identifier.
+ */
 public class User extends Entity<Long>{
     private String firstname;
     private String lastname;

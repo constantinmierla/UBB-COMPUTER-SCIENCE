@@ -5,8 +5,14 @@ import org.example.repository.UserDBRepository;
 
 import java.util.*;
 
+/**
+ * Provides user interface functionalities for managing and displaying user and friendship data.
+ */
 public class UIfunctionalities {
 
+    /**
+     * Displays the main menu options for the user.
+     */
     public void showMenu(){
         System.out.println("Menu");
         System.out.println("1. Add user");
@@ -14,10 +20,17 @@ public class UIfunctionalities {
         System.out.println("3. Add friend");
         System.out.println("4. Remove friend");
         System.out.println("5. Show the number of communities");
-        System.out.println("6. The most social community");
+        System.out.println("6. The most sociable community");
         System.out.println("0. Exit");
     }
 
+    /**
+     * Prompts the user to select an option and validates the input.
+     *
+     * @param n1 the minimum valid option number
+     * @param n2 the maximum valid option number
+     * @return the validated option number
+     */
     public int getOption(int n1, int n2){
         Scanner scanner = new Scanner(System.in);
         int number;
@@ -37,15 +50,33 @@ public class UIfunctionalities {
 
         return number;
     }
+
+    /**
+     * Displays a message to the user.
+     *
+     * @param message the message to display
+     */
     public void showMessage(String message) {
         System.out.println(message);
     }
+
+    /**
+     * Displays all users in the provided collection.
+     *
+     * @param users an iterable collection of {@link User} entities
+     */
     public void showAllUsers(Collection<User> users) {
         users.stream()
                 .sorted(Comparator.comparing(User::getId))
                 .forEach(System.out::println);
     }
 
+    /**
+     * Prompts the user for a name input and returns it.
+     *
+     * @param message the prompt message to display
+     * @return the entered name
+     */
     public String getName(String message) {
         Scanner scanner = new Scanner(System.in);
 
@@ -54,6 +85,12 @@ public class UIfunctionalities {
         return scanner.next();
     }
 
+    /**
+     * Prompts the user for a user ID and validates the input.
+     *
+     * @param message the prompt message to display
+     * @return the validated user ID
+     */
     public long getUserID(String message) {
         Scanner scanner = new Scanner(System.in);
         long id;
@@ -70,6 +107,13 @@ public class UIfunctionalities {
             }
         }while(true);
     }
+
+    /**
+     * Displays all communities and their members.
+     *
+     * @param users      the repository of users
+     * @param communities a list of sets representing the communities
+     */
     public void showCommunities(UserDBRepository users, List<Set<Long>> communities) {
         System.out.println("The communities are: ");
         final int[] i = {1};
@@ -88,6 +132,12 @@ public class UIfunctionalities {
         System.out.println("The other users are not in a community: ");
     }
 
+    /**
+     * Displays the members of the largest community.
+     *
+     * @param users    the repository of users
+     * @param community a set representing the largest community
+     */
     public void showBiggestCommunity(UserDBRepository users, Set<Long> community) {
         System.out.println("Largest community: ");
         community.forEach(id -> {

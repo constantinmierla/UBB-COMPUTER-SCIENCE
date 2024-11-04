@@ -23,7 +23,13 @@ public class UserDBRepository implements Repository<Long, User>{
         this.passwordDB = passwordDB;
         this.userValidator = userValidator;
     }
-
+    /**
+     * Constructs a User object from the current row in the provided ResultSet.
+     *
+     * @param resultSet the ResultSet positioned at the current row to retrieve User data from, must not be null.
+     * @return a User object constructed from the data in the current ResultSet row.
+     * @throws SQLException if an SQL error occurs while retrieving data from the ResultSet.
+     */
     private User getUserFromQueryResult(ResultSet resultSet) throws SQLException{
         var id_user = resultSet.getLong("id_user");
         var firstName =resultSet.getString("firstname");
@@ -34,11 +40,25 @@ public class UserDBRepository implements Repository<Long, User>{
 
         return user;
     }
-
+    /**
+     * Sets parameter values in the provided PreparedStatement based on the User data.
+     *
+     * @param stmt the PreparedStatement to set parameter values in, must not be null.
+     * @param user the User object whose data is used to set the parameters in the statement.
+     * @throws SQLException if an SQL error occurs while setting parameter values in the PreparedStatement.
+     */
     private void setUserDataInStatement(PreparedStatement stmt, User user) throws SQLException{
         stmt.setString(1, user.getFirstname());
         stmt.setString(2, user.getLastname());
     }
+
+    /**
+     * Finds a user by their unique ID in the database.
+     *
+     * @param id the ID of the user to find, must not be null.
+     * @return an `Optional<User>` containing the found user if present; otherwise, an empty `Optional`.
+     * @throws RuntimeException if an SQL exception occurs while attempting to connect or execute the query.
+     */
     @Override
     public Optional<User> findOne(Long id) {
         String sql = "SELECT * FROM \"users\" WHERE id_user = ?";
@@ -55,7 +75,12 @@ public class UserDBRepository implements Repository<Long, User>{
             throw new RuntimeException("Error - not found user in db");
         }
     }
-
+    /**
+     * Retrieves all users from the database.
+     *
+     * @return a `Collection<User>` containing all users in the database.
+     * @throws RuntimeException if an SQL exception occurs during the connection or query execution.
+     */
     public Collection<User> findAll() {
         Set<User> users = new HashSet<>();
 
@@ -74,7 +99,13 @@ public class UserDBRepository implements Repository<Long, User>{
             throw new RuntimeException("Error - not found users in db");
         }
     }
-
+    /**
+     * Saves a new user to the database.
+     *
+     * @param user The {@link User} object to save.
+     * @return An {@link Optional} containing the {@code User} if the insertion fails, or {@link Optional#empty()} if the insertion is successful.
+     * @throws RuntimeException If a database access error occurs or the SQL statement is invalid.
+     */
     @Override
     public Optional<User> save(User user) {
         this.userValidator.validate(this.findAll(), user);
@@ -89,7 +120,13 @@ public class UserDBRepository implements Repository<Long, User>{
             throw new RuntimeException("Error - not saved user in db");
         }
     }
-
+    /**
+     * Deletes a user by their unique ID from the database.
+     *
+     * @param id the ID of the user to delete, must not be null.
+     * @return an `Optional<User>` containing the deleted user if the deletion was successful; otherwise, an empty `Optional`.
+     * @throws RuntimeException if an SQL exception occurs during the connection or query execution.
+     */
     @Override
     public Optional<User> delete(Long id) {
         String sql = "DELETE FROM \"users\" WHERE id_user = ?";
@@ -107,7 +144,13 @@ public class UserDBRepository implements Repository<Long, User>{
             throw new RuntimeException("Error - not deleted user from db");
         }
     }
-
+    /**
+     * Updates an existing user's details in the database.
+     *
+     * @param user the user with updated details; must not be null and should have a valid ID.
+     * @return an `Optional<User>` containing the updated user if the update was successful; otherwise, an empty `Optional` if the user was not found.
+     * @throws RuntimeException if an SQL exception occurs during connection or query execution.
+     */
     @Override
     public Optional<User> update(User user) {
         if (this.findOne(user.getId()).isEmpty()) {

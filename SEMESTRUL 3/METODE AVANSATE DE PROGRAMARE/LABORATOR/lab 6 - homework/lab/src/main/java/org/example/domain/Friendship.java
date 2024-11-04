@@ -1,5 +1,9 @@
 package org.example.domain;
 import java.util.Objects;
+/**
+ * Represents a friendship between two users in the system.
+ * Extends the `Entity` class with a Long identifier.
+ */
 public class Friendship extends Entity<Long>{
     private final User user1;
     private final User user2;

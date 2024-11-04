@@ -1,5 +1,10 @@
 package org.example.domain;
 
+/**
+ * Represents a base entity with a unique identifier.
+ *
+ * @param <ID> the type of the entity's identifier
+ */
 public class Entity<ID> {
     private ID id;
 

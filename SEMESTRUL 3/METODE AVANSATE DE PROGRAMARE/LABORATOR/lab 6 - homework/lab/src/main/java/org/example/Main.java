@@ -11,15 +11,35 @@ import org.example.service.CommunityService;
 
 import org.example.ui.UIfunctionalities;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class Main {
-    private static final String DATABASE_URL = "jdbc:postgresql://localhost:5432/postgres";
-    private static final String USERNAME = "postgres";
-    private static final String PASSWORD = "costi";
+    private static String DATABASE_URL;
+    private static String USERNAME;
+    private static String PASSWORD;
+
+    static {
+        Properties properties = new Properties();
+        try (InputStream input = Main.class.getClassLoader().getResourceAsStream("config.properties")) {
+            if (input == null) {
+                System.out.println("Sorry, unable to find config.properties");
+            }
+            properties.load(input);
+            DATABASE_URL = properties.getProperty("database.url");
+            USERNAME = properties.getProperty("database.username");
+            PASSWORD = properties.getProperty("database.password");
+        } catch (IOException e) {
+            System.err.println("Error loading configuration file: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
         UIfunctionalities ui = new UIfunctionalities();
