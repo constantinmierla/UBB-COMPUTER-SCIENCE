@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jheaps:jheaps:0.13" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.jheaps" artifactId="jheaps" version="0.13" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jheaps/jheaps/0.13/b30f6a9c1e99b2e102126060195469ef7fd7211b/jheaps-0.13.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

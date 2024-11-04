@@ -1,0 +1,15 @@
+1;1;Mihai;Ionescu;5;Radu;Georgesu
+2;3;Ion;Dumitru;7;Cristian;Stanciu
+3;2;Andreea;Popescu;6;Maria;Tudor
+5;8;Simona;Petrescu;11;Adrian;Vasilescu
+6;9;Daniel;Popa;14;Bianca;Filip
+7;12;Ioana;Moldovan;15;Stefan;Dragomir
+8;13;Florin;Cojocaru;17;George;Preda
+9;16;Gabriela;Constantinescu;18;Ana;Vasile
+10;19;Marius;Niculescu;20;Diana;Iliescu
+11;2;Andreea;Popescu;9;Daniel;Popa
+14;2;Andreea;Popescu;17;George;Preda
+16;23;Andrei;Popescu;12;Ioana;Moldovan
+17;12;Ioana;Moldovan;4;Elena;Marinescu
+18;25;Gogu;Marele;24;Mircea;Cartarescu
+19;24;Mircea;Cartarescu;22;Andrei;Oprea
