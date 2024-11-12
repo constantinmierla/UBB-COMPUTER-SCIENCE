@@ -1,17 +1,14 @@
-package org.example;
+package org.example.demo;
 
-import org.example.domain.User;
-import org.example.domain.validators.FriendshipValidator;
-import org.example.domain.validators.UserValidator;
-import org.example.repository.UserDBRepository;
-import org.example.repository.FriendshipDBRepository;
-import org.example.service.UserService;
-import org.example.service.FriendshipService;
-import org.example.service.CommunityService;
+import org.example.demo.domain.validators.FriendshipValidator;
+import org.example.demo.domain.validators.UserValidator;
+import org.example.demo.repository.FriendshipDBRepository;
+import org.example.demo.repository.UserDBRepository;
+import org.example.demo.service.CommunityService;
+import org.example.demo.service.FriendshipService;
+import org.example.demo.service.UserService;
+import org.example.demo.ui.UIfunctionalities;
 
-import org.example.ui.UIfunctionalities;
-
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;

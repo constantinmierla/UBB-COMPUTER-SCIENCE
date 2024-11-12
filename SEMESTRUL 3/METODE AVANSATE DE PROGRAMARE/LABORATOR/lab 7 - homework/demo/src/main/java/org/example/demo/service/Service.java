@@ -1,4 +1,4 @@
-package org.example.service;
+package org.example.demo.service;
 
 /**
  * Service interface for generic entities

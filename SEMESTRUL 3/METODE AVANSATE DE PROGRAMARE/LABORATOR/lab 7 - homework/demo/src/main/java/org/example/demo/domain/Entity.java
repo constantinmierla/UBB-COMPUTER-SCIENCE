@@ -1,4 +1,4 @@
-package org.example.domain;
+package org.example.demo.domain;
 
 /**
  * Represents a base entity with a unique identifier.

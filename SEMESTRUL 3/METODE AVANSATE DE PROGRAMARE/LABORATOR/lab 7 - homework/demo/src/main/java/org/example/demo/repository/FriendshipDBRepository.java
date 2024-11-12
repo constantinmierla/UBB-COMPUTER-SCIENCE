@@ -1,16 +1,14 @@
-package org.example.repository;
+package org.example.demo.repository;
 
-import org.example.domain.Friendship;
-import org.example.domain.validators.Validator;
-import org.example.domain.User;
-import org.example.repository.Repository;
+import org.example.demo.domain.Friendship;
+import org.example.demo.domain.User;
+import org.example.demo.domain.validators.Validator;
 
 import java.sql.*;
-
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Optional;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 public class FriendshipDBRepository implements Repository<Long, Friendship> {
     private final String database_url;

@@ -1,6 +1,7 @@
-package org.example.domain.validators;
+package org.example.demo.domain.validators;
 
-import org.example.domain.Friendship;
+import org.example.demo.domain.Friendship;
+
 import java.util.Collection;
 
 public class FriendshipValidator implements Validator<Friendship> {

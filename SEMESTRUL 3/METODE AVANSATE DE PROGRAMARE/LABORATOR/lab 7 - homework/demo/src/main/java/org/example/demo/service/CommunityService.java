@@ -1,7 +1,7 @@
-package org.example.service;
+package org.example.demo.service;
 
-import org.example.repository.FriendshipDBRepository;
-import org.example.repository.UserDBRepository;
+import org.example.demo.repository.FriendshipDBRepository;
+import org.example.demo.repository.UserDBRepository;
 import org.jgrapht.Graph;
 import org.jgrapht.alg.connectivity.ConnectivityInspector;
 import org.jgrapht.graph.DefaultEdge;

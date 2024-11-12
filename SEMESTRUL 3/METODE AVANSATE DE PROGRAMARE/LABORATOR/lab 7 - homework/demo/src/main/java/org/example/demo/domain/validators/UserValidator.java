@@ -1,6 +1,7 @@
-package org.example.domain.validators;
+package org.example.demo.domain.validators;
 
-import org.example.domain.User;
+import org.example.demo.domain.User;
+
 import java.util.Collection;
 import java.util.Optional;
 /**

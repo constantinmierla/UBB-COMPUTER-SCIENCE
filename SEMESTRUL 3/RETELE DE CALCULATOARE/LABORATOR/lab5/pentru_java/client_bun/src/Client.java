@@ -4,7 +4,7 @@ import java.net.*;
 public class Client {
     public static void main(String[] args) {
         try {
-            Socket socket = new Socket("localhost", 1234);
+            Socket socket = new Socket("192.168.223.128", 1234);
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
             DataInputStream in = new DataInputStream(socket.getInputStream());
 
@@ -29,10 +29,10 @@ public class Client {
 
 
             int resultCount = in.readUnsignedShort();
-
+            System.out.println("Elementele sunt : ");
             for (int i = 0; i < resultCount; i++) {
                 int element = in.readUnsignedShort();
-                System.out.println("Element: " + element);
+                System.out.println(element);
             }
 
             socket.close();

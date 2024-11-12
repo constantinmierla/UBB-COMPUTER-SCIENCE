@@ -1,7 +1,7 @@
-package org.example.ui;
+package org.example.demo.ui;
 
-import org.example.domain.User;
-import org.example.repository.UserDBRepository;
+import org.example.demo.domain.User;
+import org.example.demo.repository.UserDBRepository;
 
 import java.util.*;
 

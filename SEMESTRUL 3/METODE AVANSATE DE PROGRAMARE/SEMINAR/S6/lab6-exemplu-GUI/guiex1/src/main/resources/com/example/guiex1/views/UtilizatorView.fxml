@@ -59,14 +59,14 @@
                         </HBox>
                     </children>
                 </AnchorPane>
-                <AnchorPane id="AnchorPane" fx:id="createPersonAnchor" prefHeight="300.0" prefWidth="285.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+                <!--<AnchorPane id="AnchorPane" fx:id="createPersonAnchor" prefHeight="300.0" prefWidth="285.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
                     <children>
                         <TextField id="FirstName" fx:id="firstName" layoutY="28.0" AnchorPane.rightAnchor="10.0" />
                         <TextField id="LastName" fx:id="lastName" layoutY="78.0" AnchorPane.rightAnchor="10.0" />
                         <Text layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" wrappingWidth="69.677734375" AnchorPane.rightAnchor="150.0" />
                         <Text layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" wrappingWidth="69.677734375" AnchorPane.rightAnchor="150.0" />
                     </children>
-                </AnchorPane>
+                </AnchorPane> -->
 
             </items>
         </SplitPane>

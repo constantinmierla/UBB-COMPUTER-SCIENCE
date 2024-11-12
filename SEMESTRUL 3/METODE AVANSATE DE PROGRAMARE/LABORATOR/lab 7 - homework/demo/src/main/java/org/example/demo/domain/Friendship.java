@@ -1,4 +1,4 @@
-package org.example.domain;
+package org.example.demo.domain;
 import java.util.Objects;
 /**
  * Represents a friendship between two users in the system.

@@ -1,8 +1,8 @@
-package org.example.repository;
+package org.example.demo.repository;
 
 
-import org.example.domain.Entity;
-import org.example.domain.validators.ValidationException;
+import org.example.demo.domain.Entity;
+import org.example.demo.domain.validators.ValidationException;
 
 import java.util.Optional;
 

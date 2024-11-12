@@ -19,7 +19,7 @@ int main() {
   memset(&server, 0, sizeof(server));
   server.sin_port = htons(1234);
   server.sin_family = AF_INET;
-  server.sin_addr.s_addr = inet_addr("127.0.0.1");
+  server.sin_addr.s_addr = inet_addr("192.168.223.128");
 
   if (connect(c, (struct sockaddr *) &server, sizeof(server)) < 0) {
     printf("Eroare la conectarea la server\n");

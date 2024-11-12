@@ -1,9 +1,9 @@
-package org.example.service;
+package org.example.demo.service;
 
-import org.example.domain.Friendship;
-import org.example.domain.User;
-import org.example.repository.FriendshipDBRepository;
-import org.example.repository.UserDBRepository;
+import org.example.demo.domain.Friendship;
+import org.example.demo.domain.User;
+import org.example.demo.repository.FriendshipDBRepository;
+import org.example.demo.repository.UserDBRepository;
 
 import java.util.Collection;
 import java.util.List;

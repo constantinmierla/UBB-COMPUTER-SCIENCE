@@ -1,8 +1,7 @@
-package org.example.repository;
+package org.example.demo.repository;
 
-import org.example.domain.User;
-import org.example.domain.validators.Validator;
-import org.example.repository.Repository;
+import org.example.demo.domain.User;
+import org.example.demo.domain.validators.Validator;
 
 import java.sql.*;
 import java.util.Collection;
