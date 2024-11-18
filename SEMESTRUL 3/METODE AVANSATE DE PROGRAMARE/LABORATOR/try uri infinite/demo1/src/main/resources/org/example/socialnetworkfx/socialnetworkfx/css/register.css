@@ -1,0 +1,58 @@
+/* register-style.css */
+
+/* AnchorPane background and styling */
+AnchorPane {
+    -fx-background-color: #f3f3f3;
+    -fx-padding: 10;
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+}
+
+/* Label styling */
+Label {
+    -fx-font-family: "Verdana";
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+#registrationTitle {
+    -fx-font-size: 32px;
+    -fx-font-family: "Calibri Italic";
+    -fx-text-fill: #4b0082; /* Deep purple for the title */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 5, 0, 1, 1);
+}
+
+/* TextField and PasswordField styling */
+TextField, PasswordField {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-font-size: 12px;
+}
+
+TextField:focused, PasswordField:focused {
+    -fx-border-color: #4b0082; /* Focused border color */
+}
+
+/* Button styling */
+Button {
+    -fx-background-color: #4b0082; /* Deep purple */
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-family: "Verdana";
+    -fx-background-radius: 5px;
+    -fx-padding: 8px;
+    -fx-border-color: #333333;
+    -fx-border-width: 1px;
+}
+
+Button:hover {
+    -fx-background-color: #6a0dad; /* Slightly lighter purple on hover */
+}
+
+Button:pressed {
+    -fx-background-color: #36004b; /* Darker purple on press */
+}

@@ -1,0 +1,86 @@
+/* Background of the login screen */
+AnchorPane {
+    -fx-background-color: linear-gradient(to bottom, #e5d6f5, #ffffff);
+}
+
+/* GridPane with form fields */
+GridPane {
+    -fx-background-color: transparent;
+}
+
+/* TextField and PasswordField styling */
+TextField, PasswordField {
+    -fx-background-color: white;
+    -fx-border-color: #8e44ad; /* Dark purple border */
+    -fx-border-radius: 8px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+    -fx-font-family: Arial;
+}
+
+/* Button styling */
+Button {
+    -fx-background-color: linear-gradient(to bottom, #af7ac5, #8e44ad); /* Gradient from light to dark purple */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: Arial;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-padding: 5px 15px;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.15), 4, 0, 2, 2);
+}
+
+Button:hover {
+    -fx-background-color: linear-gradient(to bottom, #8e44ad, #6c3483); /* Darker purple on hover */
+}
+
+Button:pressed {
+    -fx-background-color: #6c3483; /* Deep purple when pressed */
+}
+
+/* Label styling for the welcome message */
+Label {
+    -fx-font-family: Arial;
+    -fx-font-size: 14px;
+    -fx-text-fill: #4a235a; /* Dark purple for text */
+}
+
+#userNameField {
+    -fx-font-family: Verdana;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4a235a; /* Dark purple */
+}
+
+Label[text="Welcome to Yahoo Messenger!"] {
+    -fx-font-family: "Dubai Bold";
+    -fx-font-size: 24px;
+    -fx-text-fill: #9400d3; /* Yahoo's purple */
+}
+
+/* Error message styling */
+#errorMessage {
+    -fx-text-fill: red;
+    -fx-font-size: 15px;
+    -fx-font-family: "Century Gothic Bold";
+    -fx-alignment: CENTER_RIGHT;
+}
+
+/* Profile image styling */
+ImageView {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 6, 0.5, 2, 2);
+    -fx-background-radius: 40px;
+    -fx-border-radius: 40px;
+    -fx-padding: 4px;
+}
+
+/* Hover effect for table row in friend list */
+.table-row-cell:hover {
+    -fx-background-color: rgba(174, 129, 189, 0.3); /* Light purple on hover */
+}
+
+/* Styling for "Online" label */
+Label[text="Online"] {
+    -fx-text-fill: #27ae60; /* Green color for online status */
+    -fx-font-weight: bold;
+}

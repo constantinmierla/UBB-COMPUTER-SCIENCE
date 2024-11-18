@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="381.0" prefWidth="446.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.socialnetworkfx.socialnetworkfx.controller.RegisterView" stylesheets="@css/register.css">
+    <children>
+        <!-- GridPane for organizing the fields -->
+        <GridPane layoutX="113.0" layoutY="109.0" prefHeight="300.0" prefWidth="234.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="100.0" prefWidth="200.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints prefHeight="40.0" vgrow="ALWAYS" />
+                <RowConstraints prefHeight="40.0" vgrow="ALWAYS" />
+                <RowConstraints prefHeight="40.0" vgrow="ALWAYS" />
+                <RowConstraints prefHeight="40.0" vgrow="ALWAYS" />
+                <RowConstraints prefHeight="40.0" vgrow="ALWAYS" />
+                <RowConstraints prefHeight="40.0" vgrow="ALWAYS" />
+            </rowConstraints>
+            <children>
+                <!-- Email Label and TextField -->
+                <Label text="Email:" GridPane.rowIndex="0" />
+                <TextField fx:id="emailText" GridPane.rowIndex="0" GridPane.columnIndex="1" prefHeight="30.0" prefWidth="200.0">
+                    <font>
+                        <Font name="System Italic" size="12.0" />
+                    </font>
+                </TextField>
+
+                <!-- Password Label and PasswordField -->
+                <Label text="Password:" GridPane.rowIndex="1" />
+                <PasswordField fx:id="passwordText" GridPane.rowIndex="1" GridPane.columnIndex="1" prefHeight="30.0" prefWidth="200.0" />
+
+                <!-- First Name Label and TextField -->
+                <Label text="First name:" GridPane.rowIndex="2" />
+                <TextField fx:id="firstnameText" GridPane.rowIndex="2" GridPane.columnIndex="1" prefHeight="30.0" prefWidth="200.0" />
+
+                <!-- Last Name Label and TextField -->
+                <Label text="Last name:" GridPane.rowIndex="3" />
+                <TextField fx:id="lastnameText" GridPane.rowIndex="3" GridPane.columnIndex="1" prefHeight="30.0" prefWidth="200.0" />
+            </children>
+        </GridPane>
+
+        <!-- Registration title label -->
+        <Label layoutX="140.0" layoutY="54.0" prefHeight="42.0" prefWidth="214.0" text="Registration">
+            <font>
+                <Font name="Calibri Italic" size="32.0" />
+            </font>
+        </Label>
+
+        <!-- Register button -->
+        <Button fx:id="registerButton" layoutX="139.0" layoutY="306.0" mnemonicParsing="false" onAction="#handleRegisterButton" prefHeight="42.0" prefWidth="173.0" text="Register" />
+    </children>
+</AnchorPane>

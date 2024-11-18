@@ -1,0 +1,76 @@
+/* Background of the main application */
+AnchorPane {
+    -fx-background-color: linear-gradient(to bottom, #e5d6f5, #ffffff);
+}
+
+/* TableView styling with a purple theme */
+TableView {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #8e44ad; /* Dark purple border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.1), 6, 0, 2, 2);
+}
+
+/* Table columns styling */
+TableColumn {
+    -fx-font-family: Arial;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4a235a; /* Dark purple for text */
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* Button styling with purple gradients */
+Button {
+    -fx-background-color: linear-gradient(to bottom, #af7ac5, #8e44ad); /* Gradient from light to dark purple */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: Arial;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-padding: 5px 15px;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.15), 4, 0, 2, 2);
+}
+
+Button:hover {
+    -fx-background-color: linear-gradient(to bottom, #8e44ad, #6c3483); /* Darker purple on hover */
+}
+
+Button:pressed {
+    -fx-background-color: #6c3483; /* Deep purple when pressed */
+}
+
+/* Label styling for the online status */
+Label#userNameField {
+    -fx-font-family: Verdana;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4a235a; /* Dark purple for the username */
+}
+
+Label {
+    -fx-font-family: Arial;
+    -fx-font-size: 14px;
+    -fx-text-fill: #4a235a;
+}
+
+Label[text="Online"] {
+    -fx-text-fill: #27ae60; /* Green color for online status */
+    -fx-font-weight: bold;
+}
+
+/* Profile image styling */
+ImageView {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 6, 0.5, 2, 2);
+    -fx-background-radius: 40px;
+    -fx-border-radius: 40px;
+    -fx-padding: 4px;
+}
+
+/* Table row hover effect for friend list */
+.table-row-cell:hover {
+    -fx-background-color: rgba(174, 129, 189, 0.3); /* Light purple on hover */
+}

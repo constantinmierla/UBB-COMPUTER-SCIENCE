@@ -1,0 +1,79 @@
+/* register-style.css */
+
+/* AnchorPane background and styling */
+AnchorPane {
+    -fx-background-color: linear-gradient(to bottom, #4e73df, #1e3a8a); /* Gradient albastru pentru fundal */
+    -fx-padding: 20px;
+    -fx-border-color: #2980b9; /* Albastru mai deschis */
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+}
+
+/* Label styling */
+Label {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: #ffffff; /* Text alb pentru etichete */
+    -fx-padding: 10px 0; /* Spațiu între etichete și câmpurile de text */
+}
+
+#registrationTitle {
+    -fx-font-size: 32px;
+    -fx-font-family: "Calibri Italic";
+    -fx-text-fill: #ffffff; /* Text alb pentru titlul de înregistrare */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 5, 0, 1, 1);
+}
+
+/* TextField and PasswordField styling */
+TextField, PasswordField {
+    -fx-background-color: white;
+    -fx-border-color: #3498db; /* Albastru pentru bordura */
+    -fx-border-radius: 5px;
+    -fx-padding: 6px;
+    -fx-font-size: 14px;
+    -fx-min-width: 200px;
+}
+
+TextField:focused, PasswordField:focused {
+    -fx-border-color: #2980b9; /* Albastru mai închis când este focusat */
+}
+
+/* Button styling */
+Button {
+    -fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); /* Gradient albastru pentru buton */
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-radius: 8px;
+    -fx-padding: 10px;
+    -fx-border-color: #2980b9;
+    -fx-border-width: 1px;
+    -fx-font-weight: bold;
+}
+
+Button:hover {
+    -fx-background-color: #2471a3; /* Albastru mai închis la hover */
+}
+
+Button:pressed {
+    -fx-background-color: #1d4b78; /* Albastru foarte închis când butonul este apăsat */
+}
+
+/* Error message styling */
+#errorMessage {
+    -fx-text-fill: red;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-alignment: CENTER;
+}
+
+/* Styling for terms and conditions */
+#termsLabel {
+    -fx-font-size: 12px;
+    -fx-text-fill: #ffffff;
+}
+
+#termsLabel:hover {
+    -fx-text-fill: #2980b9; /* Culoare albastră la hover pe termenii și condițiile */
+}
