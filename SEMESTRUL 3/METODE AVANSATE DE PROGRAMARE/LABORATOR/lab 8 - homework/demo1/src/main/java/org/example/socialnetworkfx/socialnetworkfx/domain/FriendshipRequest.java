@@ -7,21 +7,30 @@ public class FriendshipRequest extends Entity<Long> {
     private Long receiver;
     LocalDateTime timeSend;
     private String status;
+    private boolean seen;
+
+    @Override
+    public String toString() {
+        return "FriendshipRequest{" +
+                "sender=" + sender +
+                ", receiver=" + receiver +
+                ", timeSend=" + timeSend +
+                ", status='" + status + '\'' +
+                ", seen=" + seen +
+                '}';
+    }
 
     public FriendshipRequest(Long userID1, Long userID2) {
         this.sender = userID1;
         this.receiver = userID2;
         this.timeSend = LocalDateTime.now();
+        this.seen = false;
     }
-//    public FriendshipRequest(Long userID1, Long userID2, String status, LocalDateTime timeSend) {
-//        this.sender = userID1;
-//        this.receiver = userID2;
-//        this.status = status;
-//        this.timeSend = timeSend;
-//    }
+
     public String getDatefrom() {
         return timeSend.toString();
-}
+    }
+
     public Long getId_user1() {
         return sender;
     }
@@ -33,6 +42,7 @@ public class FriendshipRequest extends Entity<Long> {
     public Long getId_user2() {
         return receiver;
     }
+
     public Long getSender() {
         return sender;
     }
@@ -63,5 +73,13 @@ public class FriendshipRequest extends Entity<Long> {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public boolean isSeen() {
+        return seen;
+    }
+
+    public void setSeen(boolean seen) {
+        this.seen = seen;
     }
 }

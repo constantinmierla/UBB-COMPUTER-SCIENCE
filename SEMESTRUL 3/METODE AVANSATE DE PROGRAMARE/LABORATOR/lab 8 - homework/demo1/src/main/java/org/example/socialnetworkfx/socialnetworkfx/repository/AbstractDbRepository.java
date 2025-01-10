@@ -5,7 +5,7 @@ import org.example.socialnetworkfx.socialnetworkfx.domain.validation.Validation;
 
 import java.util.Optional;
 
-public abstract class AbstractDbRepository<ID,E extends Entity<ID>> implements NewRepository<ID,E> {
+public abstract class AbstractDbRepository<ID,E extends Entity<ID>> implements Repository<ID,E> {
     private final String url;
     private final String username;
     private final String password;
@@ -17,6 +17,7 @@ public abstract class AbstractDbRepository<ID,E extends Entity<ID>> implements N
         this.password = password;
         this.validator = validator;
     }
+
     public abstract Optional<E> findOne(ID id);
 
     public abstract Iterable<E> findAll();

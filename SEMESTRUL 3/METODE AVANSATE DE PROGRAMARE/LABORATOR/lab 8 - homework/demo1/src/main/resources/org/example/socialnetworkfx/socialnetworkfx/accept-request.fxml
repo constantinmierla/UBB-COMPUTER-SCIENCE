@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="612.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.socialnetworkfx.socialnetworkfx.controller.AcceptRequest">
-   <children>
-      <TableView fx:id="tableView" layoutX="105.0" layoutY="30.0" prefHeight="283.0" prefWidth="413.0">
-        <columns>
-          <TableColumn fx:id="firstnameColumn" prefWidth="99.0" text="First name" />
-          <TableColumn fx:id="lastnameColumn" minWidth="0.0" prefWidth="91.79997253417969" text="Last name" />
-            <TableColumn fx:id="dateColumn" prefWidth="119.4000244140625" text="Date sent" />
-            <TableColumn fx:id="statusColumn" prefWidth="106.79998779296875" text="Status" />
-        </columns>
-      </TableView>
-      <Button fx:id="acceptButton" layoutX="56.0" layoutY="328.0" mnemonicParsing="false" onAction="#handleAccept" prefHeight="26.0" prefWidth="110.0" text="Accept" />
-      <Button fx:id="rejectButton" layoutX="172.0" layoutY="328.0" mnemonicParsing="false" onAction="#handleDecline" prefHeight="26.0" prefWidth="110.0" text="Reject" />
-      <Label fx:id="showMessage" layoutX="471.0" layoutY="369.0" prefHeight="18.0" prefWidth="136.0" />
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="525.0" stylesheets="@css/login.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.socialnetworkfx.socialnetworkfx.controller.AcceptRequest">
+    <children>
+        <TableView fx:id="tableView" layoutX="13.0" layoutY="30.0" prefHeight="283.0" prefWidth="409.0">
+            <columns>
+                <TableColumn fx:id="firstnameColumn" prefWidth="99.0" text="First name" />
+                <TableColumn fx:id="lastnameColumn" minWidth="0.0" prefWidth="91.79997253417969" text="Last name" />
+                <TableColumn fx:id="dateColumn" prefWidth="119.4000244140625" text="Date sent" />
+                <TableColumn fx:id="statusColumn" prefWidth="106.79998779296875" text="Status" />
+            </columns>
+        </TableView>
+        <Button fx:id="acceptButton" layoutX="26.0" layoutY="328.0" mnemonicParsing="false" onAction="#handleAccept" prefHeight="26.0" prefWidth="110.0" text="Accept" />
+        <Button fx:id="rejectButton" layoutX="150.0" layoutY="328.0" mnemonicParsing="false" onAction="#handleDecline" prefHeight="26.0" prefWidth="110.0" text="Reject" />
+        <Label fx:id="showMessage" layoutX="386.0" layoutY="369.0" prefHeight="18.0" prefWidth="221.0" />
+        <Button fx:id="sendRequestButton" layoutX="275.0" layoutY="328.0" mnemonicParsing="false" onAction="#handleSend" prefHeight="26.0" prefWidth="136.0" text="Send a request" />
+        <ImageView fitHeight="163.0" fitWidth="96.0" layoutX="461.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/58685-apple-color-symbol-fire-shape-iphone-emoji.png" />
+            </image></ImageView>
+        <ImageView fitHeight="172.0" fitWidth="195.0" layoutX="423.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/vih6zdxpxw2toy10tovp1eoet4c0.png" />
+            </image>
+        </ImageView>
+    </children>
 </AnchorPane>

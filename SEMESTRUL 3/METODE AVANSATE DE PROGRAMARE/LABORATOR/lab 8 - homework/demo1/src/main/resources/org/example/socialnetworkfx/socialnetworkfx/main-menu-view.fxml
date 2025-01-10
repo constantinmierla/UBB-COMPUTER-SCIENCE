@@ -5,27 +5,91 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="656.0" stylesheets="@css/mainMenu.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.socialnetworkfx.socialnetworkfx.controller.MainMenuView">
-   <children>
-      <TableView fx:id="tableView" layoutX="35.0" layoutY="18.0" prefHeight="364.0" prefWidth="402.0">
-        <columns>
-          <TableColumn fx:id="firstnameColumn" prefWidth="125.0" text="First Name" />
-          <TableColumn fx:id="lastnameColumn" prefWidth="125.0" text="Last Name" />
-            <TableColumn fx:id="sinceColumn" maxWidth="130.0" prefWidth="128.0" text="Friends since" />
-        </columns>
-      </TableView>
-      <Button fx:id="sendRequestButton" layoutX="454.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleSendRequest" prefHeight="26.0" prefWidth="176.0" text="Add a new friend" />
-      <Button fx:id="acceptRequestButton" layoutX="454.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleAcceptRequest" prefHeight="26.0" prefWidth="176.0" text="Friendship request's" />
-      <Button fx:id="removeFriendButton" layoutX="454.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleRemoveFriend" prefHeight="26.0" prefWidth="176.0" text="Delete a friend" />
-      <Button fx:id="removeUser" layoutX="454.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleRemoveUser" prefHeight="26.0" prefWidth="176.0" text="Delete account" />
-      <ImageView fitHeight="61.0" fitWidth="50.0" layoutX="453.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/user.jpg" />
-         </image></ImageView>
-      <Label fx:id="userNameField" layoutX="513.0" layoutY="29.0" prefHeight="23.0" prefWidth="143.0" />
-      <Label layoutX="514.0" layoutY="51.0" prefHeight="23.0" prefWidth="62.0" text="Online" textFill="#1f8103">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Label>
-   </children>
+<AnchorPane prefHeight="640.0" prefWidth="346.0" stylesheets="@css/mainMenu.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.socialnetworkfx.socialnetworkfx.controller.MainMenuView">
+    <children>
+        <TableView fx:id="tableView" layoutX="12.0" layoutY="177.0" prefHeight="410.0" prefWidth="321.0">
+            <columns>
+                <TableColumn fx:id="firstnameColumn" prefWidth="105.20001220703125" text="First Name" />
+                <TableColumn fx:id="lastnameColumn" minWidth="0.0" prefWidth="108.39996337890625" text="Last Name" />
+                <TableColumn fx:id="sinceColumn" maxWidth="301.59999084472656" prefWidth="88.79997558593749" text="Since" />
+            </columns>
+        </TableView>
+        <ImageView fitHeight="66.0" fitWidth="74.0" layoutX="26.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/logo.png" />
+            </image></ImageView>
+        <Label fx:id="userNameField" layoutX="104.0" layoutY="29.0" prefHeight="23.0" prefWidth="143.0" text="Costi" />
+        <Label layoutX="116.0" layoutY="51.0" prefHeight="26.0" prefWidth="50.0" text="Online" textFill="#1f8103">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font></Label>
+        <GridPane layoutX="14.0" layoutY="95.0" prefHeight="76.0" prefWidth="332.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <ImageView fx:id="settingImage" fitHeight="42.0" fitWidth="62.0" onMouseClicked="#handleRemoveUser" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/settings2.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="chatImage" fitHeight="42.0" fitWidth="62.0" onMouseClicked="#handleChat" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                    <image>
+                        <Image url="@images/chat3.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="addImage" fitHeight="42.0" fitWidth="62.0" onMouseClicked="#handleAcceptRequest" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+                    <image>
+                        <Image url="@images/add2.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="deleteImage" fitHeight="42.0" fitWidth="62.0" onMouseClicked="#handleRemoveFriend" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+                    <image>
+                        <Image url="@images/remove.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="editImage" fitHeight="42.0" fitWidth="46.0" onMouseClicked="#handleAccountSetting" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+                    <image>
+                        <Image url="@images/edit.png" />
+                    </image>
+                </ImageView>
+                <Label text="Remove friend" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                <Label text="Chat with friends" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <font>
+                        <Font size="8.0" />
+                    </font>
+                </Label>
+                <Label prefHeight="36.0" prefWidth="66.0" text="Add friends" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <Label prefHeight="56.0" prefWidth="67.0" text="Delete account" wrapText="true" GridPane.rowIndex="1" />
+                <Label text="Edit account" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            </children>
+        </GridPane>
+        <ImageView fitHeight="16.0" fitWidth="14.0" layoutX="97.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/green.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="redDot" fitHeight="26.0" fitWidth="26.0" layoutX="174.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/red.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="numberOfRequests" layoutX="183.0" layoutY="61.0" prefHeight="42.0" prefWidth="30.0" />
+        <ButtonBar layoutX="32.0" layoutY="587.0" prefHeight="40.0" prefWidth="213.0">
+            <buttons>
+                <Button fx:id="lastPage" layoutX="134.0" layoutY="17.0" minWidth="38.0" mnemonicParsing="false" onAction="#handleBackPage" prefHeight="13.0" prefWidth="147.0" text="&lt;" />
+                <Label fx:id="pageText" />
+                <Button fx:id="nextPage" minWidth="10.0" mnemonicParsing="false" onAction="#handleNextPage" prefHeight="26.0" prefWidth="76.0" text="&gt;" />
+            </buttons>
+        </ButtonBar>
+        <Label fx:id="errorMessage" layoutX="115.0" layoutY="624.0" prefHeight="23.0" prefWidth="226.0" />
+    </children>
 </AnchorPane>

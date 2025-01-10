@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="420.0" prefWidth="613.0" stylesheets="@css/login.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.socialnetworkfx.socialnetworkfx.controller.ChatView">
+    <children>
+        <ListView fx:id="listView" layoutX="25.0" layoutY="23.0" prefHeight="312.0" prefWidth="354.0" />
+        <TextField fx:id="messageText" layoutX="25.0" layoutY="347.0" prefHeight="51.0" prefWidth="291.0" />
+        <Button fx:id="sendButton" layoutX="293.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleSend" prefHeight="51.0" prefWidth="84.0" text="Send" />
+        <Label fx:id="nameLabelChat" layoutX="486.0" layoutY="26.0">
+            <font>
+                <Font name="Bodoni MT" size="29.0" />
+            </font></Label>
+        <ImageView fitHeight="90.0" fitWidth="128.0" layoutX="391.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/user-128.png" />
+            </image></ImageView>
+        <Button fx:id="replyButton" layoutX="379.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleReply" prefHeight="51.0" prefWidth="84.0" text="Reply" />
+        <Label fx:id="nameLabelChat1" layoutX="486.0" layoutY="33.0" prefHeight="63.0" prefWidth="90.0" text="Friends since 2024" wrapText="true">
+            <font>
+                <Font name="Bodoni MT" size="29.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="189.0" fitWidth="216.0" layoutX="392.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/logo.png" />
+            </image></ImageView>
+    </children>
+</AnchorPane>

@@ -2,7 +2,7 @@ package org.example.socialnetworkfx.socialnetworkfx.domain.event;
 
 import org.example.socialnetworkfx.socialnetworkfx.domain.User;
 
-public class UserEntityChange extends jdk.jfr.Event implements Event{
+public class UserEntityChange extends jdk.jfr.Event implements Event {
     private ChangeEventType type;
     private User data, oldData;
 
@@ -10,10 +10,11 @@ public class UserEntityChange extends jdk.jfr.Event implements Event{
         this.type = type;
         this.data = data;
     }
+
     public UserEntityChange(ChangeEventType type, User data, User oldData) {
         this.type = type;
         this.data = data;
-        this.oldData=oldData;
+        this.oldData = oldData;
     }
 
     public ChangeEventType getType() {

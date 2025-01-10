@@ -1,9 +1,7 @@
 package org.example.socialnetworkfx.socialnetworkfx.repository;
 
-import org.example.socialnetworkfx.socialnetworkfx.domain.Friendship;
+
 import org.example.socialnetworkfx.socialnetworkfx.domain.FriendshipRequest;
-import org.example.socialnetworkfx.socialnetworkfx.domain.RequestStatus;
-import org.example.socialnetworkfx.socialnetworkfx.domain.User;
 import org.example.socialnetworkfx.socialnetworkfx.domain.validation.Validation;
 import org.example.socialnetworkfx.socialnetworkfx.domain.validation.ValidationException;
 
@@ -19,7 +17,7 @@ public class FriendshipRequestDbRepository extends AbstractDbRepository<Long, Fr
     }
 
     public Optional<FriendshipRequest> findOne(Long id) {
-        try (Connection connection = DriverManager.getConnection(getUrl(), getUsername(), getPassword());) {
+        try (Connection connection = DriverManager.getConnection(getUrl(), getUsername(), getPassword())) {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"Friendship_request\" WHERE id= ?");
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -46,19 +44,19 @@ public class FriendshipRequestDbRepository extends AbstractDbRepository<Long, Fr
     public Iterable<FriendshipRequest> findAll() {
         Set<FriendshipRequest> friendshipRequests = new HashSet<>();
 
-        try (Connection connection = DriverManager.getConnection(getUrl(), getUsername(), getPassword());
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM \"Friendship_request\" ");
-             ResultSet result = preparedStatement.executeQuery()) {
+        try (Connection connection = DriverManager.getConnection(getUrl(), getUsername(), getPassword()); PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM \"Friendship_request\" "); ResultSet result = preparedStatement.executeQuery()) {
             while (result.next()) {
                 Long ID = result.getLong("id");
                 Long id_user1 = result.getLong("id_user1");
                 Long id_user2 = result.getLong("id_user2");
                 String status = result.getString("status");
                 LocalDateTime time = result.getTimestamp("datefrom").toLocalDateTime();
+                boolean seen=result.getBoolean("seen");
                 FriendshipRequest request = new FriendshipRequest(id_user1, id_user2);
                 request.setID(ID);
                 request.setStatus(status);
                 request.setTimeSend(time);
+                request.setSeen(seen);
                 friendshipRequests.add(request);
             }
 
@@ -70,14 +68,12 @@ public class FriendshipRequestDbRepository extends AbstractDbRepository<Long, Fr
 
     public Optional<FriendshipRequest> save(FriendshipRequest entity) {
         try (Connection connection = DriverManager.getConnection(getUrl(), getUsername(), getPassword());
-             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO \"Friendship_request\" (id_user1,id_user2,status,datefrom) VALUES (?,?,?,?)"))
-            {
+             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO \"Friendship_request\" (id_user1,id_user2,status,datefrom) VALUES (?,?,?,?)")) {
             preparedStatement.setLong(1, entity.getSender());
             preparedStatement.setLong(2, entity.getReceiver());
-            if(entity.getStatus() == null) {
+            if (entity.getStatus() == null) {
                 preparedStatement.setString(3, "PENDING");
-            }
-            else {
+            } else {
                 preparedStatement.setString(3, entity.getStatus());
             }
             preparedStatement.setTimestamp(4, Timestamp.valueOf(entity.getTimeSend()));
@@ -92,7 +88,7 @@ public class FriendshipRequestDbRepository extends AbstractDbRepository<Long, Fr
         return Optional.empty();
     }
 
-    public Optional<FriendshipRequest> delete(Long id2){
+    public Optional<FriendshipRequest> delete(Long id2) {
         try (Connection connection = DriverManager.getConnection(getUrl(), getUsername(), getPassword())) {
             Optional<FriendshipRequest> friendship = findOne(id2);
             if (friendship.isEmpty()) {
@@ -111,18 +107,19 @@ public class FriendshipRequestDbRepository extends AbstractDbRepository<Long, Fr
         return Optional.empty();
     }
 
-    public Optional<FriendshipRequest> update(FriendshipRequest entity){
+    public Optional<FriendshipRequest> update(FriendshipRequest entity) {
         try (Connection connection = DriverManager.getConnection(getUrl(), getUsername(), getPassword())) {
             Optional<FriendshipRequest> friendship = findOne(entity.getID());
             if (friendship.isEmpty()) {
                 return Optional.of(entity);
             }
             //getValidator().validate(entity);
-            PreparedStatement statement = connection.prepareStatement("UPDATE \"Friendship_request\" SET id_user1=?,id_user2=?, status=? WHERE id = ? ");
+            PreparedStatement statement = connection.prepareStatement("UPDATE \"Friendship_request\" SET id_user1=?,id_user2=?, status=?, seen=? WHERE id = ? ");
             statement.setLong(1, entity.getSender());
             statement.setLong(2, entity.getReceiver());
             statement.setString(3, entity.getStatus());
-            statement.setLong(4, entity.getID());
+            statement.setBoolean(4,entity.isSeen());
+            statement.setLong(5, entity.getID());
             int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
                 return Optional.of(entity);

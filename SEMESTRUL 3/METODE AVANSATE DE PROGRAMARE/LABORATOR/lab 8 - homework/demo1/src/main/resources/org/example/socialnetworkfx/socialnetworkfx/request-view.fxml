@@ -2,34 +2,22 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="244.0" prefWidth="359.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.socialnetworkfx.socialnetworkfx.controller.RequestView">
-   <children>
-      <GridPane layoutX="92.0" layoutY="79.0" prefHeight="101.0" prefWidth="262.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints />
-          <RowConstraints maxHeight="46.4" minHeight="10.0" prefHeight="46.4" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="46.4" minHeight="10.0" prefHeight="46.4" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="57.4" minHeight="10.0" prefHeight="42.4" vgrow="SOMETIMES" />
-            <RowConstraints />
-        </rowConstraints>
-         <children>
-            <TextField fx:id="firstnameText" layoutX="10.0" layoutY="65.0" GridPane.rowIndex="1" />
-            <TextField fx:id="lastnameText" prefHeight="24.0" prefWidth="262.0" GridPane.rowIndex="3" />
-            <Label text="First name:" />
-            <Label text="Last name:" GridPane.rowIndex="2" />
-         </children>
-      </GridPane>
-      <Label fx:id="failMessage" layoutX="341.0" layoutY="226.0" prefHeight="18.0" prefWidth="103.0" textFill="RED" />
-      <Label layoutX="94.0" layoutY="18.0" prefHeight="61.0" prefWidth="222.0" text="Add a new friend!">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Button fx:id="sendButton" layoutX="92.0" layoutY="193.0" mnemonicParsing="false" onAction="#handleSendButton" prefHeight="26.0" prefWidth="90.0" text="Send" />
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@css/login.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.socialnetworkfx.socialnetworkfx.controller.RequestView">
+    <children>
+
+        <!-- Centered Search Field -->
+        <TextField fx:id="searchText" layoutX="100.0" layoutY="23.0" prefHeight="30.0" prefWidth="400.0" promptText="Search..." style="-fx-font-size: 14px; -fx-border-color: #cccccc; -fx-background-radius: 15; -fx-border-radius: 15; -fx-padding: 5 10;" />
+
+        <!-- TableView for Results -->
+        <TableView fx:id="tableView" layoutX="50.0" layoutY="71.0" prefHeight="257.0" prefWidth="500.0" style="-fx-border-color: #cccccc; -fx-background-color: #ffffff; -fx-border-radius: 10; -fx-padding: 5;">
+            <columns>
+                <TableColumn fx:id="firstnameColumn" prefWidth="250.0" text="First Name" />
+                <TableColumn fx:id="lastnameColumn" prefWidth="250.0" text="Last Name" />
+            </columns>
+        </TableView>
+
+        <!-- Send Button -->
+        <Button fx:id="sendButton" layoutX="250.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleSendRequest" prefHeight="33.0" prefWidth="100.0" text="Send" />
+    </children>
 </AnchorPane>

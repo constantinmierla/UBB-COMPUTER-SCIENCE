@@ -1,55 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="381.0" prefWidth="446.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.socialnetworkfx.socialnetworkfx.controller.RegisterView" stylesheets="@css/register.css">
+<AnchorPane prefHeight="440.0" prefWidth="446.0" stylesheets="@css/login.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.socialnetworkfx.socialnetworkfx.controller.RegisterView">
     <children>
-        <!-- GridPane for organizing the fields -->
-        <GridPane layoutX="113.0" layoutY="109.0" prefHeight="300.0" prefWidth="234.0">
+        <GridPane layoutX="113.0" layoutY="149.0" prefHeight="202.0" prefWidth="234.0">
             <columnConstraints>
-                <ColumnConstraints hgrow="ALWAYS" minWidth="100.0" prefWidth="200.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints prefHeight="40.0" vgrow="ALWAYS" />
-                <RowConstraints prefHeight="40.0" vgrow="ALWAYS" />
-                <RowConstraints prefHeight="40.0" vgrow="ALWAYS" />
-                <RowConstraints prefHeight="40.0" vgrow="ALWAYS" />
-                <RowConstraints prefHeight="40.0" vgrow="ALWAYS" />
-                <RowConstraints prefHeight="40.0" vgrow="ALWAYS" />
+                <RowConstraints />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <!-- Email Label and TextField -->
-                <Label text="Email:" GridPane.rowIndex="0" />
-                <TextField fx:id="emailText" GridPane.rowIndex="0" GridPane.columnIndex="1" prefHeight="30.0" prefWidth="200.0">
+                <TextField fx:id="emailText" layoutX="10.0" layoutY="80.0" GridPane.rowIndex="1">
                     <font>
                         <Font name="System Italic" size="12.0" />
-                    </font>
-                </TextField>
-
-                <!-- Password Label and PasswordField -->
-                <Label text="Password:" GridPane.rowIndex="1" />
-                <PasswordField fx:id="passwordText" GridPane.rowIndex="1" GridPane.columnIndex="1" prefHeight="30.0" prefWidth="200.0" />
-
-                <!-- First Name Label and TextField -->
-                <Label text="First name:" GridPane.rowIndex="2" />
-                <TextField fx:id="firstnameText" GridPane.rowIndex="2" GridPane.columnIndex="1" prefHeight="30.0" prefWidth="200.0" />
-
-                <!-- Last Name Label and TextField -->
-                <Label text="Last name:" GridPane.rowIndex="3" />
-                <TextField fx:id="lastnameText" GridPane.rowIndex="3" GridPane.columnIndex="1" prefHeight="30.0" prefWidth="200.0" />
+                    </font></TextField>
+                <TextField fx:id="firstnameText" layoutX="10.0" layoutY="25.0" GridPane.rowIndex="5" />
+                <TextField fx:id="lastnameText" layoutX="10.0" layoutY="136.0" prefHeight="23.0" prefWidth="234.0" GridPane.rowIndex="7" />
+                <Label text="Email:">
+                    <font>
+                        <Font size="10.0" />
+                    </font></Label>
+                <Label text="Password:" GridPane.rowIndex="2" />
+                <Label text="First name:" GridPane.rowIndex="4" />
+                <Label text="Last name:" GridPane.rowIndex="6" />
+                <PasswordField fx:id="passwordText" GridPane.rowIndex="3" />
             </children>
         </GridPane>
-
-        <!-- Registration title label -->
-        <Label layoutX="140.0" layoutY="54.0" prefHeight="42.0" prefWidth="214.0" text="Registration">
-            <font>
-                <Font name="Calibri Italic" size="32.0" />
-            </font>
-        </Label>
-
-        <!-- Register button -->
-        <Button fx:id="registerButton" layoutX="139.0" layoutY="306.0" mnemonicParsing="false" onAction="#handleRegisterButton" prefHeight="42.0" prefWidth="173.0" text="Register" />
+        <Button fx:id="registerButton" layoutX="143.0" layoutY="375.0" mnemonicParsing="false" onAction="#handleRegisterButton" prefHeight="28.0" prefWidth="174.0" text="Register" />
+        <ImageView fitHeight="111.0" fitWidth="201.0" layoutX="129.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/logo.png" />
+            </image></ImageView>
+        <Label fx:id="errorMessage" layoutX="93.0" layoutY="418.0" prefHeight="19.0" prefWidth="336.0" />
     </children>
 </AnchorPane>

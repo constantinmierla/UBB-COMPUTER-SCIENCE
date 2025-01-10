@@ -14,7 +14,7 @@ public class Friendship extends Entity<Long> {
         this.friendsFrom = LocalDateTime.now();
     }
 
-    public String getDatesince(){
+    public String getDatesince() {
         return friendsFrom.toString();
     }
 

@@ -1,6 +1,6 @@
-/* Background of the login screen */
+/* Background of the registration screen */
 AnchorPane {
-    -fx-background-color: linear-gradient(to bottom, #4e73df, #1e3a8a); /* Albastru gradient de la albastru deschis la albastru închis */
+    -fx-background-color: linear-gradient(to bottom, #4e73df, #1e3a8a); /* Gradient albastru */
 }
 
 /* GridPane with form fields */
@@ -8,15 +8,21 @@ GridPane {
     -fx-background-color: transparent;
 }
 
-/* TextField and PasswordField styling */
+/* Styling for input fields (TextField and PasswordField) */
 TextField, PasswordField {
     -fx-background-color: #ffffff;
-    -fx-border-color: #3498db; /* Albastru deschis pentru bordura */
+    -fx-border-color: #3498db; /* Bordură albastru deschis */
     -fx-border-radius: 10px;
     -fx-padding: 10px;
     -fx-font-size: 14px;
     -fx-font-family: "Segoe UI", sans-serif;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 4, 2, 2, 2); /* Efect de umbră subtil */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 4, 2, 2, 2); /* Umbră subtilă */
+    -fx-pref-width: 200px; /* Asigură lățimea câmpurilor */
+}
+
+/* Hover effect for input fields */
+TextField:hover, PasswordField:hover {
+    -fx-border-color: #2980b9; /* Bordură albastru închis la hover */
 }
 
 /* Button styling */
@@ -31,6 +37,7 @@ Button {
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 4, 2, 2, 2);
 }
 
+/* Hover and pressed states for buttons */
 Button:hover {
     -fx-background-color: linear-gradient(to bottom, #2980b9, #2471a3); /* Albastru mai închis la hover */
 }
@@ -39,21 +46,22 @@ Button:pressed {
     -fx-background-color: #2471a3; /* Albastru închis când este apăsat */
 }
 
-/* Label styling for the welcome message */
+/* Label styling */
 Label {
     -fx-font-family: "Segoe UI", sans-serif;
-    -fx-font-size: 18px;
-    -fx-text-fill: white; /* Text alb pentru contrast bun */
+    -fx-font-size: 14px; /* Dimensiune text etichete */
+    -fx-text-fill: #ffffff; /* Text alb */
     -fx-font-weight: bold;
 }
 
-/* Title label for Login */
-Label[text="Login to Your Account"] {
+/* Title label for registration screen */
+Label[text="Registration"] {
     -fx-font-family: "Segoe UI", sans-serif;
     -fx-font-size: 28px;
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-padding: 20px 0 30px 0;
+    -fx-alignment: CENTER;
 }
 
 /* Error message styling */
@@ -64,29 +72,12 @@ Label[text="Login to Your Account"] {
     -fx-alignment: CENTER_RIGHT;
 }
 
-/* Profile image styling (if you add an image) */
-ImageView {
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.8, 5, 5);
-    -fx-background-radius: 50%;
-    -fx-border-radius: 50%;
-    -fx-padding: 5px;
+/* Add spacing and alignment for the form */
+GridPane > Label {
+    -fx-padding: 5px 10px; /* Adaugă spațiu între etichete */
+    -fx-alignment: CENTER_LEFT;
 }
 
-/* Add a hover effect for input fields */
-TextField:hover, PasswordField:hover {
-    -fx-border-color: #2980b9; /* Schimbă culoarea bordurii la hover cu albastru închis */
-}
-
-/* Styling for the form labels */
-Label {
-    -fx-font-size: 14px;
-    -fx-text-fill: #ffffff; /* Text alb pentru etichete */
-}
-
-/* Styling for a user placeholder (e.g., profile picture in header) */
-#userImage {
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 6, 1, 3, 3);
-    -fx-background-radius: 50%;
-    -fx-border-radius: 50%;
-    -fx-padding: 6px;
+GridPane > TextField, GridPane > PasswordField {
+    -fx-padding: 5px 10px; /* Adaugă spațiu între câmpuri */
 }

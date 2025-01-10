@@ -1,17 +1,17 @@
 /* Background of the main application */
 AnchorPane {
-    -fx-background-color: linear-gradient(to bottom, #4e73df, #1e3a8a);
+    -fx-background-color: linear-gradient(to bottom, #4e73df, #1e3a8a); /* Gradient albastru */
 }
 
-/* TableView styling with a blue theme */
+/* Styling for TableView */
 TableView {
     -fx-background-color: #ffffff;
-    -fx-border-color: #3498db;
+    -fx-border-color: #3498db; /* Bordură albastru deschis */
     -fx-border-width: 2px;
-    -fx-border-radius: 8px;
+    -fx-border-radius: 10px;
     -fx-padding: 10px;
-    -fx-background-radius: 8px;
-    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.1), 6, 0, 2, 2);
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.1), 6, 0, 2, 2); /* Umbră subtilă */
 }
 
 /* Table columns styling */
@@ -25,48 +25,49 @@ TableColumn {
 
 /* Button styling with blue gradients */
 Button {
-    -fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); /* Gradient albastru pentru buton */
+    -fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); /* Gradient albastru */
     -fx-text-fill: white;
     -fx-font-size: 16px;
     -fx-font-family: "Segoe UI", sans-serif;
     -fx-font-weight: bold;
     -fx-background-radius: 12px;
     -fx-padding: 10px 20px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 4, 2, 2, 2);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 4, 2, 2, 2); /* Umbră ușoară */
 }
 
+/* Button hover and pressed states */
 Button:hover {
-    -fx-background-color: linear-gradient(to bottom, #2980b9, #2471a3);
+    -fx-background-color: linear-gradient(to bottom, #2980b9, #2471a3); /* Albastru mai închis la hover */
 }
 
 Button:pressed {
-    -fx-background-color: #2471a3;
+    -fx-background-color: #2471a3; /* Albastru închis când este apăsat */
 }
 
-/* Label styling for the user status */
+/* Styling for specific labels */
 Label#userNameField {
     -fx-font-family: "Segoe UI", sans-serif;
     -fx-font-size: 18px;
     -fx-font-weight: bold;
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #ffffff; /* Alb pentru contrast */
 }
 
 /* General Label styling */
 Label {
     -fx-font-family: "Segoe UI", sans-serif;
     -fx-font-size: 14px;
-    -fx-text-fill: #ffffff; /* Alb pentru text */
+    -fx-text-fill: #ffffff; /* Text alb */
 }
 
-/* Styling for "Online" label */
+/* Online status label styling */
 Label[text="Online"] {
-    -fx-text-fill: #27ae60; /* Verde pentru statusul online */
+    -fx-text-fill: #27ae60; /* Verde pentru "Online" */
     -fx-font-weight: bold;
 }
 
 /* Profile image styling */
 ImageView {
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 6, 0.5, 2, 2);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 6, 0.5, 2, 2); /* Umbră subtilă */
     -fx-background-radius: 50%;
     -fx-border-radius: 50%;
     -fx-padding: 5px;
@@ -74,5 +75,41 @@ ImageView {
 
 /* Table row hover effect */
 .table-row-cell:hover {
-    -fx-background-color: rgba(52, 152, 219, 0.3); /* Albastru deschis pe hover */
+    -fx-background-color: rgba(52, 152, 219, 0.3); /* Fundal albastru deschis pe hover */
+}
+
+/* Table row selection effect */
+.table-row-cell:focused {
+    -fx-background-color: rgba(41, 128, 185, 0.5); /* Albastru mai închis la selecție */
+}
+
+/* Placeholder styling for empty TableView */
+.table-view .placeholder {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 16px;
+    -fx-text-fill: #bdc3c7; /* Gri pentru text */
+    -fx-font-weight: bold;
+}
+
+/* Alignment and spacing for TableView headers */
+.table-view .column-header {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3498db; /* Albastru pentru text */
+    -fx-alignment: CENTER;
+}
+
+/* Scrollbar styling */
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #3498db; /* Thumb albastru */
+    -fx-background-radius: 4px;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #2980b9; /* Thumb mai închis pe hover */
 }

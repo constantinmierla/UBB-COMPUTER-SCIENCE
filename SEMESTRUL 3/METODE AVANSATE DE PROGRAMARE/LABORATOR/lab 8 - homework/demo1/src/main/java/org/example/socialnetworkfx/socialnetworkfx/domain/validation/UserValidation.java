@@ -14,12 +14,12 @@ public class UserValidation implements Validation<User>{
         if(entity.getPassword().length()<6){
             throw new ValidationException("Password must be at least 6 characters");
         }
-        if(entity.getFirstName().matches("[a-zA-Z]+")){
-            throw new ValidationException("First name contains only letters");
-        }
-        if(entity.getLastName().matches("[a-zA-Z]+")){
-            throw new ValidationException("Last name contains only letters");
-        }
+//        if(entity.getFirstName().matches("[a-zA-Z]*")){
+//            throw new ValidationException("First name contains only letters");
+//        }
+//        if(entity.getLastName().matches("[a-zA-Z]*")){
+//            throw new ValidationException("Last name contains only letters");
+//        }
         if(!entity.getEmail().contains(".com")){
             throw new ValidationException("Email address is not a valid email address");
         }

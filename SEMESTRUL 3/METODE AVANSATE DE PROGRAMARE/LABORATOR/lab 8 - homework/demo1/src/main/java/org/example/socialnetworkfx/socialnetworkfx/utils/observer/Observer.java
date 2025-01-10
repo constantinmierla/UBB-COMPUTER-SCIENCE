@@ -1,4 +1,4 @@
-package org.example.socialnetworkfx.socialnetworkfx.utils;
+package org.example.socialnetworkfx.socialnetworkfx.utils.observer;
 
 import jdk.jfr.Event;
 

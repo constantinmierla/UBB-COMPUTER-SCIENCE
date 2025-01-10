@@ -15,7 +15,7 @@ public class UserDbRepository extends AbstractDbRepository<Long, User> {
     }
     @Override
     public Optional<User> findOne(Long id) {
-        try (Connection connection = DriverManager.getConnection(getUrl(), getUsername(), getPassword());) {
+        try (Connection connection = DriverManager.getConnection(getUrl(), getUsername(), getPassword())) {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"User\" WHERE id_user = ?");
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -57,7 +57,7 @@ public class UserDbRepository extends AbstractDbRepository<Long, User> {
         return users;
     }
     @Override
-    public Optional<User> save(User entity) {
+    public Optional<User> save(User entity) throws ValidationException {
         int rez = -1;
         try (Connection connection = DriverManager.getConnection(getUrl(), getUsername(), getPassword());
              PreparedStatement statement = connection.prepareStatement("INSERT INTO \"User\" (firstname,lastname,email,password) VALUES (?, ?, ?, ?)")){
@@ -65,9 +65,9 @@ public class UserDbRepository extends AbstractDbRepository<Long, User> {
             statement.setString(2, entity.getLastName());
             statement.setString(3, entity.getEmail());
             statement.setString(4, entity.getPassword());
-            //getValidator().validate(entity);
+            getValidator().validate(entity);
             rez = statement.executeUpdate();
-        } catch (SQLException | ValidationException e) {
+        } catch (SQLException e) {
             e.getMessage();
         }
         if (rez > 0)
@@ -77,7 +77,7 @@ public class UserDbRepository extends AbstractDbRepository<Long, User> {
     }
     @Override
     public Optional<User> delete(Long id) {
-        try (Connection connection = DriverManager.getConnection(getUrl(), getUsername(), getPassword());) {
+        try (Connection connection = DriverManager.getConnection(getUrl(), getUsername(), getPassword())) {
             Optional<User> user = findOne(id);
             if (user.isEmpty()) {
                 return Optional.empty();
@@ -96,13 +96,13 @@ public class UserDbRepository extends AbstractDbRepository<Long, User> {
     }
     @Override
     public Optional<User> update(User entity) {
-        try (Connection connection = DriverManager.getConnection(getUrl(), getUsername(),getPassword());) {
+        try (Connection connection = DriverManager.getConnection(getUrl(), getUsername(),getPassword())) {
             Optional<User> user = findOne(entity.getID());
             if (user.isEmpty()) {
                 return Optional.of(entity);
             }
-            getValidator().validate(entity);
-            PreparedStatement statement = connection.prepareStatement("UPDATE \"User\" SET firstname=?, lastname=?,email=?,password=?, WHERE id_user = ?");
+            //getValidator().validate(entity);
+            PreparedStatement statement = connection.prepareStatement("UPDATE \"User\" SET firstname=?, lastname=?,email=?,password=? WHERE id_user = ?");
             statement.setString(1, entity.getFirstName());
             statement.setString(2, entity.getLastName());
             statement.setString(3, entity.getEmail());

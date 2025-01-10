@@ -1,51 +1,88 @@
 package org.example.socialnetworkfx.socialnetworkfx.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.example.socialnetworkfx.socialnetworkfx.domain.User;
-import org.example.socialnetworkfx.socialnetworkfx.repository.FriendshipRequestDbRepository;
 import org.example.socialnetworkfx.socialnetworkfx.service.FriendshipRequestService;
-import org.example.socialnetworkfx.socialnetworkfx.service.UserService;
+import org.example.socialnetworkfx.socialnetworkfx.service.FriendshipService;
+
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 public class RequestView {
+
+    @FXML
+    public TableColumn<User,String> firstnameColumn;
+    @FXML
+    public TableColumn<User,String> lastnameColumn;
     @FXML
     public Button sendButton;
     @FXML
-    public Label failMessage;
+    public TableView<User> tableView;
     @FXML
-    public TextField firstnameText;
-    @FXML
-    public TextField lastnameText;
+    public TextField searchText;
 
     private FriendshipRequestService friendshipRequestService;
-    private UserService userService;
+    private FriendshipService friendshipService;
+    private Stage stage;
     private Long ID;
+    ObservableList<User> allUsers= FXCollections.observableArrayList();
 
-    public void setService(FriendshipRequestService friendshipRequestService, UserService userService,Long ID){
+    public void setService(FriendshipRequestService friendshipRequestService, FriendshipService friendshipService, Long ID,Stage stage) {
         this.friendshipRequestService = friendshipRequestService;
-        this.userService = userService;
+        this.friendshipService= friendshipService;
         this.ID = ID;
+        this.stage=stage;
+        initModel();
+    }
+
+    public void initialize() {
+        firstnameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        lastnameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        searchText.textProperty().addListener(o->handleFilter());
+        tableView.setItems(allUsers);
+
+    }
+
+    private void handleFilter() {
+        String text=searchText.getText();
+        Predicate<User> p1=user -> {
+            return user.getFirstName().startsWith(text);
+        };
+        if(text.isEmpty()){
+            initModel();
+            return;
+        }
+        List<User> filtered=allUsers.stream().filter(p1).collect(Collectors.toList());
+        allUsers.setAll(filtered);
+    }
+
+    public void initModel(){
+        Iterable<User> messages = friendshipService.showNonFriends(ID);
+        List<User> users = StreamSupport.stream(messages.spliterator(), false)
+                .collect(Collectors.toList());
+        allUsers.setAll(users);
+
+    }
+    public void handleSendRequest(ActionEvent actionEvent) {
+        User selectedUser=(User) tableView.getSelectionModel().getSelectedItem();
+        friendshipRequestService.sendRequest(ID,selectedUser.getID());
+
+        stage.close();
+
+
     }
 
 
-    public void handleSendButton(ActionEvent actionEvent) {
-        String firstname = firstnameText.getText();
-        String lastname = lastnameText.getText();
-        System.out.println(firstname + " " + lastname);
-        Long ID2=userService.findUserByNames(firstname,lastname);
-        if(ID2!=null){
-            friendshipRequestService.sendRequest(ID,ID2);
-            failMessage.setVisible(false);
-            firstnameText.clear();
-            lastnameText.clear();
-        }
-        else{
-            failMessage.setText("The request was not send!");
-            failMessage.setVisible(true);
-        }
-    }
+
 }
