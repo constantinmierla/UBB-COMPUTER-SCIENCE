@@ -1,0 +1,17 @@
+divizibil(X, Y) :-
+    0 is X mod Y.
+
+prim(N) :-
+    N > 1,
+    \+ (between(2, N1, N),
+        N1 is N-1,
+        divizibil(N, N1)).
+
+dubleaza([], []).
+dubleaza([H|T], [H, H|Rez]) :-
+    prim(H),
+    !,
+    dubleaza(T, Rez).
+dubleaza([H|T], [H|Rez]) :-
+    \+ prim(H),
+    dubleaza(T, Rez).

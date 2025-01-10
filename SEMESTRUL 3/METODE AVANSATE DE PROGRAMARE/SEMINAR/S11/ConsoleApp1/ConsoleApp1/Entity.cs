@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp1;
 
-public class Entity
+public abstract class Entity<ID>
 {
-    
+    public ID id { get; set; }
 }

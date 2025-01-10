@@ -5,6 +5,7 @@ import org.example.demo.domain.User;
 import org.example.demo.domain.validators.Validator;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Optional;
@@ -22,6 +23,7 @@ public class FriendshipDBRepository implements Repository<Long, Friendship> {
         this.database_password = database_password;
         this.validator = validator;
     }
+
     /**
      * Constructs a Friendship object from the current row in the provided ResultSet.
      *
@@ -44,15 +46,19 @@ public class FriendshipDBRepository implements Repository<Long, Friendship> {
         var user2 = new User(firstnameSecondUser, lastnameSecondUser);
         user2.setId(idSecondUser);
 
-        Friendship friendship = new Friendship(user1, user2);
+        // Adăugare atribut friendsFrom
+        var friendsFrom = resultSet.getTimestamp("friendsFrom").toLocalDateTime();
+
+        Friendship friendship = new Friendship(user1, user2, friendsFrom); // Constructor actualizat
         friendship.setId(id_friendship);
 
         return friendship;
     }
+
     /**
      * Sets parameter values in the provided PreparedStatement based on the Friendship data.
      *
-     * @param statement the PreparedStatement to set parameter values in, must not be null.
+     * @param statement  the PreparedStatement to set parameter values in, must not be null.
      * @param friendship the Friendship object whose data is used to set the parameters in the statement.
      * @throws SQLException if an SQL error occurs while setting parameter values in the PreparedStatement.
      */
@@ -63,15 +69,8 @@ public class FriendshipDBRepository implements Repository<Long, Friendship> {
         statement.setLong(4, friendship.getSecondUser().getId());
         statement.setString(5, friendship.getSecondUser().getFirstname());
         statement.setString(6, friendship.getSecondUser().getLastname());
+        statement.setTimestamp(7, Timestamp.valueOf(friendship.getFriendsFrom()));
     }
-
-    /**
-     * Finds a friendship by its unique ID in the database.
-     *
-     * @param id the ID of the friendship to find; must not be null.
-     * @return an `Optional<Friendship>` containing the found friendship if present; otherwise, an empty `Optional`.
-     * @throws RuntimeException if an SQL exception occurs while attempting to connect or execute the query.
-     */
 
     @Override
     public Optional<Friendship> findOne(Long id) {
@@ -92,12 +91,7 @@ public class FriendshipDBRepository implements Repository<Long, Friendship> {
             throw new RuntimeException("Eroare la gasirea prieteniei in baza de date!");
         }
     }
-    /**
-     * Retrieves all friendships from the database.
-     *
-     * @return a `Collection<Friendship>` containing all friendships; may be empty if no friendships are found.
-     * @throws RuntimeException if an SQL exception occurs while attempting to connect or execute the query.
-     */
+
     public Collection<Friendship> findAll() {
         Set<Friendship> friendships = new HashSet<>();
         String sql = "SELECT * FROM \"friendships\"";
@@ -116,19 +110,14 @@ public class FriendshipDBRepository implements Repository<Long, Friendship> {
             throw new RuntimeException("Eroare la preluarea prieteniilor din baza de date!", e);
         }
     }
-    /**
-     * Saves a friendship to the database.
-     *
-     * @param friendship the `Friendship` object to save; must not be null.
-     * @return an `Optional<Friendship>` containing the saved friendship if the operation fails; otherwise, an empty `Optional`.
-     * @throws RuntimeException if an SQL exception occurs while attempting to connect or execute the query.
-     */
+
     public Optional<Friendship> save(Friendship friendship) {
         this.validator.validate(this.findAll(), friendship);
 
         String sql = "INSERT INTO \"friendships\" " +
                 "(firstUserID, firstUserFirstName, firstUserLastName, " +
-                "secondUserID, secondUserFirstName, secondUserLastName) VALUES (?, ?, ?, ?, ?, ?)";
+                "secondUserID, secondUserFirstName, secondUserLastName, friendsFrom) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = DriverManager.getConnection(this.database_url, this.database_user, this.database_password);
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -141,14 +130,7 @@ public class FriendshipDBRepository implements Repository<Long, Friendship> {
             throw new RuntimeException("Eroare la salvarea prieteniei in baza de date!" + e.getMessage(), e);
         }
     }
-    /**
-     * Deletes a friendship from the database by its unique ID.
-     *
-     * @param id the unique ID of the friendship to be deleted, must not be null.
-     * @return an `Optional<Friendship>` containing the deleted friendship if it was found and deleted successfully;
-     *         otherwise, an empty `Optional`.
-     * @throws RuntimeException if an SQL exception occurs while attempting to connect, execute the query, or delete the friendship.
-     */
+
     public Optional<Friendship> delete(Long id) {
         String sql = "DELETE FROM \"friendships\" WHERE id = ?";
 
@@ -166,32 +148,25 @@ public class FriendshipDBRepository implements Repository<Long, Friendship> {
             throw new RuntimeException("Eroare la ștergerea prieteniei din baza de date!", e);
         }
     }
-    /**
-     * Updates the details of an existing friendship in the database.
-     *
-     * @param friendship the `Friendship` object containing updated details, must not be null.
-     * @return an `Optional<Friendship>` containing the updated friendship if the update was successful;
-     *         otherwise, an empty `Optional` if the friendship was not found.
-     * @throws RuntimeException if an SQL exception occurs while attempting to connect, execute the query, or update the friendship.
-     */
+
     public Optional<Friendship> update(Friendship friendship) {
-        if(this.findOne(friendship.getId()).isEmpty()) {
+        if (this.findOne(friendship.getId()).isEmpty()) {
             return Optional.empty();
         }
 
         String sql = "UPDATE \"friendships\" SET " +
-                "firstUserID = ?, firstUserFirstName = ?, firstUserLastName = ?, secondUserID = ?, secondUserFirstName = ?, secondUserLastName = ?" +
+                "firstUserID = ?, firstUserFirstName = ?, firstUserLastName = ?, " +
+                "secondUserID = ?, secondUserFirstName = ?, secondUserLastName = ?, friendsFrom = ? " +
                 "WHERE id = ?";
 
-        try(Connection connection = DriverManager.getConnection(this.database_url, this.database_user, this.database_password);
-            PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection connection = DriverManager.getConnection(this.database_url, this.database_user, this.database_password);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
 
             this.setDataInStatement(statement, friendship);
-            statement.setLong(7, friendship.getId());
+            statement.setLong(8, friendship.getId());
 
             return statement.executeUpdate() > 0 ? Optional.of(friendship) : Optional.empty();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException("Eroare la actualizarea prieteniei in baza de date!");
         }
     }

@@ -5,6 +5,7 @@ import org.example.demo.domain.User;
 import org.example.demo.repository.FriendshipDBRepository;
 import org.example.demo.repository.UserDBRepository;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
@@ -39,10 +40,9 @@ public class FriendshipService {
         Iterable<Friendship> friendships = friendshipDBRepository.findAll();
 
         friendships.forEach(friendship -> {
-            if(friendship.getFirstUser().getId().equals(id_user)) {
+            if (friendship.getFirstUser().getId().equals(id_user)) {
                 friends.add(friendship.getSecondUser());
-            }
-            else if(friendship.getSecondUser().getId().equals(id_user)) {
+            } else if (friendship.getSecondUser().getId().equals(id_user)) {
                 friends.add(friendship.getFirstUser());
             }
         });
@@ -61,7 +61,9 @@ public class FriendshipService {
         var errMsg = "The user with the id was not found: ";
         var user1 = this.userDBRepository.findOne(idFirstUser).orElseThrow(() -> new IllegalArgumentException(errMsg + idFirstUser));
         var user2 = this.userDBRepository.findOne(idSecondUser).orElseThrow(() -> new IllegalArgumentException(errMsg + idSecondUser));
-        var friendship = new Friendship(user1, user2);
+
+        // Creare prietenie cu data curentă (friendsFrom)
+        var friendship = new Friendship(user1, user2, LocalDateTime.now());
 
         try {
             var result = this.friendshipDBRepository.save(friendship);
@@ -69,8 +71,7 @@ public class FriendshipService {
                 return "Friendship successfully saved!";
             }
             return "Friendship already exists!";
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return e.getMessage();
         }
     }
@@ -84,7 +85,7 @@ public class FriendshipService {
      * @return {@code true} if the friendship exists between the specified users, {@code false} otherwise
      */
     private boolean checkIfUsersHaveFriendship(Friendship friendship, Long idFirstUser, Long idSecondUser) {
-        if(friendship.getFirstUser().getId().equals(idFirstUser) && friendship.getSecondUser().getId().equals(idSecondUser))
+        if (friendship.getFirstUser().getId().equals(idFirstUser) && friendship.getSecondUser().getId().equals(idSecondUser))
             return true;
 
         return friendship.getFirstUser().getId().equals(idSecondUser) && friendship.getSecondUser().getId().equals(idFirstUser);
@@ -100,7 +101,7 @@ public class FriendshipService {
     public String deleteFriendship(Long idFirstUser, Long idSecondUser) {
         Collection<Friendship> friendships = friendshipDBRepository.findAll();
 
-        if(friendships.isEmpty()) {
+        if (friendships.isEmpty()) {
             return "This user has no friends to be deleted!";
         }
 
@@ -114,5 +115,23 @@ public class FriendshipService {
         } else {
             return "Friendship not found!";
         }
+    }
+
+    /**
+     * Retrieves the start date of a friendship between two users.
+     *
+     * @param idFirstUser the ID of the first user
+     * @param idSecondUser the ID of the second user
+     * @return a string representing the friendship start date, or an error message if the friendship does not exist
+     */
+    public String getFriendshipStartDate(Long idFirstUser, Long idSecondUser) {
+        Collection<Friendship> friendships = friendshipDBRepository.findAll();
+
+        Optional<Friendship> friendship = friendships.stream()
+                .filter(f -> checkIfUsersHaveFriendship(f, idFirstUser, idSecondUser))
+                .findFirst();
+
+        return friendship.map(f -> "Friendship started on: " + f.getFriendsFrom().toString())
+                .orElse("Friendship not found!");
     }
 }

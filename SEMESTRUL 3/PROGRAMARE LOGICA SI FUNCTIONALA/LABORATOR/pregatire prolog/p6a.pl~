@@ -1,0 +1,17 @@
+elimina([], []).
+elimina([H|T], Rez) :-
+    count(H, [H|T], 0, Count),
+    Count =:= 1,
+    elimina(T, RezT),
+    Rez = [H|RezT].
+elimina([H|T], Rez) :-
+    count(H, [H|T], 0, Count),
+    Count > 1,
+    elimina(T, Rez).
+
+count(_, [], Count, Count).
+count(X, [X|T], Acc, Count) :-
+    NewAcc is Acc+1,
+    count(X,T, NewAcc, Count).
+count(X, [_|T], Acc, Count) :-
+    count(X, T, Acc, Count).
