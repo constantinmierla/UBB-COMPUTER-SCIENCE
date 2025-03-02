@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Formular</title>
+</head>
+<body>
+<h1>Formular</h1>
+
+<h2>Formular GET</h2>
+<form action="/procesare_get" method="GET">
+    <label for="nume_get">Nume:</label>
+    <input type="text" id="nume_get" name="nume" required><br><br>
+
+    <label for="email_get">Email:</label>
+    <input type="email" id="email_get" name="email" required><br><br>
+
+    <label for="varsta_get">Varsta:</label>
+    <input type="number" id="varsta_get" name="varsta" required><br><br>
+
+    <label for="oras_get">Oras:</label>
+    <input type="text" id="oras_get" name="oras" required><br><br>
+
+    <label for="mesaj_get">Mesaj:</label>
+    <textarea id="mesaj_get" name="mesaj" required></textarea><br><br>
+
+    <input type="submit" value="Trimite">
+</form>
+
+<hr>
+
+<h2>Formular POST</h2>
+<form action="/procesare_post" method="POST">
+    <label for="nume_post">Nume:</label>
+    <input type="text" id="nume_post" name="nume" required><br><br>
+
+    <label for="email_post">Email:</label>
+    <input type="email" id="email_post" name="email" required><br><br>
+
+    <label for="varsta_post">Varsta:</label>
+    <input type="number" id="varsta_post" name="varsta" required><br><br>
+
+    <label for="oras_post">Oras:</label>
+    <input type="text" id="oras_post" name="oras" required><br><br>
+
+    <label for="mesaj_post">Mesaj:</label>
+    <textarea id="mesaj_post" name="mesaj" required></textarea><br><br>
+
+    <input type="submit" value="Trimite">
+</form>
+</body>
+</html>
